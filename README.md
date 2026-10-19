@@ -110,3 +110,29 @@ All monetization settings are centralized in **[`config.js`](file:///d:/Hemendra
 2. **Traffic**: Share your interactive tools on Reddit (`r/scams`, `r/cybersecurity`), LinkedIn, Twitter/X, and tech forums.
 3. **Application**: Go to [google.com/adsense](https://www.google.com/adsense), submit your domain, and paste the verification code snippet into the `<head>` of `index.html`.
 4. **Approval**: Google typically reviews cybersecurity utility sites with original tools and legal pages within 2 to 7 days.
+
+---
+
+## 🔮 Future Enhancements & Product Roadmap
+
+Planned architectural, UI/UX, and heuristic enhancements to further elevate user trust, visual polish, and performance:
+
+### 1. Advanced Visual Polish & Micro-Interactions (UI/UX)
+* **Radar / Laser Sweep Animation**: Add a futuristic neon radar beam sweep across the text analyzer during the 800ms heuristic scan phase for elevated visual feedback.
+* **Dynamic Circular Threat Gauge**: Replace static threat index bars with an animated SVG radial progress ring shifting color dynamically from Emerald (`0–34`) to Amber (`35–69`) to Crimson (`70–100`).
+* **One-Tap Toast Copy Feedback**: Add instant clipboard copying for emergency hotlines (FBI IC3, FTC) and threat indicators with a sleek, floating glassmorphism toast notification.
+* **Floating Quick-Scan Navigation (Mobile)**: Add a sticky, thumb-friendly floating action button on mobile viewports for instant one-tap return to the analyzer.
+
+### 2. Extended Detection & Security Tooling (Client-Side)
+* **Client-Side QR Code (Quishing) Decoder**: In-browser drag-and-drop QR code image analyzer detecting malicious redirects and deceptive URL shorteners without server upload.
+* **Email Header & SPF/DKIM Inspector**: Educational header parser highlighting forged sender domains and failed email authentication flags.
+* **Multilingual Heuristic Dictionaries**: Expand smishing and urgency detection vectors to Spanish, French, German, and Hindi threat templates.
+
+### 3. Layout Stability & Core Web Vitals Optimization
+* **Pre-Reserved Fixed Unit Ad Migration**: Complete transition to dedicated, height-locked manual ad placements (`.adsense-slot-container`) to permanently maintain `CLS = 0.0000` regardless of auto-ad network shifts.
+* **PWA & Offline Emergency Mode**: Service Worker caching enabling full client-side incident response playbook functionality even without internet connectivity.
+
+### 4. Community & Reporting Integrations
+* **Standardized Incident Report Generator**: Client-side form generating pre-formatted complaint briefs ready for one-click copy and submission to [FTC ReportFraud](https://reportfraud.ftc.gov/) and [FBI IC3](https://www.ic3.gov/).
+* **Structured Threat Intelligence Feed**: Exportable JSON-LD / RSS feed of active AI fraud patterns for cybersecurity awareness teams.
+
