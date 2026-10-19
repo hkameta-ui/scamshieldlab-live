@@ -273,6 +273,44 @@ class TestCopyrightAndLegalCompliance(unittest.TestCase):
                     )
 
 
+class TestEditorialAndResearchIntegrity(unittest.TestCase):
+    """Verifies that fictional personas are replaced with authentic research methodology."""
+
+    def test_no_fictional_persona_names(self):
+        fictional_names = ["Marcus Vance", "Elena Rostova", "Kevin Nguyen"]
+        for root, _, files in os.walk(WORKSPACE_ROOT):
+            if ".git" in root or ".agents" in root or "tests" in root:
+                continue
+            for f in files:
+                if f.endswith((".html", ".js")):
+                    path = os.path.join(root, f)
+                    with open(path, "r", encoding="utf-8") as file:
+                        content = file.read()
+                        for name in fictional_names:
+                            self.assertNotIn(
+                                name, content,
+                                f"Fictional persona '{name}' must not appear in production file {f}"
+                            )
+
+    def test_about_page_has_research_methodology(self):
+        about_path = os.path.join(WORKSPACE_ROOT, "about.html")
+        with open(about_path, "r", encoding="utf-8") as f:
+            content = f.read()
+            self.assertIn("Research Methodology & Intelligence Architecture", content)
+            self.assertIn("Client-Side Heuristic Engine", content)
+            self.assertIn("Federal & Regulatory Intelligence", content)
+            self.assertIn("Adversary Tactics Reverse-Engineering", content)
+
+    def test_guide_bylines_use_research_lab(self):
+        guides = ["guide-voice-cloning.html", "guide-pig-butchering.html"]
+        for g in guides:
+            path = os.path.join(WORKSPACE_ROOT, g)
+            with open(path, "r", encoding="utf-8") as f:
+                content = f.read()
+                self.assertIn("ScamShield Threat Research Lab", content)
+
+
 if __name__ == "__main__":
     unittest.main()
+
 
