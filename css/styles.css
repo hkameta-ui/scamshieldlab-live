@@ -3,7 +3,7 @@
    Aesthetics: Deep Space Navy, Neon Cyan, Glassmorphism, Responsive Grid
    ========================================================================== */
 
-@import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;600;700&family=Outfit:wght@500;600;700;800&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap');
+/* Fonts are loaded directly via <link rel="stylesheet"> in HTML <head> for zero-shift parallel delivery (Rule 1 Mandate) */
 
 :root {
   /* Color Palette */
@@ -26,10 +26,10 @@
   --text-muted: #94A3B8;
   --text-faint: #64748B;
 
-  /* Typography */
-  --font-heading: 'Outfit', sans-serif;
-  --font-body: 'Plus Jakarta Sans', sans-serif;
-  --font-mono: 'JetBrains Mono', monospace;
+  /* Typography with metric-matched system fallbacks to eliminate FOUT reflow (Rule 1 Mandate) */
+  --font-heading: 'Outfit', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+  --font-body: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+  --font-mono: 'JetBrains Mono', ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
 
   /* Spacing & Radii */
   --radius-sm: 8px;
@@ -458,11 +458,15 @@ a:hover {
   overflow: hidden;
   border: 1px solid var(--border-glow);
   box-shadow: var(--shadow-glow), var(--shadow-card);
+  aspect-ratio: 16 / 9;
+  width: 100%;
+  background: rgba(15, 23, 42, 0.7);
 }
 
 .hero-img {
   width: 100%;
   height: 100%;
+  aspect-ratio: 16 / 9;
   object-fit: cover;
   display: block;
   transition: transform 0.5s ease;
@@ -508,9 +512,13 @@ a:hover {
   margin: 2.5rem auto;
   text-align: center;
   max-width: 100%;
+  min-height: 105px;
+  contain: layout style;
 }
 
 .adsense-slot-container:empty {
+  min-height: 0;
+  margin: 0;
   display: none;
 }
 
@@ -627,6 +635,16 @@ a:hover {
   gap: 0.6rem;
   flex-wrap: wrap;
   margin-bottom: 1.25rem;
+  min-height: 2.25rem;
+  contain: layout style;
+}
+
+#presetsContainer {
+  display: flex;
+  gap: 0.5rem;
+  flex-wrap: wrap;
+  min-height: 2rem;
+  contain: layout;
 }
 
 .presets-label {
@@ -998,6 +1016,8 @@ a:hover {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(360px, 1fr));
   gap: 1.75rem;
+  min-height: 560px;
+  contain: layout style;
 }
 
 .threat-card {
@@ -1122,6 +1142,8 @@ a:hover {
   border-radius: var(--radius-lg);
   padding: 2.5rem;
   box-shadow: var(--shadow-card);
+  min-height: 420px;
+  contain: layout style;
 }
 
 .quiz-progress-bar {
@@ -1447,12 +1469,16 @@ a:hover {
 .guide-thumb-wrap {
   position: relative;
   height: 200px;
+  aspect-ratio: 2 / 1;
+  width: 100%;
   overflow: hidden;
+  background: rgba(15, 23, 42, 0.6);
 }
 
 .guide-thumb {
   width: 100%;
   height: 100%;
+  aspect-ratio: 2 / 1;
   object-fit: cover;
   transition: transform 0.4s ease;
 }

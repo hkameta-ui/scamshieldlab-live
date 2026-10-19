@@ -138,6 +138,32 @@ class TestHtmlPagesStructure(unittest.TestCase):
                         f"Rule 1 Asset Optimization: Image tag {tag} in {filename} must have dimensions"
                     )
 
+    def test_no_css_font_import_in_styles_css(self):
+        """Rule 1 Mandate: No blocking @import in styles.css to eliminate font FOUT and CLS."""
+        css_path = os.path.join(WORKSPACE_ROOT, "css", "styles.css")
+        with open(css_path, "r", encoding="utf-8") as f:
+            css = f.read()
+            self.assertNotIn("@import url", css, "styles.css must not contain blocking @import url(...)")
+
+    def test_all_html_files_link_google_fonts_directly(self):
+        """Rule 1 Mandate: All HTML files must link Google Fonts directly in <head> for zero-shift delivery."""
+        for filename in self.HTML_FILES:
+            filepath = os.path.join(WORKSPACE_ROOT, filename)
+            with open(filepath, "r", encoding="utf-8") as f:
+                content = f.read()
+                self.assertIn("fonts.googleapis.com/css2", content, f"{filename} must link fonts stylesheet in <head>")
+                self.assertIn("display=swap", content, f"{filename} font link must declare display=swap")
+
+    def test_cls_layout_stability_aspect_ratios_and_min_heights(self):
+        """Rule 1 Mandate: Cumulative Layout Shift (CLS) = 0 requires aspect-ratios and reserved min-heights."""
+        css_path = os.path.join(WORKSPACE_ROOT, "css", "styles.css")
+        with open(css_path, "r", encoding="utf-8") as f:
+            css = f.read()
+            self.assertIn("aspect-ratio: 16 / 9", css, "hero visual and img must declare aspect-ratio: 16 / 9")
+            self.assertIn("min-height: 560px", css, "threat-grid must declare reserved min-height")
+            self.assertIn("min-height: 420px", css, "quiz-wrapper-card must declare reserved min-height")
+            self.assertIn("contain: layout", css, "dynamic components must enforce layout containment")
+
 
 class TestAppJsSecurityAndHeuristics(unittest.TestCase):
     """Unit tests for client-side JavaScript logic (app.js)."""
