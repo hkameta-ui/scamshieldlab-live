@@ -13,7 +13,7 @@ window.SITE_CONFIG = {
   // --- GOOGLE ADSENSE MONETIZATION SETTINGS ---
   adsense: {
     enabled: true, // Set to true when your AdSense account is approved
-    publisherId: "ca-pub-XXXXXXXXXXXXXXXX", // Replace with your Google AdSense Publisher ID (e.g., ca-pub-1234567890123456)
+    publisherId: "ca-pub-7565560894775775", // Google AdSense Publisher ID
     slots: {
       headerBanner: "1234567890",      // Responsive Top Leaderboard
       inContentRect: "2345678901",      // In-Article 300x250 or Responsive
