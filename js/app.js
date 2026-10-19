@@ -137,6 +137,7 @@ function initAnalyzer() {
     const flags = [];
     let score = 0;
     const lower = text.toLowerCase();
+    const cleanNoSpace = lower.replace(/[\s\-_]+/g, "");
 
     // 0. Non-Offensive Content & Ethics Safeguard (Rule 3)
     const abusiveKeywords = [
@@ -147,67 +148,140 @@ function initAnalyzer() {
       flags.push({
         severity: "FAMILY-SAFE FILTER",
         title: "Content Standards Notice",
-        description: "ScamShield AI operates under strict Family-Safe and non-offensive standards. Vulgar or abusive terms are excluded from our security heuristic models."
+        description: "ScamShield Lab operates under strict Family-Safe and non-offensive standards. Vulgar or abusive terms are excluded from our security heuristic models."
       });
     }
 
-    // 1. Extreme Urgency / Pressure Tactics
+    // 1. Family Impersonation & Grandparent Emergency Scams (AI Voice Emergency)
+    const familyKeywords = [
+      "grandma", "grandpa", "grandmother", "grandfather", "grandson", "granddaughter", 
+      "grandchild", "mom", "dad", "mother", "father", "son", "daughter", "nephew", 
+      "niece", "cousin", "aunt", "uncle", "it's your grandson", "it's your son", 
+      "it's your daughter", "your grandson", "your granddaughter", "your child"
+    ];
+    const distressKeywords = [
+      "car accident", "accident", "hospital", "jail", "arrested", "arrest", 
+      "police station", "bail", "surgery", "wreck", "hurt badly", "kidnapped", 
+      "held hostage", "stranded", "emergency", "in trouble", "attorney", "lawyer"
+    ];
+
+    const matchedFamily = familyKeywords.filter(k => lower.includes(k));
+    const matchedDistress = distressKeywords.filter(k => lower.includes(k));
+
+    let isFamilyEmergency = false;
+    if (matchedFamily.length > 0 && matchedDistress.length > 0) {
+      isFamilyEmergency = true;
+      score += 45;
+      flags.push({
+        severity: "CRITICAL",
+        title: "Family Impersonation / Grandparent Emergency Scam",
+        description: `High-risk indicator: Claims to be a distressed relative ("${matchedFamily.slice(0, 2).map(escapeHtml).join('", "')}") facing an acute crisis ("${matchedDistress.slice(0, 2).map(escapeHtml).join('", "')}"). Scammers routinely simulate or use 3-second AI voice clones to deceive grandparents and parents into urgent panic transfers.`
+      });
+    } else if (matchedFamily.length > 0 && (lower.includes("my phone broke") || lower.includes("temporary number") || lower.includes("lost my phone"))) {
+      isFamilyEmergency = true;
+      score += 40;
+      flags.push({
+        severity: "CRITICAL",
+        title: "Hello Mom / Broken Phone Impersonation",
+        description: `Claims to be a family member messaging from an unknown or temporary number ("phone broke"). This is the standard opening for the WhatsApp 'Hello Mom' impersonation scam.`
+      });
+    }
+
+    // 2. High-Urgency & Panic Tactics
     const urgencyKeywords = [
-      "immediately", "urgent", "emergency", "within 24 hours", "police", "arrest", 
-      "jail", "bail", "hospital", "car accident", "don't hang up", "hurry", 
-      "strictly confidential", "before 5:00 pm", "breach penalty"
+      "immediately", "urgent", "urgently", "emergency", "within 24 hours", "within 1 hour", 
+      "police", "arrest", "jail", "bail", "hospital", "car accident", "don't hang up", 
+      "hurry", "asap", "right now", "strictly confidential", "before 5:00 pm", 
+      "breach penalty", "final warning", "action required"
     ];
     const matchedUrgency = urgencyKeywords.filter(k => lower.includes(k));
     if (matchedUrgency.length > 0) {
       score += Math.min(30, matchedUrgency.length * 10);
-      flags.push({
-        severity: "HIGH",
-        title: "High-Pressure Psychological Urgency",
-        description: `Detected high-urgency panic trigger words: "${matchedUrgency.slice(0, 3).map(escapeHtml).join('", "')}". Attackers use simulated crisis to bypass critical thinking.`
-      });
+      if (!isFamilyEmergency || matchedUrgency.length > 2) {
+        flags.push({
+          severity: "HIGH",
+          title: "High-Pressure Psychological Urgency",
+          description: `Detected crisis and panic triggers: "${matchedUrgency.slice(0, 3).map(escapeHtml).join('", "')}". Adversaries manufacture artificial urgency to prevent you from conferring with advisors.`
+        });
+      }
     }
 
-    // 2. Financial & Untraceable Payment Demands
+    // 3. Financial Demands, P2P Apps, and Untraceable Channels
     const cryptoRegex = /\b(bc1|[13])[a-zA-HJ-NP-Z0-9]{25,39}\b|\b0x[a-fA-F0-9]{40}\b/i;
     const paymentKeywords = [
-      "bitcoin atm", "crypto", "wire transfer", "escrow", "zelle", "gift card", 
-      "cash app", "western union", "moneygram", "wallet address", "usdt", "deposit"
+      "bitcoin", "crypto", "wire transfer", "escrow", "zelle", "gift card", 
+      "cash app", "cashapp", "venmo", "paypal", "apple cash", "western union", 
+      "moneygram", "wallet address", "usdt", "deposit", "steam card", "apple card", 
+      "itunes", "vanilla visa", "chime", "greendot", "bank transfer"
     ];
-    const hasCryptoAddress = cryptoRegex.test(text);
-    const matchedPayments = paymentKeywords.filter(k => lower.includes(k));
+    const moneyAmountRegex = /\$\s*\d+([,\.]\d+)?|\b\d+\s*(dollars|bucks|usd|eur|gbp|usdt)\b|\b(send|need|wire|transfer|pay|lend)\s+(\$|\d+|money|cash|funds)\b/i;
 
-    if (hasCryptoAddress || matchedPayments.length > 0) {
-      score += 35;
-      const desc = hasCryptoAddress 
-        ? "Contains an explicit public cryptocurrency wallet address. Crypto transactions are completely non-refundable."
-        : `Requests payment via high-risk, non-refundable channels: "${matchedPayments.slice(0, 3).map(escapeHtml).join('", "')}".`;
+    const hasCryptoAddress = cryptoRegex.test(text);
+    const hasMoneyAmount = moneyAmountRegex.test(text);
+    const matchedPayments = paymentKeywords.filter(k => {
+      const cleanK = k.replace(/\s+/g, "");
+      return lower.includes(k) || cleanNoSpace.includes(cleanK);
+    });
+
+    let hasFinancialDemand = false;
+    if (hasCryptoAddress || matchedPayments.length > 0 || (hasMoneyAmount && (matchedUrgency.length > 0 || matchedFamily.length > 0))) {
+      hasFinancialDemand = true;
+      score += 40;
+      let paymentDesc = "";
+      if (hasCryptoAddress) {
+        paymentDesc = "Contains an explicit public cryptocurrency wallet address. Blockchain transactions are mathematically irreversible.";
+      } else if (matchedPayments.length > 0) {
+        paymentDesc = `Demands funds via non-reversible consumer payment apps or gift cards: "${matchedPayments.slice(0, 3).map(escapeHtml).join('", "')}".`;
+      } else {
+        paymentDesc = "Demands urgent funds or money transfer under crisis pressure.";
+      }
       flags.push({
         severity: "CRITICAL",
-        title: "Irreversible Payment / Crypto Demands",
-        description: desc
+        title: "Irreversible Payment / App Transfer Demand",
+        description: paymentDesc
       });
     }
 
-    // 3. Investment Fraud & Pig Butchering Patterns
+    // 4. Authority & Institution Impersonation (Bank, USPS, IRS, Geek Squad)
+    const authorityKeywords = [
+      "bank of america", "chase bank", "wells fargo", "citibank", "usps", "fedex", 
+      "ups delivery", "geek squad", "paypal support", "amazon security", "internal revenue service", 
+      "irs", "social security administration", "border patrol", "customs"
+    ];
+    const matchedAuthority = authorityKeywords.filter(k => lower.includes(k));
+    const securityTriggerWords = ["account suspended", "unauthorized charge", "card blocked", "fraud alert", "suspicious activity", "package on hold", "redelivery fee"];
+    const matchedSecurityTriggers = securityTriggerWords.filter(k => lower.includes(k));
+
+    if (matchedAuthority.length > 0 || matchedSecurityTriggers.length > 0) {
+      score += 35;
+      flags.push({
+        severity: "HIGH",
+        title: "Brand / Authority Security Impersonation",
+        description: `Simulates official corporate or government fraud alerts ("${[...matchedAuthority, ...matchedSecurityTriggers].slice(0, 3).map(escapeHtml).join('", "')}"). Scammers use brand trust to induce panic clicks.`
+      });
+    }
+
+    // 5. Investment Fraud & Pig Butchering Patterns
     const investmentKeywords = [
       "guaranteed return", "guaranteed yield", "arbitrage", "trading signals", 
-      "passive income", "18% weekly", "goldman sachs", "insider tips", "crypto liquidity",
-      "wrong number", "polite gentleman", "assistant gave me"
+      "passive income", "18% weekly", "insider tips", "crypto liquidity",
+      "wrong number", "polite gentleman", "assistant gave me", "kind soul", "chat on whatsapp"
     ];
     const matchedInvestment = investmentKeywords.filter(k => lower.includes(k));
     if (matchedInvestment.length > 0) {
-      score += 30;
+      score += 35;
       flags.push({
         severity: "CRITICAL",
-        title: "Pig Butchering / High-Yield Deception",
-        description: `Contains classic romance/crypto confidence patterns ("${matchedInvestment.slice(0, 3).map(escapeHtml).join('", "')}"). Legitimate financial institutions never guarantee high weekly yields.`
+        title: "Pig Butchering / Investment Confidence Trap",
+        description: `Contains classic romance/crypto confidence hooks ("${matchedInvestment.slice(0, 3).map(escapeHtml).join('", "')}"). Legitimate financial platforms never guarantee high weekly investment returns.`
       });
     }
 
-    // 4. Secrecy & Out-of-Band Disruption
+    // 6. Secrecy & Out-of-Band Disruption
     const secrecyKeywords = [
-      "don't tell mom", "keep this secret", "non-disclosure", "cannot take calls", 
-      "my phone broke", "police officer letting me", "in-flight", "confidential"
+      "don't tell mom", "don't tell dad", "keep this secret", "keep this between us", 
+      "non-disclosure", "cannot take calls", "my phone broke", "police officer letting me", 
+      "in-flight", "strictly confidential"
     ];
     const matchedSecrecy = secrecyKeywords.filter(k => lower.includes(k));
     if (matchedSecrecy.length > 0) {
@@ -215,39 +289,44 @@ function initAnalyzer() {
       flags.push({
         severity: "HIGH",
         title: "Isolation & Secrecy Demands",
-        description: `Caller/sender explicitly demands secrecy or claims inability to speak via phone ("${matchedSecrecy.slice(0, 2).map(escapeHtml).join('", "')}"). This is designed to prevent conferring with family or advisors.`
+        description: `Sender explicitly demands secrecy or claims inability to speak on the phone ("${matchedSecrecy.slice(0, 2).map(escapeHtml).join('", "')}"). This tactic prevents victims from verifying the story with friends or family.`
       });
     }
 
-    // 5. Deceptive URLs & Phishing Links
+    // 7. Deceptive URLs & Phishing Links
     const urlRegex = /(https?:\/\/[^\s]+)/gi;
     const urls = text.match(urlRegex) || [];
-    const suspiciousTlds = [".top", ".xyz", ".vip", ".cc", ".icu", ".work", ".cfd", ".buzz", ".live"];
+    const suspiciousTlds = [".top", ".xyz", ".vip", ".cc", ".icu", ".work", ".cfd", ".buzz", ".live", ".fit", ".rest"];
     let suspiciousUrlFound = false;
 
     urls.forEach(u => {
-      if (suspiciousTlds.some(tld => u.toLowerCase().includes(tld)) || u.includes("defi-") || u.includes("-trading")) {
+      if (suspiciousTlds.some(tld => u.toLowerCase().includes(tld)) || u.includes("defi-") || u.includes("-trading") || u.includes("verify-") || u.includes("secure-")) {
         suspiciousUrlFound = true;
       }
     });
 
     if (suspiciousUrlFound) {
-      score += 35;
+      score += 40;
       flags.push({
         severity: "CRITICAL",
-        title: "Deceptive or Newly Registered Domain",
-        description: "The link points to an unusual or unverified Top-Level Domain (TLD) commonly used for throwaway phishing portals and fake crypto dashboards."
+        title: "Deceptive or Newly Registered Phishing Domain",
+        description: "The link points to an unverified or throwaway domain commonly registered for credential theft and fraudulent crypto dashboards."
       });
     } else if (urls.length > 0) {
-      score += 10;
+      score += 15;
       flags.push({
         severity: "MODERATE",
         title: "Embedded Hyperlink Present",
-        description: "Contains clickable links. Never log into accounts through links received via unsolicited messages. Navigate directly to the official website instead."
+        description: "Contains clickable links. Never log into accounts through links received via unsolicited messages. Navigate directly to the official app or website instead."
       });
     }
 
-    // Cap score at 98 for realistic detection, floor at 5
+    // 8. Compound Attack Synergy Boost
+    if (isFamilyEmergency && hasFinancialDemand) {
+      score += 25; // Guarantee top-tier critical alert for family emergency money requests
+    }
+
+    // Score Capping & Range
     score = Math.min(98, Math.max(5, score));
 
     // Determine category rating
@@ -255,14 +334,20 @@ function initAnalyzer() {
     let riskColor = "var(--color-success)";
     let summaryText = "No prominent scam patterns detected. The message appears to follow standard correspondence formatting.";
 
-    if (score >= 65) {
+    if (score >= 60) {
       riskLevel = "CRITICAL THREAT";
       riskColor = "var(--color-danger)";
-      summaryText = "DANGER: This text displays multiple signature indicators of high-threat cyber fraud (e.g. AI voice clone emergency, deepfake CEO fraud, or Pig Butchering). DO NOT send funds or credentials.";
-    } else if (score >= 35) {
+      if (isFamilyEmergency) {
+        summaryText = "DANGER: High-probability Family Impersonation / Grandparent Scam detected. Criminals weaponize emotional distress (accidents, hospital bills) to trick relatives into sending untraceable funds via CashApp, Zelle, or gift cards. DO NOT SEND MONEY. Call your relative on their known personal phone number to verify.";
+      } else if (hasCryptoAddress || matchedInvestment.length > 0) {
+        summaryText = "DANGER: High-probability Financial / Crypto Investment Scam detected. Never deposit funds or share private keys based on unsolicited communications.";
+      } else {
+        summaryText = "DANGER: This text displays multiple signature indicators of high-threat cyber fraud. DO NOT send funds, verify credentials, or click embedded links.";
+      }
+    } else if (score >= 30) {
       riskLevel = "MODERATE SUSPICION";
       riskColor = "var(--color-warning)";
-      summaryText = "CAUTION: This communication contains suspicious urgency or financial phrasing. Verify the sender's identity through an independent, pre-established channel before taking action.";
+      summaryText = "CAUTION: This communication contains suspicious urgency, financial phrasing, or unfamiliar links. Verify the sender's identity through an independent, pre-established channel before taking any action.";
     }
 
     return { score, riskLevel, riskColor, flags, summaryText };

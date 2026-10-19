@@ -177,6 +177,19 @@ class TestAppJsSecurityAndHeuristics(unittest.TestCase):
         self.assertNotIn("<img", sanitized)
         self.assertIn("&lt;script&gt;", sanitized)
 
+    def test_grandparent_emergency_scam_detection(self):
+        """Verify that the user's specific Grandparent/CashApp emergency message is caught as CRITICAL."""
+        test_message = "Hi Grandma, it's your grandson. I got into a car accident and need money for the hospital, please send $500 to this CashApp:"
+        
+        # Verify app.js contains family impersonation, CashApp, and accident rules
+        self.assertIn("grandma", self.js_code.lower())
+        self.assertIn("grandson", self.js_code.lower())
+        self.assertIn("car accident", self.js_code.lower())
+        self.assertIn("cashapp", self.js_code.lower())
+        self.assertIn("isFamilyEmergency", self.js_code)
+        self.assertIn("Family Impersonation / Grandparent Emergency Scam", self.js_code)
+
+
 
 class TestCopyrightAndLegalCompliance(unittest.TestCase):
     """Rule 6: Copyright & Intellectual Property Protection Mandate."""
