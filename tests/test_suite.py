@@ -203,6 +203,15 @@ class TestHtmlPagesStructure(unittest.TestCase):
             with open(fpath, "r", encoding="utf-8") as f:
                 self.assertIn("Asset Synchronization & Cache-Busting Mandate", f.read())
 
+    def test_scrollbar_gutter_and_body_stabilization(self):
+        """Rule 1 Mandate: Scrollbar gutter and body height must be reserved to prevent body layout shifts."""
+        css_path = os.path.join(WORKSPACE_ROOT, "css", "styles.css")
+        with open(css_path, "r", encoding="utf-8") as f:
+            css = f.read()
+            self.assertIn("scrollbar-gutter: stable", css, "html must declare scrollbar-gutter: stable")
+            self.assertIn("overflow-y: scroll", css, "html must declare overflow-y: scroll")
+            self.assertIn("min-height: 100vh", css, "body must declare min-height: 100vh")
+
 
 class TestAppJsSecurityAndHeuristics(unittest.TestCase):
     """Unit tests for client-side JavaScript logic (app.js)."""
