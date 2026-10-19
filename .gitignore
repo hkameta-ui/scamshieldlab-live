@@ -1,5 +1,6 @@
 # Local scratch notes
 *.txt
 !ads.txt
+!robots.txt
 .DS_Store
 Thumbs.db
