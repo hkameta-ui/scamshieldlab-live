@@ -187,12 +187,38 @@ function initAnalyzer() {
       });
     }
 
-    // 2. High-Urgency & Panic Tactics
+    // 2. Road Toll & Transit Agency Smishing (SunPass, E-ZPass, FasTrak, TxTag, etc. - FBI IC3 Warning)
+    const tollKeywords = [
+      "sunpass", "e-zpass", "ezpass", "fastrak", "txtag", "i-pass", "tollway", "turnpike",
+      "toll enforcement", "toll authority", "toll collection", "toll violation", "toll charge",
+      "toll fee", "toll invoice", "unpaid toll", "overdue toll", "toll services", "toll debt"
+    ];
+    const tollActionPhrases = [
+      "unpaid toll", "avoid additional fees", "avoid late fees", "avoid penalty", "pay now to avoid",
+      "additional fees", "late fee", "settle your toll", "toll balance", "pay now", "action required"
+    ];
+
+    const matchedTolls = tollKeywords.filter(k => lower.includes(k));
+    const matchedTollActions = tollActionPhrases.filter(k => lower.includes(k));
+
+    let isTollSmishing = false;
+    if (matchedTolls.length > 0 || (lower.includes("toll") && matchedTollActions.length > 0)) {
+      isTollSmishing = true;
+      score += 55;
+      flags.push({
+        severity: "CRITICAL",
+        title: "FBI-Alerted Smishing Scam: Road Toll Impersonation",
+        description: `High-risk indicator: Simulates state road toll collection services ("${matchedTolls.length > 0 ? matchedTolls.slice(0, 2).map(escapeHtml).join('", "') : 'unpaid toll'}"). The FBI IC3 warns that state toll agencies (SunPass, E-ZPass, FasTrak) never send unsolicited SMS text messages demanding urgent payment with clickable links to avoid fees.`
+      });
+    }
+
+    // 3. High-Urgency & Panic Tactics
     const urgencyKeywords = [
       "immediately", "urgent", "urgently", "emergency", "within 24 hours", "within 1 hour", 
       "police", "arrest", "jail", "bail", "hospital", "car accident", "don't hang up", 
       "hurry", "asap", "right now", "strictly confidential", "before 5:00 pm", 
-      "breach penalty", "final warning", "action required"
+      "breach penalty", "final warning", "action required", "pay now", "avoid additional fees",
+      "avoid late fees", "unpaid", "avoid penalty", "immediate action", "overdue"
     ];
     const matchedUrgency = urgencyKeywords.filter(k => lower.includes(k));
     if (matchedUrgency.length > 0) {
@@ -206,7 +232,7 @@ function initAnalyzer() {
       }
     }
 
-    // 3. Financial Demands, P2P Apps, and Untraceable Channels
+    // 4. Financial Demands, P2P Apps, and Small-Fee Smishing Bait
     const cryptoRegex = /\b(bc1|[13])[a-zA-HJ-NP-Z0-9]{25,39}\b|\b0x[a-fA-F0-9]{40}\b/i;
     const paymentKeywords = [
       "bitcoin", "crypto", "wire transfer", "escrow", "zelle", "gift card", 
@@ -224,7 +250,7 @@ function initAnalyzer() {
     });
 
     let hasFinancialDemand = false;
-    if (hasCryptoAddress || matchedPayments.length > 0 || (hasMoneyAmount && (matchedUrgency.length > 0 || matchedFamily.length > 0))) {
+    if (hasCryptoAddress || matchedPayments.length > 0 || (hasMoneyAmount && (matchedUrgency.length > 0 || matchedFamily.length > 0 || isTollSmishing || lower.includes("fee") || lower.includes("toll") || lower.includes("pay")))) {
       hasFinancialDemand = true;
       score += 40;
       let paymentDesc = "";
@@ -232,17 +258,19 @@ function initAnalyzer() {
         paymentDesc = "Contains an explicit public cryptocurrency wallet address. Blockchain transactions are mathematically irreversible.";
       } else if (matchedPayments.length > 0) {
         paymentDesc = `Demands funds via non-reversible consumer payment apps or gift cards: "${matchedPayments.slice(0, 3).map(escapeHtml).join('", "')}".`;
+      } else if (isTollSmishing) {
+        paymentDesc = "Demands urgent toll or fee payment under threat of escalating penalties. Scammers intentionally use small dollar amounts ($1 to $15) to lower user skepticism and harvest credit card numbers.";
       } else {
-        paymentDesc = "Demands urgent funds or money transfer under crisis pressure.";
+        paymentDesc = "Demands urgent funds or fee payments under escalating penalties.";
       }
       flags.push({
         severity: "CRITICAL",
-        title: "Irreversible Payment / App Transfer Demand",
+        title: "Irreversible Payment / Fee Escalation Demand",
         description: paymentDesc
       });
     }
 
-    // 4. Authority & Institution Impersonation (Bank, USPS, IRS, Geek Squad)
+    // 5. Authority & Institution Impersonation (Bank, USPS, IRS, Geek Squad)
     const authorityKeywords = [
       "bank of america", "chase bank", "wells fargo", "citibank", "usps", "fedex", 
       "ups delivery", "geek squad", "paypal support", "amazon security", "internal revenue service", 
@@ -261,7 +289,7 @@ function initAnalyzer() {
       });
     }
 
-    // 5. Investment Fraud & Pig Butchering Patterns
+    // 6. Investment Fraud & Pig Butchering Patterns
     const investmentKeywords = [
       "guaranteed return", "guaranteed yield", "arbitrage", "trading signals", 
       "passive income", "18% weekly", "insider tips", "crypto liquidity",
@@ -277,7 +305,7 @@ function initAnalyzer() {
       });
     }
 
-    // 6. Secrecy & Out-of-Band Disruption
+    // 7. Secrecy & Out-of-Band Disruption
     const secrecyKeywords = [
       "don't tell mom", "don't tell dad", "keep this secret", "keep this between us", 
       "non-disclosure", "cannot take calls", "my phone broke", "police officer letting me", 
@@ -293,7 +321,7 @@ function initAnalyzer() {
       });
     }
 
-    // 7. Deceptive URLs & Phishing Links
+    // 8. Deceptive URLs & Phishing Links
     const urlRegex = /(https?:\/\/[^\s]+)/gi;
     const urls = text.match(urlRegex) || [];
     const suspiciousTlds = [".top", ".xyz", ".vip", ".cc", ".icu", ".work", ".cfd", ".buzz", ".live", ".fit", ".rest"];
@@ -321,9 +349,22 @@ function initAnalyzer() {
       });
     }
 
-    // 8. Compound Attack Synergy Boost
+    // 9. Compound Attack Synergy Boost
     if (isFamilyEmergency && hasFinancialDemand) {
       score += 25; // Guarantee top-tier critical alert for family emergency money requests
+    }
+    if (isTollSmishing && (hasFinancialDemand || urls.length > 0 || matchedUrgency.length > 0)) {
+      score += 20; // Guarantee top-tier critical alert for active toll smishing lures
+    }
+
+    // Suspicion Principle: If the user tests a message that triggered any red flags or security triggers,
+    // do not show a complacent "Low Risk" (<50) score. Any message with verified flags must be elevated.
+    if (flags.length > 0) {
+      if (flags.some(f => f.severity === "CRITICAL")) {
+        score = Math.max(score, 75);
+      } else {
+        score = Math.max(score, 52);
+      }
     }
 
     // Score Capping & Range
@@ -339,6 +380,8 @@ function initAnalyzer() {
       riskColor = "var(--color-danger)";
       if (isFamilyEmergency) {
         summaryText = "DANGER: High-probability Family Impersonation / Grandparent Scam detected. Criminals weaponize emotional distress (accidents, hospital bills) to trick relatives into sending untraceable funds via CashApp, Zelle, or gift cards. DO NOT SEND MONEY. Call your relative on their known personal phone number to verify.";
+      } else if (isTollSmishing) {
+        summaryText = "DANGER: High-probability Road Toll Smishing Scam detected (SunPass / E-ZPass impersonation). Official toll agencies NEVER demand payment via SMS text messages to avoid late fees. DO NOT click links or enter payment card credentials.";
       } else if (hasCryptoAddress || matchedInvestment.length > 0) {
         summaryText = "DANGER: High-probability Financial / Crypto Investment Scam detected. Never deposit funds or share private keys based on unsolicited communications.";
       } else {
@@ -359,6 +402,7 @@ function initAnalyzer() {
     const dialSummary = document.getElementById("analyzerRiskSummary");
     const flagsList = document.getElementById("analyzerFlagsList");
     const meterFill = document.getElementById("analyzerMeterFill");
+    const advisoryBox = document.getElementById("analyzerUrlAdvisory");
 
     if (dialVal) dialVal.textContent = `${data.score}/100`;
     if (dialLevel) {
@@ -402,6 +446,29 @@ function initAnalyzer() {
           `;
         }).join("");
       }
+    }
+
+    // Dynamic Zero-Trust URL & Domain Security Advisory
+    if (advisoryBox) {
+      const isLowRisk = data.score < 50;
+      advisoryBox.className = `url-advisory-box ${isLowRisk ? 'advisory-low-risk' : 'advisory-high-threat'}`;
+      advisoryBox.innerHTML = `
+        <div class="advisory-header">
+          <span class="advisory-icon" aria-hidden="true">${isLowRisk ? '🔍' : '⚠️'}</span>
+          <div>
+            <h4 class="advisory-title">${isLowRisk ? 'Zero-Trust Safety Advisory: Verify Sender & URLs' : 'Security Defense Rule: Never Trust SMS Links'}</h4>
+            <p class="advisory-subtitle">${isLowRisk ? 
+              'Automated heuristics did not flag known red flags, but <strong>cybercriminals frequently send vague or disguised links</strong>. Always inspect before clicking:' : 
+              'State toll authorities (SunPass, E-ZPass), banks, USPS, and the IRS <strong>NEVER send urgent payment demands via SMS links</strong>.'}
+            </p>
+          </div>
+        </div>
+        <ul class="advisory-checklist">
+          <li><strong>Inspect the exact web domain:</strong> Look at the URL structure carefully. Scammers use lookalike domains (e.g. <code>sunpass-toll-pay.top</code> or <code>service-sunpass.xyz</code> instead of the legitimate <code>sunpass.com</code>).</li>
+          <li><strong>Never tap links in text messages:</strong> Close the SMS and open a new browser tab or mobile app to check your account balance directly.</li>
+          <li><strong>Check with official channels:</strong> If you suspect an unpaid toll or account freeze, visit the agency's official website directly by typing their web address.</li>
+        </ul>
+      `;
     }
   }
 }

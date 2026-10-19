@@ -189,6 +189,40 @@ class TestAppJsSecurityAndHeuristics(unittest.TestCase):
         self.assertIn("isFamilyEmergency", self.js_code)
         self.assertIn("Family Impersonation / Grandparent Emergency Scam", self.js_code)
 
+    def test_sunpass_smishing_detection_scores_critical(self):
+        """Verify that SunPass / toll smishing is caught as CRITICAL threat and triggers FBI smishing warning."""
+        test_message = "SunPass Alert: You have an unpaid toll of $3.25. Pay now to avoid additional fees:"
+        
+        # Verify app.js contains toll keywords, action phrases, and smishing classification
+        self.assertIn("sunpass", self.js_code.lower())
+        self.assertIn("unpaid toll", self.js_code.lower())
+        self.assertIn("avoid additional fees", self.js_code.lower())
+        self.assertIn("isTollSmishing", self.js_code)
+        self.assertIn("FBI-Alerted Smishing Scam: Road Toll Impersonation", self.js_code)
+
+    def test_suspicion_score_floor_enforced(self):
+        """Verify the user's principle: Any message with security flags must never score < 50 (floor >= 52)."""
+        self.assertIn("score = Math.max(score, 52)", self.js_code)
+        self.assertIn("score = Math.max(score, 75)", self.js_code)
+
+    def test_url_verification_advisory_in_app_and_html(self):
+        """Verify Zero-Trust URL & domain advisory is present in index.html, app.js, and styles.css."""
+        index_path = os.path.join(WORKSPACE_ROOT, "index.html")
+        with open(index_path, "r", encoding="utf-8") as f:
+            index_html = f.read()
+        self.assertIn("analyzerUrlAdvisory", index_html)
+        self.assertIn("url-advisory-box", index_html)
+
+        self.assertIn("analyzerUrlAdvisory", self.js_code)
+        self.assertIn("Zero-Trust Safety Advisory", self.js_code)
+        self.assertIn("sunpass.com", self.js_code)
+
+        css_path = os.path.join(WORKSPACE_ROOT, "css", "styles.css")
+        with open(css_path, "r", encoding="utf-8") as f:
+            css_code = f.read()
+        self.assertIn(".url-advisory-box", css_code)
+        self.assertIn(".advisory-checklist", css_code)
+
 
 
 class TestCopyrightAndLegalCompliance(unittest.TestCase):

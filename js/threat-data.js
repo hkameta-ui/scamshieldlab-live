@@ -127,6 +127,10 @@ window.ANALYZER_PRESETS = [
     sample: "Hi Sarah, I am currently boarding an international flight to Tokyo for the acquisition closing and cannot take calls. We need an urgent vendor settlement processed before 5:00 PM EST today for the merger due diligence, otherwise we risk a breach penalty. Please wire $68,500 to our external counsel's updated escrow account attached below. Keep this strictly confidential under our non-disclosure terms until the public press release tomorrow morning."
   },
   {
+    name: "SunPass Toll Smishing (SMS)",
+    sample: "SunPass Alert: You have an unpaid toll of $3.25. Pay now to avoid additional fees: https://sunpass-service-pay.top/invoice"
+  },
+  {
     name: "Legitimate Corporate Newsletter (Safe Sample)",
     sample: "Hi Team, Welcome to our monthly engineering newsletter. In this edition, we review our quarterly product metrics, highlight new team members joining our DevOps department, and summarize our upcoming internal hackathon scheduled for November 15th. You can review the agenda on the company Confluence wiki at your convenience. Have a great week!"
   }
