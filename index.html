@@ -109,40 +109,34 @@
   <!-- Navigation Bar -->
   <header class="site-header">
     <div class="container nav-inner">
-      <a href="index.html" class="brand-logo" aria-label="ScamShield AI Home">
-        <img src="assets/images/logo.jpg" alt="ScamShield AI Logo" class="brand-icon" width="38" height="38" decoding="async">
-        <span>ScamShield<span style="color: var(--color-primary)">.AI</span></span>
+      <a href="index.html" class="brand-logo" aria-label="ScamShield Lab Home">
+        <img src="assets/images/logo.jpg" alt="ScamShield Logo" class="brand-icon" width="36" height="36" decoding="async">
+        <span>ScamShield<span class="brand-tag">AI LAB</span></span>
       </a>
 
-      <nav aria-label="Primary Navigation">
+      <nav aria-label="Primary Navigation" class="main-nav">
         <ul class="nav-links" id="primaryNavLinks">
-          <li><a href="#analyzer">AI Scam Scanner</a></li>
-          <li><a href="#threat-radar">Threat Radar 2026</a></li>
-          <li><a href="#quiz">Resilience Quiz</a></li>
-          <li><a href="#playbook">Incident Playbook</a></li>
-          <li><a href="#defense-stack">Protection Stack</a></li>
+          <li><a href="#analyzer">Scanner</a></li>
+          <li><a href="#threat-radar">Threat Radar</a></li>
+          <li><a href="#quiz">Quiz</a></li>
+          <li><a href="#playbook">Playbook</a></li>
+          <li><a href="#defense-stack">Protection</a></li>
           <li><a href="#guides">Guides</a></li>
           <li><a href="about.html">About</a></li>
         </ul>
       </nav>
 
       <div class="nav-actions">
-        <a href="#analyzer" class="btn btn-primary">Scan Message Free</a>
+        <a href="#analyzer" class="nav-cta-btn">
+          <span class="pulse-beacon" aria-hidden="true"></span>
+          <span>Instant Scan</span>
+        </a>
         <button type="button" class="mobile-toggle-btn" id="mobileNavToggle" aria-label="Toggle Navigation Menu">&#9776;</button>
       </div>
     </div>
   </header>
 
   <main id="main-content">
-    <!-- Top Responsive AdSense Slot -->
-    <div class="container adsense-slot-container" id="adSlotHeader">
-      <span class="ad-label">Advertisement</span>
-      <div class="ad-slot-box leaderboard">
-        <span style="color: var(--color-primary); font-family: var(--font-mono); font-size: 0.85rem;">[ Google AdSense Header Leaderboard: 728x90 / Responsive ]</span>
-        <span style="font-size: 0.72rem; color: var(--text-faint); margin-top: 0.25rem;">Auto-loads ads when your AdSense publisher ID is connected in config.js</span>
-      </div>
-    </div>
-
     <!-- Hero Section -->
     <section class="hero-section">
       <div class="container hero-grid">
@@ -154,25 +148,29 @@
             Outsmart <span class="text-gradient">AI Voice Scams</span>, Deepfakes & Cyber Fraud.
           </h1>
           <p class="hero-lead">
-            Criminal syndicates now use generative AI, 3-second voice clones, and automated bot networks to steal billions. ScamShield AI provides free instant text analysis, threat intelligence, and zero-trust recovery protocols.
+            Detect synthetic voice clones, crypto romance traps, and high-urgency phishing in real time. 100% private, client-side neural heuristic analysis with zero data storage.
           </p>
           <div class="hero-cta-group" style="display: flex; gap: 1rem; flex-wrap: wrap;">
-            <a href="#analyzer" class="btn btn-primary">Analyze Suspicious Message &darr;</a>
-            <a href="#threat-radar" class="btn btn-secondary">Explore 2026 Threat Radar</a>
+            <a href="#analyzer" class="btn btn-primary">
+              <span>⚡</span> Run Neural Scam Scan &darr;
+            </a>
+            <a href="#threat-radar" class="btn btn-secondary">
+              Explore 2026 Threat Radar &rarr;
+            </a>
           </div>
 
           <div class="hero-stats-row">
             <div class="stat-item">
+              <div class="stat-num">&lt; 3 Sec</div>
+              <div class="stat-label">Audio Needed to Clone Any Voice</div>
+            </div>
+            <div class="stat-item">
               <div class="stat-num">$1.1B+</div>
-              <div class="stat-label">AI Voice Scams in 2025-2026</div>
+              <div class="stat-label">AI Voice & Deepfake Losses in 2025–26</div>
             </div>
             <div class="stat-item">
-              <div class="stat-num">3 Sec</div>
-              <div class="stat-label">Voice Sample Needed to Clone</div>
-            </div>
-            <div class="stat-item">
-              <div class="stat-num">98.2%</div>
-              <div class="stat-label">Heuristic Detection Rate</div>
+              <div class="stat-num">100%</div>
+              <div class="stat-label">Client-Side Private (Zero Logs)</div>
             </div>
           </div>
         </div>
@@ -183,9 +181,9 @@
             <div class="hero-visual-overlay">
               <div class="overlay-status">
                 <span class="live-dot"></span>
-                <span>NEURAL SHIELD: ONLINE // VER 2026.4</span>
+                <span>NEURAL SHIELD // LIVE TELEMETRY</span>
               </div>
-              <span style="font-size: 0.75rem; color: var(--text-muted); font-family: var(--font-mono);">ZERO-TRUST ACTIVE</span>
+              <span style="font-size: 0.75rem; color: var(--text-muted); font-family: var(--font-mono);">ZERO-TRUST ENGINE ONLINE</span>
             </div>
           </div>
         </div>
@@ -548,9 +546,9 @@
     <div class="container">
       <div class="footer-grid">
         <div class="footer-brand-col">
-          <a href="index.html" class="brand-logo">
-            <img src="assets/images/logo.jpg" alt="ScamShield AI" class="brand-icon">
-            <span>ScamShield<span style="color: var(--color-primary)">.AI</span></span>
+          <a href="index.html" class="brand-logo" aria-label="ScamShield Lab Home">
+            <img src="assets/images/logo.jpg" alt="ScamShield Logo" class="brand-icon" width="36" height="36">
+            <span>ScamShield<span class="brand-tag">AI LAB</span></span>
           </a>
           <p class="footer-brand-desc">
             Independent threat intelligence initiative dedicated to democratizing AI cyber fraud detection, deepfake defense, and zero-trust identity protection.

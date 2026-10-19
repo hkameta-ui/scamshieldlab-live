@@ -59,3 +59,16 @@ All code, content, and architecture in this project MUST strictly comply with th
    - Responsive design adapting fluidly from small mobile screens (320px) to ultra-wide displays (4K).
    - Fast, reliable degradation: All informational content remains readable and functional even with reduced bandwidth or script latency.
    - A dedicated "Skip to main content" link must be present on all pages for screen-reader and keyboard users.
+
+---
+
+## 🌿 Rule 5: Feature Branch Workflow & Merge Approval Mandate
+1. **Feature Branch Isolation**:
+   - Never commit or write modifications directly to the `main` branch.
+   - All feature work, UI enhancements, and refactoring MUST be carried out on dedicated feature branches (e.g., `feature/...`).
+2. **Mandatory Automated Verification**:
+   - All changes must pass unit and validation tests (syntax, layout, heuristics, and responsiveness) before any merge proposal.
+3. **Strict Explicit Approval Gate Before Merge & Upload**:
+   - Antigravity MUST NEVER automatically merge feature branches into `main` or push to production remote.
+   - Antigravity must present test outcomes, verify readiness, and wait for the user to explicitly say "go" / "approved" before merging to `main` and uploading to remote.
+
