@@ -17,6 +17,10 @@ All code, content, and architecture in this project MUST strictly comply with th
    - Zero heavy external JavaScript dependencies or unnecessary frameworks.
    - DOM updates must be batched; avoid layout thrashing and repeated style calculations.
    - Client-side heuristic calculations must be non-blocking and optimized for instant response.
+4. **Asset Synchronization & Cache-Busting Mandate**:
+   - All internal stylesheets (`css/styles.css`) and script assets (`js/app.js`, `js/threat-data.js`, `config.js`) linked in HTML files MUST declare matching, synchronized cache-busting version query strings (e.g. `?v=YYYYMMDD-token`).
+   - No production HTML file may link raw unversioned stylesheets or scripts.
+   - When any CSS or JS file is modified, the version parameter across ALL HTML pages must be updated in lockstep to prevent stale client/CDN cache desynchronization and layout shifts.
 
 ---
 

@@ -164,6 +164,45 @@ class TestHtmlPagesStructure(unittest.TestCase):
             self.assertIn("min-height: 420px", css, "quiz-wrapper-card must declare reserved min-height")
             self.assertIn("contain: layout", css, "dynamic components must enforce layout containment")
 
+    def test_asset_synchronization_and_cache_busting(self):
+        """Rule 1 Mandate: All HTML files must link stylesheets and scripts with synchronized cache-busting tokens."""
+        css_versions = {}
+        for filename in self.HTML_FILES:
+            filepath = os.path.join(WORKSPACE_ROOT, filename)
+            with open(filepath, "r", encoding="utf-8") as f:
+                content = f.read()
+                # Stylesheet cache-busting
+                match = re.search(r'href="css/styles\.css\?v=([^"]+)"', content)
+                self.assertIsNotNone(
+                    match,
+                    f"Rule 1 Asset Synchronization: {filename} must link css/styles.css with a ?v= version token"
+                )
+                css_versions[filename] = match.group(1)
+
+                # Script cache-busting for config.js
+                config_match = re.search(r'src="config\.js\?v=([^"]+)"', content)
+                self.assertIsNotNone(
+                    config_match,
+                    f"Rule 1 Asset Synchronization: {filename} must link config.js with a ?v= version token"
+                )
+
+        # Ensure all HTML files declare the identical active CSS version
+        unique_versions = set(css_versions.values())
+        self.assertEqual(
+            len(unique_versions), 1,
+            f"Rule 1 Asset Synchronization: All HTML files must declare the exact same CSS version token, found: {css_versions}"
+        )
+
+    def test_rule_1_mandate_documented_in_rules_files(self):
+        """Verifies that the Asset Synchronization & Cache-Busting Mandate is permanently codified."""
+        agents_md = os.path.join(WORKSPACE_ROOT, "AGENTS.md")
+        gemini_md = os.path.join(WORKSPACE_ROOT, "GEMINI.md")
+        sync_rule = os.path.join(WORKSPACE_ROOT, ".agents", "rules", "asset-synchronization.md")
+
+        for fpath in [agents_md, gemini_md, sync_rule]:
+            with open(fpath, "r", encoding="utf-8") as f:
+                self.assertIn("Asset Synchronization & Cache-Busting Mandate", f.read())
+
 
 class TestAppJsSecurityAndHeuristics(unittest.TestCase):
     """Unit tests for client-side JavaScript logic (app.js)."""
