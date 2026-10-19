@@ -178,5 +178,54 @@ class TestAppJsSecurityAndHeuristics(unittest.TestCase):
         self.assertIn("&lt;script&gt;", sanitized)
 
 
+class TestCopyrightAndLegalCompliance(unittest.TestCase):
+    """Rule 6: Copyright & Intellectual Property Protection Mandate."""
+
+    def test_rule_6_defined_in_agents_and_gemini_rules(self):
+        agents_md = os.path.join(WORKSPACE_ROOT, "AGENTS.md")
+        gemini_md = os.path.join(WORKSPACE_ROOT, "GEMINI.md")
+        rule6_file = os.path.join(WORKSPACE_ROOT, ".agents", "rules", "copyright-compliance.md")
+        
+        self.assertTrue(os.path.isfile(rule6_file), "copyright-compliance.md rule file must exist")
+        
+        with open(agents_md, "r", encoding="utf-8") as f:
+            self.assertIn("Rule 6: Copyright & Intellectual Property Protection Mandate", f.read())
+        with open(gemini_md, "r", encoding="utf-8") as f:
+            self.assertIn("Rule 6: Copyright & Intellectual Property Protection Mandate", f.read())
+
+    def test_terms_has_trademark_fair_use_and_dmca_notice(self):
+        terms_path = os.path.join(WORKSPACE_ROOT, "terms.html")
+        with open(terms_path, "r", encoding="utf-8") as f:
+            content = f.read()
+            self.assertIn("Nominative Fair Use", content)
+            self.assertIn("DMCA Copyright Infringement Notice", content)
+            self.assertIn("legal@scamshieldlab.com", content)
+
+    def test_all_referenced_images_exist(self):
+        html_files = [
+            "index.html",
+            "about.html",
+            "privacy.html",
+            "terms.html",
+            "guide-voice-cloning.html",
+            "guide-pig-butchering.html"
+        ]
+        assets_dir = os.path.join(WORKSPACE_ROOT, "assets", "images")
+        existing_images = set(os.listdir(assets_dir))
+
+        for filename in html_files:
+            filepath = os.path.join(WORKSPACE_ROOT, filename)
+            with open(filepath, "r", encoding="utf-8") as f:
+                content = f.read()
+                matches = re.findall(r"assets/images/([a-zA-Z0-9_\-\.]+)", content)
+                for img_name in matches:
+                    self.assertIn(
+                        img_name,
+                        existing_images,
+                        f"Unresolved or missing image '{img_name}' referenced in {filename}"
+                    )
+
+
 if __name__ == "__main__":
     unittest.main()
+
