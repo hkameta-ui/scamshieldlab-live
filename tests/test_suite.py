@@ -384,6 +384,34 @@ class TestEditorialAndResearchIntegrity(unittest.TestCase):
                 self.assertIn("ScamShield Threat Research Lab", content)
 
 
+class TestThreatRadarSearchEngine(unittest.TestCase):
+    """Validation tests for Threat Radar intelligence database and keyword search."""
+
+    def setUp(self):
+        threat_path = os.path.join(WORKSPACE_ROOT, "js", "threat-data.js")
+        with open(threat_path, "r", encoding="utf-8") as f:
+            self.threat_code = f.read()
+
+        app_path = os.path.join(WORKSPACE_ROOT, "js", "app.js")
+        with open(app_path, "r", encoding="utf-8") as f:
+            self.app_code = f.read()
+
+    def test_threat_database_contains_critical_threats(self):
+        self.assertIn("toll-smishing", self.threat_code)
+        self.assertIn("SunPass", self.threat_code)
+        self.assertIn("E-ZPass", self.threat_code)
+        self.assertIn("bank-impersonation", self.threat_code)
+        self.assertIn("zelle", self.threat_code.lower())
+        self.assertIn("irs-government-extortion", self.threat_code)
+
+    def test_app_js_multi_field_matching_and_recovery(self):
+        self.assertIn("inKeywords", self.app_code)
+        self.assertIn("inCaseStudy", self.app_code)
+        self.assertIn("inCategoryName", self.app_code)
+        self.assertIn("search-suggestion-btn", self.app_code)
+        self.assertIn("allMatches", self.app_code)
+
+
 if __name__ == "__main__":
     unittest.main()
 
