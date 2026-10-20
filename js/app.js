@@ -483,13 +483,36 @@ function initThreatRadar() {
 
   if (!container || !window.THREAT_DATABASE) return;
 
-  function renderCards(threats) {
+  function renderCards(threats, queryText = "") {
     if (threats.length === 0) {
       container.innerHTML = `
         <div class="no-results-card" role="status">
-          <p>No threats matching your current filter. Try adjusting your search term.</p>
+          <p>No threats matching ${queryText ? `"${escapeHtml(queryText)}"` : "your current filter"}.</p>
+          <div class="no-results-hint">
+            Try searching for active threats: 
+            <button type="button" class="search-suggestion-btn" data-search="sunpass">SunPass</button>
+            <button type="button" class="search-suggestion-btn" data-search="ezpass">E-ZPass</button>
+            <button type="button" class="search-suggestion-btn" data-search="zelle">Zelle</button>
+            <button type="button" class="search-suggestion-btn" data-search="irs">IRS</button>
+            <button type="button" class="search-suggestion-btn" data-search="voice">Voice Cloning</button>
+            <button type="button" class="search-suggestion-btn" data-search="quishing">QR Quishing</button>
+          </div>
         </div>
       `;
+
+      container.querySelectorAll(".search-suggestion-btn").forEach(btn => {
+        btn.addEventListener("click", () => {
+          const s = btn.getAttribute("data-search");
+          if (searchInput) searchInput.value = s;
+          if (heroSearchInput) heroSearchInput.value = s;
+          filterTabs.forEach(t => {
+            const isAll = t.getAttribute("data-filter") === "all";
+            t.classList.toggle("active", isAll);
+            t.setAttribute("aria-selected", isAll ? "true" : "false");
+          });
+          applyFilter();
+        });
+      });
       return;
     }
 
@@ -547,25 +570,134 @@ function initThreatRadar() {
     let debounceTimer;
     searchInput.addEventListener("input", () => {
       clearTimeout(debounceTimer);
-      debounceTimer = setTimeout(applyFilter, 150);
+      debounceTimer = setTimeout(() => {
+        if (heroSearchInput && document.activeElement === searchInput) {
+          heroSearchInput.value = searchInput.value;
+        }
+        applyFilter();
+      }, 150);
     });
+  }
+
+  // Hero Quick Search integration
+  const heroSearchInput = document.getElementById("heroQuickSearchInput");
+  const heroSearchBtn = document.getElementById("heroQuickSearchBtn");
+
+  function triggerSearchOrScan(term) {
+    const cleanTerm = (term || "").trim();
+    if (!cleanTerm) return;
+
+    if (cleanTerm.length > 55) {
+      // Looks like a full suspicious text message -> route to Neural Analyzer
+      const scamInput = document.getElementById("scamTextInput");
+      const scanBtn = document.getElementById("analyzeBtn");
+      if (scamInput && scanBtn) {
+        scamInput.value = cleanTerm;
+        const analyzerSection = document.getElementById("analyzer");
+        if (analyzerSection) analyzerSection.scrollIntoView({ behavior: "smooth" });
+        scanBtn.click();
+      }
+    } else {
+      // Threat keyword -> filter radar and scroll to matrix
+      if (searchInput) searchInput.value = cleanTerm;
+      filterTabs.forEach(t => {
+        const isAll = t.getAttribute("data-filter") === "all";
+        t.classList.toggle("active", isAll);
+        t.setAttribute("aria-selected", isAll ? "true" : "false");
+      });
+      applyFilter();
+      const radarSection = document.getElementById("threat-radar");
+      if (radarSection) radarSection.scrollIntoView({ behavior: "smooth" });
+    }
+  }
+
+  if (heroSearchInput) {
+    let heroDebounceTimer;
+    heroSearchInput.addEventListener("input", () => {
+      clearTimeout(heroDebounceTimer);
+      heroDebounceTimer = setTimeout(() => {
+        if (searchInput) searchInput.value = heroSearchInput.value;
+        applyFilter();
+      }, 150);
+    });
+
+    heroSearchInput.addEventListener("keydown", (e) => {
+      if (e.key === "Enter") {
+        e.preventDefault();
+        triggerSearchOrScan(heroSearchInput.value);
+      }
+    });
+  }
+
+  if (heroSearchBtn && heroSearchInput) {
+    heroSearchBtn.addEventListener("click", () => {
+      triggerSearchOrScan(heroSearchInput.value);
+    });
+  }
+
+  // Keyboard shortcut Ctrl+K / Cmd+K to focus search immediately
+  document.addEventListener("keydown", (e) => {
+    if ((e.ctrlKey || e.metaKey) && e.key.toLowerCase() === "k") {
+      e.preventDefault();
+      const targetInput = heroSearchInput || searchInput;
+      if (targetInput) {
+        targetInput.focus();
+        targetInput.select();
+      }
+    }
+  });
+
+  // URL Query Handler for Google SearchAction Sitelinks (e.g. ?q=SunPass)
+  try {
+    const urlParams = new URLSearchParams(window.location.search);
+    const queryParam = urlParams.get("q");
+    if (queryParam) {
+      if (heroSearchInput) heroSearchInput.value = queryParam;
+      triggerSearchOrScan(queryParam);
+    }
+  } catch (err) {
+    console.warn("URL query parse error:", err);
   }
 
   function applyFilter() {
     const activeTab = document.querySelector(".threat-filter-tab.active");
-    const category = activeTab ? activeTab.getAttribute("data-filter") : "all";
-    const query = searchInput ? searchInput.value.toLowerCase().trim() : "";
+    let category = activeTab ? activeTab.getAttribute("data-filter") : "all";
+    const query = (searchInput ? searchInput.value : (heroSearchInput ? heroSearchInput.value : "")).toLowerCase().trim();
 
-    const filtered = window.THREAT_DATABASE.filter(item => {
+    function matchesItem(item) {
+      if (!query) return true;
+      const inTitle = item.title && item.title.toLowerCase().includes(query);
+      const inSummary = item.summary && item.summary.toLowerCase().includes(query);
+      const inCategoryName = item.categoryName && item.categoryName.toLowerCase().includes(query);
+      const inCategory = item.category && item.category.toLowerCase().includes(query);
+      const inIndicators = Array.isArray(item.indicators) && item.indicators.some(i => i.toLowerCase().includes(query));
+      const inDefense = item.countermeasures && item.countermeasures.toLowerCase().includes(query);
+      const inCaseStudy = item.caseStudy && item.caseStudy.toLowerCase().includes(query);
+      const inKeywords = Array.isArray(item.keywords) && item.keywords.some(k => k.toLowerCase().includes(query));
+      const inImpact = item.impact && item.impact.toLowerCase().includes(query);
+      return inTitle || inSummary || inCategoryName || inCategory || inIndicators || inDefense || inCaseStudy || inKeywords || inImpact;
+    }
+
+    let filtered = window.THREAT_DATABASE.filter(item => {
       const matchesCategory = (category === "all") || (item.category === category);
-      const matchesQuery = !query || 
-        item.title.toLowerCase().includes(query) || 
-        item.summary.toLowerCase().includes(query) ||
-        item.indicators.some(i => i.toLowerCase().includes(query));
-      return matchesCategory && matchesQuery;
+      return matchesCategory && matchesItem(item);
     });
 
-    renderCards(filtered);
+    // Auto-recovery: If user has a category tab selected and searches a term that exists in another category,
+    // automatically switch to "All Vectors" tab so they find what they are searching for immediately.
+    if (filtered.length === 0 && category !== "all" && query) {
+      const allMatches = window.THREAT_DATABASE.filter(matchesItem);
+      if (allMatches.length > 0) {
+        filterTabs.forEach(t => {
+          const isAll = t.getAttribute("data-filter") === "all";
+          t.classList.toggle("active", isAll);
+          t.setAttribute("aria-selected", isAll ? "true" : "false");
+        });
+        filtered = allMatches;
+      }
+    }
+
+    renderCards(filtered, query);
   }
 }
 

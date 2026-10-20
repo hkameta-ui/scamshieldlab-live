@@ -19,7 +19,8 @@ window.THREAT_DATABASE = [
       "Refusal to answer personal trivia not available on public social profiles"
     ],
     countermeasures: "Establish a secret, offline 'Family Safe Word'. Always hang up immediately and dial the family member directly on their verified cell phone.",
-    caseStudy: "Elderly couples targeted by synthetic voice clones of their grandchildren, losing an average of $8,500 per incident before verification."
+    caseStudy: "Elderly couples targeted by synthetic voice clones of their grandchildren, losing an average of $8,500 per incident before verification.",
+    keywords: ["voice", "vishing", "bail", "grandparent", "grandma", "grandson", "car accident", "emergency", "family safe word", "kidnapping", "ransom", "audio clone", "cloning", "phone scam"]
   },
   {
     id: "agentic-bec",
@@ -37,7 +38,8 @@ window.THREAT_DATABASE = [
       "Slightly spoofed domain (e.g., using lookalike Unicode letters or subtle typos)"
     ],
     countermeasures: "Mandate strict out-of-band verification via voice or in-person dual authorization for any vendor account change over $1,000.",
-    caseStudy: "Multi-national engineering firm Arup lost $25M when a finance employee was tricked by a multi-person deepfake video conference."
+    caseStudy: "Multi-national engineering firm Arup lost $25M when a finance employee was tricked by a multi-person deepfake video conference.",
+    keywords: ["bec", "ceo", "cfo", "wire", "invoice", "vendor", "arup", "email compromise", "executive", "payroll", "agentic", "corporate fraud"]
   },
   {
     id: "pig-butchering",
@@ -55,7 +57,8 @@ window.THREAT_DATABASE = [
       "Victims can withdraw small amounts initially, but large balances are locked with demands for 'tax payments'"
     ],
     countermeasures: "Never invest on platforms suggested by online acquaintances. Check domain registration age on WHOIS — scam trading sites are usually under 90 days old.",
-    caseStudy: "Victims persuaded to stake life savings into fake Web3 decentralized finance apps displaying fabricated profit dashboards."
+    caseStudy: "Victims persuaded to stake life savings into fake Web3 decentralized finance apps displaying fabricated profit dashboards.",
+    keywords: ["pig butchering", "sha zhu pan", "crypto", "romance", "whatsapp", "tinder", "dating", "arbitrage", "liquidity pool", "goldman", "bitcoin", "ethereum", "usdt"]
   },
   {
     id: "quishing-qr",
@@ -73,7 +76,8 @@ window.THREAT_DATABASE = [
       "Immediate session hijacking using token-stealing adversary-in-the-middle (AiTM) kits"
     ],
     countermeasures: "Never scan QR codes from unexpected emails or paper flyers. Use mobile QR scanners that preview destination domains and SSL certificates.",
-    caseStudy: "Spike in fake parking meter QR stickers and corporate MFA re-enrollment email scams targeting corporate executives."
+    caseStudy: "Spike in fake parking meter QR stickers and corporate MFA re-enrollment email scams targeting corporate executives.",
+    keywords: ["quishing", "qr code", "qr", "mfa", "2fa", "microsoft 365", "okta", "barcode", "parking meter", "scan", "aitm", "token theft"]
   },
   {
     id: "fake-ai-software",
@@ -91,7 +95,8 @@ window.THREAT_DATABASE = [
       "Browser suddenly logs you out of Google, Discord, Telegram, or crypto exchanges"
     ],
     countermeasures: "Only download AI utilities from official domains (openai.com, anthropic.com). Verify SHA256 checksums and keep real-time behavioral antivirus active.",
-    caseStudy: "Over 500,000 users infected through deceptive Facebook ads promoting a desktop version of generative AI video tools."
+    caseStudy: "Over 500,000 users infected through deceptive Facebook ads promoting a desktop version of generative AI video tools.",
+    keywords: ["fake ai", "malware", "chatgpt-5", "sora", "midjourney", "redline", "lummac2", "infostealer", "stealer", "trojan", "extension", "chrome extension"]
   },
   {
     id: "deepfake-kyc",
@@ -108,7 +113,65 @@ window.THREAT_DATABASE = [
       "Sudden phone service disruption due to unauthorized eSIM / SIM swapping"
     ],
     countermeasures: "Freeze your credit files permanently with all three major credit bureaus. Use dedicated identity theft monitoring with dark web credential alerts.",
-    caseStudy: "Fintech lenders hit with millions in default loans originated through real-time generative video injection feeds."
+    caseStudy: "Fintech lenders hit with millions in default loans originated through real-time generative video injection feeds.",
+    keywords: ["kyc", "deepfake", "synthetic identity", "credit freeze", "loan fraud"]
+  },
+  {
+    id: "toll-smishing",
+    title: "State Road Toll Smishing (SunPass / E-ZPass / FasTrak / TxTag)",
+    category: "phishing",
+    categoryName: "Toll & SMS Smishing",
+    severity: "CRITICAL",
+    severityColor: "#EF4444",
+    impact: "Over $100M+ in stolen payment cards and nationwide FBI IC3 alerts",
+    summary: "Mass SMS phishing campaigns simulate state road toll collection services (SunPass in Florida, E-ZPass across 19 states, FasTrak in California, TxTag in Texas). The urgent text demands an immediate small payment ($3 to $12) for an 'unpaid toll' to avoid $50+ late fees, directing victims to credential-harvesting lookalike payment portals.",
+    indicators: [
+      "SMS arrives from a random personal cell number (10-digit) or foreign country code (+44, +63), not an official agency shortcode",
+      "Demands urgent payment for an unpaid toll with late fee threats ('Pay within 24 hours to avoid penalty')",
+      "Link points to a deceptive, newly registered domain (e.g., sunpass-toll-services.top, ezpass-toll-pay.xyz, invoice-fastrak.com)",
+      "Official state toll agencies (SunPass, E-ZPass, FasTrak) never send unsolicited SMS demanding payment with clickable links"
+    ],
+    countermeasures: "Never click links in toll SMS messages. Navigate directly to the official state portal (sunpass.com, e-zpassny.com) or check your transponder account directly.",
+    caseStudy: "The FBI IC3 issued an urgent public warning after thousands of drivers across 15+ states received identical smishing texts within 48 hours.",
+    keywords: ["sunpass", "ezpass", "e-zpass", "fastrak", "txtag", "i-pass", "toll", "tollway", "turnpike", "unpaid toll", "late fee", "smishing"]
+  },
+  {
+    id: "bank-impersonation",
+    title: "Bank Fraud Department & Zelle / Wire Transfer Trap",
+    category: "voice",
+    categoryName: "Bank & Wire Fraud",
+    severity: "CRITICAL",
+    severityColor: "#EF4444",
+    impact: "Over $2.7B in unauthorized bank transfers annually",
+    summary: "Victims receive an SMS alert about a suspicious transaction, followed immediately by a spoofed call from their bank's fraud department. The caller sounds professional, knows the victim's name, and instructs them to transfer money 'to a secure account' or reverse a Zelle charge, which actually transfers the funds directly to the criminal.",
+    indicators: [
+      "Caller asks you to read back a one-time passcode (OTP) or authentication code sent to your phone",
+      "Instructs you to send funds to yourself or a 'safe holding account' via Zelle, wire transfer, or crypto",
+      "Creates extreme urgency claiming your account is currently being drained by a rogue employee",
+      "Caller ID spoofing shows the exact 1-800 number from the back of your debit card"
+    ],
+    countermeasures: "Hang up immediately. Banks will NEVER ask you to read back an OTP or transfer money to protect your account. Call the phone number printed directly on the back of your physical card.",
+    caseStudy: "Elderly and business banking customers tricked into authorizing tens of thousands in wire and Zelle transfers under the guise of an active fraud investigation.",
+    keywords: ["zelle", "bank", "wire", "chase", "wells fargo", "citi", "bank of america", "fraud department", "otp", "passcode"]
+  },
+  {
+    id: "irs-government-extortion",
+    title: "Government & Law Enforcement Extortion (IRS / FBI / Arrest Warrant)",
+    category: "voice",
+    categoryName: "Government Extortion",
+    severity: "CRITICAL",
+    severityColor: "#EF4444",
+    impact: "$500M+ extorted through panic and fear tactics",
+    summary: "Impostors posing as IRS agents, federal marshals, or local police officers contact victims alleging overdue tax penalties, unpaid legal summons, or imminent arrest warrants. They use aggressive intimidation to demand immediate payment via gift cards, wire transfers, or Bitcoin ATMs.",
+    indicators: [
+      "Caller threatens immediate arrest by local police or county sheriff within the hour",
+      "Demands payment via prepaid gift cards (Apple, Target, Vanilla Visa) or cryptocurrency ATMs",
+      "Refuses to allow you to hang up, confer with family, or consult a CPA/attorney",
+      "Government agencies (IRS, FBI, Law Enforcement) never notify citizens of warrants or penalties via phone or demand gift card payments"
+    ],
+    countermeasures: "Hang up immediately. Government agencies send official written notices via postal mail and never accept cryptocurrency or gift cards for penalties.",
+    caseStudy: "Victims persuaded to purchase thousands in retail gift cards and read the redemption codes over the phone while kept on active call for hours.",
+    keywords: ["irs", "police", "arrest", "warrant", "sheriff", "jail", "federal marshal", "tax penalty", "extortion"]
   }
 ];
 
