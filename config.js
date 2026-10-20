@@ -34,12 +34,12 @@ window.SITE_CONFIG = {
       cta: "Claim 14-Day Free Trial"
     },
     passwordManager: {
-      name: "1Password / Passkey Vault",
-      tagline: "Prevent Phishing with Zero-Knowledge Encryption & Passkey Support",
-      payoutEst: "$20 - $40 per sale",
-      url: "https://1password.com/?ref=scamshield", // Replace with your affiliate tracking link
+      name: "NordPass Premium & Passkey Vault",
+      tagline: "Prevent Phishing & Credential Theft with Zero-Knowledge Passkeys",
+      payoutEst: "30% - 100% Commission",
+      url: "https://go.nordpass.io/aff_c?offer_id=488&aff_id=159036&url_id=9356", // Verified Nord Partner Link (Affiliate ID: 159036)
       badge: "Essential Defense",
-      cta: "Protect Your Accounts"
+      cta: "Protect Passwords & Passkeys"
     },
     endpointSecurity: {
       name: "Malwarebytes Premium & Anti-Exploit",
@@ -52,10 +52,10 @@ window.SITE_CONFIG = {
     vpnPrivacy: {
       name: "NordVPN Threat Protection Pro",
       tagline: "Block malicious scam domains & encrypt DNS queries automatically",
-      payoutEst: "$30 - $40 per signup",
-      url: "https://nordvpn.com/?ref=scamshield", // Replace with your affiliate tracking link
-      badge: "68% Off Deal",
-      cta: "Get Secure VPN"
+      payoutEst: "40% - 100% Commission",
+      url: "https://go.nordvpn.net/aff_c?offer_id=15&aff_id=159036&url_id=902", // Verified Nord Partner Link (Affiliate ID: 159036)
+      badge: "Verified Partner",
+      cta: "Get Secure VPN (68% Off)"
     }
   }
 };
