@@ -27,6 +27,7 @@ window.SITE_CONFIG = {
   affiliates: {
     identityTheft: {
       name: "Aura Identity Theft Protection",
+      icon: "🛡️",
       tagline: "$1,000,000 Identity Theft Insurance & Dark Web Monitoring",
       payoutEst: "$50 - $80 per signup",
       url: "https://aura.com/?ref=scamshield", // Replace with your affiliate tracking link
@@ -35,14 +36,34 @@ window.SITE_CONFIG = {
     },
     passwordManager: {
       name: "NordPass Premium & Passkey Vault",
+      icon: "🔐",
       tagline: "Prevent Phishing & Credential Theft with Zero-Knowledge Passkeys",
       payoutEst: "30% - 100% Commission",
       url: "https://go.nordpass.io/aff_c?offer_id=488&aff_id=159036&url_id=9356", // Verified Nord Partner Link (Affiliate ID: 159036)
       badge: "Essential Defense",
       cta: "Protect Passwords & Passkeys"
     },
+    googleWorkspace: {
+      name: "Google Workspace with Gemini",
+      icon: "🤖",
+      tagline: "AI-powered enterprise defense blocking 99.9% of spoofed BEC emails & phishing",
+      payoutEst: "$9 - $27 per user signup",
+      url: "https://workspace.google.com/pricing", // Connect your Google Workspace Referral Link
+      badge: "Google AI Security",
+      cta: "Start Free Workspace Trial"
+    },
+    googleTitan: {
+      name: "Google Titan Security Key",
+      icon: "🔑",
+      tagline: "Hardware-bound FIDO2 cryptographic defense stopping 100% of remote phishing takeovers",
+      payoutEst: "Google Store / Amazon Partner",
+      url: "https://store.google.com/product/titan_security_key",
+      badge: "Gold Standard 2FA",
+      cta: "Explore Titan Security Keys"
+    },
     endpointSecurity: {
       name: "Malwarebytes Premium & Anti-Exploit",
+      icon: "💻",
       tagline: "Real-time AI behavioral detection against ransomware & zero-days",
       payoutEst: "$25 - $45 per purchase",
       url: "https://malwarebytes.com/?ref=scamshield", // Replace with your affiliate tracking link
@@ -51,6 +72,7 @@ window.SITE_CONFIG = {
     },
     vpnPrivacy: {
       name: "NordVPN Threat Protection Pro",
+      icon: "🌐",
       tagline: "Block malicious scam domains & encrypt DNS queries automatically",
       payoutEst: "40% - 100% Commission",
       url: "https://go.nordvpn.net/aff_c?offer_id=15&aff_id=159036&url_id=902", // Verified Nord Partner Link (Affiliate ID: 159036)

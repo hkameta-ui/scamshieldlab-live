@@ -789,10 +789,11 @@ function initAffiliateCards() {
   const affs = window.SITE_CONFIG.affiliates;
   const cardsHtml = Object.keys(affs).map(key => {
     const item = affs[key];
+    const icon = item.icon || "🛡️";
     return `
       <div class="affiliate-card">
         <div class="affiliate-card-badge">${escapeHtml(item.badge)}</div>
-        <div class="affiliate-icon-box" aria-hidden="true">🛡️</div>
+        <div class="affiliate-icon-box" aria-hidden="true">${escapeHtml(icon)}</div>
         <h4 class="affiliate-name">${escapeHtml(item.name)}</h4>
         <p class="affiliate-tagline">${escapeHtml(item.tagline)}</p>
         <div class="affiliate-cta-box">

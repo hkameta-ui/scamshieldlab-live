@@ -12,10 +12,12 @@ Cybersecurity and AI fraud prevention rank among the **highest Cost-Per-Click (C
 * **Stream A: Google AdSense Display Ads**
   * 4 strategically placed, policy-compliant ad slots (Header Leaderboard, In-Content High-CTR Rectangle, Mid-Page Banner, and Footer Sticky).
   * Labeled clearly with "Advertisement" in compliance with Google AdSense terms to prevent invalid clicks.
-* **Stream B: High-Ticket Cybersecurity Affiliates**
+* **Stream B: High-Ticket Cybersecurity Affiliates & AI Security Partners**
   * Integrated referral cards for:
     * **Aura Identity Theft Protection** (~$50 – $80 bounty per signup)
     * **NordPass Premium & Passkeys** (30% – 100% recurring commission - Verified Partner ID: 159036)
+    * **Google Workspace with Gemini** ($9 – $27+ per user enterprise referral)
+    * **Google Titan Security Keys** (Hardware FIDO2 cryptographic defense)
     * **Malwarebytes Premium** (~$25 – $45 bounty)
     * **NordVPN Threat Protection Pro** (40% – 100% commission - Verified Partner ID: 159036)
 
