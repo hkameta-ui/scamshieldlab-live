@@ -15,9 +15,9 @@ Cybersecurity and AI fraud prevention rank among the **highest Cost-Per-Click (C
 * **Stream B: High-Ticket Cybersecurity Affiliates**
   * Integrated referral cards for:
     * **Aura Identity Theft Protection** (~$50 – $80 bounty per signup)
-    * **1Password / Passkeys** (~$20 – $40 bounty)
+    * **NordPass Premium & Passkeys** (30% – 100% recurring commission - Verified Partner ID: 159036)
     * **Malwarebytes Premium** (~$25 – $45 bounty)
-    * **NordVPN Threat Protection** (~$30 – $40 bounty)
+    * **NordVPN Threat Protection Pro** (40% – 100% commission - Verified Partner ID: 159036)
 
 ---
 
