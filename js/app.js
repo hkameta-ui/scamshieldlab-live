@@ -551,10 +551,85 @@ function initThreatRadar() {
     });
   }
 
+  // Hero Quick Search integration
+  const heroSearchInput = document.getElementById("heroQuickSearchInput");
+  const heroSearchBtn = document.getElementById("heroQuickSearchBtn");
+
+  function triggerSearchOrScan(term) {
+    const cleanTerm = (term || "").trim();
+    if (!cleanTerm) return;
+
+    if (cleanTerm.length > 55) {
+      // Looks like a full suspicious text message -> route to Neural Analyzer
+      const scamInput = document.getElementById("scamTextInput");
+      const scanBtn = document.getElementById("analyzeBtn");
+      if (scamInput && scanBtn) {
+        scamInput.value = cleanTerm;
+        const analyzerSection = document.getElementById("analyzer");
+        if (analyzerSection) analyzerSection.scrollIntoView({ behavior: "smooth" });
+        scanBtn.click();
+      }
+    } else {
+      // Threat keyword -> filter radar and scroll to matrix
+      if (searchInput) searchInput.value = cleanTerm;
+      applyFilter();
+      const radarSection = document.getElementById("threat-radar");
+      if (radarSection) radarSection.scrollIntoView({ behavior: "smooth" });
+    }
+  }
+
+  if (heroSearchInput) {
+    let heroDebounceTimer;
+    heroSearchInput.addEventListener("input", () => {
+      clearTimeout(heroDebounceTimer);
+      heroDebounceTimer = setTimeout(() => {
+        if (searchInput) searchInput.value = heroSearchInput.value;
+        applyFilter();
+      }, 150);
+    });
+
+    heroSearchInput.addEventListener("keydown", (e) => {
+      if (e.key === "Enter") {
+        e.preventDefault();
+        triggerSearchOrScan(heroSearchInput.value);
+      }
+    });
+  }
+
+  if (heroSearchBtn && heroSearchInput) {
+    heroSearchBtn.addEventListener("click", () => {
+      triggerSearchOrScan(heroSearchInput.value);
+    });
+  }
+
+  // Keyboard shortcut Ctrl+K / Cmd+K to focus search immediately
+  document.addEventListener("keydown", (e) => {
+    if ((e.ctrlKey || e.metaKey) && e.key.toLowerCase() === "k") {
+      e.preventDefault();
+      const targetInput = heroSearchInput || searchInput;
+      if (targetInput) {
+        targetInput.focus();
+        targetInput.select();
+      }
+    }
+  });
+
+  // URL Query Handler for Google SearchAction Sitelinks (e.g. ?q=SunPass)
+  try {
+    const urlParams = new URLSearchParams(window.location.search);
+    const queryParam = urlParams.get("q");
+    if (queryParam) {
+      if (heroSearchInput) heroSearchInput.value = queryParam;
+      triggerSearchOrScan(queryParam);
+    }
+  } catch (err) {
+    console.warn("URL query parse error:", err);
+  }
+
   function applyFilter() {
     const activeTab = document.querySelector(".threat-filter-tab.active");
     const category = activeTab ? activeTab.getAttribute("data-filter") : "all";
-    const query = searchInput ? searchInput.value.toLowerCase().trim() : "";
+    const query = (searchInput ? searchInput.value : (heroSearchInput ? heroSearchInput.value : "")).toLowerCase().trim();
 
     const filtered = window.THREAT_DATABASE.filter(item => {
       const matchesCategory = (category === "all") || (item.category === category);

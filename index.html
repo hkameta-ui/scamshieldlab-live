@@ -43,6 +43,14 @@
         "description": "AI Cyber Fraud Detection & Threat Defense Hub",
         "publisher": {
           "@id": "https://scamshieldlab.com/#organization"
+        },
+        "potentialAction": {
+          "@type": "SearchAction",
+          "target": {
+            "@type": "EntryPoint",
+            "urlTemplate": "https://scamshieldlab.com/?q={search_term_string}"
+          },
+          "query-input": "required name=search_term_string"
         }
       },
       {
@@ -86,11 +94,11 @@
   <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-7565560894775775" crossorigin="anonymous"></script>
 
   <!-- Stylesheets -->
-  <link rel="stylesheet" href="css/styles.css?v=20261020-google1">
+  <link rel="stylesheet" href="css/styles.css?v=20261020-search1">
   <link rel="icon" type="image/jpeg" href="assets/images/logo.jpg">
 
   <!-- Configuration & AdSense Loader -->
-  <script src="config.js?v=20261020-google1" defer></script>
+  <script src="config.js?v=20261020-search1" defer></script>
 </head>
 <body>
 
@@ -151,6 +159,19 @@
           <p class="hero-lead">
             Detect synthetic voice clones, crypto romance traps, and high-urgency phishing in real time. 100% private, client-side neural heuristic analysis with zero data storage.
           </p>
+
+          <!-- Hero Instant Scam Lookup (Quick Search) -->
+          <div class="hero-quick-search" role="search">
+            <div class="quick-search-box">
+              <span class="quick-search-icon" aria-hidden="true">🔍</span>
+              <input type="text" id="heroQuickSearchInput" class="quick-search-input" placeholder="Quick search active scams (e.g., SunPass, Zelle, AI voice, IRS)..." aria-label="Quick search scam database">
+              <button type="button" id="heroQuickSearchBtn" class="quick-search-btn" aria-label="Search threat database">
+                <span>Search</span>
+                <span class="search-kbd-tag" aria-hidden="true"><kbd>Ctrl</kbd>+<kbd>K</kbd></span>
+              </button>
+            </div>
+          </div>
+
           <div class="hero-cta-group" style="display: flex; gap: 1rem; flex-wrap: wrap;">
             <a href="#analyzer" class="btn btn-primary">
               <span>⚡</span> Run Neural Scam Scan &darr;
@@ -602,7 +623,7 @@
   </footer>
 
   <!-- Scripts -->
-  <script src="js/threat-data.js?v=20261020-google1"></script>
-  <script src="js/app.js?v=20261020-google1"></script>
+  <script src="js/threat-data.js?v=20261020-search1"></script>
+  <script src="js/app.js?v=20261020-search1"></script>
 </body>
 </html>
