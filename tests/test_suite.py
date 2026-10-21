@@ -43,6 +43,21 @@ class TestProjectMandatesAndBranching(unittest.TestCase):
             content = f.read()
             self.assertIn("Rule 5: Feature Branch Workflow", content)
 
+    def test_rule_7_local_port_mandate(self):
+        """Rule 7: Local server port mandate and prohibition of port 8080."""
+        agents_md = os.path.join(WORKSPACE_ROOT, "AGENTS.md")
+        gemini_md = os.path.join(WORKSPACE_ROOT, "GEMINI.md")
+        rule7_file = os.path.join(WORKSPACE_ROOT, ".agents", "rules", "local-development-port.md")
+
+        self.assertTrue(os.path.isfile(rule7_file), "local-development-port.md must exist")
+        
+        for filepath in [agents_md, gemini_md, rule7_file]:
+            with open(filepath, "r", encoding="utf-8") as f:
+                content = f.read()
+                self.assertIn("Rule 7", content)
+                self.assertIn("8080", content)
+                self.assertIn("5050", content)
+
 
 class TestHeaderAndNavigationStyles(unittest.TestCase):
     """Header layout & overlap prevention tests."""
