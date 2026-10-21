@@ -1,0 +1,721 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Family Safe Word & AI Voice Cloning Defense Kit Generator | ScamShield Lab</title>
+  
+  <meta name="description" content="Free, 100% private in-browser generator to create an unguessable Family Safe Word protocol, challenge-response verification, and printable wallet defense cards to neutralize AI voice cloning scams.">
+  <meta name="keywords" content="family safe word generator, voice cloning defense, deepfake grandparent scam, family code word, AI emergency scam verification, ScamShield Lab">
+  <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1">
+  <link rel="canonical" href="https://scamshieldlab.com/family-safe-word">
+
+  <!-- Open Graph -->
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="ScamShield Lab">
+  <meta property="og:title" content="Family Safe Word & AI Voice Cloning Defense Kit Generator | ScamShield Lab">
+  <meta property="og:description" content="Free, 100% private in-browser generator to create an unguessable Family Safe Word and printable wallet emergency cards against AI voice scams.">
+  <meta property="og:url" content="https://scamshieldlab.com/family-safe-word">
+  <meta property="og:image" content="https://scamshieldlab.com/assets/images/deepfake.jpg">
+
+  <!-- Schema.org SoftwareApplication & HowTo Structured Data (SEO) -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "WebApplication",
+    "name": "Family Safe Word & Voice Cloning Defense Kit Generator",
+    "url": "https://scamshieldlab.com/family-safe-word",
+    "applicationCategory": "SecurityApplication",
+    "operatingSystem": "All",
+    "description": "Client-side private tool to generate high-entropy family safe word protocols and printable wallet verification cards against deepfake audio scams.",
+    "offers": {
+      "@type": "Offer",
+      "price": "0",
+      "priceCurrency": "USD"
+    },
+    "publisher": {
+      "@type": "Organization",
+      "name": "ScamShield Lab",
+      "url": "https://scamshieldlab.com/"
+    }
+  }
+  </script>
+  
+  <!-- Security Standards Compliance (Rule 2) -->
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' https://pagead2.googlesyndication.com https://*.google.com https://*.doubleclick.net https://static.cloudflareinsights.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; img-src 'self' data: https:; connect-src 'self' https://pagead2.googlesyndication.com https://*.google.com https://*.doubleclick.net https://cloudflareinsights.com; frame-src https://*.google.com https://*.doubleclick.net;">
+  <meta http-equiv="X-Content-Type-Options" content="nosniff">
+  <meta name="referrer" content="strict-origin-when-cross-origin">
+
+  <!-- Performance Preconnect & Zero-Shift Font Loading (Rule 1) -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;600;700&family=Outfit:wght@500;600;700;800&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap">
+
+  <!-- Google AdSense Verification & Auto-Ads Script -->
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-7565560894775775" crossorigin="anonymous"></script>
+  
+  <link rel="stylesheet" href="css/styles.css?v=20261021-hud3">
+  <link rel="icon" type="image/jpeg" href="assets/images/logo.jpg">
+  <script src="config.js?v=20261021-hud3" defer></script>
+
+  <style>
+    .tool-container {
+      max-width: 960px;
+      margin: 0 auto;
+      padding: 3.5rem 1.5rem 5rem;
+    }
+    .tool-header {
+      text-align: center;
+      margin-bottom: 2.5rem;
+    }
+    .tool-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      background: rgba(0, 242, 254, 0.1);
+      border: 1px solid var(--border-glow);
+      color: var(--color-primary);
+      padding: 0.35rem 0.9rem;
+      border-radius: var(--radius-full);
+      font-size: 0.8rem;
+      font-family: var(--font-mono);
+      font-weight: 600;
+      margin-bottom: 1.25rem;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+    }
+    .tool-title {
+      font-size: clamp(2rem, 4vw, 2.85rem);
+      font-weight: 800;
+      line-height: 1.2;
+      margin-bottom: 1rem;
+      color: var(--text-main);
+    }
+    .tool-subtitle {
+      font-size: 1.05rem;
+      color: var(--text-muted);
+      max-width: 720px;
+      margin: 0 auto 1.5rem;
+      line-height: 1.6;
+    }
+
+    /* Privacy Banner */
+    .privacy-callout {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.75rem;
+      background: rgba(16, 185, 129, 0.08);
+      border: 1px solid rgba(16, 185, 129, 0.25);
+      border-radius: var(--radius-md);
+      padding: 0.75rem 1.25rem;
+      color: #A7F3D0;
+      font-size: 0.88rem;
+      margin-bottom: 2.5rem;
+      text-align: center;
+    }
+
+    /* Interactive Builder Grid */
+    .builder-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 2rem;
+      align-items: start;
+      margin-bottom: 4rem;
+    }
+    @media (max-width: 860px) {
+      .builder-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    .form-panel {
+      background: var(--bg-card);
+      border: 1px solid var(--border-glass);
+      border-radius: var(--radius-lg);
+      padding: 2rem;
+      box-shadow: var(--shadow-card);
+    }
+    .form-step-title {
+      font-size: 1.15rem;
+      font-weight: 700;
+      color: var(--text-main);
+      margin-bottom: 1.25rem;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+    .form-step-num {
+      width: 26px;
+      height: 26px;
+      background: var(--color-primary);
+      color: #070B14;
+      border-radius: 50%;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 0.85rem;
+      font-weight: 800;
+      font-family: var(--font-mono);
+    }
+    .form-group {
+      margin-bottom: 1.5rem;
+    }
+    .form-label {
+      display: block;
+      font-size: 0.88rem;
+      font-weight: 600;
+      color: var(--text-main);
+      margin-bottom: 0.5rem;
+    }
+    .form-input {
+      width: 100%;
+      background: rgba(7, 11, 20, 0.7);
+      border: 1px solid var(--border-glass);
+      border-radius: var(--radius-sm);
+      padding: 0.75rem 1rem;
+      color: var(--text-main);
+      font-size: 0.95rem;
+      font-family: var(--font-body);
+      transition: var(--transition-smooth);
+    }
+    .form-input:focus {
+      outline: none;
+      border-color: var(--color-primary);
+      box-shadow: 0 0 10px rgba(0, 242, 254, 0.25);
+    }
+    .input-row {
+      display: flex;
+      gap: 0.5rem;
+    }
+    .btn-dice {
+      background: rgba(0, 242, 254, 0.15);
+      border: 1px solid var(--border-glow);
+      color: var(--color-primary);
+      padding: 0.75rem 1.1rem;
+      border-radius: var(--radius-sm);
+      font-weight: 700;
+      cursor: pointer;
+      white-space: nowrap;
+      transition: var(--transition-smooth);
+    }
+    .btn-dice:hover {
+      background: var(--color-primary);
+      color: #070B14;
+    }
+
+    /* Strength Indicator */
+    .strength-meter {
+      height: 4px;
+      background: rgba(255, 255, 255, 0.1);
+      border-radius: var(--radius-full);
+      margin-top: 0.5rem;
+      overflow: hidden;
+    }
+    .strength-bar {
+      height: 100%;
+      width: 0%;
+      transition: width 0.3s ease, background 0.3s ease;
+    }
+    .strength-label {
+      font-size: 0.75rem;
+      color: var(--text-muted);
+      margin-top: 0.35rem;
+      display: block;
+    }
+
+    /* Live Card Preview Panel */
+    .preview-panel {
+      position: sticky;
+      top: 100px;
+    }
+    .protocol-card {
+      background: linear-gradient(135deg, rgba(15, 23, 42, 0.95), rgba(7, 11, 20, 0.98));
+      border: 2px solid var(--border-glow);
+      border-radius: var(--radius-lg);
+      padding: 2rem;
+      box-shadow: 0 15px 35px rgba(0, 0, 0, 0.6), 0 0 25px rgba(0, 242, 254, 0.12);
+      position: relative;
+      overflow: hidden;
+    }
+    .protocol-card::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 4px;
+      background: linear-gradient(90deg, #00F2FE, #38BDF8, #10B981);
+    }
+    .card-top {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 1.5rem;
+      border-bottom: 1px solid var(--border-glass);
+      padding-bottom: 1rem;
+    }
+    .card-logo {
+      font-size: 0.85rem;
+      font-family: var(--font-mono);
+      font-weight: 700;
+      color: var(--color-primary);
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+    }
+    .card-shield-badge {
+      background: rgba(16, 185, 129, 0.15);
+      color: #34D399;
+      padding: 0.2rem 0.6rem;
+      border-radius: var(--radius-full);
+      font-size: 0.72rem;
+      font-family: var(--font-mono);
+      font-weight: 700;
+    }
+    .card-family-name {
+      font-size: 1.35rem;
+      font-weight: 800;
+      color: var(--text-main);
+      margin-bottom: 1rem;
+    }
+    .card-field {
+      background: rgba(7, 11, 20, 0.6);
+      border: 1px solid var(--border-glass);
+      border-radius: var(--radius-md);
+      padding: 0.85rem 1rem;
+      margin-bottom: 1rem;
+    }
+    .card-field-title {
+      font-size: 0.72rem;
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+      color: var(--text-muted);
+      margin-bottom: 0.25rem;
+      font-family: var(--font-mono);
+    }
+    .card-safe-word {
+      font-size: 1.4rem;
+      font-weight: 800;
+      color: var(--color-primary);
+      font-family: var(--font-mono);
+      letter-spacing: 0.05em;
+    }
+    .card-field-value {
+      font-size: 0.95rem;
+      color: #F1F5F9;
+      line-height: 1.4;
+    }
+    .card-rules-list {
+      list-style: none;
+      padding: 0;
+      margin: 1.25rem 0 0;
+      font-size: 0.82rem;
+      color: #CBD5E1;
+      border-top: 1px solid var(--border-glass);
+      padding-top: 1rem;
+    }
+    .card-rules-list li {
+      margin-bottom: 0.5rem;
+      display: flex;
+      align-items: flex-start;
+      gap: 0.5rem;
+    }
+    .card-actions {
+      display: flex;
+      gap: 0.75rem;
+      margin-top: 1.5rem;
+    }
+    .card-actions .btn {
+      flex: 1;
+      text-align: center;
+      justify-content: center;
+    }
+
+    /* Educational Section */
+    .edu-section {
+      margin-top: 4rem;
+      padding-top: 3rem;
+      border-top: 1px solid var(--border-glass);
+    }
+    .edu-section h2 {
+      font-size: 1.85rem;
+      font-weight: 800;
+      margin-bottom: 1rem;
+      color: var(--text-main);
+    }
+    .edu-section p {
+      color: #CBD5E1;
+      line-height: 1.8;
+      margin-bottom: 1.25rem;
+    }
+    .tactics-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 1.5rem;
+      margin: 2rem 0;
+    }
+    .tactic-card {
+      background: var(--bg-card);
+      border: 1px solid var(--border-glass);
+      border-radius: var(--radius-md);
+      padding: 1.5rem;
+    }
+    .tactic-title {
+      font-weight: 700;
+      font-size: 1.1rem;
+      margin-bottom: 0.5rem;
+      color: var(--color-primary);
+    }
+    .tactic-desc {
+      font-size: 0.9rem;
+      color: var(--text-muted);
+      line-height: 1.6;
+    }
+
+    /* Print Styles */
+    @media print {
+      body * {
+        visibility: hidden;
+      }
+      .protocol-card, .protocol-card * {
+        visibility: visible;
+      }
+      .protocol-card {
+        position: absolute;
+        left: 50%;
+        top: 50%;
+        transform: translate(-50%, -50%);
+        width: 380px !important;
+        border: 2px dashed #000 !important;
+        color: #000 !important;
+        background: #FFF !important;
+        box-shadow: none !important;
+        padding: 1.5rem !important;
+      }
+      .protocol-card::before, .card-actions, .skip-link, .site-header, .site-footer {
+        display: none !important;
+      }
+      .card-logo, .card-shield-badge, .card-safe-word, .card-field-value, .card-family-name, .card-rules-list {
+        color: #000 !important;
+      }
+      .card-field {
+        background: #F8FAFC !important;
+        border: 1px solid #CBD5E1 !important;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Universal Accessibility Skip Link (Rule 4) -->
+  <a href="#main-content" class="skip-link">Skip to main content</a>
+
+  <!-- Site Header -->
+  <header class="site-header">
+    <div class="container nav-inner">
+      <a href="index.html" class="brand-logo" aria-label="ScamShield Lab Home">
+        <img src="assets/images/logo.jpg" alt="ScamShield Logo" class="brand-icon" width="36" height="36" decoding="async">
+        <span>ScamShield<span class="brand-tag">AI LAB</span></span>
+      </a>
+      <div class="nav-actions">
+        <a href="index.html#analyzer" class="nav-cta-btn">
+          <span class="pulse-beacon" aria-hidden="true"></span>
+          <span>Instant Scan</span>
+        </a>
+      </div>
+    </div>
+  </header>
+
+  <main class="tool-container" id="main-content">
+    
+    <div class="tool-header">
+      <div class="tool-badge">
+        <span aria-hidden="true">🛡️</span> Zero-Trust Voice Defense Protocol
+      </div>
+      <h1 class="tool-title">Family Safe Word & Deepfake Defense Kit</h1>
+      <p class="tool-subtitle">
+        AI voice synthesis engines can clone your loved ones' vocal cadence from a 3-second audio clip. Establish an offline, un-guessable Family Safe Word to verify real emergencies and neutralize phone extortion scams.
+      </p>
+
+      <div class="privacy-callout">
+        <span aria-hidden="true">🔒</span>
+        <span><strong>100% Client-Side Privacy:</strong> Nothing you type is ever sent to servers, logged, or stored. All generation happens locally in your browser.</span>
+      </div>
+    </div>
+
+    <!-- Interactive Builder Grid -->
+    <div class="builder-grid">
+      <!-- Input Panel -->
+      <div class="form-panel">
+        <div class="form-step-title">
+          <span class="form-step-num">1</span> Household Identification
+        </div>
+        <div class="form-group">
+          <label for="familyNameInput" class="form-label">Family / Household Unit Name</label>
+          <input type="text" id="familyNameInput" class="form-input" placeholder="e.g. The Anderson Family" value="The Anderson Family" maxlength="40">
+        </div>
+
+        <div class="form-step-title">
+          <span class="form-step-num">2</span> Establish Safe Word or Passphrase
+        </div>
+        <div class="form-group">
+          <label for="safeWordInput" class="form-label">Secret Code Word (Never spoken in front of smart speakers)</label>
+          <div class="input-row">
+            <input type="text" id="safeWordInput" class="form-input" placeholder="Enter or roll random..." value="Cobalt-Bicycle-42" maxlength="32">
+            <button type="button" id="rollWordBtn" class="btn-dice" title="Generate Memorable Passphrase" aria-label="Generate random safe word">🎲 Roll</button>
+          </div>
+          <div class="strength-meter" aria-hidden="true">
+            <div id="strengthBar" class="strength-bar" style="width: 85%; background: var(--color-success);"></div>
+          </div>
+          <span id="strengthLabel" class="strength-label">Strength: High entropy (Unguessable by AI profiling)</span>
+        </div>
+
+        <div class="form-step-title">
+          <span class="form-step-num">3</span> Challenge & Verification Question
+        </div>
+        <div class="form-group">
+          <label for="challengeSelect" class="form-label">Secret Fact Question (Only your immediate circle knows)</label>
+          <select id="challengeSelect" class="form-input" style="margin-bottom: 0.75rem;">
+            <option value="What city did our car break down in on vacation?">"What city did our car break down in on vacation?"</option>
+            <option value="What was the secret ingredient in grandma's burnt pie?">"What was the secret ingredient in grandma's burnt pie?"</option>
+            <option value="What was the nickname of our first family pet?">"What was the nickname of our first family pet?"</option>
+            <option value="What color was the tent we used for camping in 2021?">"What color was the tent we used for camping in 2021?"</option>
+            <option value="custom">-- Enter custom secret question --</option>
+          </select>
+          <input type="text" id="customQuestionInput" class="form-input" placeholder="Type custom secret question..." style="display: none; margin-bottom: 0.75rem;">
+          <input type="text" id="answerInput" class="form-input" placeholder="Pre-shared answer (e.g. Flagstaff)" value="Flagstaff" maxlength="30">
+        </div>
+      </div>
+
+      <!-- Live Preview & Card Actions -->
+      <div class="preview-panel">
+        <div class="protocol-card" id="printableCard">
+          <div class="card-top">
+            <div class="card-logo">ScamShield Lab &bull; Defense Protocol</div>
+            <div class="card-shield-badge">VERIFIED ZERO-TRUST</div>
+          </div>
+
+          <div class="card-family-name" id="cardFamilyDisplay">The Anderson Family</div>
+
+          <div class="card-field">
+            <div class="card-field-title">Official Secret Safe Word</div>
+            <div class="card-safe-word" id="cardSafeWordDisplay">Cobalt-Bicycle-42</div>
+          </div>
+
+          <div class="card-field">
+            <div class="card-field-title">Challenge Question</div>
+            <div class="card-field-value" id="cardQuestionDisplay">What city did our car break down in on vacation?</div>
+          </div>
+
+          <div class="card-field">
+            <div class="card-field-title">Pre-Shared Answer</div>
+            <div class="card-field-value" id="cardAnswerDisplay" style="font-weight: 700; color: #34D399;">Flagstaff</div>
+          </div>
+
+          <ul class="card-rules-list">
+            <li><span>🚨</span> <strong>Rule 1:</strong> Demand the Safe Word immediately on any distress/bail call.</li>
+            <li><span>📞</span> <strong>Rule 2:</strong> Hang up and dial the person back on their verified saved number.</li>
+            <li><span>🚫</span> <strong>Rule 3:</strong> Never wire money, purchase gift cards, or use Bitcoin ATMs.</li>
+          </ul>
+        </div>
+
+        <div class="card-actions">
+          <button type="button" class="btn btn-primary" id="copyProtocolBtn">📋 Copy Security Brief</button>
+          <button type="button" class="btn btn-outline" id="printCardBtn">🖨️ Print Wallet Card</button>
+        </div>
+        <div id="copyNotice" style="display: none; text-align: center; color: var(--color-success); font-size: 0.85rem; margin-top: 0.5rem;" role="status" aria-live="polite">
+          ✓ Copied family briefing to clipboard!
+        </div>
+      </div>
+    </div>
+
+    <!-- Educational Pillar: How Voice Scams Work -->
+    <section class="edu-section">
+      <h2>Why Traditional Security Questions Fail Against Generative AI</h2>
+      <p>
+        In 2026, cyber syndicates have moved beyond generic phishing. Armed with synthetic speech diffusion models and automated social media scrapers, criminal rings can extract a teenager's or family member's vocal timbre from a public TikTok video or Instagram Story. Within seconds, an automated dialer calls parents or grandparents with an exact acoustic match crying in distress: <em>"Mom, I've been in a car crash and police arrested me, I need bail money right now."</em>
+      </p>
+
+      <div class="tactics-grid">
+        <div class="tactic-card">
+          <div class="tactic-title">1. The 3-Second Vocal Clone</div>
+          <p class="tactic-desc">Neural vocoders only require seconds of background noise-free speech to replicate pitch, dialect, and emotional tremor. Relying on "hearing their voice" is no longer secure evidence of identity.</p>
+        </div>
+        <div class="tactic-card">
+          <div class="tactic-title">2. Social Engineering Pretext</div>
+          <p class="tactic-desc">Scammers scrape public data to name real friends, schools, and hometowns. Publicly discoverable trivia (mother's maiden name, pet names) can be discovered by OSINT tools in seconds.</p>
+        </div>
+        <div class="tactic-card">
+          <div class="tactic-title">3. The Offline Safe Word Solution</div>
+          <p class="tactic-desc">An arbitrary, high-entropy word triplet established face-to-face and never typed into cloud forms cannot be scraped by any crawler or predicted by an LLM.</p>
+        </div>
+      </div>
+
+      <h2 style="margin-top: 2.5rem;">The 3-Step Family Execution Protocol</h2>
+      <ol style="padding-left: 1.5rem; color: #CBD5E1; line-height: 1.8;">
+        <li><strong>Commit to the Safe Word Offline:</strong> Hold a 5-minute family meeting. Agree on the safe word. Ensure young kids and elderly grandparents understand that *no matter how desperate a caller sounds*, if they cannot provide the safe word, they are an impersonator.</li>
+        <li><strong>Enforce the "Hang Up & Call Back" Mandate:</strong> Caller ID is trivially spoofed. Tell family members to immediately disconnect and dial the family member directly on their trusted, pre-saved cell number.</li>
+        <li><strong>Establish Out-of-Band Emergency Contacts:</strong> Designate a trusted mutual friend or family neighbor as a secondary contact to physically check on a family member if their phone is unreachable.</li>
+      </ol>
+    </section>
+
+  </main>
+
+  <!-- Site Footer -->
+  <footer class="site-footer">
+    <div class="container">
+      <div class="footer-bottom-bar">
+        <div>&copy; 2026 ScamShield AI. Research and Intelligence Directorate.</div>
+        <div>
+          <a href="index.html" style="color: var(--text-faint);">Home</a> &bull; 
+          <a href="guide-voice-cloning.html" style="color: var(--text-faint);">Voice Cloning Guide</a> &bull; 
+          <a href="privacy.html" style="color: var(--text-faint);">Privacy</a> &bull; 
+          <a href="terms.html" style="color: var(--text-faint);">Terms</a>
+        </div>
+      </div>
+      <div class="footer-disclaimer">
+        <strong>Notice & Non-Affiliation:</strong> ScamShield AI (scamshieldlab.com) is an independent cybersecurity awareness and educational platform. It is not affiliated with, sponsored by, or connected to the Government of Singapore, GovTech Singapore, the National Crime Prevention Council (NCPC), or the official Singapore mobile application at scamshield.gov.sg.
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    (function() {
+      // Curated High-Entropy Word Triplet Banks (Memorable yet unpredictable)
+      const ADJECTIVES = ['Cobalt', 'Crimson', 'Golden', 'Silver', 'Obsidian', 'Velvet', 'Copper', 'Titanium', 'Sapphire', 'Emerald', 'Granite', 'Amber', 'Mystic', 'Polar'];
+      const NOUNS = ['Bicycle', 'Falcon', 'Orchid', 'Pancake', 'Lantern', 'Compass', 'Castle', 'Harbor', 'Meadow', 'Horizon', 'Whistle', 'Galaxy', 'Telescope', 'Canyon'];
+      
+      const familyNameInput = document.getElementById('familyNameInput');
+      const safeWordInput = document.getElementById('safeWordInput');
+      const rollWordBtn = document.getElementById('rollWordBtn');
+      const challengeSelect = document.getElementById('challengeSelect');
+      const customQuestionInput = document.getElementById('customQuestionInput');
+      const answerInput = document.getElementById('answerInput');
+      
+      const cardFamilyDisplay = document.getElementById('cardFamilyDisplay');
+      const cardSafeWordDisplay = document.getElementById('cardSafeWordDisplay');
+      const cardQuestionDisplay = document.getElementById('cardQuestionDisplay');
+      const cardAnswerDisplay = document.getElementById('cardAnswerDisplay');
+      const strengthBar = document.getElementById('strengthBar');
+      const strengthLabel = document.getElementById('strengthLabel');
+      
+      const copyProtocolBtn = document.getElementById('copyProtocolBtn');
+      const printCardBtn = document.getElementById('printCardBtn');
+      const copyNotice = document.getElementById('copyNotice');
+
+      function escapeText(str) {
+        return str.replace(/[&<>'"]/g, tag => ({
+          '&': '&amp;',
+          '<': '&lt;',
+          '>': '&gt;',
+          "'": '&#39;',
+          '"': '&quot;'
+        }[tag] || tag));
+      }
+
+      function generateRandomSafeWord() {
+        const adj = ADJECTIVES[Math.floor(Math.random() * ADJECTIVES.length)];
+        const noun = NOUNS[Math.floor(Math.random() * NOUNS.length)];
+        const num = Math.floor(Math.random() * 90) + 10;
+        return `${adj}-${noun}-${num}`;
+      }
+
+      function evaluateStrength(word) {
+        if (!word || word.length < 4) {
+          strengthBar.style.width = '20%';
+          strengthBar.style.background = 'var(--color-danger)';
+          strengthLabel.textContent = 'Strength: Very Weak (Easily guessed)';
+          return;
+        }
+        if (word.length < 8 || !/[-_\d]/.test(word)) {
+          strengthBar.style.width = '50%';
+          strengthBar.style.background = 'var(--color-warning)';
+          strengthLabel.textContent = 'Strength: Moderate (Add an arbitrary number or second word)';
+          return;
+        }
+        strengthBar.style.width = '100%';
+        strengthBar.style.background = 'var(--color-success)';
+        strengthLabel.textContent = 'Strength: High entropy (Unguessable by AI profiling)';
+      }
+
+      function updateCard() {
+        const familyName = familyNameInput.value.trim() || 'Your Family Unit';
+        const safeWord = safeWordInput.value.trim() || '[SAFE-WORD-REQUIRED]';
+        
+        let question = challengeSelect.value;
+        if (question === 'custom') {
+          question = customQuestionInput.value.trim() || 'Secret verification question';
+        }
+        const answer = answerInput.value.trim() || '[ANSWER-SET]';
+
+        cardFamilyDisplay.textContent = familyName;
+        cardSafeWordDisplay.textContent = safeWord;
+        cardQuestionDisplay.textContent = question;
+        cardAnswerDisplay.textContent = answer;
+
+        evaluateStrength(safeWord);
+      }
+
+      // Event Listeners
+      familyNameInput.addEventListener('input', updateCard);
+      safeWordInput.addEventListener('input', updateCard);
+      answerInput.addEventListener('input', updateCard);
+
+      challengeSelect.addEventListener('change', function() {
+        if (this.value === 'custom') {
+          customQuestionInput.style.display = 'block';
+          customQuestionInput.focus();
+        } else {
+          customQuestionInput.style.display = 'none';
+        }
+        updateCard();
+      });
+      customQuestionInput.addEventListener('input', updateCard);
+
+      rollWordBtn.addEventListener('click', function() {
+        const newWord = generateRandomSafeWord();
+        safeWordInput.value = newWord;
+        updateCard();
+      });
+
+      // Copy Security Briefing
+      copyProtocolBtn.addEventListener('click', function() {
+        const family = cardFamilyDisplay.textContent;
+        const safeWord = cardSafeWordDisplay.textContent;
+        const question = cardQuestionDisplay.textContent;
+        const answer = cardAnswerDisplay.textContent;
+
+        const brief = `🛡️ [${family.toUpperCase()} - EMERGENCY ZERO-TRUST PROTOCOL]\n` +
+          `--------------------------------------------------\n` +
+          `SECRET FAMILY SAFE WORD: ${safeWord}\n` +
+          `CHALLENGE QUESTION: ${question}\n` +
+          `PRE-SHARED ANSWER: ${answer}\n\n` +
+          `EMERGENCY INSTRUCTIONS:\n` +
+          `1. If anyone calls claiming an emergency, hospital, or bail: DEMAND THE SAFE WORD.\n` +
+          `2. If they cannot give the exact safe word, HANG UP IMMEDIATELY.\n` +
+          `3. Dial our verified cell phone number directly.\n` +
+          `4. NEVER wire money, send gift cards, or use Bitcoin ATMs.\n` +
+          `--------------------------------------------------\n` +
+          `Generated privately via ScamShield Lab (https://scamshieldlab.com/family-safe-word)`;
+
+        navigator.clipboard.writeText(brief).then(() => {
+          copyNotice.style.display = 'block';
+          setTimeout(() => {
+            copyNotice.style.display = 'none';
+          }, 3500);
+        }).catch(() => {
+          alert('Could not copy to clipboard. Please copy manually.');
+        });
+      });
+
+      // Print Wallet Cards
+      printCardBtn.addEventListener('click', function() {
+        window.print();
+      });
+
+      // Initial render
+      updateCard();
+    })();
+  </script>
+</body>
+</html>
