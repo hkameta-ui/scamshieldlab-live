@@ -126,7 +126,8 @@ class TestHtmlPagesStructure(unittest.TestCase):
         "privacy.html",
         "terms.html",
         "guide-voice-cloning.html",
-        "guide-pig-butchering.html"
+        "guide-pig-butchering.html",
+        "family-safe-word.html"
     ]
 
     def test_all_pages_have_consistent_header_brand_tag(self):
@@ -364,7 +365,8 @@ class TestCopyrightAndLegalCompliance(unittest.TestCase):
             "privacy.html",
             "terms.html",
             "guide-voice-cloning.html",
-            "guide-pig-butchering.html"
+            "guide-pig-butchering.html",
+            "family-safe-word.html"
         ]
         for filename in html_files:
             filepath = os.path.join(WORKSPACE_ROOT, filename)
@@ -399,7 +401,8 @@ class TestCopyrightAndLegalCompliance(unittest.TestCase):
             "privacy.html",
             "terms.html",
             "guide-voice-cloning.html",
-            "guide-pig-butchering.html"
+            "guide-pig-butchering.html",
+            "family-safe-word.html"
         ]
         assets_dir = os.path.join(WORKSPACE_ROOT, "assets", "images")
         existing_images = set(os.listdir(assets_dir))
@@ -415,6 +418,46 @@ class TestCopyrightAndLegalCompliance(unittest.TestCase):
                         existing_images,
                         f"Unresolved or missing image '{img_name}' referenced in {filename}"
                     )
+
+
+class TestFamilySafeWordTool(unittest.TestCase):
+    """Validation for Family Safe Word & AI Voice Cloning Defense Kit Generator."""
+
+    def setUp(self):
+        self.tool_path = os.path.join(WORKSPACE_ROOT, "family-safe-word.html")
+        with open(self.tool_path, "r", encoding="utf-8") as f:
+            self.content = f.read()
+
+    def test_file_exists_and_has_schema(self):
+        self.assertTrue(os.path.isfile(self.tool_path))
+        self.assertIn('"@type": "WebApplication"', self.content)
+        self.assertIn("Family Safe Word", self.content)
+
+    def test_interactive_controls_present(self):
+        required_ids = [
+            "familyNameInput",
+            "safeWordInput",
+            "rollWordBtn",
+            "challengeSelect",
+            "answerInput",
+            "cardFamilyDisplay",
+            "cardSafeWordDisplay",
+            "cardQuestionDisplay",
+            "cardAnswerDisplay",
+            "copyProtocolBtn",
+            "printCardBtn"
+        ]
+        for elem_id in required_ids:
+            self.assertIn(f'id="{elem_id}"', self.content, f"Missing required element id: {elem_id}")
+
+    def test_accessibility_labels_and_skip_link(self):
+        self.assertIn('class="skip-link"', self.content)
+        self.assertIn('for="familyNameInput"', self.content)
+        self.assertIn('for="safeWordInput"', self.content)
+        self.assertIn('for="challengeSelect"', self.content)
+
+    def test_non_affiliation_disclaimer_present(self):
+        self.assertIn("scamshield.gov.sg", self.content)
 
 
 class TestEditorialAndResearchIntegrity(unittest.TestCase):

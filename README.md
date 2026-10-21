@@ -138,3 +138,10 @@ Planned architectural, UI/UX, and heuristic enhancements to further elevate user
 * **Standardized Incident Report Generator**: Client-side form generating pre-formatted complaint briefs ready for one-click copy and submission to [FTC ReportFraud](https://reportfraud.ftc.gov/) and [FBI IC3](https://www.ic3.gov/).
 * **Structured Threat Intelligence Feed**: Exportable JSON-LD / RSS feed of active AI fraud patterns for cybersecurity awareness teams.
 
+### 5. High-Impact SEO & Utility Roadmap
+* **Programmatic Scam Message Archive**: Trending smishing & phishing catalog with dedicated SEO landing pages for exact SMS templates (USPS, SunPass, Geek Squad, IRS, Wells Fargo).
+* **"The First 60 Minutes" Emergency Triage Wizard**: Interactive step-by-step crisis workflow based on loss type (Zelle/wire recovery scripts, credit freeze 1-click links, AnyDesk remote access remediation).
+* **Quishing (QR Code Phishing) In-Browser Inspector**: Client-side QR code decoder unmasking redirects, tracking parameters, and deceptive shortlinks before phone camera scanning.
+* **Visual Scam Anatomy Annotator**: In-line linguistic annotator highlighting artificial urgency, coercive authority, and irreversible payment traps directly on pasted text.
+
+
