@@ -30,6 +30,25 @@ class TestProjectMandatesAndBranching(unittest.TestCase):
         else:
             self.assertIn(current_branch, ["main", "master"])
 
+    def test_main_and_master_are_synchronized(self):
+        """Rule 5 Mandate: Ensure main and master branches always point to the identical commit."""
+        main_sha = subprocess.run(
+            ["git", "rev-parse", "refs/heads/main"],
+            cwd=WORKSPACE_ROOT,
+            capture_output=True,
+            text=True
+        ).stdout.strip()
+        master_sha = subprocess.run(
+            ["git", "rev-parse", "refs/heads/master"],
+            cwd=WORKSPACE_ROOT,
+            capture_output=True,
+            text=True
+        ).stdout.strip()
+        self.assertEqual(
+            main_sha, master_sha,
+            f"Branch Synchronization Mandate: main ({main_sha}) and master ({master_sha}) must point to the same commit!"
+        )
+
     def test_rules_file_exists(self):
         agents_md = os.path.join(WORKSPACE_ROOT, "AGENTS.md")
         gemini_md = os.path.join(WORKSPACE_ROOT, "GEMINI.md")
