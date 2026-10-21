@@ -322,6 +322,42 @@ class TestCopyrightAndLegalCompliance(unittest.TestCase):
             self.assertIn("DMCA Copyright Infringement Notice", content)
             self.assertIn("legal@scamshieldlab.com", content)
 
+    def test_non_affiliation_disclaimer_present_across_all_pages(self):
+        """Rule 6: Verify non-affiliation disclaimer referencing scamshield.gov.sg is in every published HTML file."""
+        html_files = [
+            "index.html",
+            "about.html",
+            "privacy.html",
+            "terms.html",
+            "guide-voice-cloning.html",
+            "guide-pig-butchering.html"
+        ]
+        for filename in html_files:
+            filepath = os.path.join(WORKSPACE_ROOT, filename)
+            with open(filepath, "r", encoding="utf-8") as f:
+                content = f.read()
+                self.assertIn(
+                    "scamshield.gov.sg",
+                    content,
+                    f"Legal Mandate (Rule 6): {filename} must display the non-affiliation notice referencing scamshield.gov.sg"
+                )
+
+    def test_about_and_terms_have_explicit_non_affiliation_clauses(self):
+        """Rule 6: Verify dedicated non-affiliation clauses in about.html and terms.html."""
+        about_path = os.path.join(WORKSPACE_ROOT, "about.html")
+        terms_path = os.path.join(WORKSPACE_ROOT, "terms.html")
+        
+        with open(about_path, "r", encoding="utf-8") as f:
+            about_content = f.read()
+            self.assertIn("Independent Organization & Trademark Notice", about_content)
+            self.assertIn("Government of Singapore", about_content)
+            self.assertIn("GovTech Singapore", about_content)
+
+        with open(terms_path, "r", encoding="utf-8") as f:
+            terms_content = f.read()
+            self.assertIn("Non-Affiliation Notice", terms_content)
+            self.assertIn("Government of Singapore", terms_content)
+
     def test_all_referenced_images_exist(self):
         html_files = [
             "index.html",

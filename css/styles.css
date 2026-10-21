@@ -1805,6 +1805,17 @@ a:hover {
   gap: 1rem;
 }
 
+.footer-disclaimer {
+  width: 100%;
+  margin-top: 1.25rem;
+  padding-top: 1rem;
+  border-top: 1px solid var(--border-glass);
+  font-size: 0.78rem;
+  color: var(--text-faint);
+  line-height: 1.6;
+  text-align: center;
+}
+
 /* ==========================================================================
    Responsive Breakpoints
    ========================================================================== */
