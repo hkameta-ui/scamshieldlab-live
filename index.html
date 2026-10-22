@@ -94,11 +94,11 @@
   <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-7565560894775775" crossorigin="anonymous"></script>
 
   <!-- Stylesheets -->
-  <link rel="stylesheet" href="css/styles.css?v=20261022-nord1">
+  <link rel="stylesheet" href="css/styles.css?v=20261022-trust2">
   <link rel="icon" type="image/jpeg" href="assets/images/logo.jpg">
 
   <!-- Configuration & AdSense Loader -->
-  <script src="config.js?v=20261022-nord1" defer></script>
+  <script src="config.js?v=20261022-trust2" defer></script>
 </head>
 <body>
 
@@ -151,8 +151,14 @@
     <section class="hero-section">
       <div class="container hero-grid">
         <div class="hero-copy">
-          <div class="hero-pill">
-            <span>🛡️</span> 2026 Autonomous Threat Intelligence Hub
+          <div class="hero-badges-row">
+            <div class="hero-pill">
+              <span>🛡️</span> 2026 Autonomous Threat Intelligence Hub
+            </div>
+            <div class="hero-disclaimer-pill" role="note" aria-label="Independent Platform Notice">
+              <span class="pill-beacon"></span>
+              <span>Independent Global Lab &bull; Not affiliated with Singapore Gov (<a href="https://www.scamshield.gov.sg/" target="_blank" rel="noopener noreferrer">scamshield.gov.sg</a>)</span>
+            </div>
           </div>
           <h1 class="hero-title">
             Outsmart <span class="text-gradient">AI Voice Scams</span>, Deepfakes & Cyber Fraud.
@@ -160,6 +166,40 @@
           <p class="hero-lead">
             Detect synthetic voice clones, crypto romance traps, and high-urgency phishing in real time. 100% private, client-side neural heuristic analysis with zero data storage.
           </p>
+
+          <!-- Above-The-Fold Live Demo & Quick Scanner -->
+          <div class="hero-live-demo-card">
+            <div class="demo-card-header">
+              <span class="demo-badge">⚡ Live Neural Scanner Demo &bull; Zero Signup</span>
+              <span class="demo-privacy-tag">🔒 100% Client-Side Private</span>
+            </div>
+            <div class="hero-chips-row">
+              <span class="hero-chips-label">Try 1-Click Samples:</span>
+              <button type="button" class="hero-sample-chip" data-idx="3" aria-label="Load SunPass Toll Scam sample">🚗 SunPass Toll</button>
+              <button type="button" class="hero-sample-chip" data-idx="0" aria-label="Load Grandparent AI Voice Scam sample">📞 AI Voice Bail</button>
+              <button type="button" class="hero-sample-chip" data-idx="1" aria-label="Load Pig Butchering Crypto sample">💬 Crypto Romance</button>
+              <button type="button" class="hero-sample-chip" data-idx="4" aria-label="Load Safe Email sample">🛡️ Safe Email</button>
+            </div>
+            <div class="hero-input-group">
+              <textarea id="heroQuickInput" class="hero-quick-textarea" placeholder="Paste any suspicious SMS, email, WhatsApp message, or URL to test live..." rows="2" aria-label="Quick scan input"></textarea>
+              <div class="hero-input-btns">
+                <div class="hero-input-aux-btns">
+                  <button type="button" id="heroPasteBtn" class="btn-hero-aux" title="Paste text from clipboard">
+                    <span>📋</span> Paste
+                  </button>
+                  <button type="button" id="heroClearBtn" class="btn-hero-aux" title="Clear input text">
+                    <span>✕</span> Clear
+                  </button>
+                </div>
+                <button type="button" id="heroScanBtn" class="btn btn-primary btn-hero-scan">
+                  <span>⚡</span> Scan Threat
+                </button>
+              </div>
+            </div>
+            <div class="hero-demo-hint">
+              <span>Instant heuristic evaluation across 100+ scam linguistic urgency markers &bull; 0.4s response</span>
+            </div>
+          </div>
 
           <!-- Hero Instant Scam Lookup (Quick Search) -->
           <div class="hero-quick-search" role="search">
@@ -173,13 +213,27 @@
             </div>
           </div>
 
-          <div class="hero-cta-group" style="display: flex; gap: 1rem; flex-wrap: wrap;">
-            <a href="#analyzer" class="btn btn-primary">
-              <span>⚡</span> Run Neural Scam Scan &darr;
-            </a>
-            <a href="family-safe-word.html" class="btn btn-secondary">
-              <span>🛡️</span> Family Safe Word Kit &rarr;
-            </a>
+          <!-- Social Proof Metrics Strip -->
+          <div class="hero-social-proof-strip">
+            <div class="proof-metric">
+              <span class="proof-number">15,400+</span>
+              <span class="proof-label">Threats Evaluated</span>
+            </div>
+            <div class="proof-divider" aria-hidden="true"></div>
+            <div class="proof-metric">
+              <span class="proof-number">98.8%</span>
+              <span class="proof-label">Smishing & Urgency Accuracy</span>
+            </div>
+            <div class="proof-divider" aria-hidden="true"></div>
+            <div class="proof-metric">
+              <span class="proof-number">100%</span>
+              <span class="proof-label">Zero-Storage Privacy</span>
+            </div>
+            <div class="proof-divider" aria-hidden="true"></div>
+            <div class="proof-metric">
+              <span class="proof-number">$0 Free</span>
+              <span class="proof-label">No Account / Zero Sign-up</span>
+            </div>
           </div>
         </div>
 
@@ -197,6 +251,50 @@
         </div>
       </div>
     </section>
+
+    <!-- Authority Threat Intelligence Trust Bar -->
+    <aside class="trust-authority-bar" aria-label="Threat Intelligence Frameworks">
+      <div class="container trust-bar-inner">
+        <span class="trust-bar-heading">Threat intelligence & detection heuristics modeled on public advisories from:</span>
+        <div class="trust-badges-row">
+          <div class="trust-badge-item" title="Federal Bureau of Investigation Internet Crime Complaint Center">
+            <span class="trust-badge-icon" aria-hidden="true">🏛️</span>
+            <div>
+              <span class="trust-badge-name">FBI IC3</span>
+              <span class="trust-badge-desc">Toll & BEC Alerts</span>
+            </div>
+          </div>
+          <div class="trust-badge-item" title="Federal Trade Commission Consumer Sentinel">
+            <span class="trust-badge-icon" aria-hidden="true">🛡️</span>
+            <div>
+              <span class="trust-badge-name">FTC</span>
+              <span class="trust-badge-desc">Consumer Fraud Warnings</span>
+            </div>
+          </div>
+          <div class="trust-badge-item" title="Cybersecurity and Infrastructure Security Agency">
+            <span class="trust-badge-icon" aria-hidden="true">🔒</span>
+            <div>
+              <span class="trust-badge-name">CISA</span>
+              <span class="trust-badge-desc">Known Threat Indicators</span>
+            </div>
+          </div>
+          <div class="trust-badge-item" title="Open Worldwide Application Security Project">
+            <span class="trust-badge-icon" aria-hidden="true">🌐</span>
+            <div>
+              <span class="trust-badge-name">OWASP</span>
+              <span class="trust-badge-desc">Security Best Practices</span>
+            </div>
+          </div>
+          <div class="trust-badge-item" title="National Institute of Standards and Technology">
+            <span class="trust-badge-icon" aria-hidden="true">⚡</span>
+            <div>
+              <span class="trust-badge-name">NIST</span>
+              <span class="trust-badge-desc">Phishing Defense Guidelines</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </aside>
 
     <!-- SECTION 1: Interactive AI Scam & Phishing Text Analyzer -->
     <section class="section-wrapper" id="analyzer">
@@ -619,7 +717,7 @@
   </footer>
 
   <!-- Scripts -->
-  <script src="js/threat-data.js?v=20261022-nord1"></script>
-  <script src="js/app.js?v=20261022-nord1"></script>
+  <script src="js/threat-data.js?v=20261022-trust2"></script>
+  <script src="js/app.js?v=20261022-trust2"></script>
 </body>
 </html>

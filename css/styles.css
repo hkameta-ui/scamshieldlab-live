@@ -544,6 +544,313 @@ a:hover {
   color: var(--text-muted);
 }
 
+/* ==========================================================================
+   Above-the-Fold Trust, Live Demo & Social Proof Elements
+   ========================================================================== */
+.hero-badges-row {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+  margin-bottom: 1.25rem;
+}
+
+.hero-disclaimer-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  background: rgba(15, 23, 42, 0.75);
+  border: 1px solid rgba(255, 255, 255, 0.14);
+  padding: 0.35rem 0.85rem;
+  border-radius: var(--radius-full);
+  font-size: 0.76rem;
+  color: #94A3B8;
+  backdrop-filter: blur(8px);
+}
+
+.hero-disclaimer-pill a {
+  color: #38BDF8;
+  text-decoration: underline;
+}
+
+.pill-beacon {
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: #38BDF8;
+  box-shadow: 0 0 8px #38BDF8;
+  display: inline-block;
+  flex-shrink: 0;
+}
+
+/* Hero Live Demo Card (Above the Fold) */
+.hero-live-demo-card {
+  background: rgba(15, 23, 42, 0.85);
+  backdrop-filter: blur(16px);
+  border: 1px solid rgba(0, 242, 254, 0.3);
+  border-radius: var(--radius-lg);
+  padding: 1.25rem 1.35rem;
+  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.45), inset 0 0 15px rgba(0, 242, 254, 0.05);
+  margin-bottom: 1.5rem;
+  transition: border-color 0.3s ease;
+}
+
+.hero-live-demo-card:focus-within {
+  border-color: var(--color-primary);
+  box-shadow: 0 10px 35px rgba(0, 242, 254, 0.25), inset 0 0 18px rgba(0, 242, 254, 0.08);
+}
+
+.demo-card-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  margin-bottom: 0.75rem;
+  font-size: 0.78rem;
+}
+
+.demo-badge {
+  font-weight: 700;
+  color: #00F2FE;
+  letter-spacing: 0.02em;
+}
+
+.demo-privacy-tag {
+  color: #10B981;
+  font-weight: 600;
+}
+
+.hero-chips-row {
+  display: flex;
+  align-items: center;
+  gap: 0.45rem;
+  flex-wrap: wrap;
+  margin-bottom: 0.75rem;
+}
+
+.hero-chips-label {
+  font-size: 0.75rem;
+  color: var(--text-muted);
+  font-weight: 600;
+}
+
+.hero-sample-chip {
+  background: rgba(255, 255, 255, 0.06);
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  border-radius: var(--radius-full);
+  padding: 0.25rem 0.65rem;
+  font-size: 0.75rem;
+  color: var(--text-main);
+  cursor: pointer;
+  transition: var(--transition-smooth);
+}
+
+.hero-sample-chip:hover,
+.hero-sample-chip.active {
+  background: rgba(0, 242, 254, 0.15);
+  border-color: var(--color-primary);
+  color: #00F2FE;
+  box-shadow: 0 0 10px rgba(0, 242, 254, 0.2);
+}
+
+.hero-input-group {
+  display: flex;
+  gap: 0.65rem;
+  align-items: stretch;
+}
+
+@media (max-width: 640px) {
+  .hero-input-group {
+    flex-direction: column;
+  }
+}
+
+.hero-quick-textarea {
+  flex: 1;
+  background: rgba(7, 11, 20, 0.85);
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  border-radius: var(--radius-sm);
+  padding: 0.65rem 0.85rem;
+  color: var(--text-main);
+  font-family: var(--font-body);
+  font-size: 0.88rem;
+  resize: none;
+  min-height: 58px;
+  outline: none;
+  transition: border-color 0.2s ease;
+}
+
+.hero-quick-textarea:focus {
+  border-color: var(--color-primary);
+}
+
+.hero-input-btns {
+  display: flex;
+  flex-direction: column;
+  gap: 0.4rem;
+  justify-content: center;
+}
+
+@media (max-width: 640px) {
+  .hero-input-btns {
+    flex-direction: row;
+  }
+}
+
+.hero-input-aux-btns {
+  display: flex;
+  gap: 0.35rem;
+}
+
+.btn-hero-aux {
+  flex: 1;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.3rem;
+  background: rgba(255, 255, 255, 0.08);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  color: var(--text-main);
+  font-size: 0.78rem;
+  padding: 0.35rem 0.65rem;
+  border-radius: var(--radius-sm);
+  cursor: pointer;
+  transition: var(--transition-smooth);
+  white-space: nowrap;
+}
+
+.btn-hero-aux:hover {
+  background: rgba(255, 255, 255, 0.15);
+  border-color: rgba(255, 255, 255, 0.35);
+}
+
+.btn-hero-scan {
+  white-space: nowrap;
+  font-size: 0.85rem;
+  padding: 0.5rem 1.15rem;
+}
+
+.hero-demo-hint {
+  font-size: 0.72rem;
+  color: var(--text-faint);
+  margin-top: 0.5rem;
+}
+
+/* Hero Social Proof Metrics Strip */
+.hero-social-proof-strip {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  margin-top: 1.5rem;
+  padding: 1rem 1.25rem;
+  background: rgba(10, 16, 28, 0.7);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: var(--radius-md);
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.25);
+  flex-wrap: wrap;
+}
+
+.proof-metric {
+  display: flex;
+  flex-direction: column;
+}
+
+.proof-number {
+  font-family: var(--font-heading);
+  font-size: 1.2rem;
+  font-weight: 800;
+  color: #00F2FE;
+  line-height: 1.1;
+}
+
+.proof-label {
+  font-size: 0.72rem;
+  color: var(--text-muted);
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  margin-top: 0.15rem;
+}
+
+.proof-divider {
+  width: 1px;
+  height: 28px;
+  background: rgba(255, 255, 255, 0.12);
+}
+
+@media (max-width: 768px) {
+  .proof-divider {
+    display: none;
+  }
+}
+
+/* Authority Threat Intelligence Trust Bar */
+.trust-authority-bar {
+  background: rgba(8, 14, 26, 0.95);
+  border-top: 1px solid rgba(255, 255, 255, 0.06);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+  padding: 1.25rem 0;
+  margin-bottom: 2rem;
+}
+
+.trust-bar-inner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1.5rem;
+  flex-wrap: wrap;
+}
+
+.trust-bar-heading {
+  font-size: 0.8rem;
+  color: var(--text-muted);
+  font-weight: 600;
+  max-width: 270px;
+  line-height: 1.4;
+}
+
+.trust-badges-row {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  flex-wrap: wrap;
+}
+
+.trust-badge-item {
+  display: flex;
+  align-items: center;
+  gap: 0.55rem;
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid rgba(255, 255, 255, 0.09);
+  padding: 0.45rem 0.85rem;
+  border-radius: var(--radius-sm);
+  transition: var(--transition-smooth);
+}
+
+.trust-badge-item:hover {
+  background: rgba(255, 255, 255, 0.06);
+  border-color: rgba(0, 242, 254, 0.3);
+  transform: translateY(-1px);
+}
+
+.trust-badge-icon {
+  font-size: 1.15rem;
+}
+
+.trust-badge-name {
+  font-weight: 700;
+  font-size: 0.82rem;
+  color: var(--text-main);
+  display: block;
+}
+
+.trust-badge-desc {
+  font-size: 0.68rem;
+  color: var(--text-faint);
+  display: block;
+}
+
 .hero-visual-card {
   position: relative;
   border-radius: var(--radius-lg);

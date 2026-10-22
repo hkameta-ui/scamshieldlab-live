@@ -86,6 +86,79 @@ function initAnalyzer() {
     });
   }
 
+  // Wire up Above-The-Fold Live Demo Chips & Controls
+  const heroQuickInput = document.getElementById("heroQuickInput");
+  const heroScanBtn = document.getElementById("heroScanBtn");
+  const heroPasteBtn = document.getElementById("heroPasteBtn");
+  const heroSampleChips = document.querySelectorAll(".hero-sample-chip");
+
+  if (heroSampleChips.length > 0 && window.ANALYZER_PRESETS) {
+    heroSampleChips.forEach(chip => {
+      chip.addEventListener("click", () => {
+        const idx = chip.getAttribute("data-idx");
+        const preset = window.ANALYZER_PRESETS[idx];
+        if (preset) {
+          if (heroQuickInput) heroQuickInput.value = preset.sample;
+          inputEl.value = preset.sample;
+          heroSampleChips.forEach(c => c.classList.remove("active"));
+          chip.classList.add("active");
+          runAnalysis(preset.sample);
+        }
+      });
+    });
+  }
+
+  if (heroScanBtn && heroQuickInput) {
+    heroScanBtn.addEventListener("click", () => {
+      let text = heroQuickInput.value.trim();
+      if (!text) {
+        if (window.ANALYZER_PRESETS && window.ANALYZER_PRESETS[3]) {
+          text = window.ANALYZER_PRESETS[3].sample;
+          heroQuickInput.value = text;
+        } else {
+          heroQuickInput.focus();
+          return;
+        }
+      }
+      inputEl.value = text;
+      runAnalysis(text);
+    });
+  }
+
+  if (heroPasteBtn && heroQuickInput) {
+    heroPasteBtn.addEventListener("click", async () => {
+      try {
+        if (navigator.clipboard && navigator.clipboard.readText) {
+          const clipText = await navigator.clipboard.readText();
+          if (clipText && clipText.trim()) {
+            heroQuickInput.value = clipText.trim();
+            inputEl.value = clipText.trim();
+            runAnalysis(clipText.trim());
+            return;
+          }
+        }
+      } catch (e) {
+        // Fallback: clipboard permission denied or not supported
+      }
+      heroQuickInput.focus();
+      heroQuickInput.select();
+    });
+  }
+
+  const heroClearBtn = document.getElementById("heroClearBtn");
+  if (heroClearBtn && heroQuickInput) {
+    heroClearBtn.addEventListener("click", () => {
+      heroQuickInput.value = "";
+      if (inputEl) inputEl.value = "";
+      if (resultsContainer) resultsContainer.style.display = "none";
+      heroSampleChips.forEach(c => c.classList.remove("active"));
+      if (presetsContainer) {
+        presetsContainer.querySelectorAll(".preset-chip").forEach(b => b.classList.remove("active"));
+      }
+      heroQuickInput.focus();
+    });
+  }
+
   scanBtn.addEventListener("click", () => {
     const text = inputEl.value.trim();
     if (!text) {
@@ -99,10 +172,12 @@ function initAnalyzer() {
   if (clearBtn) {
     clearBtn.addEventListener("click", () => {
       inputEl.value = "";
+      if (heroQuickInput) heroQuickInput.value = "";
       if (resultsContainer) resultsContainer.style.display = "none";
       if (presetsContainer) {
         presetsContainer.querySelectorAll(".preset-chip").forEach(b => b.classList.remove("active"));
       }
+      heroSampleChips.forEach(c => c.classList.remove("active"));
       inputEl.focus();
     });
   }
@@ -240,7 +315,7 @@ function initAnalyzer() {
       "moneygram", "wallet address", "usdt", "deposit", "steam card", "apple card", 
       "itunes", "vanilla visa", "chime", "greendot", "bank transfer"
     ];
-    const moneyAmountRegex = /\$\s*\d+([,\.]\d+)?|\b\d+\s*(dollars|bucks|usd|eur|gbp|usdt)\b|\b(send|need|wire|transfer|pay|lend)\s+(\$|\d+|money|cash|funds)\b/i;
+    const moneyAmountRegex = /(?:[\$€£₹]|rs\.?|inr)\s*\d+([,\.]\d+)?|\b\d+\s*(dollars|bucks|usd|eur|gbp|usdt|rupees|inr|lakhs?|crores?)\b|\b(send|need|wire|transfer|pay|lend|won)\s+(\$|₹|\d+|money|cash|funds|prize)\b/i;
 
     const hasCryptoAddress = cryptoRegex.test(text);
     const hasMoneyAmount = moneyAmountRegex.test(text);
@@ -325,11 +400,17 @@ function initAnalyzer() {
     const urlRegex = /(https?:\/\/[^\s]+)/gi;
     const urls = text.match(urlRegex) || [];
     const suspiciousTlds = [".top", ".xyz", ".vip", ".cc", ".icu", ".work", ".cfd", ".buzz", ".live", ".fit", ".rest"];
+    const urlShorteners = ["bit.ly", "tinyurl.com", "t.co", "is.gd", "cutt.ly", "ow.ly", "shorturl.at"];
     let suspiciousUrlFound = false;
+    let isShortenedUrl = false;
 
     urls.forEach(u => {
-      if (suspiciousTlds.some(tld => u.toLowerCase().includes(tld)) || u.includes("defi-") || u.includes("-trading") || u.includes("verify-") || u.includes("secure-")) {
+      const lowerUrl = u.toLowerCase();
+      if (suspiciousTlds.some(tld => lowerUrl.includes(tld)) || lowerUrl.includes("defi-") || lowerUrl.includes("-trading") || lowerUrl.includes("verify-") || lowerUrl.includes("secure-")) {
         suspiciousUrlFound = true;
+      }
+      if (urlShorteners.some(s => lowerUrl.includes(s))) {
+        isShortenedUrl = true;
       }
     });
 
@@ -340,6 +421,13 @@ function initAnalyzer() {
         title: "Deceptive or Newly Registered Phishing Domain",
         description: "The link points to an unverified or throwaway domain commonly registered for credential theft and fraudulent crypto dashboards."
       });
+    } else if (isShortenedUrl) {
+      score += 35;
+      flags.push({
+        severity: "HIGH",
+        title: "Masked URL Shortener (Obfuscated Destination)",
+        description: "Contains an obfuscated URL shortener (e.g., bit.ly / tinyurl). Adversaries weaponize shorteners to conceal malicious destinations and evade carrier SMS spam filters."
+      });
     } else if (urls.length > 0) {
       score += 15;
       flags.push({
@@ -349,7 +437,101 @@ function initAnalyzer() {
       });
     }
 
-    // 9. Compound Attack Synergy Boost
+    // 9. Fake Lottery, Lucky Draw & Prize Claims (Indian & Global Smishing)
+    const prizeKeywords = [
+      "congratulations", "lucky draw", "lottery", "claim your prize", "prize winner",
+      "selected as winner", "cash reward", "claim reward", "jackpot", "won ₹", "won rs", "won $"
+    ];
+    const matchedPrizes = prizeKeywords.filter(k => lower.includes(k));
+    let isPrizeScam = false;
+    if (matchedPrizes.length > 0 || (lower.includes("won") && (lower.includes("prize") || lower.includes("claim") || lower.includes("draw")))) {
+      isPrizeScam = true;
+      score += 55;
+      flags.push({
+        severity: "CRITICAL",
+        title: "Fake Lucky Draw / Lottery Prize Scam",
+        description: `High-risk indicator: Claims you won an unexpected lottery or lucky draw ("${matchedPrizes.length > 0 ? matchedPrizes.slice(0, 2).map(escapeHtml).join('", "') : 'prize claim'}"). Scammers use fake cash prizes to bait victims into clicking credential harvesters or paying advance 'processing fees'. Legitimate lotteries never notify winners via unsolicited SMS or masked links.`
+      });
+    }
+
+    // 10. Fake Job Recruitment & Part-Time Task Scams (WhatsApp / Telegram / SMS Engagement Bait)
+    const jobKeywords = [
+      "flexible job", "part-time job", "part time job", "work from home", "remote job", "online job",
+      "hiring manager", "recruiter", "recruitment", "hr manager", "career team",
+      "found your profile", "found your resume", "reviewed your resume", "saw your profile",
+      "found your cv", "shortlisted your profile", "daily payout", "earn daily", "simple tasks"
+    ];
+    const jobReplyHooks = [
+      "reply with yes", "reply yes", "reply with interested", "reply interested",
+      "reply 1", "type yes", "send yes", "text yes", "reply with 'yes'", "reply with 'interested'"
+    ];
+
+    const matchedJob = jobKeywords.filter(k => lower.includes(k));
+    const matchedJobHooks = jobReplyHooks.filter(k => lower.includes(k));
+    let isJobScam = false;
+
+    if (matchedJob.length > 0 && (matchedJobHooks.length > 0 || (lower.includes("reply") && (lower.includes("yes") || lower.includes("interested"))))) {
+      isJobScam = true;
+      score += 60;
+      flags.push({
+        severity: "CRITICAL",
+        title: "Fake Job / Part-Time Task Scam Lure",
+        description: `High-risk indicator: Unsolicited recruitment offer claiming to have "found your profile" with a "flexible job", prompting you to reply ("YES" / "INTERESTED"). Attackers use this two-stage bait to verify active phone numbers before luring victims into WhatsApp or Telegram groups that demand prepaid task deposits.`
+      });
+    } else if (matchedJobHooks.length > 0 && (lower.includes("job") || lower.includes("earn") || lower.includes("salary") || lower.includes("income") || lower.includes("profile"))) {
+      isJobScam = true;
+      score += 55;
+      flags.push({
+        severity: "CRITICAL",
+        title: "Unsolicited Two-Stage Smishing Bait",
+        description: `Prompts an immediate single-word response ("YES" / "INTERESTED") to an unsolicited job or income lure. Replying marks your phone number as an active, responsive target on scammer lead lists.`
+      });
+    }
+
+    // 11. OTP / 2FA Verification Code Harvesting & Fake Refund Scams
+    const codeInterceptionKeywords = [
+      "receive a code", "share the code", "send the code", "tell me the code", "read the code",
+      "verification code", "security code", "authentication code", "6-digit code", "passcode",
+      "one-time password", "otp", "2fa code", "confirm the code", "read back the code", "sms code",
+      "enter the code", "provide the code"
+    ];
+    const refundKeywords = [
+      "refund", "confirm the refund", "process the refund", "process your refund",
+      "claim refund", "overpayment", "cancel subscription", "cancel charge", "cancel transaction",
+      "subscription renewal", "accidental charge", "geek squad", "norton", "mcafee"
+    ];
+
+    const matchedCode = codeInterceptionKeywords.filter(k => lower.includes(k));
+    const matchedRefund = refundKeywords.filter(k => lower.includes(k));
+    let isOtpTheft = false;
+
+    // Pattern A: Code + Refund (Classic refund authorization trap: you NEVER receive a code to get a refund)
+    if (matchedCode.length > 0 && (matchedRefund.length > 0 || lower.includes("refund"))) {
+      isOtpTheft = true;
+      score += 65;
+      flags.push({
+        severity: "CRITICAL",
+        title: "2FA / OTP Theft Disguised as Refund Confirmation",
+        description: `High-risk indicator: Mentions receiving a security code to "confirm a refund" ("${matchedCode.slice(0, 1).map(escapeHtml).join('", "')}"). Banks, credit card issuers, and merchants NEVER require you to provide an incoming security code to issue a refund. The code you receive is an authorization token (OTP/2FA) to drain funds or reset your account password.`
+      });
+    } else if (matchedCode.length > 0 && (lower.includes("send") || lower.includes("share") || lower.includes("tell") || lower.includes("read") || lower.includes("confirm") || lower.includes("give") || lower.includes("forward"))) {
+      isOtpTheft = true;
+      score += 60;
+      flags.push({
+        severity: "CRITICAL",
+        title: "One-Time Passcode (OTP) Harvesting Trap",
+        description: `High-risk indicator: Demands that you share, confirm, or read back a security verification code. Security codes (OTP) are private keys meant strictly for the account owner. Sharing a code gives attackers immediate access to bypass multi-factor authentication (MFA).`
+      });
+    } else if (matchedRefund.length > 0 && (lower.includes("call") || lower.includes("toll free") || lower.includes("within 24 hours") || lower.includes("cancel") || lower.includes("charged") || lower.includes("invoice"))) {
+      score += 45;
+      flags.push({
+        severity: "HIGH",
+        title: "Fake Refund / Subscription Cancellation Lure",
+        description: `High-risk indicator: Claims an unexpected charge or offers a refund ("${matchedRefund.slice(0, 2).map(escapeHtml).join('", "')}"). Scammers invent bogus subscription invoices to bait victims into calling fraudulent call centers.`
+      });
+    }
+
+    // 12. Compound Attack Synergy Boost
     if (isFamilyEmergency && hasFinancialDemand) {
       score += 25; // Guarantee top-tier critical alert for family emergency money requests
     }
@@ -382,6 +564,12 @@ function initAnalyzer() {
         summaryText = "DANGER: High-probability Family Impersonation / Grandparent Scam detected. Criminals weaponize emotional distress (accidents, hospital bills) to trick relatives into sending untraceable funds via CashApp, Zelle, or gift cards. DO NOT SEND MONEY. Call your relative on their known personal phone number to verify.";
       } else if (isTollSmishing) {
         summaryText = "DANGER: High-probability Road Toll Smishing Scam detected (SunPass / E-ZPass impersonation). Official toll agencies NEVER demand payment via SMS text messages to avoid late fees. DO NOT click links or enter payment card credentials.";
+      } else if (isPrizeScam) {
+        summaryText = "DANGER: High-probability Fake Lucky Draw / Lottery Scam detected. Never pay advance fees, taxes, or click masked bit.ly links to claim unexpected prize money.";
+      } else if (isJobScam) {
+        summaryText = "DANGER: High-probability Fake Job / Part-Time Task Scam detected. Legitimate employers never send unsolicited SMS offers asking you to reply with 'YES' or 'INTERESTED'. DO NOT REPLY.";
+      } else if (isOtpTheft) {
+        summaryText = "DANGER: High-probability 2FA/OTP Code Theft Scam detected. Banks and merchants NEVER require you to receive or confirm a code to issue refunds. The incoming code is an authorization token to drain funds or take over your account. NEVER SHARE CODES.";
       } else if (hasCryptoAddress || matchedInvestment.length > 0) {
         summaryText = "DANGER: High-probability Financial / Crypto Investment Scam detected. Never deposit funds or share private keys based on unsolicited communications.";
       } else {

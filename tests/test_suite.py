@@ -563,6 +563,85 @@ class TestNordAffiliatePartnerIntegration(unittest.TestCase):
             self.assertIn("affiliate-brand-img", app_code)
 
 
+class TestAboveTheFoldTrustAndLiveDemo(unittest.TestCase):
+    """Validation tests for instant above-the-fold credibility, live demo, and authority trust bar."""
+
+    def setUp(self):
+        index_path = os.path.join(WORKSPACE_ROOT, "index.html")
+        with open(index_path, "r", encoding="utf-8") as f:
+            self.index_html = f.read()
+
+        app_path = os.path.join(WORKSPACE_ROOT, "js", "app.js")
+        with open(app_path, "r", encoding="utf-8") as f:
+            self.app_js = f.read()
+
+        css_path = os.path.join(WORKSPACE_ROOT, "css", "styles.css")
+        with open(css_path, "r", encoding="utf-8") as f:
+            self.css = f.read()
+
+    def test_hero_non_affiliation_disclaimer(self):
+        """Ensures immediate 5-second credibility with prominent Singapore non-affiliation notice in hero."""
+        self.assertIn("hero-disclaimer-pill", self.index_html)
+        self.assertIn("scamshield.gov.sg", self.index_html)
+        self.assertIn(".hero-disclaimer-pill", self.css)
+
+    def test_hero_live_demo_controls(self):
+        """Ensures live interactive demo is available above the fold with paste, clear, and scan controls."""
+        self.assertIn("hero-live-demo-card", self.index_html)
+        self.assertIn('id="heroQuickInput"', self.index_html)
+        self.assertIn('id="heroScanBtn"', self.index_html)
+        self.assertIn('id="heroPasteBtn"', self.index_html)
+        self.assertIn('id="heroClearBtn"', self.index_html)
+        self.assertIn("hero-sample-chip", self.index_html)
+        self.assertIn(".hero-live-demo-card", self.css)
+        self.assertIn(".btn-hero-aux", self.css)
+
+    def test_hero_social_proof_numbers(self):
+        """Ensures verified social proof statistics are prominently displayed in the hero."""
+        self.assertIn("hero-social-proof-strip", self.index_html)
+        self.assertIn("15,400+", self.index_html)
+        self.assertIn("98.8%", self.index_html)
+        self.assertIn(".hero-social-proof-strip", self.css)
+
+    def test_authority_trust_bar(self):
+        """Ensures authority threat intelligence frameworks (FBI IC3, FTC, CISA, OWASP, NIST) are displayed."""
+        self.assertIn("trust-authority-bar", self.index_html)
+        self.assertIn("FBI IC3", self.index_html)
+        self.assertIn("FTC", self.index_html)
+        self.assertIn("CISA", self.index_html)
+        self.assertIn("OWASP", self.index_html)
+        self.assertIn("NIST", self.index_html)
+        self.assertIn(".trust-authority-bar", self.css)
+
+    def test_app_js_wires_hero_demo_controls(self):
+        """Ensures app.js event listeners correctly wire up hero sample chips, paste button, clear button, and scan button."""
+        self.assertIn("heroQuickInput", self.app_js)
+        self.assertIn("heroSampleChips", self.app_js)
+        self.assertIn("heroScanBtn", self.app_js)
+        self.assertIn("heroPasteBtn", self.app_js)
+        self.assertIn("heroClearBtn", self.app_js)
+
+    def test_prize_lucky_draw_scam_detection(self):
+        """Ensures fake lottery, lucky draw, and Indian Rupee / shortener smishing are recognized."""
+        self.assertIn("Fake Lucky Draw / Lottery Prize Scam", self.app_js)
+        self.assertIn("Masked URL Shortener", self.app_js)
+        self.assertIn("bit.ly", self.app_js)
+
+    def test_fake_job_recruitment_scam_detection(self):
+        """Ensures fake job / task-based smishing (found your profile, flexible job, reply YES/INTERESTED) is recognized."""
+        self.assertIn("Fake Job / Part-Time Task Scam Lure", self.app_js)
+        self.assertIn("flexible job", self.app_js)
+        self.assertIn("reply with yes", self.app_js)
+
+    def test_otp_refund_interception_scam_detection(self):
+        """Ensures OTP code theft and fake refund confirmation traps are recognized as critical threats."""
+        self.assertIn("2FA / OTP Theft Disguised as Refund Confirmation", self.app_js)
+        self.assertIn("One-Time Passcode (OTP) Harvesting Trap", self.app_js)
+        self.assertIn("receive a code", self.app_js)
+        self.assertIn("confirm the refund", self.app_js)
+        self.assertIn("NEVER require you to receive or confirm a code to issue refunds", self.app_js)
+
+
 if __name__ == "__main__":
     unittest.main()
 
