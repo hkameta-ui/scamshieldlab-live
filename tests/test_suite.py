@@ -652,6 +652,7 @@ class TestAboveTheFoldTrustAndLiveDemo(unittest.TestCase):
             wrangler_content = f.read()
         self.assertIn("scamshieldlab-live", wrangler_content)
         self.assertIn('pages_build_output_dir = "."', wrangler_content)
+        self.assertNotIn("account_id", wrangler_content, "Wrangler v4 rejects account_id in Pages config")
 
         with open(package_path, "r", encoding="utf-8") as f:
             package_content = f.read()
