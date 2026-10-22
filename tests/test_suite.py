@@ -704,6 +704,25 @@ class TestAboveTheFoldTrustAndLiveDemo(unittest.TestCase):
         self.assertIn("copyChecklistBtn", self.app_js)
         self.assertIn("analyzerImmediateActions", self.app_js)
 
+    def test_accidental_code_interception_scam_detection(self):
+        """Ensures 'sent a code by mistake / can you send it to me' account takeover is recognized as a critical threat."""
+        self.assertIn("Account Takeover: 'Accidental' Verification Code / 2FA Theft", self.app_js)
+        self.assertIn("isAccidentalCodeTheft", self.app_js)
+        self.assertIn("sent a code to your number", self.app_js)
+        self.assertIn("code by mistake", self.app_js)
+        self.assertIn("send it to me", self.app_js)
+
+    def test_score_dial_integrated_at_top_of_immediate_actions(self):
+        """Conversion UX Mandate: Score dial is integrated at the very top of immediate actions for zero-scroll instant visibility."""
+        actions_card_idx = self.index_html.find('id="analyzerImmediateActions"')
+        score_panel_idx = self.index_html.find('class="results-score-panel"')
+        imperatives_idx = self.index_html.find('class="triage-imperatives-grid"')
+        
+        # Verify score panel is inside immediate actions card and appears before the triage grid
+        self.assertTrue(actions_card_idx > 0, "analyzerImmediateActions must exist")
+        self.assertTrue(score_panel_idx > actions_card_idx, "results-score-panel must be inside analyzerImmediateActions")
+        self.assertTrue(imperatives_idx > score_panel_idx, "results-score-panel must appear BEFORE triage imperatives for instant visibility")
+
 
 if __name__ == "__main__":
     unittest.main()

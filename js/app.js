@@ -558,12 +558,15 @@ function initAnalyzer() {
       });
     }
 
-    // 11. OTP / 2FA Verification Code Harvesting & Fake Refund Scams
+    // 11. OTP / 2FA Verification Code Harvesting, Account Takeover & Fake Refund Scams
     const codeInterceptionKeywords = [
       "receive a code", "share the code", "send the code", "tell me the code", "read the code",
       "verification code", "security code", "authentication code", "6-digit code", "passcode",
       "one-time password", "otp", "2fa code", "confirm the code", "read back the code", "sms code",
-      "enter the code", "provide the code"
+      "enter the code", "provide the code", "forward the code", "give me the code", "text me the code",
+      "send me the code", "send it to me", "sent a code", "sent you a code", "code to your number",
+      "code to your phone", "code on your phone", "code by mistake", "accidentally sent a code",
+      "accidentally sent you a code"
     ];
     const refundKeywords = [
       "refund", "confirm the refund", "process the refund", "process your refund",
@@ -575,8 +578,53 @@ function initAnalyzer() {
     const matchedRefund = refundKeywords.filter(k => lower.includes(k));
     let isOtpTheft = false;
 
-    // Pattern A: Code + Refund (Classic refund authorization trap: you NEVER receive a code to get a refund)
-    if (matchedCode.length > 0 && (matchedRefund.length > 0 || lower.includes("refund"))) {
+    // Pattern A: Accidental Code Interception / Social Engineering Account Takeover
+    // e.g. "I sent a code to your number by mistake. Can you send it to me?"
+    const hasAccidentalMistake = (
+      lower.includes("by mistake") || lower.includes("mistake") || lower.includes("accident") ||
+      lower.includes("wrong number") || lower.includes("put your number") || lower.includes("entered your number") ||
+      lower.includes("typed your number")
+    );
+    const hasCodeRef = (
+      lower.includes("verification code") || lower.includes("security code") || lower.includes("authentication code") ||
+      lower.includes("one-time password") || lower.includes("otp") || lower.includes("2fa") ||
+      lower.includes("6-digit") || lower.includes("passcode") || lower.includes("sms code") ||
+      (lower.includes("code") && (
+        lower.includes("sent a code") || lower.includes("send the code") || lower.includes("share the code") ||
+        lower.includes("receive a code") || lower.includes("code to your") || lower.includes("code by mistake") ||
+        lower.includes("forward the code") || lower.includes("tell me the code") || lower.includes("give me the code") ||
+        lower.includes("sent you a code") || lower.includes("code on your") || lower.includes("can you send") ||
+        lower.includes("send it") || lower.includes("send me")
+      )) ||
+      lower.includes("pin") || lower.includes("digit")
+    );
+    const hasSendRequest = (
+      lower.includes("send it to me") || lower.includes("send me the code") || lower.includes("send the code to me") ||
+      lower.includes("send it back") || lower.includes("forward the code") || lower.includes("give me the code") ||
+      lower.includes("tell me the code") || lower.includes("share the code") || lower.includes("read the code") ||
+      lower.includes("what is the code") || lower.includes("what's the code") || lower.includes("what was the code") ||
+      ((lower.includes("can you send") || lower.includes("please send")) && (lower.includes("code") || lower.includes("otp") || lower.includes("pin") || lower.includes("digit"))) ||
+      (lower.includes("send it") && (lower.includes("code") || lower.includes("number") || lower.includes("mistake")))
+    );
+
+    const isAccidentalCodeTheft = (
+      (lower.includes("sent a code") || lower.includes("sent you a code") || lower.includes("code to your number") || lower.includes("code to your phone") || lower.includes("code on your phone")) &&
+      (hasAccidentalMistake || hasSendRequest || lower.includes("send") || lower.includes("forward"))
+    ) || (
+      hasAccidentalMistake && hasCodeRef && (hasSendRequest || lower.includes("send") || lower.includes("forward") || lower.includes("give"))
+    ) || (
+      hasSendRequest && (hasCodeRef || lower.includes("number") || lower.includes("phone") || lower.includes("sms"))
+    );
+
+    if (isAccidentalCodeTheft) {
+      isOtpTheft = true;
+      score += 75;
+      flags.push({
+        severity: "CRITICAL",
+        title: "Account Takeover: 'Accidental' Verification Code / 2FA Theft",
+        description: `High-risk indicator: Claims to have sent a code "by mistake" and requests you to send, forward, or read it back ("${matchedCode.length > 0 ? matchedCode.slice(0, 2).map(escapeHtml).join('", "') : 'code sent by mistake'}"). Attackers initiate an account takeover (WhatsApp, Google, banking, or social media) using your phone number, then trick you into handing over the SMS one-time passcode (OTP). Legitimate systems NEVER require you to send back a code received by mistake. NEVER share incoming verification codes.`
+      });
+    } else if (matchedCode.length > 0 && (matchedRefund.length > 0 || lower.includes("refund"))) {
       isOtpTheft = true;
       score += 65;
       flags.push({
@@ -639,7 +687,7 @@ function initAnalyzer() {
       } else if (isJobScam) {
         summaryText = "DANGER: High-probability Fake Job / Part-Time Task Scam detected. Legitimate employers never send unsolicited SMS offers asking you to reply with 'YES' or 'INTERESTED'. DO NOT REPLY.";
       } else if (isOtpTheft) {
-        summaryText = "DANGER: High-probability 2FA/OTP Code Theft Scam detected. Banks and merchants NEVER require you to receive or confirm a code to issue refunds. The incoming code is an authorization token to drain funds or take over your account. NEVER SHARE CODES.";
+        summaryText = "DANGER: High-probability 2FA/OTP Code Theft or Account Takeover detected. Banks and merchants NEVER require you to receive or confirm a code to issue refunds or verify identity. Attackers trigger logins then claim a code was sent 'by mistake' to steal accounts. NEVER SHARE CODES.";
       } else if (hasCryptoAddress || matchedInvestment.length > 0) {
         summaryText = "DANGER: High-probability Financial / Crypto Investment Scam detected. Never deposit funds or share private keys based on unsolicited communications.";
       } else {
