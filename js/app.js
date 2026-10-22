@@ -268,7 +268,9 @@ function initAnalyzer() {
         resultsContainer.style.display = "block";
         resultsContainer.setAttribute("role", "region");
         resultsContainer.setAttribute("aria-live", "polite");
-        resultsContainer.scrollIntoView({ behavior: "smooth", block: "nearest" });
+        const yOffset = -85;
+        const y = resultsContainer.getBoundingClientRect().top + window.pageYOffset + yOffset;
+        window.scrollTo({ top: Math.max(0, y), behavior: "smooth" });
       }
     }, 450);
   }
