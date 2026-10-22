@@ -101,15 +101,17 @@ function initAnalyzer() {
         e.preventDefault();
         if (inputEl) inputEl.value = heroText;
         runAnalysis(heroText);
-      } else if (window.ANALYZER_PRESETS && window.ANALYZER_PRESETS[0]) {
-        // Run Phishing sample immediately to show user how instant guest analysis works
+      } else {
         e.preventDefault();
-        const sample = window.ANALYZER_PRESETS[0].sample;
-        if (heroQuickInput) heroQuickInput.value = sample;
-        if (inputEl) inputEl.value = sample;
-        runAnalysis(sample);
-      } else if (heroQuickInput) {
-        heroQuickInput.focus();
+        if (heroQuickInput) {
+          heroQuickInput.focus();
+          heroQuickInput.style.borderColor = "var(--color-primary)";
+          heroQuickInput.style.boxShadow = "0 0 15px rgba(0, 242, 254, 0.4)";
+          setTimeout(() => {
+            heroQuickInput.style.borderColor = "";
+            heroQuickInput.style.boxShadow = "";
+          }, 1500);
+        }
       }
     });
   }
@@ -177,13 +179,14 @@ function initAnalyzer() {
     heroScanBtn.addEventListener("click", () => {
       let text = heroQuickInput.value.trim();
       if (!text) {
-        if (window.ANALYZER_PRESETS && window.ANALYZER_PRESETS[3]) {
-          text = window.ANALYZER_PRESETS[3].sample;
-          heroQuickInput.value = text;
-        } else {
-          heroQuickInput.focus();
-          return;
-        }
+        heroQuickInput.focus();
+        heroQuickInput.style.borderColor = "var(--color-primary)";
+        heroQuickInput.style.boxShadow = "0 0 15px rgba(0, 242, 254, 0.4)";
+        setTimeout(() => {
+          heroQuickInput.style.borderColor = "";
+          heroQuickInput.style.boxShadow = "";
+        }, 1500);
+        return;
       }
       inputEl.value = text;
       runAnalysis(text);
