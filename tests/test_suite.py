@@ -642,21 +642,24 @@ class TestAboveTheFoldTrustAndLiveDemo(unittest.TestCase):
         self.assertIn("NEVER require you to receive or confirm a code to issue refunds", self.app_js)
 
     def test_cloudflare_deployment_config(self):
-        """Ensures wrangler.toml and package.json exist and specify correct Pages deployment settings."""
+        """Ensures wrangler.toml and package.json exist and specify correct Worker static assets deployment settings."""
         wrangler_path = os.path.join(WORKSPACE_ROOT, "wrangler.toml")
         package_path = os.path.join(WORKSPACE_ROOT, "package.json")
+        assetsignore_path = os.path.join(WORKSPACE_ROOT, ".assetsignore")
         self.assertTrue(os.path.exists(wrangler_path), "wrangler.toml must exist for Cloudflare deployment")
         self.assertTrue(os.path.exists(package_path), "package.json must exist for Cloudflare tool detection")
+        self.assertTrue(os.path.exists(assetsignore_path), ".assetsignore must exist for asset filtering")
 
         with open(wrangler_path, "r", encoding="utf-8") as f:
             wrangler_content = f.read()
         self.assertIn("scamshieldlab-live", wrangler_content)
-        self.assertIn('pages_build_output_dir = "."', wrangler_content)
-        self.assertNotIn("account_id", wrangler_content, "Wrangler v4 rejects account_id in Pages config")
+        self.assertIn("[assets]", wrangler_content)
+        self.assertIn('directory = "."', wrangler_content)
 
         with open(package_path, "r", encoding="utf-8") as f:
             package_content = f.read()
         self.assertIn("wrangler", package_content)
+        self.assertIn('"deploy": "wrangler deploy"', package_content)
 
 
 if __name__ == "__main__":
