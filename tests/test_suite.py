@@ -127,7 +127,11 @@ class TestHtmlPagesStructure(unittest.TestCase):
         "terms.html",
         "guide-voice-cloning.html",
         "guide-pig-butchering.html",
-        "family-safe-word.html"
+        "family-safe-word.html",
+        "how-we-score.html",
+        "guide-phishing.html",
+        "guide-job-scams.html",
+        "guide-delivery-scams.html"
     ]
 
     def test_all_pages_have_consistent_header_brand_tag(self):
@@ -137,15 +141,78 @@ class TestHtmlPagesStructure(unittest.TestCase):
             with open(filepath, "r", encoding="utf-8") as f:
                 content = f.read()
                 self.assertIn(
-                    'class="brand-tag">AI LAB</span>',
+                    'class="brand-sub-badge">AI FORENSIC ANALYZER</span>',
                     content,
-                    f"Brand consistency error: {filename} must display the new AI LAB brand tag"
+                    f"Brand consistency error: {filename} must display 'AI FORENSIC ANALYZER' subtitle"
+                )
+                self.assertIn(
+                    'class="brand-main-title">ScamShield<span class="brand-lab-accent">Lab</span>',
+                    content,
+                    f"Brand consistency error: {filename} must display 'ScamShieldLab' title"
                 )
                 self.assertIn(
                     'class="nav-cta-btn"',
                     content,
                     f"Button consistency error: {filename} must use .nav-cta-btn"
                 )
+
+    def test_seo_and_explainability_moat_positioning(self):
+        """SEO & Positioning Mandate: Distinguish from Singapore gov app with 'ScamShield Lab - AI forensic analyzer' everywhere."""
+        for filename in self.HTML_FILES:
+            filepath = os.path.join(WORKSPACE_ROOT, filename)
+            with open(filepath, "r", encoding="utf-8") as f:
+                content = f.read()
+                self.assertIn(
+                    "ScamShield Lab",
+                    content,
+                    f"SEO Mandate: {filename} must reference 'ScamShield Lab'"
+                )
+                self.assertIn(
+                    "AI Forensic Analyzer",
+                    content,
+                    f"Positioning Mandate: {filename} must explicitly declare 'AI Forensic Analyzer'"
+                )
+                self.assertIn(
+                    "Notice & Non-Affiliation",
+                    content,
+                    f"Legal Mandate: {filename} footer must contain explicit non-affiliation disclaimer with official Singapore app"
+                )
+
+    def test_educational_category_guides_and_red_flags(self):
+        """SEO Mandate: Dedicated category educational guides with simulated red-flag teardowns for high-intent ranking."""
+        category_guides = [
+            "guide-phishing.html",
+            "guide-job-scams.html",
+            "guide-delivery-scams.html"
+        ]
+        for guide in category_guides:
+            filepath = os.path.join(WORKSPACE_ROOT, guide)
+            self.assertTrue(os.path.isfile(filepath), f"Category guide {guide} must exist")
+            with open(filepath, "r", encoding="utf-8") as f:
+                content = f.read()
+                self.assertIn("simulated-message-card", content, f"{guide} must feature visual simulated message card")
+                self.assertIn("redflag-highlight", content, f"{guide} must highlight red-flag triggers")
+                self.assertIn("redflag-analysis-grid", content, f"{guide} must provide forensic red-flag breakdown")
+
+    def test_how_we_score_page_architecture_and_privacy_matrix(self):
+        """Explainability Moat Mandate: Transparent 4-layer heuristic architecture, 0-100 formula, and Privacy-by-Design matrix."""
+        filepath = os.path.join(WORKSPACE_ROOT, "how-we-score.html")
+        self.assertTrue(os.path.isfile(filepath), "how-we-score.html must exist")
+        with open(filepath, "r", encoding="utf-8") as f:
+            content = f.read()
+            self.assertIn("The 4-Layer Forensic Engine Architecture", content)
+            self.assertIn("LAYER 1", content)
+            self.assertIn("Linguistic Urgency & Psychological Manipulation", content)
+            self.assertIn("LAYER 2", content)
+            self.assertIn("Infrastructure, Domain & URL Telemetry", content)
+            self.assertIn("LAYER 3", content)
+            self.assertIn("Payment Channels & Asset Extraction", content)
+            self.assertIn("LAYER 4", content)
+            self.assertIn("2FA Interception & Account Takeover", content)
+            self.assertIn('id="privacy-matrix"', content)
+            self.assertIn("privacy-matrix-table", content)
+            self.assertIn("Zero-Storage Architecture", content)
+            self.assertIn("0 bytes stored", content)
 
     def test_no_empty_adsense_raw_text_above_hero(self):
         index_path = os.path.join(WORKSPACE_ROOT, "index.html")

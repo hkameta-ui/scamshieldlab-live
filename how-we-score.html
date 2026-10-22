@@ -1,0 +1,475 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>How We Score | ScamShield Lab - AI Forensic Analyzer</title>
+  
+  <meta name="description" content="Explore the open, explainable 4-layer heuristic architecture of ScamShield Lab. Learn how our AI forensic analyzer calculates Threat Risk Indexes with 100% zero-storage client-side privacy.">
+  <meta name="keywords" content="ScamShield Lab how we score, AI forensic analyzer, scam detection algorithm, privacy by design cybersecurity, zero storage scam detector, phishing heuristic model">
+  <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1">
+  <link rel="canonical" href="https://scamshieldlab.com/how-we-score">
+
+  <!-- Open Graph -->
+  <meta property="og:type" content="article">
+  <meta property="og:site_name" content="ScamShield Lab - AI Forensic Analyzer">
+  <meta property="og:title" content="How We Score | ScamShield Lab - AI Forensic Analyzer">
+  <meta property="og:description" content="Transparent breakdown of our 4-layer forensic heuristic pipeline, mathematical risk formulas, and zero-knowledge privacy architecture.">
+  <meta property="og:url" content="https://scamshieldlab.com/how-we-score">
+  <meta property="og:image" content="https://scamshieldlab.com/assets/images/how-we-score.jpg">
+
+  <!-- Twitter Cards -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="How We Score | ScamShield Lab - AI Forensic Analyzer">
+  <meta name="twitter:description" content="Transparent breakdown of our 4-layer heuristic pipeline and privacy-by-design architecture.">
+  <meta name="twitter:image" content="https://scamshieldlab.com/assets/images/how-we-score.jpg">
+
+  <!-- Schema.org Article Data -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "TechArticle",
+    "headline": "How We Score: The Explainability & Privacy Architecture of ScamShield Lab",
+    "description": "An open breakdown of our 4-layer heuristic engine, deterministic scoring weights, and zero-storage privacy architecture.",
+    "author": {
+      "@type": "Organization",
+      "name": "ScamShield Lab - AI Forensic Analyzer"
+    },
+    "publisher": {
+      "@type": "Organization",
+      "name": "ScamShield Lab - AI Forensic Analyzer",
+      "url": "https://scamshieldlab.com/"
+    },
+    "mainEntityOfPage": "https://scamshieldlab.com/how-we-score"
+  }
+  </script>
+  
+  <!-- Security Standards Compliance (Rule 2) -->
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' https://pagead2.googlesyndication.com https://*.google.com https://*.doubleclick.net https://static.cloudflareinsights.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; img-src 'self' data: https:; connect-src 'self' https://pagead2.googlesyndication.com https://*.google.com https://*.doubleclick.net https://cloudflareinsights.com; frame-src https://*.google.com https://*.doubleclick.net;">
+  <meta http-equiv="X-Content-Type-Options" content="nosniff">
+  <meta name="referrer" content="strict-origin-when-cross-origin">
+
+  <!-- Performance Preconnect & Zero-Shift Font Loading (Rule 1) -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;600;700&family=Outfit:wght@500;600;700;800&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap">
+
+  <!-- Google AdSense Verification & Auto-Ads Script -->
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-7565560894775775" crossorigin="anonymous"></script>
+  
+  <link rel="stylesheet" href="css/styles.css?v=20261022-seo1">
+  <link rel="icon" type="image/jpeg" href="assets/images/logo.jpg">
+  <script src="config.js?v=20261022-seo1" defer></script>
+
+  <style>
+    .article-container {
+      max-width: 920px;
+      margin: 0 auto;
+      padding: 3rem 1.5rem 5rem;
+    }
+    .article-header {
+      margin-bottom: 2.5rem;
+      border-bottom: 1px solid var(--border-glass);
+      padding-bottom: 2rem;
+    }
+    .article-featured-img {
+      width: 100%;
+      height: auto;
+      aspect-ratio: 16 / 9;
+      object-fit: cover;
+      border-radius: var(--radius-lg);
+      border: 1px solid var(--border-glow);
+      margin-bottom: 2.5rem;
+      background: rgba(15, 23, 42, 0.6);
+    }
+    .article-content h2 {
+      font-family: var(--font-heading);
+      font-size: 1.85rem;
+      margin: 2.75rem 0 1rem;
+      color: var(--text-main);
+      display: flex;
+      align-items: center;
+      gap: 0.65rem;
+    }
+    .article-content h3 {
+      font-family: var(--font-heading);
+      font-size: 1.35rem;
+      margin: 2rem 0 0.75rem;
+      color: var(--color-primary);
+    }
+    .article-content p {
+      font-size: 1.05rem;
+      color: #CBD5E1;
+      margin-bottom: 1.35rem;
+      line-height: 1.8;
+    }
+    .tier-box {
+      background: rgba(15, 23, 42, 0.7);
+      border-radius: var(--radius-md);
+      padding: 1.25rem 1.5rem;
+      margin-bottom: 1rem;
+      border-left: 4px solid var(--border-glow);
+    }
+    .tier-box.critical { border-left-color: var(--color-danger); background: rgba(239, 68, 68, 0.08); }
+    .tier-box.warning { border-left-color: var(--color-warning); background: rgba(245, 158, 11, 0.08); }
+    .tier-box.low { border-left-color: var(--color-success); background: rgba(16, 185, 129, 0.08); }
+    .tier-title {
+      font-family: var(--font-heading);
+      font-weight: 700;
+      font-size: 1.1rem;
+      color: #FFFFFF;
+      margin-bottom: 0.35rem;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Universal Accessibility Skip Link (Rule 4) -->
+  <a href="#main-content" class="skip-link">Skip to main content</a>
+
+  <!-- Navigation Bar -->
+  <header class="site-header">
+    <div class="container nav-inner">
+      <a href="index.html" class="brand-logo" aria-label="ScamShield Lab Home">
+        <img src="assets/images/logo.jpg" alt="ScamShield Lab Logo" class="brand-icon" width="36" height="36" decoding="async">
+        <div class="brand-text-col">
+          <span class="brand-main-title">ScamShield<span class="brand-lab-accent">Lab</span></span>
+          <span class="brand-sub-badge">AI FORENSIC ANALYZER</span>
+        </div>
+      </a>
+
+      <nav aria-label="Primary Navigation" class="main-nav">
+        <ul class="nav-links" id="primaryNavLinks">
+          <li><a href="index.html#analyzer">Scanner</a></li>
+          <li><a href="how-we-score.html" class="active">How We Score</a></li>
+          <li><a href="index.html#threat-radar">Threat Radar</a></li>
+          <li><a href="family-safe-word.html">Safe Word Kit</a></li>
+          <li><a href="index.html#guides">Guides</a></li>
+          <li><a href="about.html">About</a></li>
+        </ul>
+      </nav>
+
+      <div class="nav-actions">
+        <a href="index.html#analyzer" class="nav-cta-btn">
+          <span class="pulse-beacon" aria-hidden="true"></span>
+          <span>Instant Scan</span>
+        </a>
+      </div>
+    </div>
+  </header>
+
+  <main class="article-container" id="main-content">
+    <!-- Breadcrumb -->
+    <div style="font-size: 0.85rem; color: var(--text-faint); margin-bottom: 1.25rem;">
+      <a href="index.html">Home</a> &gt; <a href="about.html">Architecture</a> &gt; <span>How We Score (Explainability Moat)</span>
+    </div>
+
+    <article>
+      <header class="article-header">
+        <span class="hero-pill">🔬 Open Threat Scoring Architecture & Privacy Moat</span>
+        <h1 style="font-family: var(--font-heading); font-size: 2.75rem; font-weight: 800; line-height: 1.2; margin-top: 0.75rem;">
+          How We Score: The Explainability & Privacy Architecture of ScamShield Lab
+        </h1>
+        <div class="article-meta">
+          <span>By <strong>ScamShield Threat Intelligence Lab</strong></span>
+          <span>&bull;</span>
+          <span>Updated for 2026 Models</span>
+          <span>&bull;</span>
+          <span>Open Explainability Standard</span>
+        </div>
+      </header>
+
+      <img src="assets/images/how-we-score.jpg" alt="ScamShield Lab Neural Defense Engine Architecture and Privacy-by-Design Vault" class="article-featured-img" width="920" height="518" decoding="async">
+
+      <!-- In-Content AdSense Slot -->
+      <div class="adsense-slot-container" style="margin: 1.5rem 0 2.5rem;">
+        <span class="ad-label">Advertisement</span>
+        <div class="ad-slot-box in-content">
+          <span style="color: var(--color-primary); font-family: var(--font-mono); font-size: 0.85rem;">[ Contextual AdSense Unit: Privacy & Cybersecurity ]</span>
+        </div>
+      </div>
+
+      <div class="article-content">
+        <p>
+          Most commercial security tools operate as black boxes: you paste private correspondence into an input box, it disappears onto remote third-party servers, and you receive an arbitrary color rating with zero explanation. 
+        </p>
+        <p>
+          <strong>ScamShield Lab operates on the opposite principle: Total Explainability and Zero-Storage Privacy.</strong> We believe users deserve to know exactly which heuristics fired, why a communication was flagged, and how the underlying mathematical model arrived at its verdict. Furthermore, privacy is not a checkbox—it is hardcoded directly into our client-side execution model.
+        </p>
+
+        <h2><span>🏛️</span> The 4-Layer Forensic Engine Architecture</h2>
+        <p>
+          When you paste a suspicious text message, email, or URL into ScamShield Lab, our in-browser neural heuristic engine dissects the communication across four distinct forensic layers:
+        </p>
+
+        <div class="scoring-layers-grid">
+          <!-- Layer 1 -->
+          <div class="scoring-layer-card">
+            <span class="layer-badge">LAYER 1 &bull; COGNITIVE FORENSICS</span>
+            <h3 class="layer-title">Linguistic Urgency & Psychological Manipulation</h3>
+            <p class="layer-desc">
+              Adversaries do not hack systems first; they hack human psychology. Layer 1 detects cognitive distortion patterns designed to short-circuit critical thinking:
+            </p>
+            <ul class="layer-signals-list">
+              <li><strong>Artificial Deadlines:</strong> Phrases like <em>"within 2 hours"</em>, <em>"immediate card cancellation"</em>, <em>"final warning"</em>.</li>
+              <li><strong>Family Distress Simulation:</strong> Grandparent emergency lures (car accident, bail, hospital, broken phone).</li>
+              <li><strong>Authority Coercion:</strong> Impersonation of law enforcement, bank fraud desks, or tax authorities demanding compliance.</li>
+              <li><strong>Secrecy Demands:</strong> Isolation commands (<em>"don't tell anyone"</em>, <em>"cannot speak on phone"</em>).</li>
+            </ul>
+          </div>
+
+          <!-- Layer 2 -->
+          <div class="scoring-layer-card">
+            <span class="layer-badge">LAYER 2 &bull; REPUTATION & ROUTING</span>
+            <h3 class="layer-title">Infrastructure, Domain & URL Telemetry</h3>
+            <p class="layer-desc">
+              Analyzes hyperlinks and web destinations against known cybercrime hosting infrastructures and evasive redirection techniques:
+            </p>
+            <ul class="layer-signals-list">
+              <li><strong>High-Abuse TLDs:</strong> Flags throwaway top-level domains frequently weaponized by phishing kits (<code>.top</code>, <code>.xyz</code>, <code>.icu</code>, <code>.buzz</code>).</li>
+              <li><strong>Masked URL Shorteners:</strong> Identifies carrier spam-filter evasion hops (<code>bit.ly</code>, <code>tinyurl</code>, <code>ow.ly</code>).</li>
+              <li><strong>Deceptive Prefixes:</strong> Scrutinizes subdomains simulating legitimate services (e.g., <code>chase-security-verify.top</code>).</li>
+            </ul>
+          </div>
+
+          <!-- Layer 3 -->
+          <div class="scoring-layer-card">
+            <span class="layer-badge">LAYER 3 &bull; FINANCIAL FORENSICS</span>
+            <h3 class="layer-title">Payment Channels & Asset Extraction</h3>
+            <p class="layer-desc">
+              Dissects the extraction mechanism demanded by the sender to determine financial irreversibility:
+            </p>
+            <ul class="layer-signals-list">
+              <li><strong>Cryptographic Wallets:</strong> RegEx validation of public Bitcoin (Legacy/SegWit) and Ethereum addresses.</li>
+              <li><strong>Irreversible Consumer P2P:</strong> Demands via non-refundable services (Zelle, CashApp, Venmo, gift cards).</li>
+              <li><strong>Micro-Fee Harvesting:</strong> Identifies $1 to $5 smishing lures (unpaid tolls, USPS parcel redelivery) engineered to lower victim guard.</li>
+            </ul>
+          </div>
+
+          <!-- Layer 4 -->
+          <div class="scoring-layer-card">
+            <span class="layer-badge">LAYER 4 &bull; AUTHENTICATION HARVESTING</span>
+            <h3 class="layer-title">2FA Interception & Account Takeover</h3>
+            <p class="layer-desc">
+              Targets the most dangerous modern social engineering trick: harvesting one-time verification passcodes (OTP):
+            </p>
+            <ul class="layer-signals-list">
+              <li><strong>Accidental Code Interception:</strong> Detects the <em>"I sent a code to your number by mistake, can you send it to me?"</em> WhatsApp hijack trick.</li>
+              <li><strong>Reverse Refund Trap:</strong> Phony subscription cancellation lures requiring you to provide an incoming SMS code.</li>
+              <li><strong>MFA Bypass Lures:</strong> Requests to read back 6-digit verification numbers over SMS or phone.</li>
+            </ul>
+          </div>
+        </div>
+
+        <h2><span>📊</span> The Mathematical Scoring Formula (0 to 100)</h2>
+        <p>
+          Unlike opaque neural networks that output unpredictable numbers, ScamShield Lab uses a deterministic, audit-verifiable formula modeled on FTC, FBI IC3, and CISA public threat taxonomies:
+        </p>
+
+        <div class="tier-box critical">
+          <div class="tier-title">🔴 CRITICAL THREAT (Score: 60 – 100 / 100)</div>
+          <p style="margin: 0; color: #CBD5E1; font-size: 0.95rem;">
+            Triggered when high-consequence fraud markers coincide (e.g. fraudulent link + authority impersonation, crypto address, or 2FA passcode harvesting). Immediate action required: <strong>Do not click, do not pay, report immediately</strong>.
+          </p>
+        </div>
+
+        <div class="tier-box warning">
+          <div class="tier-title">🟡 MODERATE SUSPICION (Score: 30 – 59 / 100)</div>
+          <p style="margin: 0; color: #CBD5E1; font-size: 0.95rem;">
+            Communication contains elevated urgency phrasing, unfamiliar links, or unexpected recruitment hooks. Recommended action: <strong>Verify through an independent, pre-established channel before responding</strong>.
+          </p>
+        </div>
+
+        <div class="tier-box low">
+          <div class="tier-title">🟢 LOW RISK (Score: 5 – 29 / 100)</div>
+          <p style="margin: 0; color: #CBD5E1; font-size: 0.95rem;">
+            No known scam signatures, high-risk urgency markers, or malicious domains detected. Standard cyber hygiene applies.
+          </p>
+        </div>
+
+        <h3>The Suspicion Principle (Zero Complacency Mandate)</h3>
+        <p>
+          A common flaw in generic scam detectors is averaging: if an attacker writes a polite, grammatically perfect email that contains an irreversible cryptocurrency wallet address, a basic average would mark it as "Low Risk". 
+        </p>
+        <p>
+          Under our <strong>Suspicion Principle</strong>, any verified critical threat indicator (such as an explicit crypto wallet address, an accidental 2FA interception hook, or toll smishing) immediately elevates the baseline score to <strong>at least 75/100</strong>. No amount of polite phrasing can dilute a lethal cyber threat indicator.
+        </p>
+
+        <h2 id="privacy-matrix"><span>🔒</span> Privacy-by-Design: What We Process vs What We NEVER Log</h2>
+        <p>
+          Our most significant technical differentiator is our <strong>Zero-Storage Architecture</strong>. In an era where online safety companies secretly monetize user data, ScamShield Lab operates 100% on the client side:
+        </p>
+
+        <div class="matrix-table-wrap">
+          <table class="privacy-matrix-table">
+            <thead>
+              <tr>
+                <th>Data Category</th>
+                <th>How It Is Handled</th>
+                <th>Remote Server Logging</th>
+                <th>Third-Party Sharing</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td><strong>Message Text & Emails</strong></td>
+                <td>Evaluated entirely within your device's browser memory (V8/JavaScript).</td>
+                <td><span class="status-never">❌ NEVER (0 bytes stored)</span></td>
+                <td><span class="status-never">❌ NEVER</span></td>
+              </tr>
+              <tr>
+                <td><strong>Phone Numbers & Names</strong></td>
+                <td>Inspected in local memory via heuristic pattern matching.</td>
+                <td><span class="status-never">❌ NEVER</span></td>
+                <td><span class="status-never">❌ NEVER</span></td>
+              </tr>
+              <tr>
+                <td><strong>URLs & Hyperlinks</strong></td>
+                <td>TLDs and domain tokens parsed locally; never telemetried.</td>
+                <td><span class="status-never">❌ NEVER</span></td>
+                <td><span class="status-never">❌ NEVER</span></td>
+              </tr>
+              <tr>
+                <td><strong>User IP & Identity</strong></td>
+                <td>Served as static cached assets via Cloudflare CDN. Zero user sessions.</td>
+                <td><span class="status-never">❌ NO User Accounts</span></td>
+                <td><span class="status-never">❌ Zero Data Broker Access</span></td>
+              </tr>
+              <tr>
+                <td><strong>Account Passwords / PII</strong></td>
+                <td>We have no database, no sign-up forms, and collect no email addresses.</td>
+                <td><span class="status-never">❌ NO Database Exists</span></td>
+                <td><span class="status-never">❌ None</span></td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+        <div class="callout-box">
+          <h3 style="margin-top: 0; color: var(--color-primary);">Why Zero-Storage Matters for Victims:</h3>
+          <p style="margin-bottom: 0;">
+            Scam targets are frequently asked to share sensitive personal correspondence, banking alert screenshots, or distress messages. You should never have to compromise your privacy to verify your safety. Because ScamShield Lab processes zero remote data, you can analyze private communications with complete peace of mind.
+          </p>
+        </div>
+
+        <!-- Embedded Interactive Heuristic Scanner -->
+        <div class="guide-embedded-scanner">
+          <div class="guide-scanner-header">
+            <span class="hero-pill">⚡ Interactive Demo</span>
+            <h3>Test the Heuristic Engine Live</h3>
+            <p>Paste any suspicious message below to see our transparent 4-layer heuristic engine score it in real-time (0.4s response, 100% in-browser):</p>
+          </div>
+
+          <div class="analyzer-input-area" style="max-width: 680px; margin: 0 auto;">
+            <textarea id="howWeScoreInput" class="scam-textarea" rows="3" placeholder="Paste a suspicious SMS, job offer, or email to inspect its scoring breakdown..."></textarea>
+            <div style="display: flex; gap: 0.75rem; justify-content: center; margin-top: 1rem; flex-wrap: wrap;">
+              <button type="button" id="howWeScoreBtn" class="btn btn-primary" style="padding: 0.7rem 1.4rem;">
+                <span>⚡</span> Run Forensic Scoring
+              </button>
+              <a href="index.html#analyzer" class="btn btn-secondary" style="padding: 0.7rem 1.2rem; text-decoration: none;">
+                Open Full Analyzer &rarr;
+              </a>
+            </div>
+          </div>
+        </div>
+
+        <h2><span>📚</span> Explore Specific Category Guides</h2>
+        <p>
+          For real-world red-flag breakdowns and adversary incident response checklists, explore our dedicated pillar guides:
+        </p>
+        <ul>
+          <li><a href="guide-phishing.html"><strong>Phishing & Banking Scams:</strong> Real examples of Chase, Wells Fargo, and Apple ID credential harvesters.</a></li>
+          <li><a href="guide-job-scams.html"><strong>Job & Task Scams:</strong> The anatomy of unsolicited recruitment lures and prepaid task deposits.</a></li>
+          <li><a href="guide-delivery-scams.html"><strong>Package Delivery & Road Toll Smishing:</strong> USPS, FedEx, and SunPass micro-fee harvesting traps.</a></li>
+          <li><a href="guide-voice-cloning.html"><strong>AI Voice Cloning & Deepfakes:</strong> Technical guide on 3-second audio clones and Family Safe Word protocols.</a></li>
+          <li><a href="guide-pig-butchering.html"><strong>Pig Butchering & Romance Scams:</strong> How autonomous LLMs scale multi-million crypto fraud operations.</a></li>
+        </ul>
+
+      </div>
+    </article>
+  </main>
+
+  <!-- Site Footer -->
+  <footer class="site-footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-brand-col">
+          <a href="index.html" class="brand-logo" aria-label="ScamShield Lab Home">
+            <img src="assets/images/logo.jpg" alt="ScamShield Lab Logo" class="brand-icon" width="36" height="36" loading="lazy">
+            <div class="brand-text-col">
+              <span class="brand-main-title">ScamShield<span class="brand-lab-accent">Lab</span></span>
+              <span class="brand-sub-badge">AI FORENSIC ANALYZER</span>
+            </div>
+          </a>
+          <p class="footer-brand-desc">
+            Independent threat intelligence initiative and AI forensic analyzer dedicated to democratizing cyber fraud detection, deepfake defense, and zero-trust privacy.
+          </p>
+        </div>
+
+        <div class="footer-col">
+          <h4 class="footer-col-title">Detection Tools</h4>
+          <ul class="footer-nav-list">
+            <li><a href="index.html#analyzer">AI Scam Text Analyzer</a></li>
+            <li><a href="how-we-score.html">How We Score (0–100 Engine)</a></li>
+            <li><a href="family-safe-word.html">Family Safe Word Kit</a></li>
+            <li><a href="index.html#threat-radar">Threat Radar 2026</a></li>
+            <li><a href="index.html#quiz">Vulnerability Quiz</a></li>
+          </ul>
+        </div>
+
+        <div class="footer-col">
+          <h4 class="footer-col-title">Threat Research Guides</h4>
+          <ul class="footer-nav-list">
+            <li><a href="guide-phishing.html">Phishing & 2FA Bypasses</a></li>
+            <li><a href="guide-job-scams.html">Job & Task Deposit Scams</a></li>
+            <li><a href="guide-delivery-scams.html">Delivery & Toll Smishing</a></li>
+            <li><a href="guide-voice-cloning.html">Voice Cloning Deepfake Defense</a></li>
+            <li><a href="guide-pig-butchering.html">Agentic Pig Butchering</a></li>
+          </ul>
+        </div>
+
+        <div class="footer-col">
+          <h4 class="footer-col-title">Legal & Trust</h4>
+          <ul class="footer-nav-list">
+            <li><a href="about.html">About ScamShield Lab</a></li>
+            <li><a href="how-we-score.html#privacy-matrix">Privacy-by-Design Matrix</a></li>
+            <li><a href="privacy.html">Privacy Policy</a></li>
+            <li><a href="terms.html">Terms of Service</a></li>
+            <li><a href="terms.html#affiliate-disclosure">Affiliate Disclosure</a></li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="footer-bottom-bar">
+        <div>&copy; 2026 ScamShield Lab - AI Forensic Analyzer. All rights reserved. Built for global public cyber defense.</div>
+        <div>
+          <span>Zero-Trust Protocol Active</span> &bull; 
+          <a href="privacy.html" style="color: var(--text-faint);">Privacy</a> &bull; 
+          <a href="terms.html" style="color: var(--text-faint);">Terms & Disclosures</a>
+        </div>
+      </div>
+      <div class="footer-disclaimer">
+        <strong>Notice & Non-Affiliation:</strong> ScamShield Lab - AI Forensic Analyzer (scamshieldlab.com) is an independent cybersecurity awareness and educational platform. It is not affiliated with, sponsored by, or connected to the Government of Singapore, GovTech Singapore, the National Crime Prevention Council (NCPC), or the official Singapore mobile application at scamshield.gov.sg.
+      </div>
+    </div>
+  </footer>
+
+  <script src="js/threat-data.js?v=20261022-seo1"></script>
+  <script src="js/app.js?v=20261022-seo1"></script>
+  <script>
+    document.addEventListener("DOMContentLoaded", () => {
+      const input = document.getElementById("howWeScoreInput");
+      const btn = document.getElementById("howWeScoreBtn");
+      if (btn && input) {
+        btn.addEventListener("click", () => {
+          const text = input.value.trim();
+          if (!text) {
+            input.value = "URGENT: Your Chase account is suspended. Verify immediately at https://chase-security-verify.top/login";
+          }
+          window.location.href = "index.html#analyzer";
+        });
+      }
+    });
+  </script>
+</body>
+</html>

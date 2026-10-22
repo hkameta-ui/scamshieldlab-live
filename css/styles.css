@@ -2765,3 +2765,308 @@ a:hover {
   flex-shrink: 0;
 }
 
+/* ==========================================================================
+   Brand Positioning: ScamShield Lab - AI Forensic Analyzer
+   ========================================================================== */
+.brand-text-col {
+  display: flex;
+  flex-direction: column;
+  line-height: 1.15;
+}
+
+.brand-main-title {
+  font-family: var(--font-heading);
+  font-size: 1.25rem;
+  font-weight: 800;
+  color: #FFFFFF;
+  letter-spacing: -0.02em;
+}
+
+.brand-lab-accent {
+  color: var(--color-primary);
+  margin-left: 0.15rem;
+}
+
+.brand-sub-badge {
+  font-family: var(--font-mono);
+  font-size: 0.62rem;
+  font-weight: 700;
+  color: #38BDF8;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  margin-top: 0.1rem;
+}
+
+/* ==========================================================================
+   Educational Pillar Red-Flag Teardowns & Simulated Messages
+   ========================================================================== */
+.simulated-message-card {
+  background: rgba(15, 23, 42, 0.85);
+  border: 1px solid rgba(239, 68, 68, 0.35);
+  border-radius: var(--radius-lg);
+  padding: 1.5rem;
+  margin: 1.75rem 0 2rem;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.45);
+}
+
+.simulated-message-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+  margin-bottom: 1rem;
+  padding-bottom: 0.75rem;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.simulated-sender {
+  font-family: var(--font-mono);
+  font-size: 0.82rem;
+  color: #94A3B8;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.threat-tag-pill {
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  padding: 0.2rem 0.6rem;
+  border-radius: var(--radius-full);
+  background: rgba(239, 68, 68, 0.15);
+  color: #EF4444;
+  border: 1px solid rgba(239, 68, 68, 0.4);
+}
+
+.simulated-message-body {
+  background: rgba(0, 0, 0, 0.4);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: var(--radius-md);
+  padding: 1.25rem;
+  font-family: var(--font-mono);
+  font-size: 0.95rem;
+  line-height: 1.6;
+  color: #F1F5F9;
+  margin-bottom: 1.25rem;
+}
+
+.redflag-highlight {
+  background: rgba(239, 68, 68, 0.22);
+  border-bottom: 2px solid #EF4444;
+  color: #FECACA;
+  font-weight: 700;
+  padding: 0.1rem 0.3rem;
+  border-radius: 2px;
+}
+
+.redflag-highlight.warning {
+  background: rgba(245, 158, 11, 0.22);
+  border-bottom: 2px solid #F59E0B;
+  color: #FDE68A;
+}
+
+.redflag-analysis-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  gap: 1rem;
+}
+
+.redflag-point {
+  background: rgba(0, 0, 0, 0.25);
+  border-left: 3px solid var(--color-danger);
+  border-radius: 0 var(--radius-sm) var(--radius-sm) 0;
+  padding: 0.85rem 1rem;
+}
+
+.redflag-point.warning {
+  border-left-color: var(--color-warning);
+}
+
+.redflag-point-title {
+  font-family: var(--font-heading);
+  font-size: 0.88rem;
+  font-weight: 700;
+  color: #FFFFFF;
+  margin-bottom: 0.25rem;
+}
+
+.redflag-point-desc {
+  font-size: 0.82rem;
+  color: var(--text-muted);
+  line-height: 1.4;
+  margin: 0;
+}
+
+/* ==========================================================================
+   Explainability Moat: Scoring Layers & Privacy-by-Design Matrix
+   ========================================================================== */
+.scoring-layers-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 1.5rem;
+  margin: 2rem 0;
+}
+
+.scoring-layer-card {
+  background: rgba(15, 23, 42, 0.75);
+  border: 1px solid rgba(0, 242, 254, 0.25);
+  border-radius: var(--radius-lg);
+  padding: 1.75rem;
+  position: relative;
+  transition: all 0.25s ease;
+}
+
+.scoring-layer-card:hover {
+  border-color: var(--color-primary);
+  box-shadow: 0 8px 30px rgba(0, 242, 254, 0.15);
+  transform: translateY(-2px);
+}
+
+.layer-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  font-weight: 700;
+  color: var(--color-primary);
+  background: rgba(0, 242, 254, 0.12);
+  border: 1px solid rgba(0, 242, 254, 0.3);
+  padding: 0.25rem 0.65rem;
+  border-radius: var(--radius-full);
+  margin-bottom: 1rem;
+}
+
+.layer-title {
+  font-family: var(--font-heading);
+  font-size: 1.2rem;
+  font-weight: 700;
+  color: #FFFFFF;
+  margin-bottom: 0.65rem;
+}
+
+.layer-desc {
+  font-size: 0.9rem;
+  color: var(--text-muted);
+  line-height: 1.55;
+  margin-bottom: 1rem;
+}
+
+.layer-signals-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 0.45rem;
+}
+
+.layer-signals-list li {
+  font-size: 0.82rem;
+  color: #CBD5E1;
+  display: flex;
+  align-items: flex-start;
+  gap: 0.5rem;
+  line-height: 1.4;
+}
+
+.layer-signals-list li::before {
+  content: "⚡";
+  color: var(--color-primary);
+  font-size: 0.75rem;
+}
+
+/* Privacy-by-Design Matrix Table */
+.matrix-table-wrap {
+  width: 100%;
+  overflow-x: auto;
+  margin: 2rem 0;
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  border-radius: var(--radius-md);
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.4);
+}
+
+.privacy-matrix-table {
+  width: 100%;
+  border-collapse: collapse;
+  text-align: left;
+  font-size: 0.9rem;
+}
+
+.privacy-matrix-table th {
+  background: rgba(15, 23, 42, 0.95);
+  color: #FFFFFF;
+  font-family: var(--font-heading);
+  font-weight: 700;
+  padding: 1rem 1.25rem;
+  border-bottom: 2px solid rgba(0, 242, 254, 0.3);
+  font-size: 0.95rem;
+}
+
+.privacy-matrix-table td {
+  padding: 1rem 1.25rem;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+  color: var(--text-muted);
+  line-height: 1.5;
+  vertical-align: middle;
+}
+
+.privacy-matrix-table tr:nth-child(even) td {
+  background: rgba(255, 255, 255, 0.02);
+}
+
+.privacy-matrix-table tr:hover td {
+  background: rgba(0, 242, 254, 0.04);
+}
+
+.status-never {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  color: #10B981;
+  font-weight: 700;
+  font-family: var(--font-mono);
+  font-size: 0.85rem;
+}
+
+.status-local {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  color: #38BDF8;
+  font-weight: 600;
+}
+
+/* Embedded Scanner Box Inside Educational Guides */
+.guide-embedded-scanner {
+  background: linear-gradient(180deg, rgba(15, 23, 42, 0.95) 0%, rgba(7, 11, 20, 0.95) 100%);
+  border: 1.5px solid rgba(0, 242, 254, 0.35);
+  border-radius: var(--radius-lg);
+  padding: 2rem;
+  margin: 3rem 0;
+  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.5), inset 0 0 20px rgba(0, 242, 254, 0.05);
+}
+
+.guide-scanner-header {
+  text-align: center;
+  margin-bottom: 1.5rem;
+}
+
+.guide-scanner-header h3 {
+  font-family: var(--font-heading);
+  font-size: 1.45rem;
+  font-weight: 800;
+  color: #FFFFFF;
+  margin-bottom: 0.4rem;
+}
+
+.guide-scanner-header p {
+  font-size: 0.9rem;
+  color: var(--text-muted);
+  max-width: 600px;
+  margin: 0 auto;
+}
+

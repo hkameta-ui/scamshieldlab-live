@@ -1,0 +1,372 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>The 2026 Guide to Phishing Scams & Credential Harvesters | ScamShield Lab - AI Forensic Analyzer</title>
+  
+  <meta name="description" content="In-depth forensic guide to identifying modern phishing scams with real red-flag examples. Learn how adversaries bypass 2FA, create lookalike bank portals, and how to verify communications.">
+  <meta name="keywords" content="phishing scams real examples, bank suspension text scam, Chase fraud alert scam, Apple ID phishing email, credential harvester red flags, ScamShield Lab forensic analyzer">
+  <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1">
+  <link rel="canonical" href="https://scamshieldlab.com/guide-phishing">
+
+  <!-- Open Graph -->
+  <meta property="og:type" content="article">
+  <meta property="og:site_name" content="ScamShield Lab - AI Forensic Analyzer">
+  <meta property="og:title" content="The 2026 Guide to Phishing Scams & Credential Harvesters | ScamShield Lab">
+  <meta property="og:description" content="Real red-flag examples of modern banking phishing scams and technical steps to avoid credential theft.">
+  <meta property="og:url" content="https://scamshieldlab.com/guide-phishing">
+  <meta property="og:image" content="https://scamshieldlab.com/assets/images/phishing-guide.jpg">
+
+  <!-- Twitter Cards -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="The 2026 Guide to Phishing Scams | ScamShield Lab">
+  <meta name="twitter:description" content="Real red-flag examples of modern banking phishing scams and credential harvesters.">
+  <meta name="twitter:image" content="https://scamshieldlab.com/assets/images/phishing-guide.jpg">
+
+  <!-- Schema.org Article Data -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "TechArticle",
+    "headline": "The 2026 Guide to Phishing Scams & Credential Harvesters: Real Examples & Red Flags",
+    "description": "Comprehensive forensic investigation into modern phishing scams, reverse-proxy 2FA bypass, and step-by-step incident response.",
+    "author": {
+      "@type": "Organization",
+      "name": "ScamShield Lab - AI Forensic Analyzer"
+    },
+    "publisher": {
+      "@type": "Organization",
+      "name": "ScamShield Lab - AI Forensic Analyzer",
+      "url": "https://scamshieldlab.com/"
+    },
+    "mainEntityOfPage": "https://scamshieldlab.com/guide-phishing"
+  }
+  </script>
+  
+  <!-- Security Standards Compliance (Rule 2) -->
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' https://pagead2.googlesyndication.com https://*.google.com https://*.doubleclick.net https://static.cloudflareinsights.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; img-src 'self' data: https:; connect-src 'self' https://pagead2.googlesyndication.com https://*.google.com https://*.doubleclick.net https://cloudflareinsights.com; frame-src https://*.google.com https://*.doubleclick.net;">
+  <meta http-equiv="X-Content-Type-Options" content="nosniff">
+  <meta name="referrer" content="strict-origin-when-cross-origin">
+
+  <!-- Performance Preconnect & Zero-Shift Font Loading (Rule 1) -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;600;700&family=Outfit:wght@500;600;700;800&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap">
+
+  <!-- Google AdSense Verification & Auto-Ads Script -->
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-7565560894775775" crossorigin="anonymous"></script>
+  
+  <link rel="stylesheet" href="css/styles.css?v=20261022-seo1">
+  <link rel="icon" type="image/jpeg" href="assets/images/logo.jpg">
+  <script src="config.js?v=20261022-seo1" defer></script>
+
+  <style>
+    .article-container {
+      max-width: 900px;
+      margin: 0 auto;
+      padding: 3rem 1.5rem 5rem;
+    }
+    .article-header {
+      margin-bottom: 2.5rem;
+      border-bottom: 1px solid var(--border-glass);
+      padding-bottom: 2rem;
+    }
+    .article-featured-img {
+      width: 100%;
+      height: auto;
+      aspect-ratio: 16 / 9;
+      object-fit: cover;
+      border-radius: var(--radius-lg);
+      border: 1px solid var(--border-glow);
+      margin-bottom: 2.5rem;
+      background: rgba(15, 23, 42, 0.6);
+    }
+    .article-content h2 {
+      font-family: var(--font-heading);
+      font-size: 1.85rem;
+      margin: 2.75rem 0 1rem;
+      color: var(--text-main);
+    }
+    .article-content h3 {
+      font-family: var(--font-heading);
+      font-size: 1.35rem;
+      margin: 1.75rem 0 0.75rem;
+      color: var(--color-primary);
+    }
+    .article-content p {
+      font-size: 1.05rem;
+      color: #CBD5E1;
+      margin-bottom: 1.35rem;
+      line-height: 1.8;
+    }
+    .callout-box {
+      background: rgba(0, 242, 254, 0.05);
+      border-left: 4px solid var(--color-primary);
+      padding: 1.35rem 1.5rem;
+      border-radius: 0 var(--radius-md) var(--radius-md) 0;
+      margin: 2rem 0;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Universal Accessibility Skip Link (Rule 4) -->
+  <a href="#main-content" class="skip-link">Skip to main content</a>
+
+  <!-- Navigation Bar -->
+  <header class="site-header">
+    <div class="container nav-inner">
+      <a href="index.html" class="brand-logo" aria-label="ScamShield Lab Home">
+        <img src="assets/images/logo.jpg" alt="ScamShield Lab Logo" class="brand-icon" width="36" height="36" decoding="async">
+        <div class="brand-text-col">
+          <span class="brand-main-title">ScamShield<span class="brand-lab-accent">Lab</span></span>
+          <span class="brand-sub-badge">AI FORENSIC ANALYZER</span>
+        </div>
+      </a>
+
+      <nav aria-label="Primary Navigation" class="main-nav">
+        <ul class="nav-links" id="primaryNavLinks">
+          <li><a href="index.html#analyzer">Scanner</a></li>
+          <li><a href="how-we-score.html">How We Score</a></li>
+          <li><a href="index.html#threat-radar">Threat Radar</a></li>
+          <li><a href="family-safe-word.html">Safe Word Kit</a></li>
+          <li><a href="index.html#guides">Guides</a></li>
+          <li><a href="about.html">About</a></li>
+        </ul>
+      </nav>
+
+      <div class="nav-actions">
+        <a href="index.html#analyzer" class="nav-cta-btn">
+          <span class="pulse-beacon" aria-hidden="true"></span>
+          <span>Instant Scan</span>
+        </a>
+      </div>
+    </div>
+  </header>
+
+  <main class="article-container" id="main-content">
+    <!-- Breadcrumb -->
+    <div style="font-size: 0.85rem; color: var(--text-faint); margin-bottom: 1.25rem;">
+      <a href="index.html">Home</a> &gt; <a href="index.html#guides">Threat Research</a> &gt; <span>Phishing Scams & Credential Harvesters</span>
+    </div>
+
+    <article>
+      <header class="article-header">
+        <span class="hero-pill">🎣 Forensic Investigation & Red-Flag Blueprint</span>
+        <h1 style="font-family: var(--font-heading); font-size: 2.75rem; font-weight: 800; line-height: 1.2; margin-top: 0.75rem;">
+          The 2026 Guide to Phishing Scams & Credential Harvesters: Real Examples & Red Flags
+        </h1>
+        <div class="article-meta">
+          <span>By <strong>ScamShield Threat Intelligence Lab</strong></span>
+          <span>&bull;</span>
+          <span>Updated for 2026 Tactics</span>
+          <span>&bull;</span>
+          <span>9 min read</span>
+        </div>
+      </header>
+
+      <img src="assets/images/phishing-guide.jpg" alt="Digital Padlock Shield and Phishing Link Inspection Telemetry" class="article-featured-img" width="900" height="506" decoding="async">
+
+      <!-- AdSense Unit -->
+      <div class="adsense-slot-container" style="margin: 1.5rem 0 2.5rem;">
+        <span class="ad-label">Advertisement</span>
+        <div class="ad-slot-box in-content">
+          <span style="color: var(--color-primary); font-family: var(--font-mono); font-size: 0.85rem;">[ High-CTR Contextual AdSense Unit: Password Managers & VPNs ]</span>
+        </div>
+      </div>
+
+      <div class="article-content">
+        <p>
+          Phishing remains the foundational attack vector of global cybercrime. According to the FBI Internet Crime Complaint Center (IC3), phishing and spoofing scams generated over <strong>300,000 official complaints</strong> in a single year, acting as the primary initial access vector for ransomware, corporate espionage, and draining consumer bank accounts.
+        </p>
+        <p>
+          In 2026, phishing has evolved far beyond misspelled emails from foreign royalty. Modern syndicates utilize <strong>Reverse Proxy Adversary-in-the-Middle (AiTM)</strong> frameworks (such as Evilginx3) that can intercept session tokens and bypass SMS Two-Factor Authentication (2FA) in real time. In this pillar guide, we break down real-world phishing attacks, analyze exact red flags, and outline immediate response protocols.
+        </p>
+
+        <h2>Real Red-Flag Case Study 1: The Banking Suspension Alert</h2>
+        <p>
+          This is currently the most prevalent banking smishing template intercepted by ScamShield Lab telemetry. Attackers simulate Chase, Wells Fargo, Bank of America, or Citibank:
+        </p>
+
+        <!-- Simulated Red Flag Message 1 -->
+        <div class="simulated-message-card">
+          <div class="simulated-message-header">
+            <span class="simulated-sender">📱 SMS FROM: +1 (833) 492-0198 &bull; Carrier: VoIP</span>
+            <span class="threat-tag-pill">CRITICAL RISK &bull; 92/100</span>
+          </div>
+          <div class="simulated-message-body">
+            URGENT SECURITY ALERT: Your Chase online banking access has been <span class="redflag-highlight">suspended due to 3 unauthorized login attempts</span> from IP 185.220.101.4. To restore your debit card and verify your identity, visit immediately: <span class="redflag-highlight">https://chase-security-verify.top/verify-login?id=89214</span>. <span class="redflag-highlight">Failure to verify within 2 hours</span> will result in permanent card cancellation.
+          </div>
+          <div class="redflag-analysis-grid">
+            <div class="redflag-point">
+              <div class="redflag-point-title">🚨 Artificial Urgency ("within 2 hours")</div>
+              <p class="redflag-point-desc">Scammers impose short countdowns to induce panic and prevent you from calling your local bank branch.</p>
+            </div>
+            <div class="redflag-point">
+              <div class="redflag-point-title">🎣 Deceptive TLD (.top)</div>
+              <p class="redflag-point-desc">Banks own <code>.com</code> domains. They never host official security portals on cheap, disposable top-level domains like <code>.top</code> or <code>.xyz</code>.</p>
+            </div>
+            <div class="redflag-point">
+              <div class="redflag-point-title">⚠️ Subdomain Spoofing</div>
+              <p class="redflag-point-desc">The word "chase" is placed in the prefix, but the root domain is <code>chase-security-verify.top</code>, registered hours earlier in Eastern Europe.</p>
+            </div>
+          </div>
+        </div>
+
+        <h2>Real Red-Flag Case Study 2: The Fake Fraud Alert with Toll-Free Callback</h2>
+        <p>
+          To evade automated browser link checkers, adversaries increasingly deploy <strong>vishing pretexts</strong>—directing victims to dial a fraudulent call center rather than clicking a link:
+        </p>
+
+        <!-- Simulated Red Flag Message 2 -->
+        <div class="simulated-message-card">
+          <div class="simulated-message-header">
+            <span class="simulated-sender">📧 EMAIL FROM: security-alerts@notify-account-dept.online</span>
+            <span class="threat-tag-pill">CRITICAL RISK &bull; 85/100</span>
+          </div>
+          <div class="simulated-message-body">
+            Wells Fargo Fraud Prevention: A pending wire transfer of <span class="redflag-highlight warning">$1,850.00 USD to 'Binance Global'</span> has been flagged on your account. If you did NOT authorize this transaction, <span class="redflag-highlight">call our 24/7 Fraud Desk immediately at 1-800-492-3810</span>. Do not reply to this email. Reference ID: #WF-9941.
+          </div>
+          <div class="redflag-analysis-grid">
+            <div class="redflag-point">
+              <div class="redflag-point-title">📞 Rogue Call Center</div>
+              <p class="redflag-point-desc">The phone number connects to a dedicated cyber syndicate call center where agents simulate bank fraud investigators.</p>
+            </div>
+            <div class="redflag-point">
+              <div class="redflag-point-title">💰 Phantom Charge Bait</div>
+              <p class="redflag-point-desc">Inventing a large crypto charge triggers anxiety, prompting the victim to dial immediately before checking their mobile banking app.</p>
+            </div>
+            <div class="redflag-point">
+              <div class="redflag-point-title">🚫 Generic Sender Domain</div>
+              <p class="redflag-point-desc">Sent from <code>notify-account-dept.online</code> instead of <code>wellsfargo.com</code>.</p>
+            </div>
+          </div>
+        </div>
+
+        <h2>How Adversaries Bypass Two-Factor Authentication (2FA)</h2>
+        <p>
+          Many users assume that having SMS two-factor authentication makes them invincible. In reality, cyber syndicates bypass SMS 2FA daily using two core mechanisms:
+        </p>
+
+        <ol>
+          <li>
+            <strong>Reverse Proxy AiTM Kits:</strong> When you enter your password on a phishing portal, the attacker's server simultaneously logs into the real bank website in the background. The bank sends you a real 6-digit SMS code. You enter that code on the phishing site, and the attacker's server passes it to the real bank, capturing your authenticated session cookie.
+          </li>
+          <li>
+            <strong>Accidental Code Social Engineering:</strong> Attackers initiate a login with your phone number and text you: <em>"Hey, I sent a code to your number by mistake, can you send it to me?"</em> If you forward it, your account is immediately compromised.
+          </li>
+        </ol>
+
+        <div class="callout-box">
+          <h3 style="margin-top: 0;">🛡️ The Golden Rule of 2FA Passcodes:</h3>
+          <p style="margin-bottom: 0;">
+            Security verification codes are private cryptographic keys. Banks, merchants, and tech platforms <strong>NEVER require you to read back or forward an incoming SMS code</strong> to cancel a charge, receive a refund, or verify your identity.
+          </p>
+        </div>
+
+        <h2>Immediate Action Plan: What To Do If You Clicked or Entered Data</h2>
+        <div class="action-checklist-box" style="margin: 2rem 0;">
+          <div class="checklist-header">
+            <span class="checklist-label">✅ Step-by-Step Incident Response Protocol:</span>
+          </div>
+          <ul class="response-checklist-list">
+            <li><span class="chk-box">☐</span> <strong>FREEZE BANK CARDS:</strong> Call your bank immediately using the trusted phone number printed on the back of your physical card (never the number in the SMS/email).</li>
+            <li><span class="chk-box">☐</span> <strong>CHANGE PASSWORDS ON A CLEAN DEVICE:</strong> From a separate phone or laptop, change your online banking and email passwords immediately.</li>
+            <li><span class="chk-box">☐</span> <strong>TERMINATE ACTIVE SESSIONS:</strong> In your account security settings, select "Log out of all devices" to invalidate stolen session cookies.</li>
+            <li><span class="chk-box">☐</span> <strong>MIGRATE TO PASSKEYS / HARDWARE 2FA:</strong> Replace vulnerable SMS 2FA with FIDO2 hardware keys (YubiKey/Titan) or authenticator apps (NordPass/Google Authenticator).</li>
+            <li><span class="chk-box">☐</span> <strong>REPORT FRAUD:</strong> Forward suspicious SMS to <strong>7726 (SPAM)</strong> and file an official complaint with the FTC at <a href="https://reportfraud.ftc.gov/" target="_blank" rel="noopener noreferrer">reportfraud.ftc.gov</a>.</li>
+          </ul>
+        </div>
+
+        <!-- Embedded Interactive Scanner -->
+        <div class="guide-embedded-scanner">
+          <div class="guide-scanner-header">
+            <span class="hero-pill">⚡ Live Neural Forensic Tool</span>
+            <h3>Analyze a Suspicious Phishing Text or URL</h3>
+            <p>Paste any suspicious email or SMS to run our 4-layer heuristic analyzer in-browser (100% private, zero data retained):</p>
+          </div>
+          <div class="analyzer-input-area" style="max-width: 680px; margin: 0 auto; text-align: center;">
+            <a href="index.html#analyzer" class="btn btn-primary" style="padding: 0.85rem 1.8rem; font-size: 1rem; text-decoration: none; display: inline-flex; align-items: center; gap: 0.5rem;">
+              <span>⚡</span> Open ScamShield Lab Live Scanner &rarr;
+            </a>
+          </div>
+        </div>
+
+        <h2>Related Forensic Research Guides</h2>
+        <ul>
+          <li><a href="how-we-score.html"><strong>How We Score:</strong> Learn how our 4-layer engine detects phishing linguistic markers and deceptive TLDs.</a></li>
+          <li><a href="guide-delivery-scams.html"><strong>Delivery & Toll Smishing:</strong> Why scammers use $2 package redelivery fees to harvest credit cards.</a></li>
+          <li><a href="guide-job-scams.html"><strong>Job & Recruitment Scams:</strong> The mechanics of WhatsApp recruitment lures and prepaid task deposits.</a></li>
+        </ul>
+      </div>
+    </article>
+  </main>
+
+  <!-- Site Footer -->
+  <footer class="site-footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-brand-col">
+          <a href="index.html" class="brand-logo" aria-label="ScamShield Lab Home">
+            <img src="assets/images/logo.jpg" alt="ScamShield Lab Logo" class="brand-icon" width="36" height="36" loading="lazy">
+            <div class="brand-text-col">
+              <span class="brand-main-title">ScamShield<span class="brand-lab-accent">Lab</span></span>
+              <span class="brand-sub-badge">AI FORENSIC ANALYZER</span>
+            </div>
+          </a>
+          <p class="footer-brand-desc">
+            Independent threat intelligence initiative and AI forensic analyzer dedicated to democratizing cyber fraud detection, deepfake defense, and zero-trust privacy.
+          </p>
+        </div>
+
+        <div class="footer-col">
+          <h4 class="footer-col-title">Detection Tools</h4>
+          <ul class="footer-nav-list">
+            <li><a href="index.html#analyzer">AI Scam Text Analyzer</a></li>
+            <li><a href="how-we-score.html">How We Score (0–100 Engine)</a></li>
+            <li><a href="family-safe-word.html">Family Safe Word Kit</a></li>
+            <li><a href="index.html#threat-radar">Threat Radar 2026</a></li>
+            <li><a href="index.html#quiz">Vulnerability Quiz</a></li>
+          </ul>
+        </div>
+
+        <div class="footer-col">
+          <h4 class="footer-col-title">Threat Research Guides</h4>
+          <ul class="footer-nav-list">
+            <li><a href="guide-phishing.html">Phishing & 2FA Bypasses</a></li>
+            <li><a href="guide-job-scams.html">Job & Task Deposit Scams</a></li>
+            <li><a href="guide-delivery-scams.html">Delivery & Toll Smishing</a></li>
+            <li><a href="guide-voice-cloning.html">Voice Cloning Deepfake Defense</a></li>
+            <li><a href="guide-pig-butchering.html">Agentic Pig Butchering</a></li>
+          </ul>
+        </div>
+
+        <div class="footer-col">
+          <h4 class="footer-col-title">Legal & Trust</h4>
+          <ul class="footer-nav-list">
+            <li><a href="about.html">About ScamShield Lab</a></li>
+            <li><a href="how-we-score.html#privacy-matrix">Privacy-by-Design Matrix</a></li>
+            <li><a href="privacy.html">Privacy Policy</a></li>
+            <li><a href="terms.html">Terms of Service</a></li>
+            <li><a href="terms.html#affiliate-disclosure">Affiliate Disclosure</a></li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="footer-bottom-bar">
+        <div>&copy; 2026 ScamShield Lab - AI Forensic Analyzer. All rights reserved. Built for global public cyber defense.</div>
+        <div>
+          <span>Zero-Trust Protocol Active</span> &bull; 
+          <a href="privacy.html" style="color: var(--text-faint);">Privacy</a> &bull; 
+          <a href="terms.html" style="color: var(--text-faint);">Terms & Disclosures</a>
+        </div>
+      </div>
+      <div class="footer-disclaimer">
+        <strong>Notice & Non-Affiliation:</strong> ScamShield Lab - AI Forensic Analyzer (scamshieldlab.com) is an independent cybersecurity awareness and educational platform. It is not affiliated with, sponsored by, or connected to the Government of Singapore, GovTech Singapore, the National Crime Prevention Council (NCPC), or the official Singapore mobile application at scamshield.gov.sg.
+      </div>
+    </div>
+  </footer>
+
+</body>
+</html>
