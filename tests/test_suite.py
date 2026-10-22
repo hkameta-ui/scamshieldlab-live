@@ -525,6 +525,44 @@ class TestThreatRadarSearchEngine(unittest.TestCase):
         self.assertIn("allMatches", self.app_code)
 
 
+class TestNordAffiliatePartnerIntegration(unittest.TestCase):
+    """Rule 1 & Rule 6: Validation tests for Nord verified partner assets and in-tool defense recommendations."""
+
+    def test_official_nord_svg_icons_exist(self):
+        vpn_icon = os.path.join(WORKSPACE_ROOT, "assets", "images", "nordvpn-icon.svg")
+        pass_icon = os.path.join(WORKSPACE_ROOT, "assets", "images", "nordpass-icon.svg")
+        self.assertTrue(os.path.isfile(vpn_icon), "Official NordVPN SVG icon must exist")
+        self.assertTrue(os.path.isfile(pass_icon), "Official NordPass SVG icon must exist")
+
+    def test_config_js_nord_partner_urls_and_svg_icons(self):
+        config_path = os.path.join(WORKSPACE_ROOT, "config.js")
+        with open(config_path, "r", encoding="utf-8") as f:
+            content = f.read()
+            self.assertIn("assets/images/nordvpn-icon.svg", content)
+            self.assertIn("assets/images/nordpass-icon.svg", content)
+            self.assertIn("aff_id=159036", content)
+
+    def test_defense_recommendation_container_and_styles(self):
+        index_path = os.path.join(WORKSPACE_ROOT, "index.html")
+        with open(index_path, "r", encoding="utf-8") as f:
+            self.assertIn('id="analyzerDefenseRecommendation"', f.read())
+
+        css_path = os.path.join(WORKSPACE_ROOT, "css", "styles.css")
+        with open(css_path, "r", encoding="utf-8") as f:
+            css = f.read()
+            self.assertIn(".defense-recommendation-box", css)
+            self.assertIn(".affiliate-brand-img", css)
+
+    def test_app_js_renders_defense_recommendations(self):
+        app_path = os.path.join(WORKSPACE_ROOT, "js", "app.js")
+        with open(app_path, "r", encoding="utf-8") as f:
+            app_code = f.read()
+            self.assertIn("analyzerDefenseRecommendation", app_code)
+            self.assertIn("NordVPN Threat Protection Pro", app_code)
+            self.assertIn("NordPass Premium & Passkey Vault", app_code)
+            self.assertIn("affiliate-brand-img", app_code)
+
+
 if __name__ == "__main__":
     unittest.main()
 

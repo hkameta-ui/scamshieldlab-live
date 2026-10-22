@@ -470,6 +470,58 @@ function initAnalyzer() {
         </ul>
       `;
     }
+
+    // Contextual Active Defense Recommendation (Nord Security Verified Partner Integration)
+    const defenseRecBox = document.getElementById("analyzerDefenseRecommendation");
+    if (defenseRecBox) {
+      const lowerText = (inputEl ? inputEl.value : "").toLowerCase();
+      const hasUrlOrPhish = data.score >= 30 || lowerText.includes("http") || lowerText.includes(".com") || lowerText.includes(".org") || lowerText.includes(".net") || lowerText.includes(".top") || lowerText.includes(".xyz") || lowerText.includes("toll") || lowerText.includes("link") || lowerText.includes("click");
+      const hasCredentialRisk = lowerText.includes("password") || lowerText.includes("passcode") || lowerText.includes("pin") || lowerText.includes("otp") || lowerText.includes("code") || lowerText.includes("voice") || lowerText.includes("grand") || lowerText.includes("arrest");
+
+      let recTitle = "NordVPN Threat Protection Pro";
+      let recBadge = "DNS & Phishing Shield";
+      let recIcon = "assets/images/nordvpn-icon.svg";
+      let recDesc = "Malicious SMS and road toll scams use spoofed domains to harvest payment card details. NordVPN's Threat Protection Pro automatically intercepts and blocks malicious URLs at the DNS level before they can load in your browser.";
+      let recBtnClass = "defense-rec-btn";
+      let recBtnText = "Activate DNS & Phishing Shield (68% Off)";
+      let recUrl = (window.SITE_CONFIG && window.SITE_CONFIG.affiliates && window.SITE_CONFIG.affiliates.vpnPrivacy) ? window.SITE_CONFIG.affiliates.vpnPrivacy.url : "https://go.nordvpn.net/aff_c?offer_id=15&aff_id=159036&url_id=902";
+
+      if (hasCredentialRisk && !hasUrlOrPhish) {
+        recTitle = "NordPass Premium & Passkey Vault";
+        recBadge = "FIDO2 & Passkey Vault";
+        recIcon = "assets/images/nordpass-icon.svg";
+        recDesc = "Cybercriminals use AI voice clones and fake emergency calls to steal passwords and 2FA credentials. NordPass neutralizes credential-theft attacks through zero-knowledge hardware-bound passkeys.";
+        recBtnClass = "defense-rec-btn nordpass-btn";
+        recBtnText = "Lock Passwords with Passkeys";
+        recUrl = (window.SITE_CONFIG && window.SITE_CONFIG.affiliates && window.SITE_CONFIG.affiliates.passwordManager) ? window.SITE_CONFIG.affiliates.passwordManager.url : "https://go.nordpass.io/aff_c?offer_id=488&aff_id=159036&url_id=9356";
+      }
+
+      defenseRecBox.innerHTML = `
+        <div class="defense-rec-header">
+          <span class="defense-rec-badge">🛡️ Recommended Active Defense: ${escapeHtml(recBadge)}</span>
+          <span class="defense-partner-verified">&#10003; Verified Security Partner</span>
+        </div>
+        <div class="defense-rec-content">
+          <div class="defense-rec-icon">
+            <img src="${escapeHtml(recIcon)}" alt="${escapeHtml(recTitle)} Icon" width="52" height="52" loading="lazy" decoding="async">
+          </div>
+          <div class="defense-rec-info">
+            <h4>${escapeHtml(recTitle)}</h4>
+            <p>${escapeHtml(recDesc)}</p>
+          </div>
+          <div>
+            <a href="${escapeHtml(recUrl)}" target="_blank" rel="noopener sponsored" class="${recBtnClass}">
+              ${escapeHtml(recBtnText)} &nearr;
+            </a>
+          </div>
+        </div>
+        <div class="defense-rec-footer">
+          <span>Exclusive ScamShield Lab Reader Pricing Applied (Up to 68% Off + Extra Months)</span>
+          <span>FTC Disclosure: Authorized Security Partner Referral</span>
+        </div>
+      `;
+      defenseRecBox.style.display = "flex";
+    }
   }
 }
 
@@ -921,11 +973,15 @@ function initAffiliateCards() {
   const affs = window.SITE_CONFIG.affiliates;
   const cardsHtml = Object.keys(affs).map(key => {
     const item = affs[key];
-    const icon = item.icon || "🛡️";
+    const isSvgIcon = item.icon && item.icon.endsWith(".svg");
+    const iconHtml = isSvgIcon 
+      ? `<img src="${escapeHtml(item.icon)}" alt="${escapeHtml(item.name)} Official Logo" width="48" height="48" loading="lazy" decoding="async" class="affiliate-brand-img">`
+      : `<span class="affiliate-emoji-icon">${escapeHtml(item.icon || "🛡️")}</span>`;
+
     return `
       <div class="affiliate-card">
         <div class="affiliate-card-badge">${escapeHtml(item.badge)}</div>
-        <div class="affiliate-icon-box" aria-hidden="true">${escapeHtml(icon)}</div>
+        <div class="affiliate-icon-box" aria-hidden="true">${iconHtml}</div>
         <h4 class="affiliate-name">${escapeHtml(item.name)}</h4>
         <p class="affiliate-tagline">${escapeHtml(item.tagline)}</p>
         <div class="affiliate-cta-box">

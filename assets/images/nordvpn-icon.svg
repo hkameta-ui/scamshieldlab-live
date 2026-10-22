@@ -1,0 +1,7 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 48 48" width="48" height="48" fill="none">
+  <rect width="48" height="48" rx="12" fill="#0C1B33" stroke="rgba(70, 135, 255, 0.35)" stroke-width="1.5"/>
+  <!-- NordVPN Official Mountain Silhouette -->
+  <path d="M24 10L10 35H20.5L24 25L27.5 35H38L24 10Z" fill="#4687FF"/>
+  <path d="M24 10L27.5 35H38L24 10Z" fill="#00ECE5"/>
+  <path d="M24 25L27.5 35H20.5L24 25Z" fill="#1C64F2"/>
+</svg>

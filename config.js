@@ -36,11 +36,11 @@ window.SITE_CONFIG = {
     },
     passwordManager: {
       name: "NordPass Premium & Passkey Vault",
-      icon: "🔐",
+      icon: "assets/images/nordpass-icon.svg",
       tagline: "Prevent Phishing & Credential Theft with Zero-Knowledge Passkeys",
       payoutEst: "30% - 100% Commission",
       url: "https://go.nordpass.io/aff_c?offer_id=488&aff_id=159036&url_id=9356", // Verified Nord Partner Link (Affiliate ID: 159036)
-      badge: "Essential Defense",
+      badge: "Verified Partner",
       cta: "Protect Passwords & Passkeys"
     },
     googleWorkspace: {
@@ -72,7 +72,7 @@ window.SITE_CONFIG = {
     },
     vpnPrivacy: {
       name: "NordVPN Threat Protection Pro",
-      icon: "🌐",
+      icon: "assets/images/nordvpn-icon.svg",
       tagline: "Block malicious scam domains & encrypt DNS queries automatically",
       payoutEst: "40% - 100% Commission",
       url: "https://go.nordvpn.net/aff_c?offer_id=15&aff_id=159036&url_id=902", // Verified Nord Partner Link (Affiliate ID: 159036)
