@@ -661,6 +661,49 @@ class TestAboveTheFoldTrustAndLiveDemo(unittest.TestCase):
         self.assertIn("wrangler", package_content)
         self.assertIn('"deploy": "wrangler deploy"', package_content)
 
+    def test_giant_guest_mode_primary_cta(self):
+        """Conversion UX Mandate: Guest mode is the default with a giant primary CTA to reduce friction."""
+        self.assertIn('id="giantGuestCtaBtn"', self.index_html)
+        self.assertIn("btn-giant-guest-cta", self.index_html)
+        self.assertIn("No Account Needed", self.index_html)
+        self.assertIn(".btn-giant-guest-cta", self.css)
+        self.assertIn("giantGuestCtaBtn", self.app_js)
+
+    def test_three_one_click_example_scams(self):
+        """Conversion UX Mandate: Provides 3 one-click example scams (Phishing, Job Scam, Delivery Scam) so users don't have to type."""
+        threat_data_path = os.path.join(WORKSPACE_ROOT, "js", "threat-data.js")
+        with open(threat_data_path, "r", encoding="utf-8") as f:
+            threat_data_js = f.read()
+
+        # Check in threat-data.js presets
+        self.assertIn("🎣 Phishing Scam", threat_data_js)
+        self.assertIn("💼 Job Scam", threat_data_js)
+        self.assertIn("📦 Delivery Scam", threat_data_js)
+
+        # Check in index.html hero sample chips
+        self.assertIn("🎣 Phishing", self.index_html)
+        self.assertIn("💼 Job Scam", self.index_html)
+        self.assertIn("📦 Delivery Scam", self.index_html)
+
+    def test_flipped_results_immediate_actions_top(self):
+        """Conversion UX Mandate: Results card flips the layout to display immediate actions and copy checklist on top."""
+        self.assertIn('id="analyzerImmediateActions"', self.index_html)
+        self.assertIn('id="copyChecklistBtn"', self.index_html)
+        self.assertIn("1. DON'T CLICK", self.index_html)
+        self.assertIn("2. DON'T PAY / SHARE", self.index_html)
+        self.assertIn("3. REPORT HERE", self.index_html)
+
+        # Ensure immediate action card is physically placed BEFORE the score dial and detailed flags in HTML
+        actions_pos = self.index_html.find('id="analyzerImmediateActions"')
+        score_pos = self.index_html.find('class="results-score-panel"')
+        flags_pos = self.index_html.find('class="flags-container"')
+        self.assertTrue(actions_pos > 0 and score_pos > actions_pos and flags_pos > score_pos,
+                        "Immediate actions must appear on TOP of results before score dial and detailed flags")
+
+        # Ensure app.js wires up checklist copying
+        self.assertIn("copyChecklistBtn", self.app_js)
+        self.assertIn("analyzerImmediateActions", self.app_js)
+
 
 if __name__ == "__main__":
     unittest.main()

@@ -175,26 +175,41 @@ window.THREAT_DATABASE = [
   }
 ];
 
-// Presets for the Interactive Scam Text Analyzer
+// Presets for the Interactive Scam Text Analyzer (Featuring 3 One-Click Headline Scams)
 window.ANALYZER_PRESETS = [
   {
-    name: "AI Voice Bail Scam (SMS/Email)",
+    name: "🎣 Phishing Scam",
+    category: "phishing",
+    sample: "URGENT SECURITY ALERT: Your Chase online banking access has been suspended due to 3 unauthorized login attempts from IP 185.220.101.4. To restore your debit card and verify your identity, visit immediately: https://chase-security-verify.top/verify-login?id=89214. Failure to verify within 2 hours will result in permanent card cancellation."
+  },
+  {
+    name: "💼 Job Scam",
+    category: "job",
+    sample: "Hello! We reviewed your resume on LinkedIn and found your profile suitable for an online flexible part-time job. You can earn $200-$500 daily by completing simple rating tasks from home for 30 minutes a day. Daily payout via PayPal or USDT. Reply with 'YES' or 'INTERESTED' to connect with our HR manager on WhatsApp now!"
+  },
+  {
+    name: "📦 Delivery Scam",
+    category: "delivery",
+    sample: "USPS Final Notice: Your package #US940285 could not be dispatched due to an incomplete delivery street address. Please update your address and pay the $1.85 redelivery surcharge within 12 hours at https://usps-post-redelivery.top to avoid your parcel being returned to sender."
+  },
+  {
+    name: "🚗 Road Toll Scam",
+    category: "toll",
+    sample: "SunPass Alert: You have an unpaid toll of $3.25. Pay now to avoid $50 late fees: https://sunpass-service-pay.top/invoice"
+  },
+  {
+    name: "📞 AI Voice Bail Scam",
+    category: "voice",
     sample: "Dad, it's Michael. I'm in huge trouble. I got into an accident in another city and my phone broke. The police officer is letting me use his device. Please don't tell mom right now, she'll panic. They need $4,200 for bail processing immediately before I get transferred to county jail. Send it via Bitcoin ATM to bc1qxy2kgdygjrsqtzq2n0yrf2493p83kkfjhx0wlh or wire to this account. Call me on this number right now before they take me in."
   },
   {
-    name: "Pig Butchering Crypto DM",
+    name: "💬 Crypto Romance (Pig Butchering)",
+    category: "crypto",
     sample: "Hi David! Are you still in Singapore? Oh I'm so sorry, I think my assistant gave me the wrong number. You seem like a very polite gentleman though! By the way, I run a fashion brand and also invest in AI decentralized liquidity arbitrage. My uncle works at Goldman Sachs and gives me verified trading signals with 18% guaranteed weekly return. Here is the private platform: https://defi-quant-goldman-trading.top/invite?code=88392"
   },
   {
-    name: "Urgent CEO Wire Request (Agentic BEC)",
-    sample: "Hi Sarah, I am currently boarding an international flight to Tokyo for the acquisition closing and cannot take calls. We need an urgent vendor settlement processed before 5:00 PM EST today for the merger due diligence, otherwise we risk a breach penalty. Please wire $68,500 to our external counsel's updated escrow account attached below. Keep this strictly confidential under our non-disclosure terms until the public press release tomorrow morning."
-  },
-  {
-    name: "SunPass Toll Smishing (SMS)",
-    sample: "SunPass Alert: You have an unpaid toll of $3.25. Pay now to avoid additional fees: https://sunpass-service-pay.top/invoice"
-  },
-  {
-    name: "Legitimate Corporate Newsletter (Safe Sample)",
+    name: "🛡️ Safe Corporate Email",
+    category: "safe",
     sample: "Hi Team, Welcome to our monthly engineering newsletter. In this edition, we review our quarterly product metrics, highlight new team members joining our DevOps department, and summarize our upcoming internal hackathon scheduled for November 15th. You can review the agenda on the company Confluence wiki at your convenience. Have a great week!"
   }
 ];

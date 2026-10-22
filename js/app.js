@@ -67,7 +67,7 @@ function initAnalyzer() {
   // Render presets buttons
   if (presetsContainer && window.ANALYZER_PRESETS) {
     presetsContainer.innerHTML = window.ANALYZER_PRESETS.map((p, idx) => `
-      <button type="button" class="preset-chip" data-idx="${idx}" aria-label="Load preset: ${escapeHtml(p.name)}">
+      <button type="button" class="preset-chip ${idx < 3 ? 'headline-chip' : ''}" data-idx="${idx}" aria-label="Load preset: ${escapeHtml(p.name)}">
         <span class="chip-dot"></span> ${escapeHtml(p.name)}
       </button>
     `).join("");
@@ -78,6 +78,7 @@ function initAnalyzer() {
         const preset = window.ANALYZER_PRESETS[idx];
         if (preset) {
           inputEl.value = preset.sample;
+          if (heroQuickInput) heroQuickInput.value = preset.sample;
           presetsContainer.querySelectorAll(".preset-chip").forEach(b => b.classList.remove("active"));
           btn.classList.add("active");
           runAnalysis(preset.sample);
@@ -91,6 +92,27 @@ function initAnalyzer() {
   const heroScanBtn = document.getElementById("heroScanBtn");
   const heroPasteBtn = document.getElementById("heroPasteBtn");
   const heroSampleChips = document.querySelectorAll(".hero-sample-chip");
+  const giantGuestCtaBtn = document.getElementById("giantGuestCtaBtn");
+
+  if (giantGuestCtaBtn) {
+    giantGuestCtaBtn.addEventListener("click", (e) => {
+      const heroText = heroQuickInput ? heroQuickInput.value.trim() : "";
+      if (heroText) {
+        e.preventDefault();
+        if (inputEl) inputEl.value = heroText;
+        runAnalysis(heroText);
+      } else if (window.ANALYZER_PRESETS && window.ANALYZER_PRESETS[0]) {
+        // Run Phishing sample immediately to show user how instant guest analysis works
+        e.preventDefault();
+        const sample = window.ANALYZER_PRESETS[0].sample;
+        if (heroQuickInput) heroQuickInput.value = sample;
+        if (inputEl) inputEl.value = sample;
+        runAnalysis(sample);
+      } else if (heroQuickInput) {
+        heroQuickInput.focus();
+      }
+    });
+  }
 
   if (heroSampleChips.length > 0 && window.ANALYZER_PRESETS) {
     heroSampleChips.forEach(chip => {
@@ -105,6 +127,49 @@ function initAnalyzer() {
           runAnalysis(preset.sample);
         }
       });
+    });
+  }
+
+  // Wire up Copy Incident Response Checklist Button
+  const copyChecklistBtn = document.getElementById("copyChecklistBtn");
+  if (copyChecklistBtn) {
+    copyChecklistBtn.addEventListener("click", async () => {
+      const checklistText = [
+        "🚨 SCAMSHIELD EMERGENCY INCIDENT RESPONSE CHECKLIST",
+        "===================================================",
+        "[ ] 1. STOP ALL CONTACT: Do not reply, click links, or dial numbers in the message.",
+        "[ ] 2. IF YOU CLICKED A LINK: Disconnect device from Wi-Fi immediately & run an antivirus scan.",
+        "[ ] 3. IF CREDENTIALS / OTP ENTERED: Call your bank fraud line immediately (number on back of card) to freeze accounts.",
+        "[ ] 4. SECURE YOUR ACCOUNTS: Change passwords from a separate clean device and enable Passkeys / 2FA.",
+        "[ ] 5. REPORT THE ATTACK: Forward SMS to 7726 (free spam reporting) and file a complaint at https://reportfraud.ftc.gov/."
+      ].join("\n");
+
+      try {
+        if (navigator.clipboard && navigator.clipboard.writeText) {
+          await navigator.clipboard.writeText(checklistText);
+        } else {
+          const tempTextArea = document.createElement("textarea");
+          tempTextArea.value = checklistText;
+          document.body.appendChild(tempTextArea);
+          tempTextArea.select();
+          document.execCommand("copy");
+          document.body.removeChild(tempTextArea);
+        }
+
+        const copyBtnIcon = document.getElementById("copyBtnIcon");
+        const copyBtnText = document.getElementById("copyBtnText");
+        if (copyBtnIcon) copyBtnIcon.textContent = "✓";
+        if (copyBtnText) copyBtnText.textContent = "Checklist Copied!";
+        copyChecklistBtn.classList.add("copied");
+
+        setTimeout(() => {
+          if (copyBtnIcon) copyBtnIcon.textContent = "📋";
+          if (copyBtnText) copyBtnText.textContent = "Copy Action Checklist";
+          copyChecklistBtn.classList.remove("copied");
+        }, 2500);
+      } catch (err) {
+        alert("Action checklist copied to clipboard!");
+      }
     });
   }
 
@@ -591,6 +656,62 @@ function initAnalyzer() {
     const flagsList = document.getElementById("analyzerFlagsList");
     const meterFill = document.getElementById("analyzerMeterFill");
     const advisoryBox = document.getElementById("analyzerUrlAdvisory");
+
+    // Dynamic Flipped Immediate Actions Card (Immediate Action in Plain English at Top)
+    const immediateActionsCard = document.getElementById("analyzerImmediateActions");
+    if (immediateActionsCard) {
+      const isHighThreat = data.score >= 50;
+      const isModerate = data.score >= 30 && data.score < 50;
+      
+      const titleEl = immediateActionsCard.querySelector(".actions-card-title");
+      const subtitleEl = immediateActionsCard.querySelector(".actions-card-subtitle");
+      const iconEl = immediateActionsCard.querySelector(".actions-alert-icon");
+      const checklistItemsEl = document.getElementById("analyzerChecklistItems");
+
+      if (isHighThreat) {
+        immediateActionsCard.style.borderColor = "rgba(239, 68, 68, 0.4)";
+        immediateActionsCard.style.background = "linear-gradient(180deg, rgba(239, 68, 68, 0.1) 0%, rgba(15, 23, 42, 0.85) 100%)";
+        if (iconEl) iconEl.textContent = "🚨";
+        if (titleEl) titleEl.textContent = "Immediate Action Plan (Do This First)";
+        if (subtitleEl) subtitleEl.textContent = "Plain-English emergency guidance — follow these steps before reviewing technical evidence:";
+        if (checklistItemsEl) {
+          checklistItemsEl.innerHTML = `
+            <li><span class="chk-box">☐</span> <strong>STOP ALL CONTACT:</strong> Do not reply, click links, or dial numbers in the message.</li>
+            <li><span class="chk-box">☐</span> <strong>IF YOU CLICKED A LINK:</strong> Disconnect device from Wi-Fi immediately & run an antivirus scan.</li>
+            <li><span class="chk-box">☐</span> <strong>IF CREDENTIALS / OTP ENTERED:</strong> Call your bank's fraud line immediately (number on back of card) to freeze accounts.</li>
+            <li><span class="chk-box">☐</span> <strong>SECURE YOUR ACCOUNTS:</strong> Change passwords from a separate clean device and enable Passkeys / 2FA.</li>
+            <li><span class="chk-box">☐</span> <strong>REPORT THE ATTACK:</strong> Forward SMS to 7726 (free spam reporting) and file a complaint at <a href="https://reportfraud.ftc.gov/" target="_blank" rel="noopener noreferrer">reportfraud.ftc.gov</a>.</li>
+          `;
+        }
+      } else if (isModerate) {
+        immediateActionsCard.style.borderColor = "rgba(245, 158, 11, 0.4)";
+        immediateActionsCard.style.background = "linear-gradient(180deg, rgba(245, 158, 11, 0.08) 0%, rgba(15, 23, 42, 0.85) 100%)";
+        if (iconEl) iconEl.textContent = "⚠️";
+        if (titleEl) titleEl.textContent = "Precautionary Action Plan (Moderate Suspicion)";
+        if (subtitleEl) subtitleEl.textContent = "This communication contains suspicious elements — verify before interacting:";
+        if (checklistItemsEl) {
+          checklistItemsEl.innerHTML = `
+            <li><span class="chk-box">☐</span> <strong>VERIFY INDEPENDENTLY:</strong> Do not use contact info inside the message. Look up the organization's official website directly.</li>
+            <li><span class="chk-box">☐</span> <strong>INSPECT DOMAINS:</strong> Ensure URLs match the official brand (e.g., <code>usps.com</code>, not <code>usps-delivery.top</code>).</li>
+            <li><span class="chk-box">☐</span> <strong>NEVER SHARE CODES:</strong> Legitimate agents will never ask you for one-time verification passwords.</li>
+            <li><span class="chk-box">☐</span> <strong>REPORT IF UNSOLICITED:</strong> Forward unsolicited SMS messages to 7726 to help carrier spam filters block the sender.</li>
+          `;
+        }
+      } else {
+        immediateActionsCard.style.borderColor = "rgba(16, 185, 129, 0.4)";
+        immediateActionsCard.style.background = "linear-gradient(180deg, rgba(16, 185, 129, 0.08) 0%, rgba(15, 23, 42, 0.85) 100%)";
+        if (iconEl) iconEl.textContent = "🛡️";
+        if (titleEl) titleEl.textContent = "Safety Verification: Low Risk Communication";
+        if (subtitleEl) subtitleEl.textContent = "No prominent scam patterns detected. Standard digital hygiene recommendations:";
+        if (checklistItemsEl) {
+          checklistItemsEl.innerHTML = `
+            <li><span class="chk-box">☐</span> <strong>STANDARD SAFETY:</strong> The text appears standard, but stay alert if future messages ask for money or credentials.</li>
+            <li><span class="chk-box">☐</span> <strong>KEEP PASSWORDS STRONG:</strong> Use unique passphrases and a password manager across all your online services.</li>
+            <li><span class="chk-box">☐</span> <strong>KEEP 2FA ACTIVE:</strong> Multi-factor authentication blocks over 99% of automated credential stuffing attempts.</li>
+          `;
+        }
+      }
+    }
 
     if (dialVal) dialVal.textContent = `${data.score}/100`;
     if (dialLevel) {
