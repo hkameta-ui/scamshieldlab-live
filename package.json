@@ -4,7 +4,7 @@
   "private": true,
   "description": "ScamShield AI - Autonomous Threat Intelligence Hub",
   "scripts": {
-    "deploy": "wrangler pages deploy ."
+    "deploy": "wrangler deploy"
   },
   "devDependencies": {
     "wrangler": "^3.114.0"
