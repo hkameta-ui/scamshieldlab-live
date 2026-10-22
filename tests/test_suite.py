@@ -662,12 +662,12 @@ class TestAboveTheFoldTrustAndLiveDemo(unittest.TestCase):
         self.assertIn('"deploy": "wrangler deploy"', package_content)
 
     def test_giant_guest_mode_primary_cta(self):
-        """Conversion UX Mandate: Guest mode is the default with a giant primary CTA to reduce friction."""
-        self.assertIn('id="giantGuestCtaBtn"', self.index_html)
-        self.assertIn("btn-giant-guest-cta", self.index_html)
-        self.assertIn("No Account Needed", self.index_html)
-        self.assertIn(".btn-giant-guest-cta", self.css)
-        self.assertIn("giantGuestCtaBtn", self.app_js)
+        """Conversion UX Mandate: Guest mode is the default with a prominent primary CTA in the hero live demo to eliminate signup friction."""
+        self.assertIn('id="heroScanBtn"', self.index_html)
+        self.assertIn("Instant Guest Scan", self.index_html)
+        self.assertIn("Zero Signup", self.index_html)
+        self.assertIn("No account required", self.index_html)
+        self.assertIn("heroScanBtn", self.app_js)
 
     def test_three_one_click_example_scams(self):
         """Conversion UX Mandate: Provides 3 one-click example scams (Phishing, Job Scam, Delivery Scam) so users don't have to type."""

@@ -92,29 +92,6 @@ function initAnalyzer() {
   const heroScanBtn = document.getElementById("heroScanBtn");
   const heroPasteBtn = document.getElementById("heroPasteBtn");
   const heroSampleChips = document.querySelectorAll(".hero-sample-chip");
-  const giantGuestCtaBtn = document.getElementById("giantGuestCtaBtn");
-
-  if (giantGuestCtaBtn) {
-    giantGuestCtaBtn.addEventListener("click", (e) => {
-      const heroText = heroQuickInput ? heroQuickInput.value.trim() : "";
-      if (heroText) {
-        e.preventDefault();
-        if (inputEl) inputEl.value = heroText;
-        runAnalysis(heroText);
-      } else {
-        e.preventDefault();
-        if (heroQuickInput) {
-          heroQuickInput.focus();
-          heroQuickInput.style.borderColor = "var(--color-primary)";
-          heroQuickInput.style.boxShadow = "0 0 15px rgba(0, 242, 254, 0.4)";
-          setTimeout(() => {
-            heroQuickInput.style.borderColor = "";
-            heroQuickInput.style.boxShadow = "";
-          }, 1500);
-        }
-      }
-    });
-  }
 
   if (heroSampleChips.length > 0 && window.ANALYZER_PRESETS) {
     heroSampleChips.forEach(chip => {
