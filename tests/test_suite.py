@@ -641,6 +641,22 @@ class TestAboveTheFoldTrustAndLiveDemo(unittest.TestCase):
         self.assertIn("confirm the refund", self.app_js)
         self.assertIn("NEVER require you to receive or confirm a code to issue refunds", self.app_js)
 
+    def test_cloudflare_deployment_config(self):
+        """Ensures wrangler.toml and package.json exist and specify correct Pages deployment settings."""
+        wrangler_path = os.path.join(WORKSPACE_ROOT, "wrangler.toml")
+        package_path = os.path.join(WORKSPACE_ROOT, "package.json")
+        self.assertTrue(os.path.exists(wrangler_path), "wrangler.toml must exist for Cloudflare deployment")
+        self.assertTrue(os.path.exists(package_path), "package.json must exist for Cloudflare tool detection")
+
+        with open(wrangler_path, "r", encoding="utf-8") as f:
+            wrangler_content = f.read()
+        self.assertIn("scamshieldlab-live", wrangler_content)
+        self.assertIn('pages_build_output_dir = "."', wrangler_content)
+
+        with open(package_path, "r", encoding="utf-8") as f:
+            package_content = f.read()
+        self.assertIn("wrangler", package_content)
+
 
 if __name__ == "__main__":
     unittest.main()
