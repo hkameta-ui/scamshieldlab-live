@@ -839,7 +839,10 @@ class TestSecurityClaimsAndResearchCitations(unittest.TestCase):
         self.assertIn("Microsoft Research", self.index_html)
         self.assertIn("VALL-E", self.index_html)
         self.assertIn("FBI IC3", self.index_html)
+        self.assertIn("Deloitte Center for Financial Services", self.index_html)
+        self.assertIn("$1.1B+", self.index_html)
         self.assertIn(".hero-source-footnote", self.css)
+        self.assertIn(".proof-source", self.css)
 
     def test_threat_radar_renders_verified_intelligence_sources(self):
         """Ensures threat cards render verified intelligence citation badges with academic/agency references."""
@@ -847,6 +850,7 @@ class TestSecurityClaimsAndResearchCitations(unittest.TestCase):
         self.assertIn("threat-impact-source", self.app_js)
         self.assertIn("VALL-E 3s Neural Synthesis Benchmark", self.threat_js)
         self.assertIn("FBI IC3", self.threat_js)
+        self.assertIn("Deloitte", self.threat_js)
         self.assertIn(".threat-sources-box", self.css)
         self.assertIn(".threat-impact-source", self.css)
 
@@ -855,7 +859,18 @@ class TestSecurityClaimsAndResearchCitations(unittest.TestCase):
         self.assertIn("faq-citation-box", self.index_html)
         self.assertIn("arXiv:2301.02111", self.index_html)
         self.assertIn("VALL-E", self.index_html)
+        self.assertIn("Deloitte Center for Financial Services", self.index_html)
         self.assertIn(".faq-citation-box", self.css)
+
+    def test_deloitte_citation_prominently_implemented(self):
+        """Ensures the $1.1B+ AI voice & deepfake losses metric is prominently attributed to Deloitte Center for Financial Services."""
+        self.assertIn("Deloitte Center for Financial Services", self.index_html)
+        self.assertIn("AI Voice &amp; Deepfake Losses", self.index_html)
+        guide_voice_path = os.path.join(WORKSPACE_ROOT, "guide-voice-cloning.html")
+        with open(guide_voice_path, "r", encoding="utf-8") as f:
+            guide_voice = f.read()
+        self.assertIn("Deloitte Center for Financial Services", guide_voice)
+        self.assertIn("Deloitte", self.threat_js)
 
 
 if __name__ == "__main__":

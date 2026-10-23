@@ -773,6 +773,14 @@ a:hover {
   margin-top: 0.15rem;
 }
 
+.proof-source {
+  font-size: 0.62rem;
+  color: #38BDF8;
+  font-weight: 600;
+  margin-top: 0.2rem;
+  line-height: 1.25;
+}
+
 .proof-divider {
   width: 1px;
   height: 28px;

@@ -10,12 +10,13 @@ window.THREAT_DATABASE = [
     categoryName: "Voice Cloning (Vishing)",
     severity: "CRITICAL",
     severityColor: "#EF4444",
-    impact: "Over $1.1B in annual global losses",
-    impactSource: "FBI IC3 Threat Report & FTC Sentinel",
+    impact: "$1.1B+ in annual AI voice & deepfake losses",
+    impactSource: "Deloitte Center for Financial Services & FBI IC3",
     summary: "Attackers scrape as little as 3 seconds of audio from social media (TikTok, Instagram Reels) to synthesize an exact voice clone. They call parents or grandparents claiming an emergency, car accident, or arrest requiring immediate wire or crypto bail.",
     sources: [
+      { name: "Deloitte", label: "Center for Financial Services ($1.1B+ Deepfake Losses)", url: "https://www2.deloitte.com/us/en/insights/industry/financial-services.html" },
       { name: "Microsoft Research", label: "VALL-E 3s Neural Synthesis Benchmark", url: "https://arxiv.org/abs/2301.02111" },
-      { name: "FBI IC3", label: "Annual Cyber Threat Report ($1.1B+ Loss Telemetry)", url: "https://www.ic3.gov" },
+      { name: "FBI IC3", label: "Annual Cyber Threat Report", url: "https://www.ic3.gov" },
       { name: "FTC", label: "Consumer Sentinel Voice Clone Advisory", url: "https://www.ftc.gov" }
     ],
     indicators: [
