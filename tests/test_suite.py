@@ -872,6 +872,25 @@ class TestSecurityClaimsAndResearchCitations(unittest.TestCase):
         self.assertIn("Deloitte Center for Financial Services", guide_voice)
         self.assertIn("Deloitte", self.threat_js)
 
+    def test_footer_review_pill_present_on_all_pages(self):
+        """Ensures the 'Reviewed by Cybersecurity Professionals' & 'Last Updated: October 2026' pill is present across all HTML pages."""
+        html_files = [
+            "index.html", "how-we-score.html", "family-safe-word.html",
+            "guide-voice-cloning.html", "guide-pig-butchering.html",
+            "guide-phishing.html", "guide-job-scams.html", "guide-delivery-scams.html",
+            "about.html", "privacy.html", "terms.html"
+        ]
+        self.assertIn(".footer-review-pill", self.css)
+        self.assertIn(".review-pill-link", self.css)
+        self.assertIn(".review-pill-date", self.css)
+        for h in html_files:
+            file_path = os.path.join(WORKSPACE_ROOT, h)
+            with open(file_path, "r", encoding="utf-8") as f:
+                content = f.read()
+            self.assertIn("footer-review-pill", content, f"Missing footer-review-pill in {h}")
+            self.assertIn("Reviewed by Cybersecurity Professionals", content, f"Missing review label in {h}")
+            self.assertIn("Last Updated: October 2026", content, f"Missing last updated date in {h}")
+
 
 if __name__ == "__main__":
     unittest.main()

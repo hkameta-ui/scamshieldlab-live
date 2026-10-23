@@ -2377,10 +2377,60 @@ a:hover {
   margin-bottom: 3.5rem;
 }
 
+/* Footer Review & Freshness Verification Pill */
+.footer-review-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.45rem;
+  flex-wrap: wrap;
+  background: rgba(14, 165, 233, 0.08);
+  border: 1px solid rgba(56, 189, 248, 0.22);
+  border-radius: 9999px;
+  padding: 0.35rem 0.75rem;
+  margin-top: 1rem;
+  font-size: 0.75rem;
+  line-height: 1.35;
+  color: #94A3B8;
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+}
+
+.footer-review-pill .review-pill-icon {
+  font-size: 0.82rem;
+  line-height: 1;
+}
+
+.footer-review-pill .review-pill-link {
+  color: #38BDF8;
+  font-weight: 600;
+  text-decoration: none;
+  transition: color 0.15s ease, text-decoration 0.15s ease;
+}
+
+.footer-review-pill .review-pill-link:hover {
+  color: #7DD3FC;
+  text-decoration: underline;
+}
+
+.footer-review-pill .review-pill-link:focus-visible {
+  outline: 2px solid #38BDF8;
+  outline-offset: 2px;
+  border-radius: 2px;
+}
+
+.footer-review-pill .review-pill-divider {
+  color: #475569;
+}
+
+.footer-review-pill .review-pill-date {
+  color: #CBD5E1;
+  font-weight: 500;
+}
+
 .footer-brand-desc {
   color: var(--text-muted);
   font-size: 0.88rem;
-  margin-top: 1rem;
+  margin-top: 0.75rem;
   max-width: 320px;
 }
 
