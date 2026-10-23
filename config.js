@@ -55,7 +55,7 @@ window.SITE_CONFIG = {
     googleTitan: {
       name: "Google Titan Security Key",
       icon: "🔑",
-      tagline: "Hardware-bound FIDO2 cryptographic defense stopping 100% of remote phishing takeovers",
+      tagline: "Hardware-bound FIDO2 cryptographic defense neutralizing remote credential phishing and session hijacking",
       payoutEst: "Google Store / Amazon Partner",
       url: "https://store.google.com/product/titan_security_key",
       badge: "Gold Standard 2FA",

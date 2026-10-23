@@ -791,7 +791,75 @@ class TestAboveTheFoldTrustAndLiveDemo(unittest.TestCase):
         self.assertTrue(imperatives_idx > score_panel_idx, "results-score-panel must appear BEFORE triage imperatives for instant visibility")
 
 
+class TestSecurityClaimsAndResearchCitations(unittest.TestCase):
+    """Rule 3 & Feedback Mandate: Verifies no absolute marketing claims and ensures prominent academic/governmental sourcing."""
+
+    def setUp(self):
+        index_path = os.path.join(WORKSPACE_ROOT, "index.html")
+        with open(index_path, "r", encoding="utf-8") as f:
+            self.index_html = f.read()
+
+        threat_path = os.path.join(WORKSPACE_ROOT, "js", "threat-data.js")
+        with open(threat_path, "r", encoding="utf-8") as f:
+            self.threat_js = f.read()
+
+        app_path = os.path.join(WORKSPACE_ROOT, "js", "app.js")
+        with open(app_path, "r", encoding="utf-8") as f:
+            self.app_js = f.read()
+
+        css_path = os.path.join(WORKSPACE_ROOT, "css", "styles.css")
+        with open(css_path, "r", encoding="utf-8") as f:
+            self.css = f.read()
+
+    def test_no_unverifiable_absolute_claims_in_html(self):
+        """Ensures absolute claims ('100% defense', '100% private', '100% client-side', 'foolproof') are removed."""
+        forbidden_phrases = [
+            "100% defense",
+            "100% private",
+            "100% client-side",
+            "foolproof defense",
+            "stopping 100% of",
+            "100% identical"
+        ]
+        html_files = [f for f in os.listdir(WORKSPACE_ROOT) if f.endswith(".html")]
+        for h in html_files:
+            file_path = os.path.join(WORKSPACE_ROOT, h)
+            with open(file_path, "r", encoding="utf-8") as f:
+                content = f.read()
+                for phrase in forbidden_phrases:
+                    self.assertNotIn(
+                        phrase.lower(), content.lower(),
+                        f"Unverifiable absolute claim '{phrase}' must not appear in production file {h}"
+                    )
+
+    def test_hero_hud_has_prominent_research_citations(self):
+        """Ensures the 3-second synthesis and $1.1B+ loss metrics feature prominent citations on the homepage."""
+        self.assertIn("hero-source-footnote", self.index_html)
+        self.assertIn("source-footnote-pill", self.index_html)
+        self.assertIn("Microsoft Research", self.index_html)
+        self.assertIn("VALL-E", self.index_html)
+        self.assertIn("FBI IC3", self.index_html)
+        self.assertIn(".hero-source-footnote", self.css)
+
+    def test_threat_radar_renders_verified_intelligence_sources(self):
+        """Ensures threat cards render verified intelligence citation badges with academic/agency references."""
+        self.assertIn("threat-sources-box", self.app_js)
+        self.assertIn("threat-impact-source", self.app_js)
+        self.assertIn("VALL-E 3s Neural Synthesis Benchmark", self.threat_js)
+        self.assertIn("FBI IC3", self.threat_js)
+        self.assertIn(".threat-sources-box", self.css)
+        self.assertIn(".threat-impact-source", self.css)
+
+    def test_faq_contains_formal_citations(self):
+        """Ensures the voice cloning FAQ provides verifiable academic and FTC citations."""
+        self.assertIn("faq-citation-box", self.index_html)
+        self.assertIn("arXiv:2301.02111", self.index_html)
+        self.assertIn("VALL-E", self.index_html)
+        self.assertIn(".faq-citation-box", self.css)
+
+
 if __name__ == "__main__":
     unittest.main()
+
 
 

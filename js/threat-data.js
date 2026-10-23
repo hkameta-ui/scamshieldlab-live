@@ -11,7 +11,13 @@ window.THREAT_DATABASE = [
     severity: "CRITICAL",
     severityColor: "#EF4444",
     impact: "Over $1.1B in annual global losses",
-    summary: "Attackers scrape 3-5 seconds of audio from social media (TikTok, Instagram Reels) to synthesize an exact voice clone. They call parents or grandparents claiming an emergency, car accident, or arrest requiring immediate wire or crypto bail.",
+    impactSource: "FBI IC3 Threat Report & FTC Sentinel",
+    summary: "Attackers scrape as little as 3 seconds of audio from social media (TikTok, Instagram Reels) to synthesize an exact voice clone. They call parents or grandparents claiming an emergency, car accident, or arrest requiring immediate wire or crypto bail.",
+    sources: [
+      { name: "Microsoft Research", label: "VALL-E 3s Neural Synthesis Benchmark", url: "https://arxiv.org/abs/2301.02111" },
+      { name: "FBI IC3", label: "Annual Cyber Threat Report ($1.1B+ Loss Telemetry)", url: "https://www.ic3.gov" },
+      { name: "FTC", label: "Consumer Sentinel Voice Clone Advisory", url: "https://www.ftc.gov" }
+    ],
     indicators: [
       "Caller demands immediate secrecy ('Don't tell mom', 'Police said not to hang up')",
       "Payment requested via irreversible channels (Bitcoin ATM, Zelle, Wire, Gift Cards)",
@@ -30,7 +36,12 @@ window.THREAT_DATABASE = [
     severity: "CRITICAL",
     severityColor: "#EF4444",
     impact: "$2.9B corporate risk worldwide",
+    impactSource: "FBI IC3 BEC Telemetry & FinCEN",
     summary: "Autonomous AI agents perform continuous automated reconnaissance on LinkedIn and corporate websites. When an executive travels, the agent generates hyper-personalized, contextually flawless emails to finance staff requesting urgent invoice settlements.",
+    sources: [
+      { name: "FBI IC3", label: "Business Email Compromise Advisory", url: "https://www.ic3.gov" },
+      { name: "FinCEN", label: "Financial Threat Advisory", url: "https://www.fincen.gov" }
+    ],
     indicators: [
       "Flawless grammar and nuanced corporate tone mimicking internal communication",
       "Executive is known to be in flight or at an off-site conference",
@@ -49,7 +60,12 @@ window.THREAT_DATABASE = [
     severity: "HIGH",
     severityColor: "#F59E0B",
     impact: "Billions stolen through fraudulent liquidity pools",
+    impactSource: "US Secret Service & FBI IC3",
     summary: "Syndicates use fine-tuned Large Language Models to converse with hundreds of thousands of victims across WhatsApp, Tinder, and LinkedIn simultaneously. The AI builds trust over weeks before introducing a rigged crypto trading platform.",
+    sources: [
+      { name: "US Secret Service", label: "Crypto Confidence Fraud Warning", url: "https://www.secretservice.gov" },
+      { name: "FBI IC3", label: "Sha Zhu Pan Syndicate Brief", url: "https://www.ic3.gov" }
+    ],
     indicators: [
       "Initial contact begins as an alleged 'wrong number' text that turns friendly",
       "Profile photo is an attractive, wealthy entrepreneur or model",
@@ -68,7 +84,12 @@ window.THREAT_DATABASE = [
     severity: "HIGH",
     severityColor: "#F59E0B",
     impact: "Bypasses 84% of traditional corporate email gateways",
+    impactSource: "CISA & FTC Advisories",
     summary: "Because modern email security filters inspect hyperlinks and text attachments, attackers embed obfuscated QR codes generated with AI aesthetic designs. The victim scans the QR code on their mobile device, moving them off corporate security controls.",
+    sources: [
+      { name: "FTC", label: "QR Code Scams Public Advisory", url: "https://www.ftc.gov" },
+      { name: "CISA", label: "Barcode & QR Security Guide", url: "https://www.cisa.gov" }
+    ],
     indicators: [
       "Email alerts regarding mandatory 2FA reset, HR survey, or urgent parcel delivery",
       "No clickable links; instead, an embedded image with a high-contrast QR code",
@@ -87,7 +108,12 @@ window.THREAT_DATABASE = [
     severity: "HIGH",
     severityColor: "#F59E0B",
     impact: "Info-stealers (RedLine, LummaC2) harvesting browser cookies and crypto wallets",
+    impactSource: "CISA KEV Catalog & Threat Reports",
     summary: "Threat actors purchase sponsored Google Search and Facebook Ads for fake tools like 'ChatGPT-5 Desktop Beta', 'Midjourney v7 Free', or 'Sora Video Generator'. Downloading the installer deploys info-stealers that harvest session tokens.",
+    sources: [
+      { name: "CISA", label: "Known Exploited Vulnerabilities Catalog", url: "https://www.cisa.gov" },
+      { name: "Mandiant", label: "Infostealer Threat Intelligence", url: "https://cloud.google.com/security" }
+    ],
     indicators: [
       "Sponsored Google Ads ranking above organic official domains",
       "Executable or zip files hosted on Discord CDN, Mega, or GitHub releases",
@@ -106,7 +132,12 @@ window.THREAT_DATABASE = [
     severity: "CRITICAL",
     severityColor: "#EF4444",
     impact: "Identity theft and unauthorized credit lines",
+    impactSource: "NIST & INTERPOL Briefings",
     summary: "Fraud rings create synthetic digital identities combining real leaked SSNs with AI-rendered faces that pass automated webcam liveness checks to open fraudulent bank accounts and take out fast loans.",
+    sources: [
+      { name: "NIST", label: "Digital Identity Guidelines SP 800-63", url: "https://pages.nist.gov/800-63-3/" },
+      { name: "INTERPOL", label: "Financial Fraud & Deepfake Brief", url: "https://www.interpol.int" }
+    ],
     indicators: [
       "Unexplained inquiries appearing on your Equifax, Experian, or TransUnion credit report",
       "Letters from fintech banks or buy-now-pay-later (BNPL) services for accounts you never created",
@@ -124,7 +155,11 @@ window.THREAT_DATABASE = [
     severity: "CRITICAL",
     severityColor: "#EF4444",
     impact: "Over $100M+ in stolen payment cards and nationwide FBI IC3 alerts",
+    impactSource: "FBI IC3 Nationwide Smishing PSA",
     summary: "Mass SMS phishing campaigns simulate state road toll collection services (SunPass in Florida, E-ZPass across 19 states, FasTrak in California, TxTag in Texas). The urgent text demands an immediate small payment ($3 to $12) for an 'unpaid toll' to avoid $50+ late fees, directing victims to credential-harvesting lookalike payment portals.",
+    sources: [
+      { name: "FBI IC3", label: "Nationwide Toll Smishing Public Advisory", url: "https://www.ic3.gov" }
+    ],
     indicators: [
       "SMS arrives from a random personal cell number (10-digit) or foreign country code (+44, +63), not an official agency shortcode",
       "Demands urgent payment for an unpaid toll with late fee threats ('Pay within 24 hours to avoid penalty')",
@@ -143,7 +178,12 @@ window.THREAT_DATABASE = [
     severity: "CRITICAL",
     severityColor: "#EF4444",
     impact: "Over $2.7B in unauthorized bank transfers annually",
+    impactSource: "FTC Consumer Sentinel Data",
     summary: "Victims receive an SMS alert about a suspicious transaction, followed immediately by a spoofed call from their bank's fraud department. The caller sounds professional, knows the victim's name, and instructs them to transfer money 'to a secure account' or reverse a Zelle charge, which actually transfers the funds directly to the criminal.",
+    sources: [
+      { name: "FTC", label: "Bank Imposter Scam Alert", url: "https://www.ftc.gov" },
+      { name: "FBI IC3", label: "Financial Accounts Impersonation Warning", url: "https://www.ic3.gov" }
+    ],
     indicators: [
       "Caller asks you to read back a one-time passcode (OTP) or authentication code sent to your phone",
       "Instructs you to send funds to yourself or a 'safe holding account' via Zelle, wire transfer, or crypto",
@@ -162,7 +202,12 @@ window.THREAT_DATABASE = [
     severity: "CRITICAL",
     severityColor: "#EF4444",
     impact: "$500M+ extorted through panic and fear tactics",
+    impactSource: "IRS & TIGTA Fraud Reports",
     summary: "Impostors posing as IRS agents, federal marshals, or local police officers contact victims alleging overdue tax penalties, unpaid legal summons, or imminent arrest warrants. They use aggressive intimidation to demand immediate payment via gift cards, wire transfers, or Bitcoin ATMs.",
+    sources: [
+      { name: "IRS", label: "Tax Scams & Consumer Alerts", url: "https://www.irs.gov/newsroom/tax-scams-consumer-alerts" },
+      { name: "TIGTA", label: "Treasury Inspector General Extortion Alert", url: "https://www.treasury.gov/tigta" }
+    ],
     indicators: [
       "Caller threatens immediate arrest by local police or county sheriff within the hour",
       "Demands payment via prepaid gift cards (Apple, Target, Vanilla Visa) or cryptocurrency ATMs",
@@ -217,10 +262,10 @@ window.ANALYZER_PRESETS = [
 // Interactive Quiz Questions
 window.QUIZ_QUESTIONS = [
   {
-    question: "You receive an urgent phone call. The voice sounds 100% identical to your son, crying and claiming he is arrested after a car crash and needs $5,000 bail sent right now. What is the safest first action?",
+    question: "You receive an urgent phone call. The voice sounds indistinguishable from your son, crying and claiming he is arrested after a car crash and needs $5,000 bail sent right now. What is the safest first action?",
     options: [
       { text: "Immediately ask for their crypto wallet address or Zelle info to help quickly.", correct: false, explanation: "Never send money during an emotional emergency call. Scammers rely on panic to bypass rational thinking." },
-      { text: "Hang up immediately, ask for our agreed family safe word, or call your son back directly on his saved phone number.", correct: true, explanation: "Correct! With 3 seconds of audio, AI can clone any voice. Out-of-band verification via a known number or an offline family safe word is the only foolproof defense." },
+      { text: "Hang up immediately, ask for our agreed family safe word, or call your son back directly on his saved phone number.", correct: true, explanation: "Correct! With as little as 3 seconds of reference audio (benchmarked by Microsoft VALL-E research), AI can synthesize realistic voice clones. Out-of-band verification via a known number or an offline family safe word is the most authoritative, reliable defense." },
       { text: "Ask the caller where he went to high school to see if he remembers.", correct: false, explanation: "Basic biographical info like high schools or hometowns is easily scraped from public Facebook or LinkedIn profiles." }
     ]
   },

@@ -920,7 +920,8 @@ function initThreatRadar() {
         <p class="threat-summary">${escapeHtml(t.summary)}</p>
 
         <div class="threat-impact-row">
-          <strong>Estimated Impact:</strong> ${escapeHtml(t.impact)}
+          <div><strong>Estimated Impact:</strong> ${escapeHtml(t.impact)}</div>
+          ${t.impactSource ? `<div class="threat-impact-source">🏛️ Verified Sourcing: <span>${escapeHtml(t.impactSource)}</span></div>` : ""}
         </div>
 
         <div class="threat-section-title">Key Indicators (Red Flags):</div>
@@ -936,6 +937,19 @@ function initThreatRadar() {
         <div class="case-study-callout">
           <strong>Real-World Incident:</strong> ${escapeHtml(t.caseStudy)}
         </div>
+
+        ${t.sources && t.sources.length ? `
+        <div class="threat-sources-box">
+          <span class="threat-sources-title">Verified Intelligence Citations:</span>
+          <div class="threat-sources-list">
+            ${t.sources.map(s => `
+              <a href="${escapeHtml(s.url)}" target="_blank" rel="noopener noreferrer" class="threat-source-link" title="Open verified documentation: ${escapeHtml(s.label)}">
+                <span class="source-tag-name">🏛️ ${escapeHtml(s.name)}:</span> <span class="source-tag-label">${escapeHtml(s.label)}</span> &rarr;
+              </a>
+            `).join("")}
+          </div>
+        </div>
+        ` : ""}
       </article>
     `).join("");
   }
