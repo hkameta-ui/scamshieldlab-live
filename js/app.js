@@ -1408,3 +1408,11 @@ function initFaqAccordion() {
     });
   });
 }
+
+// Mobile & Browser BF-Cache Invalidation:
+// Ensure visitors never receive a stale frozen page snapshot when navigating back or reopening tabs
+window.addEventListener("pageshow", (event) => {
+  if (event.persisted) {
+    window.location.reload();
+  }
+});

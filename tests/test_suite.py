@@ -891,6 +891,40 @@ class TestSecurityClaimsAndResearchCitations(unittest.TestCase):
             self.assertIn("Reviewed by Cybersecurity Professionals", content, f"Missing review label in {h}")
             self.assertIn("Last Updated: October 2026", content, f"Missing last updated date in {h}")
 
+    def test_cache_invalidation_headers_configured(self):
+        """Rule 1 & Caching: Ensures Cloudflare _headers file enforces zero-stale HTML cache."""
+        headers_path = os.path.join(WORKSPACE_ROOT, "_headers")
+        self.assertTrue(os.path.exists(headers_path), "Missing Cloudflare _headers configuration file")
+        with open(headers_path, "r", encoding="utf-8") as f:
+            headers_content = f.read()
+        self.assertIn("Cache-Control: no-cache, no-store, must-revalidate", headers_content)
+        self.assertIn("Pragma: no-cache", headers_content)
+        self.assertIn("Expires: 0", headers_content)
+        self.assertIn("immutable", headers_content)
+
+    def test_html_files_contain_cache_control_meta_tags(self):
+        """Rule 1 & Caching: Ensures all 11 HTML files declare no-cache meta tags to prevent client browser stagnation."""
+        html_files = [
+            "index.html", "how-we-score.html", "family-safe-word.html",
+            "guide-voice-cloning.html", "guide-pig-butchering.html",
+            "guide-phishing.html", "guide-job-scams.html", "guide-delivery-scams.html",
+            "about.html", "privacy.html", "terms.html"
+        ]
+        for h in html_files:
+            file_path = os.path.join(WORKSPACE_ROOT, h)
+            with open(file_path, "r", encoding="utf-8") as f:
+                content = f.read()
+            self.assertIn('http-equiv="Cache-Control"', content, f"Missing Cache-Control meta tag in {h}")
+            self.assertIn('content="no-cache, no-store, must-revalidate"', content, f"Incorrect Cache-Control value in {h}")
+            self.assertIn('http-equiv="Pragma"', content, f"Missing Pragma meta tag in {h}")
+            self.assertIn('http-equiv="Expires"', content, f"Missing Expires meta tag in {h}")
+
+    def test_bfcache_invalidation_listener_present_in_app_js(self):
+        """Rule 1: Ensures mobile & browser back-forward cache invalidator is active in app.js."""
+        self.assertIn('addEventListener("pageshow"', self.app_js)
+        self.assertIn('event.persisted', self.app_js)
+        self.assertIn('window.location.reload()', self.app_js)
+
 
 if __name__ == "__main__":
     unittest.main()

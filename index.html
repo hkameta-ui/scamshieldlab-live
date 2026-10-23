@@ -85,6 +85,11 @@
   <meta http-equiv="X-Content-Type-Options" content="nosniff">
   <meta name="referrer" content="strict-origin-when-cross-origin">
 
+  <!-- Cache Invalidation: Ensure visitors always receive the latest deployment -->
+  <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
+  <meta http-equiv="Pragma" content="no-cache">
+  <meta http-equiv="Expires" content="0">
+
   <!-- Performance Preconnect & Zero-Shift Font Loading (Rule 1) -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -94,11 +99,11 @@
   <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-7565560894775775" crossorigin="anonymous"></script>
 
   <!-- Stylesheets -->
-  <link rel="stylesheet" href="css/styles.css?v=20261023-footer1">
+  <link rel="stylesheet" href="css/styles.css?v=20261023-cache1">
   <link rel="icon" type="image/jpeg" href="assets/images/logo.jpg">
 
   <!-- Configuration & AdSense Loader -->
-  <script src="config.js?v=20261023-footer1" defer></script>
+  <script src="config.js?v=20261023-cache1" defer></script>
 </head>
 <body>
 
@@ -873,7 +878,7 @@
   </footer>
 
   <!-- Scripts -->
-  <script src="js/threat-data.js?v=20261023-footer1"></script>
-  <script src="js/app.js?v=20261023-footer1"></script>
+  <script src="js/threat-data.js?v=20261023-cache1"></script>
+  <script src="js/app.js?v=20261023-cache1"></script>
 </body>
 </html>
