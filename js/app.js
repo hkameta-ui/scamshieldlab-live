@@ -34,21 +34,67 @@ function escapeHtml(str) {
 }
 
 /* ==========================================================================
-   1. Live Threat Ticker
+   1. Live Threat Intelligence Terminal Feed
    ========================================================================== */
 function initTicker() {
   const tickerItems = [
-    "🚨 CRITICAL ALERT: Real-time AI voice cloning scam rings surge 310% targeting family emergencies.",
-    "⚠️ HIGH RISK: Deepfake video conference CFO impersonation tricks enterprise finance teams ($25M loss).",
-    "🛡️ DEFENSE TIP: Establish an offline family secret safe word today — bypass synthetic audio deception.",
-    "⚠️ ALERT: Malicious sponsored ads found for 'Sora Video Desktop' dropping LummaC2 info-stealers.",
-    "💡 ADVICE: Freeze credit on Experian, Equifax, and TransUnion to block synthetic AI credit applications."
+    {
+      source: "FBI IC3 ADVISORY",
+      text: "Synthetic voice cloning targeting family emergencies surges 310%",
+      linkText: "Open Safe Word Kit →",
+      linkUrl: "family-safe-word.html"
+    },
+    {
+      source: "ZERO-TRUST PRIVACY",
+      text: "ScamShield Lab heuristic analyzer operates 100% in-browser with zero data retention",
+      linkText: "View Privacy Matrix →",
+      linkUrl: "how-we-score.html#privacy-matrix"
+    },
+    {
+      source: "CISA BULLETIN",
+      text: "Reverse-proxy AiTM phishing kits actively intercepting session tokens and SMS 2FA",
+      linkText: "Read Passkey Guide →",
+      linkUrl: "guide-phishing.html"
+    },
+    {
+      source: "FINCEN WARNING",
+      text: "Transnational syndicates deploying LLM bots for automated Pig Butchering investment traps",
+      linkText: "Dissect Attack Lifecycle →",
+      linkUrl: "guide-pig-butchering.html"
+    },
+    {
+      source: "USPIS ADVISORY",
+      text: "Nationwide package redelivery and toll authority smishing waves harvesting payment cards",
+      linkText: "Inspect Red Flags →",
+      linkUrl: "guide-delivery-scams.html"
+    },
+    {
+      source: "HEURISTIC SCANNER",
+      text: "Paste suspicious texts, emails, or links to calculate instant 4-layer risk score",
+      linkText: "Run Guest Scan (0.4s) →",
+      linkUrl: "#analyzer"
+    }
   ];
 
   const tickerContainer = document.getElementById("liveThreatTicker");
-  if (tickerContainer) {
-    tickerContainer.innerHTML = tickerItems.map(item => `<span class="ticker-pill">${escapeHtml(item)}</span>`).join(" &bull; ");
-  }
+  if (!tickerContainer) return;
+
+  const renderItemsHtml = () => tickerItems.map(item => `
+    <span class="ticker-item">
+      <span class="ticker-tag">${escapeHtml(item.source)}</span>
+      <span class="ticker-text">${escapeHtml(item.text)}</span>
+      <a href="${escapeHtml(item.linkUrl)}" class="ticker-action-link">${escapeHtml(item.linkText)}</a>
+    </span>
+  `).join('<span class="ticker-divider" aria-hidden="true">&bull;</span>');
+
+  const content = renderItemsHtml();
+  tickerContainer.innerHTML = `
+    <div class="ticker-track">
+      ${content}
+      <span class="ticker-divider" aria-hidden="true">&bull;</span>
+      ${content}
+    </div>
+  `;
 }
 
 /* ==========================================================================
