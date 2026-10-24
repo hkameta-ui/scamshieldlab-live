@@ -973,14 +973,14 @@ a:hover {
    AdSense Placement Containers (Compliant, High-CTR Layout)
    ========================================================================== */
 .adsense-slot-container {
-  margin: 2.5rem auto;
+  margin: 1.75rem auto;
   text-align: center;
   max-width: 100%;
-  min-height: 105px;
   contain: layout style;
 }
 
-.adsense-slot-container:empty {
+.adsense-slot-container:empty,
+.adsense-slot-container ins:empty:not([data-ad-status="filled"]) {
   min-height: 0;
   margin: 0;
   display: none;

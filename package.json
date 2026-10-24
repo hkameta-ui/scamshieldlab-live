@@ -4,6 +4,8 @@
   "private": true,
   "description": "ScamShield AI - Autonomous Threat Intelligence Hub",
   "scripts": {
+    "test": "python -m unittest tests/test_suite.py",
+    "check:readiness": "python tests/design_readiness_check.py",
     "deploy": "wrangler deploy"
   },
   "devDependencies": {

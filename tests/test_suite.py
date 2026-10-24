@@ -926,6 +926,18 @@ class TestSecurityClaimsAndResearchCitations(unittest.TestCase):
         self.assertIn('window.location.reload()', self.app_js)
 
 
+class TestFundamentalDesignAndAdSenseReadiness(unittest.TestCase):
+    """Mandatory pre-merge quality gate enforcing zero dummy placeholders, full sitemap coverage,
+    link integrity, asset synchronization, and AdSense compliance."""
+
+    def test_fundamental_design_readiness_gate(self):
+        import sys
+        sys.path.insert(0, WORKSPACE_ROOT)
+        from tests.design_readiness_check import run_readiness_checks
+        passed = run_readiness_checks()
+        self.assertTrue(passed, "Fundamental Design & Pre-Merge Readiness checks failed! See logs above.")
+
+
 if __name__ == "__main__":
     unittest.main()
 
