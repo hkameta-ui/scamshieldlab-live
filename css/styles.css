@@ -3290,3 +3290,208 @@ a:hover {
   margin: 0 auto;
 }
 
+/* ==========================================================================
+   Author Bio, Research Credentials & Empirical References (E-E-A-T)
+   ========================================================================== */
+.author-card-box {
+  background: linear-gradient(135deg, rgba(15, 23, 42, 0.85) 0%, rgba(10, 16, 31, 0.95) 100%);
+  border: 1px solid rgba(0, 242, 254, 0.25);
+  border-radius: var(--radius-lg);
+  padding: 2rem;
+  margin: 3.5rem 0 2.5rem;
+  display: flex;
+  gap: 1.5rem;
+  align-items: flex-start;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4);
+}
+
+.author-avatar-col {
+  flex-shrink: 0;
+}
+
+.author-avatar {
+  width: 72px;
+  height: 72px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, #00F2FE 0%, #4FACFE 100%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 2rem;
+  color: #070B14;
+  box-shadow: 0 0 20px rgba(0, 242, 254, 0.4);
+  border: 2px solid rgba(255, 255, 255, 0.2);
+}
+
+.author-details-col {
+  flex: 1;
+}
+
+.author-header-row {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  flex-wrap: wrap;
+  margin-bottom: 0.35rem;
+}
+
+.author-name {
+  font-family: var(--font-heading);
+  font-size: 1.3rem;
+  font-weight: 800;
+  color: #FFFFFF;
+}
+
+.author-role-badge {
+  background: rgba(0, 242, 254, 0.12);
+  border: 1px solid rgba(0, 242, 254, 0.3);
+  color: var(--color-primary);
+  font-family: var(--font-mono);
+  font-size: 0.76rem;
+  padding: 0.2rem 0.6rem;
+  border-radius: var(--radius-full);
+  font-weight: 600;
+}
+
+.author-specialties {
+  font-size: 0.82rem;
+  color: var(--text-muted);
+  margin-bottom: 0.75rem;
+  font-family: var(--font-mono);
+}
+
+.author-bio-text {
+  font-size: 0.92rem;
+  color: #CBD5E1;
+  line-height: 1.65;
+  margin-bottom: 0.75rem;
+}
+
+.author-credential-tags {
+  display: flex;
+  gap: 0.5rem;
+  flex-wrap: wrap;
+}
+
+.cred-tag {
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid var(--border-glass);
+  color: var(--text-muted);
+  font-size: 0.72rem;
+  padding: 0.15rem 0.5rem;
+  border-radius: 4px;
+}
+
+/* Empirical References Section */
+.references-section {
+  background: rgba(15, 23, 42, 0.5);
+  border: 1px solid var(--border-glass);
+  border-radius: var(--radius-md);
+  padding: 2rem;
+  margin: 3rem 0;
+}
+
+.references-title {
+  font-family: var(--font-heading);
+  font-size: 1.35rem;
+  font-weight: 700;
+  color: #FFFFFF;
+  margin-bottom: 0.5rem;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.references-subtitle {
+  font-size: 0.85rem;
+  color: var(--text-muted);
+  margin-bottom: 1.25rem;
+}
+
+.references-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.reference-item {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.75rem;
+  font-size: 0.88rem;
+  line-height: 1.5;
+  color: #94A3B8;
+  padding-bottom: 0.75rem;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.04);
+}
+
+.reference-item:last-child {
+  border-bottom: none;
+  padding-bottom: 0;
+}
+
+.ref-num {
+  font-family: var(--font-mono);
+  font-weight: 700;
+  color: var(--color-primary);
+  flex-shrink: 0;
+}
+
+.ref-content {
+  flex: 1;
+}
+
+.ref-content a {
+  color: var(--color-primary);
+  text-decoration: underline;
+  word-break: break-word;
+}
+
+.ref-content a:hover {
+  color: #FFFFFF;
+}
+
+.ref-org-tag {
+  display: inline-block;
+  background: rgba(0, 242, 254, 0.1);
+  color: var(--color-primary);
+  font-family: var(--font-mono);
+  font-size: 0.7rem;
+  padding: 0.1rem 0.4rem;
+  border-radius: 3px;
+  margin-right: 0.4rem;
+  font-weight: 600;
+}
+
+.citation-fn {
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  color: var(--color-primary);
+  text-decoration: none;
+  font-weight: 700;
+  padding: 0 0.2rem;
+  vertical-align: super;
+}
+
+.citation-fn:hover {
+  text-decoration: underline;
+  color: #FFFFFF;
+}
+
+@media (max-width: 768px) {
+  .author-card-box {
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+  }
+  .author-header-row {
+    justify-content: center;
+  }
+  .author-credential-tags {
+    justify-content: center;
+  }
+}
+
