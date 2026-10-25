@@ -938,6 +938,40 @@ class TestFundamentalDesignAndAdSenseReadiness(unittest.TestCase):
         self.assertTrue(passed, "Fundamental Design & Pre-Merge Readiness checks failed! See logs above.")
 
 
+class TestCoreWebVitalsCompliance(unittest.TestCase):
+    """Rule 1 Mandate: Validates image payloads, hero preloads, and zero-shift CLS locks."""
+
+    def test_image_weight_budgets_for_lcp(self):
+        assets_dir = os.path.join(WORKSPACE_ROOT, "assets", "images")
+        self.assertTrue(os.path.isdir(assets_dir))
+        for img_name in os.listdir(assets_dir):
+            if img_name.lower().endswith((".jpg", ".jpeg", ".png")):
+                img_path = os.path.join(assets_dir, img_name)
+                size_kb = os.path.getsize(img_path) / 1024.0
+                if img_name == "logo.jpg":
+                    self.assertLessEqual(size_kb, 15, f"logo.jpg ({size_kb:.1f} KB) must be <= 15 KB")
+                elif img_name == "hero.jpg":
+                    self.assertLessEqual(size_kb, 100, f"hero.jpg ({size_kb:.1f} KB) must be <= 100 KB")
+                else:
+                    self.assertLessEqual(size_kb, 120, f"{img_name} ({size_kb:.1f} KB) must be <= 120 KB")
+
+    def test_hero_image_is_preloaded_with_fetchpriority_high(self):
+        index_path = os.path.join(WORKSPACE_ROOT, "index.html")
+        with open(index_path, "r", encoding="utf-8") as f:
+            content = f.read()
+        self.assertIn('rel="preload"', content)
+        self.assertIn('as="image"', content)
+        self.assertIn('hero.jpg', content)
+        self.assertIn('fetchpriority="high"', content)
+
+    def test_site_ticker_height_is_locked_for_zero_cls(self):
+        css_path = os.path.join(WORKSPACE_ROOT, "css", "styles.css")
+        with open(css_path, "r", encoding="utf-8") as f:
+            content = f.read()
+        self.assertIn(".site-ticker", content)
+        self.assertIn("height: 38px", content)
+
+
 if __name__ == "__main__":
     unittest.main()
 

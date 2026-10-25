@@ -130,11 +130,15 @@ a:hover {
   background: linear-gradient(90deg, #070B14 0%, #0F172A 50%, #070B14 100%);
   border-bottom: 1px solid rgba(0, 242, 254, 0.15);
   font-size: 0.82rem;
-  padding: 0.45rem 0;
+  height: 38px;
+  min-height: 38px;
+  box-sizing: border-box;
   color: #CBD5E1;
   overflow: hidden;
   position: relative;
   z-index: 90;
+  display: flex;
+  align-items: center;
 }
 
 .ticker-wrap {
@@ -144,6 +148,8 @@ a:hover {
   max-width: var(--container-width);
   margin: 0 auto;
   padding: 0 1.5rem;
+  width: 100%;
+  height: 100%;
 }
 
 .ticker-badge.intel-badge {

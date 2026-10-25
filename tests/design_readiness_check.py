@@ -89,7 +89,7 @@ def run_readiness_checks():
     # ---------------------------------------------------------
     # CHECK 1: ZERO DUMMY/MOCK AD PLACEHOLDERS & DEVELOPER NOTES
     # ---------------------------------------------------------
-    print("[1/8] Auditing for Dummy Ad Placeholders & Developer Notes...")
+    print("[1/9] Auditing for Dummy Ad Placeholders & Developer Notes...")
     banned_patterns = [
         (r"\[\s*(?:High-CPC|High-CTR|High-Paying|Responsive|Contextual)[^\]]*\]", "Bracketed Ad Placeholder"),
         (r"Contextual targeting: Antivirus", "Developer Mock Ad Note"),
@@ -118,7 +118,7 @@ def run_readiness_checks():
     # ---------------------------------------------------------
     # CHECK 2: ZERO BROKEN INTERNAL OR ANCHOR LINKS
     # ---------------------------------------------------------
-    print("\n[2/8] Auditing Internal & Anchor Navigation Links...")
+    print("\n[2/9] Auditing Internal & Anchor Navigation Links...")
     broken_links = []
     for filename, extractor in parsed_files.items():
         for href in extractor.links:
@@ -154,7 +154,7 @@ def run_readiness_checks():
     # ---------------------------------------------------------
     # CHECK 3: XML SITEMAP FULL 100% COVERAGE & SYNCHRONIZATION
     # ---------------------------------------------------------
-    print("\n[3/8] Verifying XML Sitemap Coverage...")
+    print("\n[3/9] Verifying XML Sitemap Coverage...")
     sitemap_path = os.path.join(WORKSPACE_ROOT, "sitemap.xml")
     if not os.path.isfile(sitemap_path):
         failures.append("Missing sitemap.xml in root directory")
@@ -184,7 +184,7 @@ def run_readiness_checks():
     # ---------------------------------------------------------
     # CHECK 4: SYNCHRONIZED CACHE-BUSTING ASSET QUERY STRINGS (RULE 1)
     # ---------------------------------------------------------
-    print("\n[4/8] Verifying Asset Version Synchronization (Rule 1)...")
+    print("\n[4/9] Verifying Asset Version Synchronization (Rule 1)...")
     versions_found = set()
     file_version_map = {}
     for filename, content in raw_contents.items():
@@ -208,7 +208,7 @@ def run_readiness_checks():
     # ---------------------------------------------------------
     # CHECK 5: GOOGLE ADSENSE CODE SNIPPET & ADS.TXT INTEGRITY
     # ---------------------------------------------------------
-    print("\n[5/8] Verifying Google AdSense Snippets & ads.txt...")
+    print("\n[5/9] Verifying Google AdSense Snippets & ads.txt...")
     ads_txt_path = os.path.join(WORKSPACE_ROOT, "ads.txt")
     if not os.path.isfile(ads_txt_path):
         failures.append("Missing ads.txt file")
@@ -236,7 +236,7 @@ def run_readiness_checks():
     # ---------------------------------------------------------
     # CHECK 6: LEGAL NON-AFFILIATION DISCLAIMER (PREVENTS IMPERSONATION)
     # ---------------------------------------------------------
-    print("\n[6/8] Verifying Legal Non-Affiliation Disclaimers...")
+    print("\n[6/9] Verifying Legal Non-Affiliation Disclaimers...")
     missing_disclaimer = []
     for filename, content in raw_contents.items():
         if "scamshield.gov.sg" not in content or "not affiliated with" not in content.lower():
@@ -251,7 +251,7 @@ def run_readiness_checks():
     # ---------------------------------------------------------
     # CHECK 7: SEO METADATA & CANONICAL INTEGRITY
     # ---------------------------------------------------------
-    print("\n[7/8] Verifying SEO Metadata, Titles, Descriptions & Canonicals...")
+    print("\n[7/9] Verifying SEO Metadata, Titles, Descriptions & Canonicals...")
     seo_issues = []
     titles = set()
     for filename, extractor in parsed_files.items():
@@ -277,7 +277,7 @@ def run_readiness_checks():
     # ---------------------------------------------------------
     # CHECK 8: ACCESSIBILITY SKIP LINK & IMAGE DIMENSIONS (WCAG & RULE 1)
     # ---------------------------------------------------------
-    print("\n[8/8] Verifying WCAG Skip Links & Image Layout Dimensions...")
+    print("\n[8/9] Verifying WCAG Skip Links & Image Layout Dimensions...")
     a11y_issues = []
     for filename, extractor in parsed_files.items():
         if 'class="skip-link"' not in raw_contents[filename]:
@@ -295,6 +295,47 @@ def run_readiness_checks():
         print(f"  FAILED: {len(a11y_issues)} accessibility/image issues detected.")
     else:
         print("  PASSED: 100% of pages pass accessibility skip links and image dimension constraints.")
+
+    # ---------------------------------------------------------
+    # CHECK 9: CORE WEB VITALS MANDATE (IMAGE BUDGETS, LCP PRELOAD & CLS LOCK)
+    # ---------------------------------------------------------
+    print("\n[9/9] Auditing Core Web Vitals (Image Budgets, LCP Preload & Zero-Shift CLS)...")
+    cwv_issues = []
+
+    # 1. Image Size Budgets
+    assets_dir = os.path.join(WORKSPACE_ROOT, "assets", "images")
+    if os.path.isdir(assets_dir):
+        for img_name in os.listdir(assets_dir):
+            if img_name.lower().endswith((".jpg", ".jpeg", ".png")):
+                img_path = os.path.join(assets_dir, img_name)
+                size_kb = os.path.getsize(img_path) / 1024.0
+                if img_name == "logo.jpg" and size_kb > 15:
+                    cwv_issues.append(f"logo.jpg exceeds 15 KB budget ({size_kb:.1f} KB) - must be optimized for 36x36 display")
+                elif img_name == "hero.jpg" and size_kb > 100:
+                    cwv_issues.append(f"hero.jpg exceeds 100 KB budget ({size_kb:.1f} KB) - risks LCP regression")
+                elif size_kb > 120:
+                    cwv_issues.append(f"{img_name} exceeds 120 KB image budget ({size_kb:.1f} KB)")
+
+    # 2. LCP Image Preload & fetchpriority on index.html
+    index_content = raw_contents.get("index.html", "")
+    if 'rel="preload"' not in index_content or 'hero.jpg' not in index_content:
+        cwv_issues.append("index.html missing <link rel=\"preload\" as=\"image\" href=\"...hero.jpg\">")
+    if 'fetchpriority="high"' not in index_content:
+        cwv_issues.append("index.html missing fetchpriority=\"high\" on hero image")
+
+    # 3. CLS Zero-Shift Ticker Lock in styles.css
+    css_path = os.path.join(WORKSPACE_ROOT, "css", "styles.css")
+    if os.path.isfile(css_path):
+        with open(css_path, "r", encoding="utf-8") as f:
+            css_content = f.read()
+        if ".site-ticker" not in css_content or "height: 38px" not in css_content:
+            cwv_issues.append("css/styles.css .site-ticker must declare explicit height (height: 38px) to prevent CLS")
+
+    if cwv_issues:
+        failures.append("Core Web Vitals validation errors:\n  " + "\n  ".join(cwv_issues))
+        print(f"  FAILED: {len(cwv_issues)} Core Web Vitals issues detected.")
+    else:
+        print("  PASSED: All image budgets, LCP preloads, and CLS height-locks verified 100%.")
 
     # ---------------------------------------------------------
     # FINAL VERDICT
