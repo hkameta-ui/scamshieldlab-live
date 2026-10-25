@@ -25,14 +25,28 @@ window.SITE_CONFIG = {
   // --- CYBERSECURITY AFFILIATE MONETIZATION (HIGH PAYOUT COMMISSIONS) ---
   // Replace these with your referral URLs from CJ Affiliate, ShareASale, Impact, or direct partner programs
   affiliates: {
-    identityTheft: {
-      name: "Aura Identity Theft Protection",
-      icon: "🛡️",
-      tagline: "$1,000,000 Identity Theft Insurance & Dark Web Monitoring",
-      payoutEst: "$50 - $80 per signup",
-      url: "https://aura.com/?ref=scamshield", // Replace with your affiliate tracking link
-      badge: "Top Pick 2026",
-      cta: "Claim 14-Day Free Trial"
+    googleWorkspace: {
+      name: "Google Workspace with Gemini",
+      icon: "assets/images/google-workspace-icon.svg",
+      tagline: "AI-powered enterprise defense blocking 99.9% of spoofed BEC emails & phishing. Exclusive 10% off first year.",
+      promoCodes: {
+        starter: "UCYHWLERFJVJUW4",
+        standard: "46TGMAKXRRNDWE3",
+        plus: "N4QCWWQE7HJF69H"
+      },
+      payoutEst: "$9 - $27 per user signup",
+      url: "https://sharegoogleworkspace.advocate.impact.com/mzYP7Zg",
+      badge: "Verified Partner",
+      cta: "Claim 10% Off & Free Trial"
+    },
+    vpnPrivacy: {
+      name: "NordVPN Threat Protection Pro",
+      icon: "assets/images/nordvpn-icon.svg",
+      tagline: "Block malicious scam domains & encrypt DNS queries automatically",
+      payoutEst: "40% - 100% Commission",
+      url: "https://go.nordvpn.net/aff_c?offer_id=15&aff_id=159036&url_id=902", // Verified Nord Partner Link (Affiliate ID: 159036)
+      badge: "Verified Partner",
+      cta: "Get Secure VPN (68% Off)"
     },
     passwordManager: {
       name: "NordPass Premium & Passkey Vault",
@@ -43,15 +57,6 @@ window.SITE_CONFIG = {
       badge: "Verified Partner",
       cta: "Protect Passwords & Passkeys"
     },
-    googleWorkspace: {
-      name: "Google Workspace with Gemini",
-      icon: "🤖",
-      tagline: "AI-powered enterprise defense blocking 99.9% of spoofed BEC emails & phishing",
-      payoutEst: "$9 - $27 per user signup",
-      url: "https://workspace.google.com/pricing", // Connect your Google Workspace Referral Link
-      badge: "Google AI Security",
-      cta: "Start Free Workspace Trial"
-    },
     googleTitan: {
       name: "Google Titan Security Key",
       icon: "🔑",
@@ -61,6 +66,15 @@ window.SITE_CONFIG = {
       badge: "Gold Standard 2FA",
       cta: "Explore Titan Security Keys"
     },
+    identityTheft: {
+      name: "Aura Identity Theft Protection",
+      icon: "🛡️",
+      tagline: "$1,000,000 Identity Theft Insurance & Dark Web Monitoring",
+      payoutEst: "$50 - $80 per signup",
+      url: "https://aura.com/?ref=scamshield", // Replace with your affiliate tracking link
+      badge: "Top Pick 2026",
+      cta: "Claim 14-Day Free Trial"
+    },
     endpointSecurity: {
       name: "Malwarebytes Premium & Anti-Exploit",
       icon: "💻",
@@ -69,15 +83,6 @@ window.SITE_CONFIG = {
       url: "https://malwarebytes.com/?ref=scamshield", // Replace with your affiliate tracking link
       badge: "Real-Time Shield",
       cta: "Download Free Scanner"
-    },
-    vpnPrivacy: {
-      name: "NordVPN Threat Protection Pro",
-      icon: "assets/images/nordvpn-icon.svg",
-      tagline: "Block malicious scam domains & encrypt DNS queries automatically",
-      payoutEst: "40% - 100% Commission",
-      url: "https://go.nordvpn.net/aff_c?offer_id=15&aff_id=159036&url_id=902", // Verified Nord Partner Link (Affiliate ID: 159036)
-      badge: "Verified Partner",
-      cta: "Get Secure VPN (68% Off)"
     }
   }
 };
