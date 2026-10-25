@@ -663,6 +663,30 @@ class TestGoogleWorkspaceAffiliatePartnerIntegration(unittest.TestCase):
             css = f.read()
             self.assertIn(".defense-rec-btn.google-btn", css)
 
+    def test_verified_partners_appear_first_in_config(self):
+        config_path = os.path.join(WORKSPACE_ROOT, "config.js")
+        with open(config_path, "r", encoding="utf-8") as f:
+            content = f.read()
+            idx_google = content.find("googleWorkspace:")
+            idx_vpn = content.find("vpnPrivacy:")
+            idx_pass = content.find("passwordManager:")
+            idx_aura = content.find("identityTheft:")
+            idx_malware = content.find("endpointSecurity:")
+            self.assertTrue(idx_google < idx_aura, "Google Workspace must appear before Aura")
+            self.assertTrue(idx_vpn < idx_aura, "NordVPN must appear before Aura")
+            self.assertTrue(idx_pass < idx_aura, "NordPass must appear before Aura")
+            self.assertTrue(idx_aura < idx_malware, "Aura must appear before Malwarebytes")
+
+    def test_defense_stack_is_positioned_between_analyzer_and_threat_radar(self):
+        index_path = os.path.join(WORKSPACE_ROOT, "index.html")
+        with open(index_path, "r", encoding="utf-8") as f:
+            html = f.read()
+            idx_analyzer = html.find('id="analyzer"')
+            idx_defense = html.find('id="defense-stack"')
+            idx_radar = html.find('id="threat-radar"')
+            self.assertTrue(idx_analyzer < idx_defense, "Analyzer must appear before Defense Stack")
+            self.assertTrue(idx_defense < idx_radar, "Defense Stack must appear before Threat Radar")
+
 
 class TestAboveTheFoldTrustAndLiveDemo(unittest.TestCase):
     """Validation tests for instant above-the-fold credibility, live demo, and authority trust bar."""
