@@ -45,12 +45,17 @@ window.SITE_CONFIG = {
     },
     googleWorkspace: {
       name: "Google Workspace with Gemini",
-      icon: "🤖",
-      tagline: "AI-powered enterprise defense blocking 99.9% of spoofed BEC emails & phishing",
+      icon: "assets/images/google-workspace-icon.svg",
+      tagline: "AI-powered enterprise defense blocking 99.9% of spoofed BEC emails & phishing. Exclusive 10% off first year.",
+      promoCodes: {
+        starter: "UCYHWLERFJVJUW4",
+        standard: "46TGMAKXRRNDWE3",
+        plus: "N4QCWWQE7HJF69H"
+      },
       payoutEst: "$9 - $27 per user signup",
-      url: "https://workspace.google.com/pricing", // Connect your Google Workspace Referral Link
-      badge: "Google AI Security",
-      cta: "Start Free Workspace Trial"
+      url: "https://sharegoogleworkspace.advocate.impact.com/mzYP7Zg",
+      badge: "Verified Partner",
+      cta: "Claim 10% Off & Free Trial"
     },
     googleTitan: {
       name: "Google Titan Security Key",

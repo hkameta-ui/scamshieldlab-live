@@ -630,6 +630,40 @@ class TestNordAffiliatePartnerIntegration(unittest.TestCase):
             self.assertIn("affiliate-brand-img", app_code)
 
 
+class TestGoogleWorkspaceAffiliatePartnerIntegration(unittest.TestCase):
+    """Rule 1 & Rule 6: Validation tests for Google Workspace verified referral partner assets, tracking URL, and defense recommendations."""
+
+    def test_official_google_workspace_svg_icon_exists(self):
+        icon_path = os.path.join(WORKSPACE_ROOT, "assets", "images", "google-workspace-icon.svg")
+        self.assertTrue(os.path.isfile(icon_path), "Official Google Workspace SVG icon must exist")
+        with open(icon_path, "r", encoding="utf-8") as f:
+            content = f.read()
+            self.assertIn('width="48"', content)
+            self.assertIn('height="48"', content)
+
+    def test_config_js_google_workspace_partner_url_and_badge(self):
+        config_path = os.path.join(WORKSPACE_ROOT, "config.js")
+        with open(config_path, "r", encoding="utf-8") as f:
+            content = f.read()
+            self.assertIn("assets/images/google-workspace-icon.svg", content)
+            self.assertIn("sharegoogleworkspace.advocate.impact.com/mzYP7Zg", content)
+            self.assertIn("Verified Partner", content)
+            self.assertIn("UCYHWLERFJVJUW4", content)
+
+    def test_app_js_and_css_google_workspace_recommendations(self):
+        app_path = os.path.join(WORKSPACE_ROOT, "js", "app.js")
+        with open(app_path, "r", encoding="utf-8") as f:
+            app_code = f.read()
+            self.assertIn("Google Workspace with Gemini", app_code)
+            self.assertIn("google-workspace-icon.svg", app_code)
+            self.assertIn("google-btn", app_code)
+
+        css_path = os.path.join(WORKSPACE_ROOT, "css", "styles.css")
+        with open(css_path, "r", encoding="utf-8") as f:
+            css = f.read()
+            self.assertIn(".defense-rec-btn.google-btn", css)
+
+
 class TestAboveTheFoldTrustAndLiveDemo(unittest.TestCase):
     """Validation tests for instant above-the-fold credibility, live demo, and authority trust bar."""
 

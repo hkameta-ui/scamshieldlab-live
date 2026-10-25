@@ -863,6 +863,8 @@ function initAnalyzer() {
       const hasUrlOrPhish = data.score >= 30 || lowerText.includes("http") || lowerText.includes(".com") || lowerText.includes(".org") || lowerText.includes(".net") || lowerText.includes(".top") || lowerText.includes(".xyz") || lowerText.includes("toll") || lowerText.includes("link") || lowerText.includes("click");
       const hasCredentialRisk = lowerText.includes("password") || lowerText.includes("passcode") || lowerText.includes("pin") || lowerText.includes("otp") || lowerText.includes("code") || lowerText.includes("voice") || lowerText.includes("grand") || lowerText.includes("arrest");
 
+      const hasEmailOrBec = lowerText.includes("invoice") || lowerText.includes("wire transfer") || lowerText.includes("payroll") || lowerText.includes("direct deposit") || lowerText.includes("executive") || lowerText.includes("ceo") || lowerText.includes("vendor") || lowerText.includes("w-2") || lowerText.includes("employment agreement");
+
       let recTitle = "NordVPN Threat Protection Pro";
       let recBadge = "DNS & Phishing Shield";
       let recIcon = "assets/images/nordvpn-icon.svg";
@@ -871,7 +873,15 @@ function initAnalyzer() {
       let recBtnText = "Activate DNS & Phishing Shield (68% Off)";
       let recUrl = (window.SITE_CONFIG && window.SITE_CONFIG.affiliates && window.SITE_CONFIG.affiliates.vpnPrivacy) ? window.SITE_CONFIG.affiliates.vpnPrivacy.url : "https://go.nordvpn.net/aff_c?offer_id=15&aff_id=159036&url_id=902";
 
-      if (hasCredentialRisk && !hasUrlOrPhish) {
+      if (hasEmailOrBec) {
+        recTitle = "Google Workspace with Gemini";
+        recBadge = "AI Phishing & BEC Defense";
+        recIcon = "assets/images/google-workspace-icon.svg";
+        recDesc = "Business Email Compromise (BEC) and fake invoice scams spoof executive domains. Google Workspace with Gemini deploys deep-learning AI to neutralize 99.9% of spoofed emails and impersonation attempts before reaching inboxes.";
+        recBtnClass = "defense-rec-btn google-btn";
+        recBtnText = "Claim 10% Off & Free Trial";
+        recUrl = (window.SITE_CONFIG && window.SITE_CONFIG.affiliates && window.SITE_CONFIG.affiliates.googleWorkspace) ? window.SITE_CONFIG.affiliates.googleWorkspace.url : "https://sharegoogleworkspace.advocate.impact.com/mzYP7Zg";
+      } else if (hasCredentialRisk && !hasUrlOrPhish) {
         recTitle = "NordPass Premium & Passkey Vault";
         recBadge = "FIDO2 & Passkey Vault";
         recIcon = "assets/images/nordpass-icon.svg";
@@ -901,7 +911,7 @@ function initAnalyzer() {
           </div>
         </div>
         <div class="defense-rec-footer">
-          <span>Exclusive ScamShield Lab Reader Pricing Applied (Up to 68% Off + Extra Months)</span>
+          <span>Exclusive ScamShield Lab Reader Pricing Applied (Up to 68% Off Nord / 10% Off Google Workspace)</span>
           <span>FTC Disclosure: Authorized Security Partner Referral</span>
         </div>
       `;
