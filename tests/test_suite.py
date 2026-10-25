@@ -722,11 +722,23 @@ class TestAboveTheFoldTrustAndLiveDemo(unittest.TestCase):
         self.assertIn(".btn-hero-aux", self.css)
 
     def test_hero_social_proof_numbers(self):
-        """Ensures verified social proof statistics are prominently displayed in the hero."""
+        """Ensures verified engineering statistics (100+ signals, 4-layer engine) are prominently displayed in the hero without unverified % claims."""
         self.assertIn("hero-social-proof-strip", self.index_html)
-        self.assertIn("15,400+", self.index_html)
-        self.assertIn("98.8%", self.index_html)
+        self.assertIn("100+", self.index_html)
+        self.assertIn("4-Layer", self.index_html)
+        self.assertNotIn("98.8%", self.index_html)
         self.assertIn(".hero-social-proof-strip", self.css)
+
+    def test_honest_scoring_and_methodology_transparency(self):
+        """Rule 3: Content Standards - Enforce explainable methodology notices and reject unverified accuracy claims."""
+        self.assertIn("analyzer-methodology-note", self.index_html)
+        self.assertIn("how-we-score.html", self.index_html)
+        
+        how_we_score_path = os.path.join(WORKSPACE_ROOT, "how-we-score.html")
+        with open(how_we_score_path, "r", encoding="utf-8") as f:
+            hws_html = f.read()
+            self.assertIn("Honest Scoring Architecture", hws_html)
+            self.assertIn("Why We Reject Unverified Accuracy Percentages", hws_html)
 
     def test_authority_trust_bar(self):
         """Ensures authority threat intelligence frameworks (FBI IC3, FTC, CISA, OWASP, NIST) are displayed."""
