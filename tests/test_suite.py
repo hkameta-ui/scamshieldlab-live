@@ -461,6 +461,15 @@ class TestCopyrightAndLegalCompliance(unittest.TestCase):
             self.assertIn("Non-Affiliation Notice", terms_content)
             self.assertIn("Government of Singapore", terms_content)
 
+    def test_dr_priyanka_ameta_profile_in_about_page(self):
+        """Rule 3: Content Standards - Verify academic research leadership profile for Dr. Priyanka Ameta."""
+        about_path = os.path.join(WORKSPACE_ROOT, "about.html")
+        with open(about_path, "r", encoding="utf-8") as f:
+            content = f.read()
+            self.assertIn("Dr. Priyanka Ameta", content)
+            self.assertIn("Computer Science Academician", content)
+            self.assertIn("Data-Driven Digital Marketing: From Insights to Intelligent Engagement", content)
+
     def test_all_referenced_images_exist(self):
         html_files = [
             "index.html",
