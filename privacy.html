@@ -28,9 +28,9 @@
   <!-- Google AdSense Verification & Auto-Ads Script -->
   <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-7565560894775775" crossorigin="anonymous"></script>
 
-  <link rel="stylesheet" href="css/styles.css?v=20261025-v4">
+  <link rel="stylesheet" href="css/styles.css?v=20261025-v5">
   <link rel="icon" type="image/jpeg" href="assets/images/logo.jpg">
-  <script src="config.js?v=20261025-v4" defer></script>
+  <script src="config.js?v=20261025-v5" defer></script>
 
   <style>
     .legal-container {
@@ -130,7 +130,23 @@
         For full technical verification and transparency regarding what data is executed in local volatile RAM versus what is never transmitted, inspect our detailed <a href="how-we-score.html#privacy-matrix" style="color: var(--color-primary); font-weight: 700; text-decoration: underline;">Privacy-by-Design Verification Matrix</a>.
       </p>
 
-      <h2>2. Google AdSense & DoubleClick DART Cookies</h2>
+      <h2>2. Independent Privacy Verification Protocol (How to Audit Our Data Handling)</h2>
+      <p>
+        In an era of ubiquitous "privacy theater," we do not ask users, security researchers, or regulatory auditors to take our claims on faith. Anyone can independently confirm our zero-retention data-handling behavior using three standardized verification methods:
+      </p>
+      <ol style="margin-bottom: 1.5rem; line-height: 1.65;">
+        <li>
+          <strong>The Air-Gapped Offline Test (Airplane Mode):</strong> Because our analyzer operates 100% via client-side JavaScript, you can load <a href="https://scamshieldlab.com/" style="color: var(--color-primary); text-decoration: underline;">https://scamshieldlab.com/</a>, completely disconnect your device from the internet (turn off Wi-Fi, unplug Ethernet, or enable Airplane Mode), and execute full text analyses. The tool runs normally with zero network access, physically and mathematically proving that zero bytes of user data leave your device.
+        </li>
+        <li>
+          <strong>DevTools Network Activity Inspection:</strong> Open your browser's Developer Tools (<kbd>F12</kbd> or right-click &rarr; <em>Inspect</em>) and navigate to the <strong>Network</strong> tab. Filter for <code>Fetch/XHR</code>. Type or paste any test communication and click <em>Run Neural Heuristic Scan</em>. You will observe that exactly <strong>0 network requests are dispatched</strong>. There are no backend ingestion APIs, no logging endpoints, and no analytical beacons attached to the input textarea.
+        </li>
+        <li>
+          <strong>Open-Source Client-Side Codebase:</strong> All heuristic rules, threat keyword dictionaries, and regex matchers are published unminified in <a href="js/app.js" target="_blank" rel="noopener" style="color: var(--color-primary); text-decoration: underline;">js/app.js</a> and <a href="js/threat-data.js" target="_blank" rel="noopener" style="color: var(--color-primary); text-decoration: underline;">js/threat-data.js</a>. Anyone can review the code directly in their browser's <em>Sources</em> panel.
+        </li>
+      </ol>
+
+      <h2>3. Google AdSense & DoubleClick DART Cookies</h2>
       <p>
         Google is a third-party vendor on our site. It uses cookies, specifically DART cookies, to serve ads to our site visitors based upon their visit to our site and other websites across the internet.
       </p>
@@ -141,12 +157,12 @@
         <li>Alternatively, users can opt out of a third-party vendor's use of cookies for personalized advertising by visiting <a href="https://www.aboutads.info" target="_blank" rel="noopener">www.aboutads.info</a>.</li>
       </ul>
 
-      <h2>3. Log Files</h2>
+      <h2>4. Log Files</h2>
       <p>
         ScamShield AI follows a standard procedure of using log files. These files log visitors when they visit websites. The information collected by log files includes internet protocol (IP) addresses, browser type, Internet Service Provider (ISP), date and time stamp, referring/exit pages, and possibly the number of clicks. These are not linked to any information that is personally identifiable. The purpose of the information is for analyzing trends, administering the site, tracking users' movement on the website, and gathering demographic information.
       </p>
 
-      <h2>4. Advertising Partners Privacy Policies</h2>
+      <h2>5. Advertising Partners Privacy Policies</h2>
       <p>
         Third-party ad servers or ad networks use technologies like cookies, JavaScript, or Web Beacons that are used in their respective advertisements and links that appear on ScamShield AI, which are sent directly to users' browsers. They automatically receive your IP address when this occurs. These technologies are used to measure the effectiveness of their advertising campaigns and/or to personalize the advertising content that you see on websites that you visit.
       </p>
@@ -154,7 +170,7 @@
         Note that ScamShield AI has no access to or control over these cookies that are used by third-party advertisers.
       </p>
 
-      <h2>5. CCPA Privacy Rights (Do Not Sell My Personal Information)</h2>
+      <h2>6. CCPA Privacy Rights (Do Not Sell My Personal Information)</h2>
       <p>Under the California Consumer Privacy Act (CCPA), California consumers have the right to:</p>
       <ul>
         <li>Request that a business disclose the categories and specific pieces of personal data that a business has collected about consumers.</li>
@@ -163,7 +179,7 @@
       </ul>
       <p>If you make a request, we have one month to respond to you. If you would like to exercise any of these rights, please contact us.</p>
 
-      <h2>6. GDPR Data Protection Rights</h2>
+      <h2>7. GDPR Data Protection Rights</h2>
       <p>We would like to make sure you are fully aware of all of your data protection rights. Every user is entitled to the following:</p>
       <ul>
         <li>The right to access – You have the right to request copies of your personal data.</li>
@@ -172,12 +188,12 @@
         <li>The right to restrict processing – You have the right to request that we restrict the processing of your personal data.</li>
       </ul>
 
-      <h2>7. Children's Information</h2>
+      <h2>8. Children's Information</h2>
       <p>
         Another part of our priority is adding protection for children while using the internet. We encourage parents and guardians to observe, participate in, and/or monitor and guide their online activity. ScamShield AI does not knowingly collect any Personal Identifiable Information from children under the age of 13.
       </p>
 
-      <h2>8. Consent & Inquiries</h2>
+      <h2>9. Consent & Inquiries</h2>
       <p>
         By using our website, you hereby consent to our Privacy Policy and agree to its terms. If you have additional questions or require more information about our Privacy Policy, do not hesitate to contact us at: <a href="mailto:privacy@scamshieldlab.com" style="color: var(--color-primary);">privacy@scamshieldlab.com</a>.
       </p>

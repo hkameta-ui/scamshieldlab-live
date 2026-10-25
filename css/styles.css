@@ -1702,6 +1702,120 @@ a:hover {
 }
 
 /* ==========================================================================
+   Independent Privacy Verification Protocol Card
+   ========================================================================== */
+.privacy-audit-card {
+  margin-top: 1.25rem;
+  background: rgba(10, 17, 30, 0.9);
+  border: 1px solid rgba(16, 185, 129, 0.25);
+  border-radius: var(--radius-md);
+  padding: 1.35rem 1.5rem;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+}
+
+.privacy-audit-header {
+  display: flex;
+  align-items: center;
+  gap: 0.85rem;
+  margin-bottom: 1.15rem;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.07);
+  padding-bottom: 0.85rem;
+}
+
+.privacy-audit-icon {
+  font-size: 1.5rem;
+  flex-shrink: 0;
+}
+
+.privacy-audit-title {
+  font-family: var(--font-heading);
+  font-size: 1.05rem;
+  font-weight: 700;
+  color: #FFFFFF;
+  margin: 0 0 0.2rem;
+}
+
+.privacy-audit-subtitle {
+  font-size: 0.82rem;
+  color: var(--text-muted);
+  margin: 0;
+}
+
+.privacy-audit-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  gap: 1rem;
+}
+
+.audit-step-item {
+  background: rgba(15, 23, 42, 0.7);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: var(--radius-sm);
+  padding: 1rem;
+  transition: var(--transition-smooth);
+}
+
+.audit-step-item:hover {
+  border-color: rgba(0, 242, 254, 0.35);
+  transform: translateY(-2px);
+}
+
+.audit-step-badge {
+  font-size: 0.68rem;
+  font-weight: 800;
+  letter-spacing: 0.06em;
+  color: var(--color-primary);
+  margin-bottom: 0.35rem;
+}
+
+.audit-step-name {
+  font-family: var(--font-heading);
+  font-size: 0.95rem;
+  font-weight: 700;
+  color: #FFFFFF;
+  margin-bottom: 0.45rem;
+}
+
+.audit-step-desc {
+  font-size: 0.8rem;
+  line-height: 1.5;
+  color: #94A3B8;
+  margin: 0;
+}
+
+.audit-step-desc strong {
+  color: #F1F5F9;
+}
+
+.audit-step-desc kbd {
+  background: rgba(255, 255, 255, 0.1);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  border-radius: 3px;
+  padding: 0.1rem 0.3rem;
+  font-size: 0.75rem;
+  color: #FFFFFF;
+  font-family: var(--font-mono);
+}
+
+.audit-step-desc code {
+  color: var(--color-primary);
+  background: rgba(0, 242, 254, 0.1);
+  padding: 0.1rem 0.3rem;
+  border-radius: 3px;
+  font-size: 0.78rem;
+}
+
+.audit-link {
+  color: var(--color-primary);
+  text-decoration: underline;
+  font-weight: 600;
+}
+
+.audit-link:hover {
+  color: #FFFFFF;
+}
+
+/* ==========================================================================
    2026 AI Threat Radar Grid
    ========================================================================== */
 .threat-controls {

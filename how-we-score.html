@@ -62,9 +62,9 @@
   <!-- Google AdSense Verification & Auto-Ads Script -->
   <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-7565560894775775" crossorigin="anonymous"></script>
   
-  <link rel="stylesheet" href="css/styles.css?v=20261025-v4">
+  <link rel="stylesheet" href="css/styles.css?v=20261025-v5">
   <link rel="icon" type="image/jpeg" href="assets/images/logo.jpg">
-  <script src="config.js?v=20261025-v4" defer></script>
+  <script src="config.js?v=20261025-v5" defer></script>
 
   <style>
     .article-container {
@@ -361,6 +361,34 @@
           </p>
         </div>
 
+        <h3><span>🔬</span> Independent Privacy Audit: How Anyone Can Verify Zero-Storage in 30 Seconds</h3>
+        <p>
+          Do not take our zero-storage claims on faith. We encourage every visitor, security researcher, and independent auditor to verify our client-side execution model directly using these three straightforward tests:
+        </p>
+        <div class="privacy-audit-grid" style="margin: 1.5rem 0;">
+          <div class="audit-step-item">
+            <div class="audit-step-badge">TEST 1 &bull; AIR-GAPPED OFFLINE TEST</div>
+            <div class="audit-step-name">The Airplane-Mode Test</div>
+            <p class="audit-step-desc">
+              Load ScamShield Lab, then <strong>turn off your Wi-Fi, unplug your Ethernet, or enable Airplane Mode</strong>. Paste any message and execute the scan. Because our scoring engine runs 100% in local browser memory, it completes instantly offline—physically proving zero bytes leave your device.
+            </p>
+          </div>
+          <div class="audit-step-item">
+            <div class="audit-step-badge">TEST 2 &bull; NETWORK PACKET AUDIT</div>
+            <div class="audit-step-name">DevTools Network Inspection</div>
+            <p class="audit-step-desc">
+              Press <kbd>F12</kbd> (or right-click &rarr; <em>Inspect</em>) and switch to the <strong>Network</strong> tab. Filter for <code>Fetch/XHR</code>. Run a scan. You will see that <strong>zero outbound HTTP requests are generated</strong>. No server ingestion API exists.
+            </p>
+          </div>
+          <div class="audit-step-item">
+            <div class="audit-step-badge">TEST 3 &bull; AUDITABLE CODEBASE</div>
+            <div class="audit-step-name">Open-Source Code Inspection</div>
+            <p class="audit-step-desc">
+              Inspect <a href="js/app.js" target="_blank" rel="noopener" class="audit-link">js/app.js</a> directly in your browser. All heuristics, regex rules, and scoring algorithms are open, unminified, and execute purely in volatile client RAM.
+            </p>
+          </div>
+        </div>
+
         <h2><span>⚖️</span> Honest Scoring Architecture: Why We Reject Unverified Accuracy Percentages</h2>
         <p>
           In the commercial cybersecurity software market, vendors routinely advertise unverified marketing claims such as <em>"98.8% detection accuracy"</em> or <em>"guaranteed scam protection."</em> From a rigorous scientific and threat intelligence standpoint, such claims are fundamentally misleading:
@@ -548,8 +576,8 @@
     </div>
   </footer>
 
-  <script src="js/threat-data.js?v=20261025-v4"></script>
-  <script src="js/app.js?v=20261025-v4"></script>
+  <script src="js/threat-data.js?v=20261025-v5"></script>
+  <script src="js/app.js?v=20261025-v5"></script>
   <script>
     document.addEventListener("DOMContentLoaded", () => {
       const input = document.getElementById("howWeScoreInput");

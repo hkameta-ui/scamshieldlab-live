@@ -740,6 +740,24 @@ class TestAboveTheFoldTrustAndLiveDemo(unittest.TestCase):
             self.assertIn("Honest Scoring Architecture", hws_html)
             self.assertIn("Why We Reject Unverified Accuracy Percentages", hws_html)
 
+    def test_independent_privacy_verification_protocol(self):
+        """Rule 2 & Rule 3: Enforce independent audit protocols enabling anyone to verify zero-retention data handling."""
+        self.assertIn("privacy-audit-card", self.index_html)
+        self.assertIn("The Airplane-Mode Test", self.index_html)
+        self.assertIn("Inspect DevTools Network Calls", self.index_html)
+        self.assertIn(".privacy-audit-card", self.css)
+
+        privacy_path = os.path.join(WORKSPACE_ROOT, "privacy.html")
+        with open(privacy_path, "r", encoding="utf-8") as f:
+            priv_html = f.read()
+            self.assertIn("Independent Privacy Verification Protocol", priv_html)
+            self.assertIn("The Air-Gapped Offline Test", priv_html)
+
+        how_we_score_path = os.path.join(WORKSPACE_ROOT, "how-we-score.html")
+        with open(how_we_score_path, "r", encoding="utf-8") as f:
+            hws_html = f.read()
+            self.assertIn("Independent Privacy Audit", hws_html)
+
     def test_authority_trust_bar(self):
         """Ensures authority threat intelligence frameworks (FBI IC3, FTC, CISA, OWASP, NIST) are displayed."""
         self.assertIn("trust-authority-bar", self.index_html)
