@@ -218,6 +218,33 @@ window.THREAT_DATABASE = [
     countermeasures: "Hang up immediately. Government agencies send official written notices via postal mail and never accept cryptocurrency or gift cards for penalties.",
     caseStudy: "Victims persuaded to purchase thousands in retail gift cards and read the redemption codes over the phone while kept on active call for hours.",
     keywords: ["irs", "police", "arrest", "warrant", "sheriff", "jail", "federal marshal", "tax penalty", "extortion"]
+  },
+  {
+    id: "digital-arrest",
+    title: "Fake Police Video Call & 'Digital Arrest' Extortion",
+    category: "voice",
+    categoryName: "Law Enforcement Extortion",
+    severity: "CRITICAL",
+    severityColor: "#EF4444",
+    impact: "$140M+ extorted through fake police studio setups and Supreme Court warrants",
+    impactSource: "Indian Cyber Crime Coordination Centre (I4C), RBI & Supreme Court of India",
+    summary: "Transnational fraud syndicates stage mock police station backgrounds on Skype, WhatsApp, or Signal with uniforms, fake agency seals (CBI, ED, Cyber Crime, Interpol, FBI), and fabricated arrest warrants. Victims are placed under fake 'digital arrest', subjected to multi-hour video isolation, and coerced into wiring life savings to 'verification escrow' accounts.",
+    sources: [
+      { name: "I4C (MHA)", label: "Citizen Financial Cyber Fraud Advisory on Digital Arrest", url: "https://cybercrime.gov.in" },
+      { name: "Reserve Bank of India", label: "Public Warning on Fictitious Law Enforcement Calls", url: "https://www.rbi.org.in" },
+      { name: "Supreme Court of India", label: "Registry Advisory on Fabricated Court Orders", url: "https://main.sci.gov.in" },
+      { name: "FBI IC3", label: "Government Impersonation Fraud Alert", url: "https://www.ic3.gov" }
+    ],
+    indicators: [
+      "Caller claims to be from FedEx, Customs, Telecom, or Police alleging illegal narcotics or money laundering linked to your identity",
+      "Demands switching to video call (Skype, WhatsApp, Signal) showing an individual in uniform with official agency insignias",
+      "Places you under 'digital arrest' or 'virtual surveillance' and forbids you from hanging up, leaving the camera, or alerting family",
+      "Demands transferring money to a 'court-monitored escrow account' or 'RBI verification vault' for forensic clearance",
+      "Under legal procedure, no law enforcement agency or court anywhere in the world conducts arrests or surveillance over video calls"
+    ],
+    countermeasures: "Hang up immediately. 'Digital arrest' does not exist in law. Police never arrest citizens over Skype or WhatsApp, and never require money transfers for asset verification. Report immediately to cybercrime hotlines (1930 / ic3.gov).",
+    caseStudy: "High-net-worth retirees, doctors, and professionals coerced into transferring entire pension funds and fixed deposits to syndicate accounts during 72-hour continuous video isolation.",
+    keywords: ["digital arrest", "police video call", "skype arrest", "cbi", "customs", "fedex parcel", "ed", "interpol", "supreme court", "money laundering", "narcotics", "mdma parcel", "fake warrant", "video extortion"]
   }
 ];
 

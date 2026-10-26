@@ -127,6 +127,7 @@ class TestHtmlPagesStructure(unittest.TestCase):
         "terms.html",
         "guide-voice-cloning.html",
         "guide-pig-butchering.html",
+        "guide-digital-arrest.html",
         "family-safe-word.html",
         "how-we-score.html",
         "guide-phishing.html",
@@ -478,6 +479,7 @@ class TestCopyrightAndLegalCompliance(unittest.TestCase):
             "terms.html",
             "guide-voice-cloning.html",
             "guide-pig-butchering.html",
+            "guide-digital-arrest.html",
             "family-safe-word.html"
         ]
         assets_dir = os.path.join(WORKSPACE_ROOT, "assets", "images")
@@ -565,7 +567,7 @@ class TestEditorialAndResearchIntegrity(unittest.TestCase):
             self.assertIn("Adversary Tactics Reverse-Engineering", content)
 
     def test_guide_bylines_use_research_lab(self):
-        guides = ["guide-voice-cloning.html", "guide-pig-butchering.html"]
+        guides = ["guide-voice-cloning.html", "guide-pig-butchering.html", "guide-digital-arrest.html"]
         for g in guides:
             path = os.path.join(WORKSPACE_ROOT, g)
             with open(path, "r", encoding="utf-8") as f:
@@ -592,6 +594,8 @@ class TestThreatRadarSearchEngine(unittest.TestCase):
         self.assertIn("bank-impersonation", self.threat_code)
         self.assertIn("zelle", self.threat_code.lower())
         self.assertIn("irs-government-extortion", self.threat_code)
+        self.assertIn("digital-arrest", self.threat_code)
+        self.assertIn("Supreme Court", self.threat_code)
 
     def test_app_js_multi_field_matching_and_recovery(self):
         self.assertIn("inKeywords", self.app_code)
@@ -688,7 +692,7 @@ class TestGoogleWorkspaceAffiliatePartnerIntegration(unittest.TestCase):
 
     def test_pillar_guides_declare_affiliate_defense_stacks(self):
         """Rule 3 Mandate: Ensure all pillar guides display contextual, FTC-compliant defense stacks."""
-        guides = ["guide-phishing.html", "guide-job-scams.html", "guide-delivery-scams.html", "guide-voice-cloning.html", "guide-pig-butchering.html"]
+        guides = ["guide-phishing.html", "guide-job-scams.html", "guide-delivery-scams.html", "guide-voice-cloning.html", "guide-pig-butchering.html", "guide-digital-arrest.html"]
         for g in guides:
             g_path = os.path.join(WORKSPACE_ROOT, g)
             with open(g_path, "r", encoding="utf-8") as f:
@@ -997,7 +1001,7 @@ class TestSecurityClaimsAndResearchCitations(unittest.TestCase):
         """Ensures the 'Reviewed by Cybersecurity Professionals' & 'Last Updated: October 2026' pill is present across all HTML pages."""
         html_files = [
             "index.html", "how-we-score.html", "family-safe-word.html",
-            "guide-voice-cloning.html", "guide-pig-butchering.html",
+            "guide-voice-cloning.html", "guide-pig-butchering.html", "guide-digital-arrest.html",
             "guide-phishing.html", "guide-job-scams.html", "guide-delivery-scams.html",
             "about.html", "privacy.html", "terms.html"
         ]
@@ -1027,7 +1031,7 @@ class TestSecurityClaimsAndResearchCitations(unittest.TestCase):
         """Rule 1 & Caching: Ensures all 11 HTML files declare no-cache meta tags to prevent client browser stagnation."""
         html_files = [
             "index.html", "how-we-score.html", "family-safe-word.html",
-            "guide-voice-cloning.html", "guide-pig-butchering.html",
+            "guide-voice-cloning.html", "guide-pig-butchering.html", "guide-digital-arrest.html",
             "guide-phishing.html", "guide-job-scams.html", "guide-delivery-scams.html",
             "about.html", "privacy.html", "terms.html"
         ]

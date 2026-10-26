@@ -27,6 +27,7 @@ PUBLISHED_HTML_FILES = [
     "guide-delivery-scams.html",
     "guide-voice-cloning.html",
     "guide-pig-butchering.html",
+    "guide-digital-arrest.html",
     "about.html",
     "privacy.html",
     "terms.html"
