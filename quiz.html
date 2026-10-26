@@ -1,0 +1,1130 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Can You Spot the Scam? 2026 Cyber Resilience Simulator | ScamShield Lab</title>
+  <meta name="description" content="Test your scam detection reflexes with 8 realistic simulated cyber threats. Inspect real phishing SMS, AI deepfake audio cues, lookalike domains, and get your personalized Cyber Resilience Score.">
+  <meta name="keywords" content="scam quiz, spot the scam, phishing test, cyber resilience simulator, deepfake voice detection test, scam awareness quiz, social engineering test">
+  <link rel="canonical" href="https://scamshieldlab.com/quiz.html">
+
+  <!-- OpenGraph Metadata -->
+  <meta property="og:title" content="Can You Spot the Scam? 2026 Cyber Resilience Simulator | ScamShield Lab">
+  <meta property="og:description" content="Test your scam detection reflexes against 8 real-world cyber threats. Inspect live SMS, AI audio, and lookalike domains 100% in-browser.">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://scamshieldlab.com/quiz.html">
+  <meta property="og:image" content="https://scamshieldlab.com/assets/images/scam-simulator.jpg">
+
+  <!-- Twitter Card Metadata -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Can You Spot the Scam? 2026 Cyber Resilience Simulator">
+  <meta name="twitter:description" content="8 realistic simulated scenarios. Test your ability to spot AI voice clones, lookalike domains, and check scams. 100% free and private.">
+  <meta name="twitter:image" content="https://scamshieldlab.com/assets/images/scam-simulator.jpg">
+
+  <!-- Schema.org JSON-LD Structured Data -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Quiz",
+    "name": "2026 Cyber Resilience & Scam Detection Simulator",
+    "description": "An interactive 8-question forensic simulator evaluating resilience against AI voice cloning, AiTM phishing, check fraud, and impersonation scams.",
+    "educationalLevel": "Intermediate",
+    "inLanguage": "en",
+    "publisher": {
+      "@type": "Organization",
+      "name": "ScamShield Lab",
+      "url": "https://scamshieldlab.com/"
+    }
+  }
+  </script>
+
+  <!-- Security Standards Compliance (Rule 2) -->
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' https://pagead2.googlesyndication.com https://*.google.com https://*.doubleclick.net https://static.cloudflareinsights.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; img-src 'self' data: https:; connect-src 'self' https://pagead2.googlesyndication.com https://*.google.com https://*.doubleclick.net https://cloudflareinsights.com; frame-src https://*.google.com https://*.doubleclick.net;">
+  <meta http-equiv="X-Content-Type-Options" content="nosniff">
+  <meta name="referrer" content="strict-origin-when-cross-origin">
+
+  <!-- Cache Invalidation -->
+  <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
+  <meta http-equiv="Pragma" content="no-cache">
+  <meta http-equiv="Expires" content="0">
+
+  <!-- Performance Preconnect & Zero-Shift Font Loading (Rule 1) -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;600&family=Outfit:wght@600;700;800&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap">
+
+  <!-- Google AdSense Verification & Auto-Ads Script -->
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-7565560894775775" crossorigin="anonymous"></script>
+
+  <link rel="stylesheet" href="css/styles.css?v=20261026-v3">
+  <link rel="icon" type="image/jpeg" href="assets/images/logo.jpg">
+  <script src="config.js?v=20261026-v3" defer></script>
+
+  <style>
+    .quiz-container {
+      max-width: 920px;
+      margin: 0 auto;
+      padding: 3rem 1.5rem 5rem;
+    }
+    .quiz-hero {
+      text-align: center;
+      margin-bottom: 2.5rem;
+    }
+    .ir-breadcrumb {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.5rem;
+      font-size: 0.85rem;
+      color: var(--text-faint);
+      margin-bottom: 1.25rem;
+    }
+    .ir-breadcrumb a {
+      color: var(--color-primary);
+      text-decoration: none;
+      transition: var(--transition-smooth);
+    }
+    .ir-breadcrumb a:hover {
+      text-decoration: underline;
+    }
+    .breadcrumb-sep {
+      color: var(--text-faint);
+      opacity: 0.6;
+    }
+    .breadcrumb-current {
+      color: #94A3B8;
+    }
+    .hero-badges-row {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.75rem;
+      margin-bottom: 1.5rem;
+      flex-wrap: wrap;
+    }
+    .quiz-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      background: rgba(0, 242, 254, 0.12);
+      border: 1px solid rgba(0, 242, 254, 0.4);
+      color: var(--color-primary);
+      padding: 0.35rem 0.9rem;
+      border-radius: var(--radius-full);
+      font-size: 0.8rem;
+      font-family: var(--font-mono);
+      font-weight: 700;
+      line-height: 1.3;
+      margin: 0;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+    }
+    .hero-badges-row .hero-disclaimer-pill {
+      font-size: 0.8rem;
+      padding: 0.35rem 0.9rem;
+      line-height: 1.3;
+      margin: 0;
+    }
+    .quiz-title {
+      font-size: clamp(2.1rem, 4.5vw, 3rem);
+      font-weight: 800;
+      line-height: 1.2;
+      margin-bottom: 1rem;
+      color: var(--text-main);
+    }
+    .quiz-subtitle {
+      font-size: 1.1rem;
+      color: #CBD5E1;
+      max-width: 760px;
+      margin: 0 auto 1.5rem;
+      line-height: 1.7;
+    }
+    .quiz-featured-img {
+      width: 100%;
+      height: auto;
+      aspect-ratio: 860 / 484;
+      max-height: 484px;
+      object-fit: cover;
+      border-radius: var(--radius-lg);
+      border: 1px solid var(--border-glow);
+      margin-bottom: 2.5rem;
+      background: rgba(15, 23, 42, 0.6);
+      display: block;
+    }
+
+    /* Simulator Interactive Box */
+    .simulator-card {
+      background: rgba(15, 23, 42, 0.85);
+      border: 1px solid var(--border-glow);
+      border-radius: var(--radius-lg);
+      padding: 2rem;
+      box-shadow: 0 16px 40px rgba(0, 0, 0, 0.45);
+      backdrop-filter: blur(12px);
+      margin-bottom: 3rem;
+      position: relative;
+    }
+    .sim-header-row {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 1.25rem;
+      border-bottom: 1px solid var(--border-glass);
+      padding-bottom: 1rem;
+      flex-wrap: wrap;
+      gap: 0.75rem;
+    }
+    .sim-progress-indicator {
+      font-family: var(--font-mono);
+      font-size: 0.85rem;
+      color: var(--color-primary);
+      font-weight: 700;
+      letter-spacing: 0.05em;
+    }
+    .sim-score-counter {
+      background: rgba(255, 255, 255, 0.05);
+      padding: 0.3rem 0.85rem;
+      border-radius: var(--radius-full);
+      border: 1px solid var(--border-glass);
+      font-size: 0.85rem;
+      color: #CBD5E1;
+      font-family: var(--font-mono);
+    }
+
+    /* Sim Progress Bar */
+    .sim-progress-track {
+      height: 6px;
+      background: rgba(255, 255, 255, 0.08);
+      border-radius: var(--radius-full);
+      overflow: hidden;
+      margin-bottom: 1.75rem;
+    }
+    .sim-progress-fill {
+      height: 100%;
+      background: linear-gradient(90deg, #00F2FE, #38BDF8, #10B981);
+      width: 12.5%;
+      transition: width 0.4s ease;
+    }
+
+    /* Simulated Device Mockup Box */
+    .mockup-wrapper {
+      background: rgba(7, 11, 20, 0.8);
+      border: 1px solid rgba(255, 255, 255, 0.12);
+      border-radius: var(--radius-md);
+      padding: 1.5rem;
+      margin-bottom: 1.75rem;
+      position: relative;
+    }
+    .mockup-top-bar {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+      padding-bottom: 0.75rem;
+      margin-bottom: 1.25rem;
+      font-size: 0.82rem;
+      color: var(--text-muted);
+      font-family: var(--font-mono);
+    }
+    .mockup-sender {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      color: #F1F5F9;
+      font-weight: 600;
+    }
+    .mockup-body {
+      font-size: 1rem;
+      line-height: 1.6;
+      color: #E2E8F0;
+      white-space: pre-line;
+      background: rgba(15, 23, 42, 0.6);
+      padding: 1.25rem;
+      border-radius: var(--radius-sm);
+      border-left: 3px solid var(--color-primary);
+    }
+    .mockup-meta-tag {
+      display: inline-block;
+      margin-top: 0.75rem;
+      font-size: 0.78rem;
+      color: #94A3B8;
+      font-family: var(--font-mono);
+    }
+
+    /* Question & Decision Area */
+    .decision-prompt {
+      text-align: center;
+      font-size: 1.15rem;
+      font-weight: 700;
+      color: var(--text-main);
+      margin-bottom: 1.25rem;
+    }
+    .decision-buttons-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1.25rem;
+      margin-bottom: 1.5rem;
+    }
+    @media (max-width: 600px) {
+      .decision-buttons-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+    .btn-decision {
+      padding: 1.1rem 1.5rem;
+      font-size: 1.05rem;
+      font-weight: 700;
+      border-radius: var(--radius-md);
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.6rem;
+      transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+      border: 1px solid transparent;
+      outline: none;
+    }
+    .btn-decision:focus-visible {
+      outline: 2px solid var(--color-primary);
+      outline-offset: 3px;
+    }
+    .btn-decision-scam {
+      background: rgba(239, 68, 68, 0.15);
+      border-color: rgba(239, 68, 68, 0.45);
+      color: #FCA5A5;
+    }
+    .btn-decision-scam:hover {
+      background: #EF4444;
+      color: #FFFFFF;
+      transform: translateY(-2px);
+      box-shadow: 0 8px 24px rgba(239, 68, 68, 0.35);
+    }
+    .btn-decision-legit {
+      background: rgba(16, 185, 129, 0.15);
+      border-color: rgba(16, 185, 129, 0.45);
+      color: #6EE7B7;
+    }
+    .btn-decision-legit:hover {
+      background: #10B981;
+      color: #070B14;
+      transform: translateY(-2px);
+      box-shadow: 0 8px 24px rgba(16, 185, 129, 0.35);
+    }
+
+    /* Feedback Reveal Card */
+    .feedback-box {
+      display: none;
+      border-radius: var(--radius-md);
+      padding: 1.5rem;
+      margin-top: 1.5rem;
+      animation: fadeIn 0.3s ease-out;
+    }
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(6px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+    .feedback-box.correct {
+      background: rgba(16, 185, 129, 0.12);
+      border: 1px solid rgba(16, 185, 129, 0.5);
+    }
+    .feedback-box.incorrect {
+      background: rgba(239, 68, 68, 0.12);
+      border: 1px solid rgba(239, 68, 68, 0.5);
+    }
+    .feedback-title {
+      font-size: 1.2rem;
+      font-weight: 800;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      margin-bottom: 0.75rem;
+    }
+    .feedback-box.correct .feedback-title {
+      color: #34D399;
+    }
+    .feedback-box.incorrect .feedback-title {
+      color: #F87171;
+    }
+    .feedback-explanation {
+      font-size: 0.95rem;
+      line-height: 1.6;
+      color: #E2E8F0;
+      margin-bottom: 1.25rem;
+    }
+    .forensic-points-list {
+      list-style: none;
+      padding: 0;
+      margin: 0 0 1.25rem;
+      font-size: 0.9rem;
+    }
+    .forensic-point-item {
+      display: flex;
+      align-items: flex-start;
+      gap: 0.6rem;
+      margin-bottom: 0.5rem;
+      color: #CBD5E1;
+    }
+    .forensic-point-item span:first-child {
+      flex-shrink: 0;
+    }
+    .btn-next-scenario {
+      background: var(--color-primary);
+      color: #070B14;
+      font-weight: 700;
+      border: none;
+      padding: 0.85rem 1.75rem;
+      border-radius: var(--radius-sm);
+      font-size: 1rem;
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      transition: var(--transition-smooth);
+    }
+    .btn-next-scenario:hover {
+      background: #38BDF8;
+      transform: translateY(-2px);
+      box-shadow: 0 6px 20px rgba(0, 242, 254, 0.35);
+    }
+
+    /* Final Results Card */
+    .results-panel {
+      display: none;
+      text-align: center;
+      animation: fadeIn 0.4s ease-out;
+    }
+    .score-circle {
+      width: 140px;
+      height: 140px;
+      border-radius: 50%;
+      background: rgba(15, 23, 42, 0.9);
+      border: 4px solid var(--color-primary);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      margin: 0 auto 1.5rem;
+      box-shadow: 0 0 30px rgba(0, 242, 254, 0.3);
+    }
+    .score-number {
+      font-size: 2.75rem;
+      font-weight: 800;
+      font-family: var(--font-heading);
+      color: #FFFFFF;
+      line-height: 1;
+    }
+    .score-total {
+      font-size: 0.85rem;
+      font-family: var(--font-mono);
+      color: var(--color-primary);
+      margin-top: 0.25rem;
+    }
+    .result-rank-title {
+      font-size: 1.85rem;
+      font-weight: 800;
+      color: var(--text-main);
+      margin-bottom: 0.75rem;
+    }
+    .result-rank-desc {
+      font-size: 1.05rem;
+      color: #CBD5E1;
+      max-width: 640px;
+      margin: 0 auto 2rem;
+      line-height: 1.6;
+    }
+    
+    /* Result Actions Row */
+    .result-actions-grid {
+      display: flex;
+      justify-content: center;
+      gap: 1rem;
+      margin-bottom: 2.5rem;
+      flex-wrap: wrap;
+    }
+    .btn-share-score {
+      background: rgba(0, 242, 254, 0.15);
+      border: 1px solid var(--border-glow);
+      color: var(--color-primary);
+      padding: 0.75rem 1.4rem;
+      border-radius: var(--radius-sm);
+      font-weight: 700;
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      transition: var(--transition-smooth);
+    }
+    .btn-share-score:hover {
+      background: var(--color-primary);
+      color: #070B14;
+    }
+    .btn-retake {
+      background: rgba(255, 255, 255, 0.08);
+      border: 1px solid var(--border-glass);
+      color: #F1F5F9;
+      padding: 0.75rem 1.4rem;
+      border-radius: var(--radius-sm);
+      font-weight: 600;
+      cursor: pointer;
+      transition: var(--transition-smooth);
+    }
+    .btn-retake:hover {
+      background: rgba(255, 255, 255, 0.15);
+    }
+
+    /* Blindspots Teardown Grid */
+    .blindspots-box {
+      background: rgba(7, 11, 20, 0.75);
+      border: 1px solid var(--border-glass);
+      border-radius: var(--radius-md);
+      padding: 1.5rem;
+      text-align: left;
+      margin-bottom: 2.5rem;
+    }
+    .blindspots-header {
+      font-size: 1.1rem;
+      font-weight: 700;
+      color: var(--text-main);
+      margin-bottom: 1rem;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+
+    /* Print Certificate Styles */
+    @media print {
+      body * {
+        visibility: hidden;
+      }
+      .results-panel, .results-panel * {
+        visibility: visible;
+      }
+      .results-panel {
+        position: absolute;
+        left: 0;
+        top: 0;
+        width: 100% !important;
+        background: #FFFFFF !important;
+        color: #000000 !important;
+        padding: 2rem !important;
+      }
+      .result-actions-grid, .adsense-slot-container, .site-header, .site-footer {
+        display: none !important;
+      }
+      .score-circle {
+        border-color: #000000 !important;
+        box-shadow: none !important;
+      }
+      .score-number, .result-rank-title, .result-rank-desc {
+        color: #000000 !important;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Universal Accessibility Skip Link (Rule 4) -->
+  <a href="#main-content" class="skip-link">Skip to main content</a>
+
+  <!-- Top Real-Time Threat Intelligence Feed -->
+  <aside class="site-ticker" aria-label="Live Threat Intelligence Terminal">
+    <div class="container ticker-wrap">
+      <div class="ticker-badge intel-badge">
+        <span class="beacon-dot" aria-hidden="true"></span>
+        <span>Interactive Lab</span>
+      </div>
+      <div class="ticker-content" id="tickerContent" aria-live="polite">
+        <span class="ticker-item"><strong style="color: var(--color-primary);">RESILIENCE CHALLENGE:</strong> Test your ability to identify 2026 AI voice clones, lookalike domains, and check overpayment traps.</span>
+      </div>
+    </div>
+  </aside>
+
+  <!-- Global Site Header -->
+  <header class="site-header">
+    <div class="container nav-inner">
+      <a href="index.html" class="brand-logo" aria-label="ScamShield Lab Home">
+        <img src="assets/images/logo.jpg" alt="ScamShield Lab Logo" class="brand-icon" width="36" height="36" decoding="async">
+        <div class="brand-text-col">
+          <span class="brand-main-title">ScamShield<span class="brand-lab-accent">Lab</span></span>
+          <span class="brand-sub-badge">AI FORENSIC ANALYZER</span>
+        </div>
+      </a>
+
+      <nav aria-label="Primary Navigation" class="main-nav">
+        <ul class="nav-links" id="primaryNavLinks">
+          <li><a href="index.html#analyzer">Scanner</a></li>
+          <li><a href="how-we-score.html">How We Score</a></li>
+          <li><a href="quiz.html" style="color: var(--color-primary); font-weight: 700;">Spot the Fake</a></li>
+          <li><a href="family-safe-word.html">Safe Word Kit</a></li>
+          <li><a href="incident-response.html">Incident Response</a></li>
+          <li><a href="index.html#guides">Guides</a></li>
+          <li><a href="about.html">About</a></li>
+        </ul>
+      </nav>
+
+      <div class="nav-actions">
+        <a href="index.html#analyzer" class="nav-cta-btn">
+          <span class="pulse-beacon" aria-hidden="true"></span>
+          <span>Instant Scan</span>
+        </a>
+      </div>
+    </div>
+  </header>
+
+  <main class="quiz-container" id="main-content">
+
+    <!-- Breadcrumb Navigation (Centered Symmetry) -->
+    <nav class="ir-breadcrumb" aria-label="Breadcrumb">
+      <a href="index.html">Home</a>
+      <span class="breadcrumb-sep" aria-hidden="true">&gt;</span>
+      <span class="breadcrumb-current">Cyber Resilience Simulator</span>
+    </nav>
+
+    <!-- Header Section -->
+    <div class="quiz-hero">
+      <div class="hero-badges-row">
+        <span class="quiz-badge">🎯 2026 Interactive Resilience Challenge</span>
+        <span class="hero-disclaimer-pill" role="note">
+          <span class="pill-beacon" style="background: #10B981; box-shadow: 0 0 8px #10B981;"></span>
+          <span>Zero Data Retained &bull; 100% In-Browser Private</span>
+        </span>
+      </div>
+
+      <h1 class="quiz-title">
+        Can You Spot the Scam? <span class="text-gradient">The 2026 Forensic Challenge</span>
+      </h1>
+      
+      <p class="quiz-subtitle">
+        Cybercrime syndicates no longer send poorly worded emails—they deploy generative AI voice clones, Reverse-Proxy AiTM session hijackers, and authentic corporate branding. Inspect the 8 real-world simulated communications below to test your reflexes.
+      </p>
+    </div>
+
+    <!-- Featured Architecture Image -->
+    <picture>
+      <source srcset="assets/images/scam-simulator.webp" type="image/webp">
+      <img src="assets/images/scam-simulator.jpg" alt="Cybersecurity Threat Detection and Forensic Simulation Lab" class="quiz-featured-img" width="860" height="484" decoding="async">
+    </picture>
+
+    <!-- Interactive Simulator Component -->
+    <div class="simulator-card" id="simulatorCard">
+
+      <!-- Active Quiz View -->
+      <div id="quizActiveView">
+        <div class="sim-header-row">
+          <span class="sim-progress-indicator" id="simQuestionNum">SCENARIO 1 OF 8</span>
+          <span class="sim-score-counter" id="simScoreLive">Score: 0 / 0</span>
+        </div>
+
+        <div class="sim-progress-track" aria-hidden="true">
+          <div class="sim-progress-fill" id="simProgressBar"></div>
+        </div>
+
+        <!-- Simulated Device Mockup Box -->
+        <div class="mockup-wrapper" id="mockupWrapper">
+          <div class="mockup-top-bar">
+            <span class="mockup-sender" id="mockupSender">📱 SMS FROM: +1 (833) 492-0198</span>
+            <span id="mockupTime">Today &bull; 14:22</span>
+          </div>
+          <div class="mockup-body" id="mockupBody">
+            Loading simulated communication...
+          </div>
+          <div class="mockup-meta-tag" id="mockupMeta">
+            Carrier: VoIP &bull; Message Type: High Priority Alert
+          </div>
+        </div>
+
+        <!-- Decision Prompt & Buttons -->
+        <div class="decision-prompt">Is this message Legitimate or a Scam?</div>
+        
+        <div class="decision-buttons-grid" id="decisionButtonsGrid">
+          <button type="button" class="btn-decision btn-decision-scam" onclick="submitAnswer(true)">
+            <span aria-hidden="true">🚨</span> It's a Scam
+          </button>
+          <button type="button" class="btn-decision btn-decision-legit" onclick="submitAnswer(false)">
+            <span aria-hidden="true">✅</span> Legitimate Communication
+          </button>
+        </div>
+
+        <!-- Feedback Reveal Box -->
+        <div class="feedback-box" id="feedbackBox" role="region" aria-live="polite">
+          <div class="feedback-title" id="feedbackTitle">Verdict</div>
+          <p class="feedback-explanation" id="feedbackExplanation"></p>
+          <ul class="forensic-points-list" id="forensicPointsList"></ul>
+          <button type="button" class="btn-next-scenario" id="btnNextScenario" onclick="nextScenario()">
+            Next Scenario &rarr;
+          </button>
+        </div>
+      </div>
+
+      <!-- Final Results View (Hidden until completion) -->
+      <div class="results-panel" id="resultsPanel" role="region" aria-label="Quiz Results Summary">
+        <div class="score-circle">
+          <span class="score-number" id="finalScoreVal">8</span>
+          <span class="score-total">OUT OF 8</span>
+        </div>
+
+        <h2 class="result-rank-title" id="finalRankTitle">🛡️ Cyber Sentinel (Elite Resilience)</h2>
+        <p class="result-rank-desc" id="finalRankDesc">
+          Outstanding work. You identified the subtle cryptographic and psychological indicators across all 8 attack vectors.
+        </p>
+
+        <div class="result-actions-grid">
+          <button type="button" class="btn-share-score" onclick="copyShareText()">
+            <span>📋</span> Copy Shareable Score
+          </button>
+          <button type="button" class="btn-share-score" onclick="window.print()">
+            <span>🖨️</span> Save Certificate
+          </button>
+          <button type="button" class="btn-retake" onclick="restartQuiz()">
+            <span>↺</span> Retake Challenge
+          </button>
+        </div>
+
+        <!-- Blindspots Analysis -->
+        <div class="blindspots-box" id="blindspotsBox">
+          <div class="blindspots-header">
+            <span>🔍</span> Forensic Blindspot Diagnostic
+          </div>
+          <div id="blindspotsList">
+            <!-- Dynamically populated -->
+          </div>
+        </div>
+
+        <!-- Recommended Defense Stack Pairing (Pillar 2) -->
+        <div style="text-align: left; margin-top: 2.5rem; border-top: 1px solid var(--border-glass); padding-top: 2rem;">
+          <h3 style="font-size: 1.3rem; font-weight: 800; color: var(--text-main); margin-bottom: 0.5rem;">
+            Recommended Security Defense Stack
+          </h3>
+          <p style="color: var(--text-muted); font-size: 0.95rem; margin-bottom: 1.5rem;">
+            Neutralize the exact vulnerability vectors encountered in this simulation with verified defense kits:
+          </p>
+
+          <div class="affiliate-stack-grid" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 1.25rem;">
+            <!-- NordPass Passkey Vault -->
+            <div class="affiliate-card">
+              <div class="affiliate-card-badge">Phishing-Proof Auth</div>
+              <h4 class="affiliate-name">NordPass Passkey Vault</h4>
+              <p class="affiliate-tagline">Neutralize credential harvesting completely with zero-knowledge cryptographic passkeys that cannot be entered into fake portals.</p>
+              <div class="affiliate-cta-box" style="margin-top: 1rem;">
+                <a href="https://go.nordpass.io/aff_c?offer_id=488&amp;aff_id=159036&amp;url_id=9356" target="_blank" rel="noopener sponsored" class="btn btn-primary" style="display: block; text-align: center; text-decoration: none;">Protect Passkeys &rarr;</a>
+              </div>
+            </div>
+
+            <!-- NordVPN Threat Protection Pro -->
+            <div class="affiliate-card">
+              <div class="affiliate-card-badge">DNS URL Blocker</div>
+              <h4 class="affiliate-name">NordVPN Threat Protection</h4>
+              <p class="affiliate-tagline">Automatically blocks phishing URLs, malicious IP ranges, and newly registered lookalike domains before your browser opens them.</p>
+              <div class="affiliate-cta-box" style="margin-top: 1rem;">
+                <a href="https://go.nordvpn.net/aff_c?offer_id=15&amp;aff_id=159036&amp;url_id=902" target="_blank" rel="noopener sponsored" class="btn btn-affiliate" style="display: block; text-align: center; text-decoration: none;">Activate Shield (68% Off) &rarr;</a>
+              </div>
+            </div>
+
+            <!-- Aura Identity Protection -->
+            <div class="affiliate-card">
+              <div class="affiliate-card-badge">$1M Insurance</div>
+              <h4 class="affiliate-name">Aura Identity Theft Protection</h4>
+              <p class="affiliate-tagline">Automated 3-bureau credit lock, dark web SSN monitoring, and financial transaction freeze tools with $1,000,000 policy backing.</p>
+              <div class="affiliate-cta-box" style="margin-top: 1rem;">
+                <a href="https://aura.com/" target="_blank" rel="noopener sponsored" class="btn btn-affiliate" style="display: block; text-align: center; text-decoration: none;">Explore Identity Shield &rarr;</a>
+              </div>
+            </div>
+          </div>
+          
+          <div style="font-size: 0.78rem; color: var(--text-faint); margin-top: 1rem; text-align: center;">
+            FTC Disclosure: We partner with verified cybersecurity leaders. Referral links may earn an affiliate commission at no extra cost to you.
+          </div>
+        </div>
+
+      </div>
+
+    </div>
+
+    <!-- Responsive AdSense Slot -->
+    <div class="adsense-slot-container" style="margin: 2rem 0 3rem;">
+      <ins class="adsbygoogle"
+           style="display:block"
+           data-ad-client="ca-pub-7565560894775775"
+           data-ad-slot="responsive"
+           data-ad-format="auto"
+           data-full-width-responsive="true"></ins>
+    </div>
+
+    <!-- Research & Methodology Disclosure -->
+    <div style="background: rgba(15, 23, 42, 0.6); border: 1px solid var(--border-glass); border-radius: var(--radius-md); padding: 1.5rem; font-size: 0.88rem; color: var(--text-muted); line-height: 1.6;">
+      <strong>Simulation Methodology &amp; Telemetry Sources:</strong> All 8 simulation scenarios are modeled on real telemetry extracted by the ScamShield Lab Threat Research Desk, verified against public enforcement actions by the Federal Trade Commission (FTC), FBI IC3 2024–2026 reports, and Microsoft Threat Intelligence briefings. No real personal information or active malware payloads are used in these simulations.
+    </div>
+
+  </main>
+
+  <!-- Global Site Footer -->
+  <footer class="site-footer">
+    <div class="container footer-inner">
+      <div class="footer-col">
+        <a href="index.html" class="brand-logo" aria-label="ScamShield Lab Home">
+          <img src="assets/images/logo.jpg" alt="ScamShield Lab Logo" class="brand-icon" width="32" height="32" decoding="async">
+          <span class="brand-main-title">ScamShield<span class="brand-lab-accent">Lab</span></span>
+        </a>
+        <p class="footer-tagline">Open threat intelligence and autonomous heuristic defenses combating AI-generated cybercrime.</p>
+        <p class="footer-copy">&copy; 2026 ScamShield Lab. All rights reserved.</p>
+      </div>
+
+      <div class="footer-col">
+        <h4 class="footer-heading">Interactive Defense Tools</h4>
+        <ul class="footer-links">
+          <li><a href="index.html#analyzer">Neural Text Scanner</a></li>
+          <li><a href="quiz.html">Spot the Fake Challenge</a></li>
+          <li><a href="family-safe-word.html">Family Safe Word Kit</a></li>
+          <li><a href="incident-response.html">15-Min Incident Response</a></li>
+          <li><a href="how-we-score.html">How We Score (Privacy Moat)</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-col">
+        <h4 class="footer-heading">Forensic Guides</h4>
+        <ul class="footer-links">
+          <li><a href="guide-digital-arrest.html">Digital Arrest &amp; Video Extortion</a></li>
+          <li><a href="guide-voice-cloning.html">AI Voice Cloning Defense</a></li>
+          <li><a href="guide-pig-butchering.html">Pig Butchering Crypto Scams</a></li>
+          <li><a href="guide-phishing.html">AiTM Phishing &amp; Passkeys</a></li>
+          <li><a href="guide-job-scams.html">Remote Job &amp; Check Fraud</a></li>
+          <li><a href="guide-delivery-scams.html">USPS &amp; Delivery Smishing</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-col">
+        <h4 class="footer-heading">Transparency &amp; Legal</h4>
+        <ul class="footer-links">
+          <li><a href="about.html">About &amp; Research Team</a></li>
+          <li><a href="privacy.html">Zero-Storage Privacy Policy</a></li>
+          <li><a href="terms.html">Terms of Service &amp; DMCA</a></li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- Legal Non-Affiliation Disclaimer (Prevents Impersonation - Rule 6) -->
+    <div class="footer-disclaimer-box" role="note" aria-label="Legal Disclaimers" style="max-width: 1200px; margin: 2rem auto 0; padding: 1.25rem 1.5rem; background: rgba(15, 23, 42, 0.6); border: 1px solid var(--border-glass); border-radius: var(--radius-sm); font-size: 0.78rem; color: var(--text-faint); line-height: 1.6;">
+      <p style="margin: 0;">
+        <strong>Notice & Non-Affiliation:</strong> ScamShield Lab - AI Forensic Analyzer (scamshieldlab.com) is an independent cybersecurity awareness and educational platform. It is not affiliated with, sponsored by, or connected to the Government of Singapore, GovTech Singapore, the National Crime Prevention Council (NCPC), or the official Singapore mobile application at scamshield.gov.sg. For Singapore Government anti-scam mobile services, visit <a href="https://www.scamshield.gov.sg/" target="_blank" rel="noopener noreferrer" style="color: var(--color-primary); text-decoration: underline;">scamshield.gov.sg</a>.
+      </p>
+    </div>
+  </footer>
+
+  <!-- Simulation Logic Script -->
+  <script>
+    const SCENARIOS = [
+      {
+        id: "bank_smishing",
+        type: "SMS",
+        sender: "📱 SMS FROM: +1 (833) 492-0198",
+        time: "Today • 14:22",
+        meta: "Carrier: VoIP • TLD: .top • Header: Urgent Alert",
+        body: "URGENT CHASE SECURITY ALERT: Your online access has been locked due to 3 unauthorized login attempts from IP 185.220.101.4.\n\nTo restore your debit card and confirm identity, verify immediately: https://chase-security-verify.top/login?id=89214\n\nFailure to verify within 2 hours will lead to permanent card cancellation.",
+        isScam: true,
+        titleScam: "🚨 Lookalike Domain & Reverse-Proxy AiTM Phishing",
+        titleLegit: "Legitimate Verification Alert",
+        forensicPoints: [
+          "Deceptive Disposable TLD: Banks own official .com domains. They never host official portals on cheap, disposable top-level domains like .top or .xyz.",
+          "Artificial Panic Countdown: Imposing an urgent 2-hour deadline is designed to prevent you from calling your local branch.",
+          "VoIP SMS Sender: Financial institutions send alerts via verified 5- or 6-digit shortcodes, not 10-digit VoIP toll-free numbers."
+        ],
+        advice: "Never click security links in SMS. Always navigate independently to your bank's verified app or website."
+      },
+      {
+        id: "apple_receipt",
+        type: "Email",
+        sender: "✉️ EMAIL FROM: Apple <no_reply@email.apple.com>",
+        time: "Yesterday • 09:14",
+        meta: "DKIM: PASS (apple.com) • SPF: PASS • TLS 1.3 Encrypted",
+        body: "Your receipt from Apple.\n\nOrder ID: MLK89128913\nDocument No: 1982739128\n\nItem: iCloud+ with 200 GB Storage (Monthly)\nDate: October 25, 2026\nBilled to: Apple Pay (MasterCard .... 4019)\nTotal Amount: $2.99\n\nTo manage your subscriptions or review purchase history, visit your Apple Account Settings on your device.",
+        isScam: false,
+        titleScam: "Suspicious Subscription Invoice",
+        titleLegit: "✅ Legitimate Apple App Store / iCloud Receipt",
+        forensicPoints: [
+          "Official DKIM & SPF Cryptographic Pass: Cryptographic headers confirm the email genuinely originated from Apple's authorized email server (@email.apple.com).",
+          "No Panic or Fake Refund Bait: Scammers send fake $899 invoices with prominent phone numbers saying 'Call to Cancel'. This legitimate receipt has no fake hotline.",
+          "Device-Native Instructions: Directs you to official iOS Account Settings rather than asking you to click an urgent external link or download an attachment."
+        ],
+        advice: "Legitimate receipts do not contain urgent phone numbers to cancel. Real receipts confirm standard micro-transactions."
+      },
+      {
+        id: "ai_voice_extortion",
+        type: "Audio / Voice Note",
+        sender: "🎙️ TEAMS AUDIO NOTE: Robert Davis (CEO)",
+        time: "Today • 16:05",
+        meta: "Audio Length: 0:14 • Vocoder Synthesized • Background: Low Hum",
+        body: "\"Hey, it's Robert. I'm in transit at the airport right now and boarding is starting in two minutes. We have an urgent closing on the supplier contract. I need you to wire $42,500 immediately to the escrow account details I just emailed your personal account. Don't call me, signal is bad on the tarmac. Just get it done.\"",
+        isScam: true,
+        titleScam: "🚨 AI Voice Cloning & Executive BEC Impersonation",
+        titleLegit: "Executive Voice Dispatch",
+        forensicPoints: [
+          "Synthesized Audio Cadence: Modern diffusion vocoders mimic timbre from short clips, but exhibit unnatural breath pacing and monotonous rhythmic cadence.",
+          "Refusal of Verification Channel: The caller pre-emptively blocks call-back ('don't call me, signal is bad') to prevent out-of-band verification.",
+          "Circumventing Standard Financial ERP: Instructing an employee to route funds outside standard enterprise purchase orders is a textbook BEC indicator."
+        ],
+        advice: "Always establish an offline verification protocol (e.g. an un-guessable Family or Team Safe Word) before sending wire transfers."
+      },
+      {
+        id: "google_security_alert",
+        type: "Email",
+        sender: "✉️ EMAIL FROM: Google <no-reply@accounts.google.com>",
+        time: "3 Days Ago • 11:45",
+        meta: "DKIM: PASS (accounts.google.com) • Google Security Dispatch",
+        body: "Security alert for your linked Google Account\n\nA new sign-in was detected on Windows (Chrome) from Dallas, TX.\n\nIf this was you, you don't need to do anything. If you didn't sign in, check your activity:\nhttps://myaccount.google.com/notifications\n\nYou can also review devices at any time in your Google Account Security Dashboard.",
+        isScam: false,
+        titleScam: "Fake Google Login Trap",
+        titleLegit: "✅ Legitimate Google Security Notification",
+        forensicPoints: [
+          "Exact Official URL Destination: The link points strictly to the genuine canonical path `myaccount.google.com/notifications`, without redirection wrappers.",
+          "Authentic Email Cryptography: Sent from `no-reply@accounts.google.com` with authenticated DKIM matching Google's primary domain keys.",
+          "Calm, Objective Demeanor: Legitimate security notices state 'If this was you, you don't need to do anything' instead of threatening account deletion."
+        ],
+        advice: "Legitimate account alerts never demand passwords or OTP codes in response. They direct you to built-in account portals."
+      },
+      {
+        id: "usps_smishing",
+        type: "SMS",
+        sender: "📱 SMS FROM: +63 928 419 8210 (Philippines Origin)",
+        time: "Today • 08:30",
+        meta: "Carrier: International Mobile • TLD: .link • USPS Brand Spoof",
+        body: "USPS Notice: Your package [USPS-9400-1092] has arrived at the local sorting facility but cannot be delivered due to an incomplete street address.\n\nPlease update your postal information within 12 hours and settle the $1.85 redelivery fee to avoid return to sender:\nhttps://usps-redelivery-portal.link/address-update",
+        isScam: true,
+        titleScam: "🚨 USPS Micro-Fee Smishing & Credit Card Harvester",
+        titleLegit: "Postal Service Notification",
+        forensicPoints: [
+          "Foreign Country Code: Sent from `+63` (Philippines), while USPS operations communicate through domestic US carrier shortcodes.",
+          "Micro-Fee Credit Card Bait: Asking for a trivial fee ($1.85) is designed to make victims enter their credit card numbers into a credential harvester.",
+          "Bogus Tracking Portal: Official postal tracking lives strictly on `tools.usps.com`, never on `.link` or third-party domains."
+        ],
+        advice: "Postal delivery agencies will never ask for payment via SMS to update an address. Track packages directly on usps.com."
+      },
+      {
+        id: "job_check_fraud",
+        type: "Direct Message",
+        sender: "💼 LINKEDIN INBOX: Sarah Jenkins (Global Talent Lead)",
+        time: "2 Days Ago • 13:10",
+        meta: "Profile Created: 14 Days Ago • Connections: 18 • Employer: TechCorp",
+        body: "Congratulations! After reviewing your resume, our executive panel has selected you for our Remote Data Specialist position ($72.00/hr, 20 hrs/week).\n\nNo formal video interview is required. We are courier-mailing you an official certified cashier's check for $3,850.00. Please deposit this into your bank account immediately, retain $500 as your sign-on bonus, and wire the remaining $3,350 via Zelle to our certified home-office equipment vendor for your MacBook Pro setup.",
+        isScam: true,
+        titleScam: "🚨 Fake Job Offer & Check Overpayment Trap",
+        titleLegit: "Legitimate Corporate Recruitment",
+        forensicPoints: [
+          "Check Overpayment Mechanics: Federal law requires banks to make funds available within 1-2 business days, but verifying an authentic cashier's check takes up to 2 weeks. The check will bounce, leaving you liable for the $3,350 wired.",
+          "No Real Interview Process: Reputable companies never hire candidates for high-paying roles solely via text chat without live video interviews.",
+          "Personal Device Procurement: Legitimate companies ship pre-configured corporate laptops directly through corporate logistics; they never ask you to wire funds to 'vendors'."
+        ],
+        advice: "Never accept checks from unfamiliar employers with instructions to wire surplus funds back. The check is guaranteed to bounce."
+      },
+      {
+        id: "digital_arrest",
+        type: "Video Call Invite",
+        sender: "🚨 SKYPE / WHATSAPP: Inspector Sharma (Central Police Cyber Cell)",
+        time: "Today • 15:45",
+        meta: "Profile: National Cyber Crime Emblem • Background: Simulated Police Room",
+        body: "\"ATTENTION: A Federal Arrest Warrant has been issued against you under Section 420/66D. A consignment containing 16 passports and narcotics seized in Mumbai was linked to your Aadhaar / National ID.\n\nYou are placed under DIGITAL ARREST for the next 48 hours. Keep your camera turned on at all times. Do not inform family or legal counsel. To prove innocence, you must immediately transfer your entire bank savings into the Reserve Bank of India Safe Custody Account for judicial asset verification.\"",
+        isScam: true,
+        titleScam: "🚨 Digital Arrest Video Impersonation & Extortion",
+        titleLegit: "Official Judicial Summon",
+        forensicPoints: [
+          "'Digital Arrest' Does Not Exist in Law: No law enforcement agency or judicial court anywhere in the world conducts arrests, trials, or custody over Skype or WhatsApp video calls.",
+          "Judicial 'Safe Custody' Bank Accounts Do Not Exist: Law enforcement officers never ask citizens to transfer money to personal or third-party bank accounts to 'verify innocence'.",
+          "Isolation Tactics: Imposing strict gag orders ('do not inform family or lawyers') is an adversary coercion tactic to prevent victims from consulting experts."
+        ],
+        advice: "Real police never arrest citizens via video calls or demand funds. Hang up immediately and report to local authorities."
+      },
+      {
+        id: "nordvpn_renewal",
+        type: "Email",
+        sender: "✉️ EMAIL FROM: NordVPN <support@nordvpn.com>",
+        time: "4 Days Ago • 10:20",
+        meta: "DKIM: PASS (nordvpn.com) • TLS Standard • Account Renewal Notice",
+        body: "Hello,\n\nYour NordVPN 2-Year Plan is scheduled to renew automatically in 7 days on October 30, 2026.\n\nPlan: NordVPN Complete (Threat Protection + Passkey Vault)\nBilling Method: Visa ending in 8812\nAmount: $79.20\n\nIf you wish to manage auto-renewal settings or update your payment details, please sign in directly to your Nord Account dashboard at https://my.nordaccount.com.\n\nThank you for choosing NordVPN to protect your digital privacy.",
+        isScam: false,
+        titleScam: "Deceptive Antivirus Trap",
+        titleLegit: "✅ Legitimate Official Subscription Renewal Notice",
+        forensicPoints: [
+          "Authentic Domain Cryptography: Originates strictly from authorized IP blocks with valid DKIM signing matching `nordvpn.com`.",
+          "Transparent Advance Notice: Notice is sent 7 days in advance with clear dates and amounts, without demanding urgent phone verification.",
+          "Authentic Portal Links: Points directly to `my.nordaccount.com` without deceptive subdomains, fake phone numbers, or executable attachments."
+        ],
+        advice: "Legitimate subscription services provide written advance notice of renewals with direct account dashboard management."
+      }
+    ];
+
+    let currentQuestionIndex = 0;
+    let userScore = 0;
+    let userAnswers = []; // Records user performance per question
+
+    function loadScenario(index) {
+      const scenario = SCENARIOS[index];
+      
+      document.getElementById('simQuestionNum').textContent = `SCENARIO ${index + 1} OF ${SCENARIOS.length}`;
+      document.getElementById('simScoreLive').textContent = `Score: ${userScore} / ${index}`;
+      
+      const pct = ((index + 1) / SCENARIOS.length) * 100;
+      document.getElementById('simProgressBar').style.width = pct + '%';
+
+      document.getElementById('mockupSender').textContent = scenario.sender;
+      document.getElementById('mockupTime').textContent = scenario.time;
+      document.getElementById('mockupMeta').textContent = scenario.meta;
+      document.getElementById('mockupBody').textContent = scenario.body;
+
+      // Reset feedback box and enable buttons
+      const fbBox = document.getElementById('feedbackBox');
+      fbBox.style.display = 'none';
+      fbBox.className = 'feedback-box';
+
+      const buttons = document.querySelectorAll('.btn-decision');
+      buttons.forEach(b => {
+        b.disabled = false;
+        b.style.opacity = '1';
+        b.style.pointerEvents = 'auto';
+      });
+    }
+
+    function submitAnswer(guessedScam) {
+      const scenario = SCENARIOS[currentQuestionIndex];
+      const isCorrect = (guessedScam === scenario.isScam);
+
+      // Disable buttons to prevent double click
+      const buttons = document.querySelectorAll('.btn-decision');
+      buttons.forEach(b => {
+        b.disabled = true;
+        b.style.opacity = '0.6';
+        b.style.pointerEvents = 'none';
+      });
+
+      if (isCorrect) {
+        userScore++;
+      }
+
+      userAnswers.push({
+        scenario: scenario,
+        userGuessedScam: guessedScam,
+        isCorrect: isCorrect
+      });
+
+      document.getElementById('simScoreLive').textContent = `Score: ${userScore} / ${currentQuestionIndex + 1}`;
+
+      // Populate feedback reveal
+      const fbBox = document.getElementById('feedbackBox');
+      fbBox.className = 'feedback-box ' + (isCorrect ? 'correct' : 'incorrect');
+
+      const titleEl = document.getElementById('feedbackTitle');
+      titleEl.innerHTML = isCorrect 
+        ? `<span>🎯 EXCELLENT! You are Correct</span>` 
+        : `<span>⚠️ DECEIVED: You Missed This One</span>`;
+
+      const explEl = document.getElementById('feedbackExplanation');
+      explEl.textContent = `This communication is ${scenario.isScam ? 'a MALICIOUS SCAM' : 'LEGITIMATE COMMUNICATION'}. ${scenario.advice}`;
+
+      const listEl = document.getElementById('forensicPointsList');
+      listEl.innerHTML = '';
+      scenario.forensicPoints.forEach(pt => {
+        const li = document.createElement('li');
+        li.className = 'forensic-point-item';
+        li.innerHTML = `<span>🔍</span><span>${pt}</span>`;
+        listEl.appendChild(li);
+      });
+
+      // Update next button label
+      const nextBtn = document.getElementById('btnNextScenario');
+      if (currentQuestionIndex === SCENARIOS.length - 1) {
+        nextBtn.innerHTML = `<span>🏆</span> View Final Resilience Score &rarr;`;
+      } else {
+        nextBtn.innerHTML = `Next Scenario (${currentQuestionIndex + 2}/${SCENARIOS.length}) &rarr;`;
+      }
+
+      fbBox.style.display = 'block';
+    }
+
+    function nextScenario() {
+      currentQuestionIndex++;
+      if (currentQuestionIndex < SCENARIOS.length) {
+        loadScenario(currentQuestionIndex);
+      } else {
+        showFinalResults();
+      }
+    }
+
+    function showFinalResults() {
+      document.getElementById('quizActiveView').style.display = 'none';
+      const resultsPanel = document.getElementById('resultsPanel');
+      resultsPanel.style.display = 'block';
+
+      document.getElementById('finalScoreVal').textContent = userScore;
+
+      const rankTitle = document.getElementById('finalRankTitle');
+      const rankDesc = document.getElementById('finalRankDesc');
+
+      if (userScore === 8) {
+        rankTitle.textContent = "🛡️ Cyber Sentinel (Elite Resilience • 100%)";
+        rankDesc.textContent = "Flawless defense score! You spotted every microscopic indicator across AI voice clones, lookalike domains, check overpayments, and reverse-proxy threats.";
+      } else if (userScore >= 6) {
+        rankTitle.textContent = "⚡ Security Vigilant (High Resilience • " + Math.round((userScore/8)*100) + "%)";
+        rankDesc.textContent = "Strong analytical reflexes. You caught the vast majority of threats, with only 1 or 2 subtle deception blindspots.";
+      } else if (userScore >= 4) {
+        rankTitle.textContent = "⚠️ Moderate Exposure (" + Math.round((userScore/8)*100) + "% Resilience)";
+        rankDesc.textContent = "You caught several standard attacks, but modern AI and reverse-proxy tactics successfully deceived your initial inspection.";
+      } else {
+        rankTitle.textContent = "🚨 High Vulnerability (" + Math.round((userScore/8)*100) + "% Resilience)";
+        rankDesc.textContent = "Urgent attention recommended. Multiple simulated scams successfully bypassed your detection. Review the forensic blindspots below.";
+      }
+
+      // Populate Blindspots
+      const blindspotsList = document.getElementById('blindspotsList');
+      blindspotsList.innerHTML = '';
+
+      const incorrectAnswers = userAnswers.filter(a => !a.isCorrect);
+      if (incorrectAnswers.length === 0) {
+        blindspotsList.innerHTML = `<p style="color: #34D399; margin: 0;"><strong>Zero Blindspots Detected:</strong> You demonstrated comprehensive forensic awareness across all simulated threat scenarios.</p>`;
+      } else {
+        incorrectAnswers.forEach(ans => {
+          const item = document.createElement('div');
+          item.style.marginBottom = '1rem';
+          item.style.padding = '0.85rem';
+          item.style.background = 'rgba(239, 68, 68, 0.08)';
+          item.style.border = '1px solid rgba(239, 68, 68, 0.3)';
+          item.style.borderRadius = 'var(--radius-sm)';
+
+          item.innerHTML = `
+            <div style="font-weight: 700; color: #F87171; font-size: 0.95rem; margin-bottom: 0.25rem;">
+              ⚠️ Misidentified: ${ans.scenario.sender}
+            </div>
+            <p style="margin: 0; font-size: 0.88rem; color: #CBD5E1;">
+              <strong>Key lesson:</strong> ${ans.scenario.advice} (${ans.scenario.forensicPoints[0]})
+            </p>
+          `;
+          blindspotsList.appendChild(item);
+        });
+      }
+
+      // Scroll smoothly to results
+      document.getElementById('simulatorCard').scrollIntoView({ behavior: 'smooth' });
+    }
+
+    function copyShareText() {
+      const pct = Math.round((userScore / 8) * 100);
+      const text = `I just scored ${userScore}/8 (${pct}%) on the ScamShield Lab 2026 Cyber Resilience Simulator!\n\nCan you spot AI voice clones, lookalike banking domains, and check overpayment traps? Test your reflexes 100% free and in-browser:\nhttps://scamshieldlab.com/quiz.html`;
+
+      navigator.clipboard.writeText(text).then(() => {
+        alert("Score summary copied to clipboard! Share it with family or colleagues to challenge them.");
+      });
+    }
+
+    function restartQuiz() {
+      currentQuestionIndex = 0;
+      userScore = 0;
+      userAnswers = [];
+      document.getElementById('resultsPanel').style.display = 'none';
+      document.getElementById('quizActiveView').style.display = 'block';
+      loadScenario(0);
+    }
+
+    // Initialize on page load
+    document.addEventListener('DOMContentLoaded', () => {
+      loadScenario(0);
+    });
+  </script>
+
+</body>
+</html>

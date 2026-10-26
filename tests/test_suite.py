@@ -130,6 +130,7 @@ class TestHtmlPagesStructure(unittest.TestCase):
         "guide-digital-arrest.html",
         "family-safe-word.html",
         "incident-response.html",
+        "quiz.html",
         "how-we-score.html",
         "guide-phishing.html",
         "guide-job-scams.html",
@@ -235,6 +236,23 @@ class TestHtmlPagesStructure(unittest.TestCase):
         self.assertIn("Financial Fraud Kill Chain", content)
         self.assertIn("affiliate-stack-grid", content)
         self.assertIn('rel="noopener sponsored"', content)
+
+    def test_quiz_simulator_and_scenarios(self):
+        """Rule 1 & Pillar 1: Ensure 2026 Cyber Resilience Simulator and Spot the Fake challenge is fully wired."""
+        quiz_path = os.path.join(WORKSPACE_ROOT, "quiz.html")
+        self.assertTrue(os.path.isfile(quiz_path), "quiz.html must exist")
+        with open(quiz_path, "r", encoding="utf-8") as f:
+            content = f.read()
+        self.assertIn("simulator-card", content)
+        self.assertIn("mockup-wrapper", content)
+        self.assertIn("btn-decision-scam", content)
+        self.assertIn("btn-decision-legit", content)
+        self.assertIn("feedback-box", content)
+        self.assertIn("results-panel", content)
+        self.assertIn("blindspots-box", content)
+        self.assertIn("affiliate-stack-grid", content)
+        self.assertIn('rel="noopener sponsored"', content)
+        self.assertIn("SCENARIOS", content)
 
     def test_no_empty_adsense_raw_text_above_hero(self):
         index_path = os.path.join(WORKSPACE_ROOT, "index.html")
