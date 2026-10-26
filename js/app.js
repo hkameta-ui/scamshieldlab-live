@@ -872,6 +872,13 @@ function initAnalyzer() {
       let recBtnClass = "defense-rec-btn";
       let recBtnText = "Activate DNS & Phishing Shield (68% Off)";
       let recUrl = (window.SITE_CONFIG && window.SITE_CONFIG.affiliates && window.SITE_CONFIG.affiliates.vpnPrivacy) ? window.SITE_CONFIG.affiliates.vpnPrivacy.url : "https://go.nordvpn.net/aff_c?offer_id=15&aff_id=159036&url_id=902";
+      let promoPillHtml = "";
+
+      let secondaryTitle = "NordPass Premium & Passkey Vault";
+      let secondaryIcon = "assets/images/nordpass-icon.svg";
+      let secondaryDesc = "Hardware-backed passkeys eliminate credential theft risks.";
+      let secondaryUrl = (window.SITE_CONFIG && window.SITE_CONFIG.affiliates && window.SITE_CONFIG.affiliates.passwordManager) ? window.SITE_CONFIG.affiliates.passwordManager.url : "https://go.nordpass.io/aff_c?offer_id=488&aff_id=159036&url_id=9356";
+      let secondaryCta = "Explore Passkeys";
 
       if (hasEmailOrBec) {
         recTitle = "Google Workspace with Gemini";
@@ -881,6 +888,17 @@ function initAnalyzer() {
         recBtnClass = "defense-rec-btn google-btn";
         recBtnText = "Claim 10% Off & Free Trial";
         recUrl = (window.SITE_CONFIG && window.SITE_CONFIG.affiliates && window.SITE_CONFIG.affiliates.googleWorkspace) ? window.SITE_CONFIG.affiliates.googleWorkspace.url : "https://sharegoogleworkspace.advocate.impact.com/mzYP7Zg";
+        promoPillHtml = `
+          <div class="promo-code-pill" data-copy-code="UCYHWLERFJVJUW4" title="Click to copy 10% discount promo code" role="button" tabindex="0">
+            <span>Exclusive Code: <strong>UCYHWLERFJVJUW4</strong> (10% Off)</span>
+            <span class="copy-code-badge">📋 Copy</span>
+          </div>
+        `;
+        secondaryTitle = "NordVPN Threat Protection Pro";
+        secondaryIcon = "assets/images/nordvpn-icon.svg";
+        secondaryDesc = "Automated DNS domain interception blocking fake recruiter portals.";
+        secondaryUrl = (window.SITE_CONFIG && window.SITE_CONFIG.affiliates && window.SITE_CONFIG.affiliates.vpnPrivacy) ? window.SITE_CONFIG.affiliates.vpnPrivacy.url : "https://go.nordvpn.net/aff_c?offer_id=15&aff_id=159036&url_id=902";
+        secondaryCta = "Activate DNS Shield";
       } else if (hasCredentialRisk && !hasUrlOrPhish) {
         recTitle = "NordPass Premium & Passkey Vault";
         recBadge = "FIDO2 & Passkey Vault";
@@ -889,7 +907,16 @@ function initAnalyzer() {
         recBtnClass = "defense-rec-btn nordpass-btn";
         recBtnText = "Lock Passwords with Passkeys";
         recUrl = (window.SITE_CONFIG && window.SITE_CONFIG.affiliates && window.SITE_CONFIG.affiliates.passwordManager) ? window.SITE_CONFIG.affiliates.passwordManager.url : "https://go.nordpass.io/aff_c?offer_id=488&aff_id=159036&url_id=9356";
+        secondaryTitle = "Google Titan Security Key";
+        secondaryIcon = "🔑";
+        secondaryDesc = "Hardware FIDO2 cryptographic tokens blocking unauthorized account takeovers.";
+        secondaryUrl = "https://store.google.com/product/titan_security_key";
+        secondaryCta = "Explore Titan Keys";
       }
+
+      const secondaryIconHtml = secondaryIcon.endsWith(".svg")
+        ? `<img src="${escapeHtml(secondaryIcon)}" alt="${escapeHtml(secondaryTitle)} Icon" width="26" height="26" class="affiliate-brand-img" loading="lazy" decoding="async">`
+        : `<span style="font-size: 1.25rem;">${escapeHtml(secondaryIcon)}</span>`;
 
       defenseRecBox.innerHTML = `
         <div class="defense-rec-header">
@@ -898,17 +925,27 @@ function initAnalyzer() {
         </div>
         <div class="defense-rec-content">
           <div class="defense-rec-icon">
-            <img src="${escapeHtml(recIcon)}" alt="${escapeHtml(recTitle)} Icon" width="52" height="52" loading="lazy" decoding="async">
+            <img src="${escapeHtml(recIcon)}" alt="${escapeHtml(recTitle)} Icon" class="affiliate-brand-img" width="52" height="52" loading="lazy" decoding="async">
           </div>
           <div class="defense-rec-info">
             <h4>${escapeHtml(recTitle)}</h4>
             <p>${escapeHtml(recDesc)}</p>
+            ${promoPillHtml}
           </div>
           <div>
             <a href="${escapeHtml(recUrl)}" target="_blank" rel="noopener sponsored" class="${recBtnClass}">
               ${escapeHtml(recBtnText)} &nearr;
             </a>
           </div>
+        </div>
+        <div class="defense-rec-secondary-row">
+          <div class="defense-rec-secondary-info">
+            ${secondaryIconHtml}
+            <span><strong>Complementary Layer:</strong> ${escapeHtml(secondaryTitle)} &bull; ${escapeHtml(secondaryDesc)}</span>
+          </div>
+          <a href="${escapeHtml(secondaryUrl)}" target="_blank" rel="noopener sponsored" class="defense-rec-secondary-link">
+            ${escapeHtml(secondaryCta)} &rarr;
+          </a>
         </div>
         <div class="defense-rec-footer">
           <span>Exclusive ScamShield Lab Reader Pricing Applied (Up to 68% Off Nord / 10% Off Google Workspace)</span>
@@ -1464,6 +1501,40 @@ function initFaqAccordion() {
     });
   });
 }
+
+// 1-Click Interactive Promo Code Copy Handler
+document.addEventListener("click", (e) => {
+  const promoPill = e.target.closest("[data-copy-code]");
+  if (!promoPill) return;
+
+  const code = promoPill.getAttribute("data-copy-code");
+  if (!code) return;
+
+  if (navigator.clipboard && navigator.clipboard.writeText) {
+    navigator.clipboard.writeText(code).then(() => {
+      const badge = promoPill.querySelector(".copy-code-badge");
+      if (badge) {
+        const oldTxt = badge.textContent;
+        badge.textContent = "✓ Copied!";
+        promoPill.classList.add("copied");
+        setTimeout(() => {
+          badge.textContent = oldTxt;
+          promoPill.classList.remove("copied");
+        }, 2500);
+      }
+    }).catch(() => {});
+  }
+});
+
+document.addEventListener("keydown", (e) => {
+  if (e.key === "Enter" || e.key === " ") {
+    const promoPill = e.target && e.target.closest ? e.target.closest("[data-copy-code]") : null;
+    if (promoPill) {
+      e.preventDefault();
+      promoPill.click();
+    }
+  }
+});
 
 // Mobile & Browser BF-Cache Invalidation:
 // Ensure visitors never receive a stale frozen page snapshot when navigating back or reopening tabs

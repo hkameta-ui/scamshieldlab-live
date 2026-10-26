@@ -686,6 +686,30 @@ class TestGoogleWorkspaceAffiliatePartnerIntegration(unittest.TestCase):
             self.assertTrue(idx_pass < idx_aura, "NordPass must appear before Aura")
             self.assertTrue(idx_aura < idx_malware, "Aura must appear before Malwarebytes")
 
+    def test_pillar_guides_declare_affiliate_defense_stacks(self):
+        """Rule 3 Mandate: Ensure all pillar guides display contextual, FTC-compliant defense stacks."""
+        guides = ["guide-phishing.html", "guide-job-scams.html", "guide-delivery-scams.html", "guide-voice-cloning.html", "guide-pig-butchering.html"]
+        for g in guides:
+            g_path = os.path.join(WORKSPACE_ROOT, g)
+            with open(g_path, "r", encoding="utf-8") as f:
+                content = f.read()
+            self.assertIn("affiliate-stack-grid", content, f"{g} must contain an affiliate-stack-grid")
+            self.assertIn('rel="noopener sponsored"', content, f"{g} must declare rel='noopener sponsored' on partner links")
+
+    def test_promo_code_copy_and_styling(self):
+        """Conversion UX Mandate: Ensure 1-click promo code copy pill is wired in app.js and styled in CSS."""
+        css_path = os.path.join(WORKSPACE_ROOT, "css", "styles.css")
+        with open(css_path, "r", encoding="utf-8") as f:
+            css = f.read()
+        self.assertIn(".promo-code-pill", css)
+        self.assertIn(".defense-rec-secondary-row", css)
+
+        app_path = os.path.join(WORKSPACE_ROOT, "js", "app.js")
+        with open(app_path, "r", encoding="utf-8") as f:
+            app_code = f.read()
+        self.assertIn("data-copy-code", app_code)
+        self.assertIn("UCYHWLERFJVJUW4", app_code)
+
     def test_defense_stack_is_positioned_between_analyzer_and_threat_radar(self):
         index_path = os.path.join(WORKSPACE_ROOT, "index.html")
         with open(index_path, "r", encoding="utf-8") as f:
