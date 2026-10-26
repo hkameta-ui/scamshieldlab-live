@@ -22,6 +22,7 @@ PUBLISHED_HTML_FILES = [
     "index.html",
     "how-we-score.html",
     "family-safe-word.html",
+    "incident-response.html",
     "guide-phishing.html",
     "guide-job-scams.html",
     "guide-delivery-scams.html",

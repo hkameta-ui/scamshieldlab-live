@@ -129,6 +129,7 @@ class TestHtmlPagesStructure(unittest.TestCase):
         "guide-pig-butchering.html",
         "guide-digital-arrest.html",
         "family-safe-word.html",
+        "incident-response.html",
         "how-we-score.html",
         "guide-phishing.html",
         "guide-job-scams.html",
@@ -214,6 +215,26 @@ class TestHtmlPagesStructure(unittest.TestCase):
             self.assertIn("privacy-matrix-table", content)
             self.assertIn("Zero-Storage Architecture", content)
             self.assertIn("0 bytes stored", content)
+
+    def test_incident_response_playbook_and_dispute_generator(self):
+        """Rule 1 & Pillar 1: Ensure 15-Minute Emergency Incident Response Wizard is fully wired."""
+        ir_path = os.path.join(WORKSPACE_ROOT, "incident-response.html")
+        self.assertTrue(os.path.isfile(ir_path), "incident-response.html must exist")
+        with open(ir_path, "r", encoding="utf-8") as f:
+            content = f.read()
+        self.assertIn("crisis-card", content)
+        self.assertIn("vector-card", content)
+        self.assertIn("progress-sticky-bar", content)
+        self.assertIn("checklist-item", content)
+        self.assertIn("https://www.experian.com/freeze", content)
+        self.assertIn("https://www.equifax.com/personal/credit-report-services/credit-freeze/", content)
+        self.assertIn("https://www.transunion.com/credit-freeze", content)
+        self.assertIn("disputeLetterOutput", content)
+        self.assertIn("Regulation E", content)
+        self.assertIn("UCC § 4A-202", content)
+        self.assertIn("Financial Fraud Kill Chain", content)
+        self.assertIn("affiliate-stack-grid", content)
+        self.assertIn('rel="noopener sponsored"', content)
 
     def test_no_empty_adsense_raw_text_above_hero(self):
         index_path = os.path.join(WORKSPACE_ROOT, "index.html")
@@ -480,7 +501,8 @@ class TestCopyrightAndLegalCompliance(unittest.TestCase):
             "guide-voice-cloning.html",
             "guide-pig-butchering.html",
             "guide-digital-arrest.html",
-            "family-safe-word.html"
+            "family-safe-word.html",
+            "incident-response.html"
         ]
         assets_dir = os.path.join(WORKSPACE_ROOT, "assets", "images")
         existing_images = set(os.listdir(assets_dir))
@@ -1000,7 +1022,7 @@ class TestSecurityClaimsAndResearchCitations(unittest.TestCase):
     def test_footer_review_pill_present_on_all_pages(self):
         """Ensures the 'Reviewed by Cybersecurity Professionals' & 'Last Updated: October 2026' pill is present across all HTML pages."""
         html_files = [
-            "index.html", "how-we-score.html", "family-safe-word.html",
+            "index.html", "how-we-score.html", "family-safe-word.html", "incident-response.html",
             "guide-voice-cloning.html", "guide-pig-butchering.html", "guide-digital-arrest.html",
             "guide-phishing.html", "guide-job-scams.html", "guide-delivery-scams.html",
             "about.html", "privacy.html", "terms.html"
@@ -1030,7 +1052,7 @@ class TestSecurityClaimsAndResearchCitations(unittest.TestCase):
     def test_html_files_contain_cache_control_meta_tags(self):
         """Rule 1 & Caching: Ensures all 11 HTML files declare no-cache meta tags to prevent client browser stagnation."""
         html_files = [
-            "index.html", "how-we-score.html", "family-safe-word.html",
+            "index.html", "how-we-score.html", "family-safe-word.html", "incident-response.html",
             "guide-voice-cloning.html", "guide-pig-butchering.html", "guide-digital-arrest.html",
             "guide-phishing.html", "guide-job-scams.html", "guide-delivery-scams.html",
             "about.html", "privacy.html", "terms.html"

@@ -1,0 +1,1421 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>I Just Got Scammed: The 15-Minute Emergency Action Plan | ScamShield Lab - AI Forensic Analyzer</title>
+  
+  <meta name="description" content="Free, private, zero-storage emergency triage playbook if you've been scammed. Immediate containment protocols for wired funds, remote access, stolen SSN, and bank freezes.">
+  <meta name="keywords" content="I just got scammed, scam incident response, wire transfer fraud freeze, remote desktop scam cleanup, credit freeze guide, report cybercrime, ScamShield Lab">
+  <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1">
+  <link rel="canonical" href="https://scamshieldlab.com/incident-response">
+
+  <!-- Open Graph -->
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="ScamShield Lab - AI Forensic Analyzer">
+  <meta property="og:title" content="I Just Got Scammed: The 15-Minute Emergency Action Plan | ScamShield Lab - AI Forensic Analyzer">
+  <meta property="og:description" content="Free, private emergency triage playbook if you've been scammed. Immediate containment protocols for wired funds, remote access, stolen SSN, and bank freezes.">
+  <meta property="og:url" content="https://scamshieldlab.com/incident-response">
+  <meta property="og:image" content="https://scamshieldlab.com/assets/images/incident-response.jpg">
+
+  <!-- Twitter Card -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="I Just Got Scammed: The 15-Minute Emergency Action Plan">
+  <meta name="twitter:description" content="Immediate containment protocols for wired funds, remote access, stolen SSN, and bank freezes. Private, in-browser triage.">
+  <meta name="twitter:image" content="https://scamshieldlab.com/assets/images/incident-response.jpg">
+
+  <!-- Schema.org WebApplication & HowTo Structured Data (SEO) -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "WebApplication",
+    "name": "15-Minute Scam Incident Response Playbook",
+    "url": "https://scamshieldlab.com/incident-response",
+    "applicationCategory": "SecurityApplication",
+    "operatingSystem": "All",
+    "description": "Client-side private incident response wizard providing immediate containment checklists, bank dispute scripts, and emergency wire freeze protocols.",
+    "offers": {
+      "@type": "Offer",
+      "price": "0",
+      "priceCurrency": "USD"
+    },
+    "publisher": {
+      "@type": "Organization",
+      "name": "ScamShield Lab - AI Forensic Analyzer",
+      "url": "https://scamshieldlab.com/",
+      "logo": {
+        "@type": "ImageObject",
+        "url": "https://scamshieldlab.com/assets/images/logo.jpg"
+      }
+    }
+  }
+  </script>
+  
+  <!-- Security Standards Compliance (Rule 2) -->
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' https://pagead2.googlesyndication.com https://*.google.com https://*.doubleclick.net https://static.cloudflareinsights.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; img-src 'self' data: https:; connect-src 'self' https://pagead2.googlesyndication.com https://*.google.com https://*.doubleclick.net https://cloudflareinsights.com; frame-src https://*.google.com https://*.doubleclick.net;">
+  <meta http-equiv="X-Content-Type-Options" content="nosniff">
+  <meta name="referrer" content="strict-origin-when-cross-origin">
+
+  <!-- Cache Invalidation: Ensure visitors always receive the latest deployment -->
+  <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
+  <meta http-equiv="Pragma" content="no-cache">
+  <meta http-equiv="Expires" content="0">
+
+  <!-- Performance Preconnect & Zero-Shift Font Loading (Rule 1) -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;600&family=Outfit:wght@600;700;800&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap">
+
+  <!-- Google AdSense Verification & Auto-Ads Script -->
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-7565560894775775" crossorigin="anonymous"></script>
+  
+  <link rel="stylesheet" href="css/styles.css?v=20261026-v2">
+  <link rel="icon" type="image/jpeg" href="assets/images/logo.jpg">
+  <script src="config.js?v=20261026-v2" defer></script>
+
+  <style>
+    .ir-container {
+      max-width: 960px;
+      margin: 0 auto;
+      padding: 3rem 1.5rem 5rem;
+    }
+    .ir-hero {
+      text-align: center;
+      margin-bottom: 2.5rem;
+    }
+    .ir-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      background: rgba(239, 68, 68, 0.12);
+      border: 1px solid rgba(239, 68, 68, 0.4);
+      color: #EF4444;
+      padding: 0.4rem 1rem;
+      border-radius: var(--radius-full);
+      font-size: 0.85rem;
+      font-family: var(--font-mono);
+      font-weight: 700;
+      margin-bottom: 1.25rem;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+    }
+    .ir-title {
+      font-size: clamp(2.1rem, 4.5vw, 3rem);
+      font-weight: 800;
+      line-height: 1.2;
+      margin-bottom: 1rem;
+      color: var(--text-main);
+    }
+    .ir-subtitle {
+      font-size: 1.1rem;
+      color: #CBD5E1;
+      max-width: 760px;
+      margin: 0 auto 1.5rem;
+      line-height: 1.7;
+    }
+    
+    /* Crisis Calming Banner */
+    .crisis-card {
+      background: linear-gradient(135deg, rgba(30, 41, 59, 0.8) 0%, rgba(15, 23, 42, 0.95) 100%);
+      border: 1px solid rgba(0, 242, 254, 0.25);
+      border-radius: var(--radius-lg);
+      padding: 1.75rem 2rem;
+      margin-bottom: 3rem;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4);
+      display: flex;
+      align-items: flex-start;
+      gap: 1.25rem;
+    }
+    .crisis-icon {
+      font-size: 2.5rem;
+      line-height: 1;
+      flex-shrink: 0;
+    }
+    .crisis-title {
+      color: var(--color-primary);
+      font-size: 1.25rem;
+      margin: 0 0 0.5rem;
+      font-weight: 700;
+    }
+    .crisis-text {
+      color: #E2E8F0;
+      font-size: 1rem;
+      line-height: 1.6;
+      margin: 0;
+    }
+    .crisis-text strong {
+      color: #38BDF8;
+    }
+
+    /* Featured Visual */
+    .ir-featured-img {
+      width: 100%;
+      height: auto;
+      aspect-ratio: 860 / 484;
+      max-height: 484px;
+      object-fit: cover;
+      border-radius: var(--radius-lg);
+      border: 1px solid var(--border-glow);
+      margin-bottom: 2.5rem;
+      background: rgba(15, 23, 42, 0.6);
+      display: block;
+    }
+
+    /* Vector Selector Grid */
+    .selector-section {
+      margin-bottom: 3.5rem;
+    }
+    .section-heading-row {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: 1.25rem;
+      flex-wrap: wrap;
+      gap: 1rem;
+    }
+    .section-title {
+      font-size: 1.5rem;
+      color: var(--text-main);
+      margin: 0;
+      font-weight: 800;
+    }
+    .selector-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 1rem;
+    }
+    .vector-card {
+      background: var(--bg-card);
+      border: 2px solid var(--border-glass);
+      border-radius: var(--radius-md);
+      padding: 1.25rem;
+      cursor: pointer;
+      transition: var(--transition-smooth);
+      position: relative;
+      display: flex;
+      flex-direction: column;
+      gap: 0.5rem;
+      user-select: none;
+    }
+    .vector-card:hover {
+      border-color: rgba(0, 242, 254, 0.4);
+      background: var(--bg-card-hover);
+      transform: translateY(-2px);
+    }
+    .vector-card.active {
+      border-color: var(--color-primary);
+      background: rgba(0, 242, 254, 0.08);
+      box-shadow: 0 0 20px rgba(0, 242, 254, 0.15);
+    }
+    .vector-card:focus-visible {
+      outline: 2px solid var(--color-primary);
+      outline-offset: 3px;
+    }
+    .vector-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+    .vector-icon {
+      font-size: 1.75rem;
+      line-height: 1;
+    }
+    .vector-check-indicator {
+      width: 22px;
+      height: 22px;
+      border-radius: 50%;
+      border: 2px solid var(--text-faint);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 0.75rem;
+      color: transparent;
+      transition: var(--transition-smooth);
+    }
+    .vector-card.active .vector-check-indicator {
+      background: var(--color-primary);
+      border-color: var(--color-primary);
+      color: #070B14;
+      font-weight: 800;
+    }
+    .vector-card-title {
+      font-size: 1.05rem;
+      font-weight: 700;
+      color: var(--text-main);
+      margin: 0;
+    }
+    .vector-card-desc {
+      font-size: 0.85rem;
+      color: var(--text-muted);
+      line-height: 1.45;
+      margin: 0;
+    }
+
+    /* Live Progress Tracker */
+    .progress-sticky-bar {
+      position: sticky;
+      top: 1rem;
+      z-index: 90;
+      background: rgba(15, 23, 42, 0.95);
+      backdrop-filter: blur(12px);
+      border: 1px solid var(--border-glow);
+      border-radius: var(--radius-md);
+      padding: 1rem 1.5rem;
+      margin-bottom: 2.5rem;
+      box-shadow: 0 10px 25px rgba(0, 0, 0, 0.6);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 1.5rem;
+      flex-wrap: wrap;
+    }
+    .progress-info {
+      display: flex;
+      flex-direction: column;
+      gap: 0.25rem;
+    }
+    .progress-label {
+      font-size: 0.85rem;
+      font-weight: 600;
+      color: var(--color-primary);
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+    }
+    .progress-stats {
+      font-size: 1rem;
+      font-weight: 700;
+      color: var(--text-main);
+    }
+    .progress-track {
+      flex: 1;
+      min-width: 180px;
+      height: 10px;
+      background: rgba(255, 255, 255, 0.1);
+      border-radius: var(--radius-full);
+      overflow: hidden;
+      position: relative;
+    }
+    .progress-fill {
+      height: 100%;
+      background: linear-gradient(90deg, #00F2FE 0%, #10B981 100%);
+      width: 0%;
+      transition: width 0.35s ease;
+      border-radius: var(--radius-full);
+    }
+    .btn-reset-checklist {
+      background: transparent;
+      border: 1px solid var(--border-glass);
+      color: var(--text-faint);
+      padding: 0.4rem 0.85rem;
+      font-size: 0.8rem;
+      border-radius: var(--radius-sm);
+      cursor: pointer;
+      transition: var(--transition-smooth);
+    }
+    .btn-reset-checklist:hover {
+      color: var(--text-main);
+      border-color: rgba(255, 255, 255, 0.3);
+    }
+
+    /* Phase Timeline Container */
+    .timeline-container {
+      margin-bottom: 3.5rem;
+    }
+    .phase-block {
+      background: var(--bg-card);
+      border: 1px solid var(--border-glass);
+      border-radius: var(--radius-lg);
+      padding: 2rem;
+      margin-bottom: 2rem;
+      position: relative;
+    }
+    .phase-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      font-size: 0.8rem;
+      font-family: var(--font-mono);
+      font-weight: 700;
+      text-transform: uppercase;
+      padding: 0.3rem 0.75rem;
+      border-radius: var(--radius-full);
+      margin-bottom: 1rem;
+    }
+    .phase-1-badge {
+      background: rgba(239, 68, 68, 0.15);
+      border: 1px solid rgba(239, 68, 68, 0.4);
+      color: #EF4444;
+    }
+    .phase-2-badge {
+      background: rgba(245, 158, 11, 0.15);
+      border: 1px solid rgba(245, 158, 11, 0.4);
+      color: #F59E0B;
+    }
+    .phase-3-badge {
+      background: rgba(16, 185, 129, 0.15);
+      border: 1px solid rgba(16, 185, 129, 0.4);
+      color: #10B981;
+    }
+    .phase-title {
+      font-size: 1.4rem;
+      color: var(--text-main);
+      margin: 0 0 0.5rem;
+      font-weight: 800;
+    }
+    .phase-desc {
+      color: var(--text-muted);
+      font-size: 0.95rem;
+      margin-bottom: 1.5rem;
+      line-height: 1.5;
+    }
+
+    /* Checklist Items */
+    .checklist-group {
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+    }
+    .checklist-item {
+      display: flex;
+      align-items: flex-start;
+      gap: 1rem;
+      background: rgba(15, 23, 42, 0.6);
+      border: 1px solid var(--border-glass);
+      border-radius: var(--radius-md);
+      padding: 1.25rem;
+      transition: var(--transition-smooth);
+    }
+    .checklist-item:hover {
+      border-color: rgba(0, 242, 254, 0.25);
+    }
+    .checklist-item.completed {
+      background: rgba(16, 185, 129, 0.05);
+      border-color: rgba(16, 185, 129, 0.3);
+    }
+    .checklist-item.completed .item-title {
+      text-decoration: line-through;
+      color: var(--text-faint);
+    }
+    .check-custom {
+      appearance: none;
+      -webkit-appearance: none;
+      width: 22px;
+      height: 22px;
+      border: 2px solid var(--text-faint);
+      border-radius: 6px;
+      background: transparent;
+      cursor: pointer;
+      flex-shrink: 0;
+      margin-top: 2px;
+      display: grid;
+      place-content: center;
+      transition: var(--transition-smooth);
+    }
+    .check-custom::before {
+      content: "✓";
+      font-size: 0.85rem;
+      font-weight: 800;
+      color: transparent;
+      transition: var(--transition-smooth);
+    }
+    .check-custom:checked {
+      background: var(--color-success);
+      border-color: var(--color-success);
+    }
+    .check-custom:checked::before {
+      color: #070B14;
+    }
+    .check-custom:focus-visible {
+      outline: 2px solid var(--color-primary);
+      outline-offset: 2px;
+    }
+    .item-content {
+      flex: 1;
+    }
+    .item-header-row {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      flex-wrap: wrap;
+      margin-bottom: 0.4rem;
+    }
+    .item-tag {
+      font-size: 0.72rem;
+      font-family: var(--font-mono);
+      padding: 0.15rem 0.5rem;
+      border-radius: var(--radius-full);
+      background: rgba(0, 242, 254, 0.1);
+      color: var(--color-primary);
+      border: 1px solid rgba(0, 242, 254, 0.2);
+    }
+    .item-title {
+      font-size: 1.05rem;
+      font-weight: 700;
+      color: var(--text-main);
+      margin: 0;
+    }
+    .item-body {
+      font-size: 0.95rem;
+      color: #CBD5E1;
+      line-height: 1.6;
+      margin: 0;
+    }
+    .item-body code {
+      font-family: var(--font-mono);
+      background: rgba(0, 0, 0, 0.4);
+      padding: 0.2rem 0.45rem;
+      border-radius: 4px;
+      color: #38BDF8;
+      font-size: 0.88rem;
+      border: 1px solid rgba(255, 255, 255, 0.05);
+    }
+    .action-box {
+      margin-top: 0.85rem;
+      background: rgba(0, 0, 0, 0.3);
+      border-left: 3px solid var(--color-primary);
+      padding: 0.75rem 1rem;
+      border-radius: 0 var(--radius-sm) var(--radius-sm) 0;
+      font-size: 0.9rem;
+      color: #E2E8F0;
+    }
+
+    /* Script & Letter Generator Tool */
+    .generator-card {
+      background: var(--bg-card);
+      border: 1px solid var(--border-glass);
+      border-radius: var(--radius-lg);
+      padding: 2.25rem;
+      margin-bottom: 3.5rem;
+    }
+    .form-grid-2 {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1.25rem;
+      margin-bottom: 1.5rem;
+    }
+    @media (max-width: 680px) {
+      .form-grid-2 {
+        grid-template-columns: 1fr;
+      }
+    }
+    .form-field {
+      display: flex;
+      flex-direction: column;
+      gap: 0.5rem;
+    }
+    .form-label {
+      font-size: 0.88rem;
+      font-weight: 600;
+      color: var(--text-muted);
+    }
+    .form-input, .form-select {
+      background: rgba(15, 23, 42, 0.8);
+      border: 1px solid var(--border-glass);
+      color: var(--text-main);
+      padding: 0.75rem 1rem;
+      border-radius: var(--radius-sm);
+      font-family: var(--font-body);
+      font-size: 0.95rem;
+      transition: var(--transition-smooth);
+    }
+    .form-input:focus, .form-select:focus {
+      outline: none;
+      border-color: var(--color-primary);
+      box-shadow: 0 0 15px rgba(0, 242, 254, 0.2);
+    }
+    .output-box-wrap {
+      position: relative;
+      margin-top: 1.5rem;
+    }
+    .output-pre {
+      background: #050811;
+      border: 1px solid var(--border-glass);
+      border-radius: var(--radius-md);
+      padding: 1.5rem;
+      color: #E2E8F0;
+      font-family: var(--font-mono);
+      font-size: 0.88rem;
+      line-height: 1.6;
+      white-space: pre-wrap;
+      overflow-x: auto;
+      max-height: 380px;
+    }
+    .btn-copy-script {
+      position: absolute;
+      top: 1rem;
+      right: 1rem;
+      background: var(--color-primary);
+      color: #070B14;
+      font-weight: 700;
+      border: none;
+      padding: 0.45rem 1rem;
+      border-radius: var(--radius-sm);
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.4rem;
+      font-size: 0.82rem;
+      transition: var(--transition-smooth);
+    }
+    .btn-copy-script:hover {
+      background: #38BDF8;
+      transform: translateY(-1px);
+    }
+
+    /* Toast Notification */
+    .copy-toast {
+      position: fixed;
+      bottom: 2rem;
+      right: 2rem;
+      background: #10B981;
+      color: #070B14;
+      font-weight: 700;
+      padding: 0.75rem 1.25rem;
+      border-radius: var(--radius-sm);
+      box-shadow: 0 10px 25px rgba(0, 0, 0, 0.5);
+      display: none;
+      z-index: 99999;
+      animation: fadeIn 0.2s ease-out;
+    }
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(10px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    /* Hotlines Directory Grid */
+    .hotlines-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 1.25rem;
+      margin-top: 1.5rem;
+    }
+    .hotline-card {
+      background: rgba(15, 23, 42, 0.6);
+      border: 1px solid var(--border-glass);
+      border-radius: var(--radius-md);
+      padding: 1.25rem;
+    }
+    .hotline-country {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      font-size: 0.95rem;
+      font-weight: 700;
+      color: var(--color-primary);
+      margin-bottom: 0.5rem;
+    }
+    .hotline-body {
+      font-size: 0.88rem;
+      color: var(--text-muted);
+      line-height: 1.5;
+    }
+    .hotline-link {
+      color: #38BDF8;
+      text-decoration: underline;
+    }
+
+    /* Print Formatting */
+    @media print {
+      body {
+        background: #FFFFFF !important;
+        color: #000000 !important;
+      }
+      .site-header, .site-footer, .site-ticker, .progress-sticky-bar, .adsense-slot-container, .btn, .skip-link, .btn-copy-script {
+        display: none !important;
+      }
+      .ir-container {
+        padding: 0 !important;
+        max-width: 100% !important;
+      }
+      .phase-block, .checklist-item, .generator-card, .crisis-card {
+        background: #FFFFFF !important;
+        border: 1px solid #CCCCCC !important;
+        color: #000000 !important;
+        page-break-inside: avoid;
+      }
+      .item-title, .phase-title, .ir-title {
+        color: #000000 !important;
+      }
+      .output-pre {
+        background: #F8F9FA !important;
+        color: #000000 !important;
+        border: 1px solid #CCCCCC !important;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Universal Accessibility Skip Link (Rule 4) -->
+  <a href="#main-content" class="skip-link">Skip to main content</a>
+
+  <!-- Top Real-Time Threat Intelligence Feed -->
+  <aside class="site-ticker" aria-label="Live Threat Intelligence Terminal">
+    <div class="container ticker-wrap">
+      <div class="ticker-badge intel-badge">
+        <span class="beacon-dot" aria-hidden="true"></span>
+        <span>Emergency Triage</span>
+      </div>
+      <div class="ticker-content" id="tickerContent" aria-live="polite">
+        <span class="ticker-item"><strong style="color: #EF4444;">ACTIVE INCIDENT DESK:</strong> If money was wired in the last 72h, contact your bank immediately to request an FBI IC3 Financial Fraud Kill Chain (FFKC) recall.</span>
+      </div>
+    </div>
+  </aside>
+
+  <!-- Global Site Header -->
+  <header class="site-header">
+    <div class="container nav-inner">
+      <a href="index.html" class="brand-logo" aria-label="ScamShield Lab Home">
+        <img src="assets/images/logo.jpg" alt="ScamShield Lab Logo" class="brand-icon" width="36" height="36" decoding="async">
+        <div class="brand-text-col">
+          <span class="brand-main-title">ScamShield<span class="brand-lab-accent">Lab</span></span>
+          <span class="brand-sub-badge">AI FORENSIC ANALYZER</span>
+        </div>
+      </a>
+
+      <nav aria-label="Primary Navigation" class="main-nav">
+        <ul class="nav-links" id="primaryNavLinks">
+          <li><a href="index.html#analyzer">Scanner</a></li>
+          <li><a href="how-we-score.html">How We Score</a></li>
+          <li><a href="index.html#threat-radar">Threat Radar</a></li>
+          <li><a href="family-safe-word.html">Safe Word Kit</a></li>
+          <li><a href="incident-response.html" style="color: var(--color-primary); font-weight: 700;">Incident Response</a></li>
+          <li><a href="index.html#guides">Guides</a></li>
+          <li><a href="about.html">About</a></li>
+        </ul>
+      </nav>
+
+      <div class="nav-actions">
+        <a href="index.html#analyzer" class="nav-cta-btn">
+          <span class="pulse-beacon" aria-hidden="true"></span>
+          <span>Instant Scan</span>
+        </a>
+      </div>
+    </div>
+  </header>
+
+  <main class="ir-container" id="main-content">
+
+    <!-- Breadcrumb -->
+    <div style="font-size: 0.85rem; color: var(--text-faint); margin-bottom: 1.5rem;">
+      <a href="index.html" style="color: var(--color-primary); text-decoration: none;">Home</a> &gt; <span>Emergency Incident Response</span>
+    </div>
+
+    <!-- Header Section -->
+    <div class="ir-hero">
+      <div class="hero-badges-row" style="display: flex; justify-content: center; gap: 0.75rem; margin-bottom: 1.25rem; flex-wrap: wrap;">
+        <span class="ir-badge">🚨 Immediate Emergency Triage</span>
+        <span class="hero-disclaimer-pill" role="note" style="display: inline-flex; align-items: center; gap: 0.5rem; background: rgba(255, 255, 255, 0.05); border: 1px solid var(--border-glass); border-radius: var(--radius-full); padding: 0.35rem 0.85rem; font-size: 0.8rem; color: var(--text-muted);">
+          <span class="pill-beacon" style="width: 8px; height: 8px; background: #10B981; border-radius: 50%;"></span>
+          <span>Zero Data Retained &bull; 100% In-Browser Private</span>
+        </span>
+      </div>
+
+      <h1 class="ir-title">
+        I Just Got Scammed: <span class="text-gradient">The 15-Minute Action Plan</span>
+      </h1>
+      
+      <p class="ir-subtitle">
+        Do not feel embarrassed—cybercrime syndicates exploit deep psychological pressure and AI to deceive even tech-savvy professionals. What you do in the next 15 minutes can halt unauthorized transfers, lock your credit, and preserve your identity.
+      </p>
+    </div>
+
+    <!-- Reassurance Crisis Callout -->
+    <div class="crisis-card" role="region" aria-label="Crisis Containment Guidance">
+      <span class="crisis-icon" aria-hidden="true">🛡️</span>
+      <div>
+        <h2 class="crisis-title">First: Stop Communicating &amp; Take a Deep Breath</h2>
+        <p class="crisis-text">
+          <strong>Hang up the phone or close the chat immediately.</strong> Do not confront the scammer, do not threaten them, and do not send "test transactions" to recover funds. Criminals rely on panic to keep you reactive. Follow the prioritized chronological steps below.
+        </p>
+      </div>
+    </div>
+
+    <!-- Featured Architecture Image -->
+    <picture>
+      <source srcset="assets/images/incident-response.webp" type="image/webp">
+      <img src="assets/images/incident-response.jpg" alt="Cybersecurity Emergency Incident Response Dashboard and Triage Flowchart" class="ir-featured-img" width="860" height="484" decoding="async">
+    </picture>
+
+    <!-- STEP 1: Interactive Vector Selector -->
+    <section class="selector-section" aria-labelledby="selector-heading">
+      <div class="section-heading-row">
+        <div>
+          <span style="font-family: var(--font-mono); font-size: 0.8rem; color: var(--color-primary); text-transform: uppercase; letter-spacing: 0.05em;">Step 1 of 2</span>
+          <h2 class="section-title" id="selector-heading">What Type of Incident Just Occurred?</h2>
+        </div>
+        <button type="button" class="btn-reset-checklist" id="selectAllBtn" onclick="toggleAllVectors()">Select All</button>
+      </div>
+      <p style="color: var(--text-muted); font-size: 0.95rem; margin-top: -0.5rem; margin-bottom: 1.5rem;">
+        Click one or more cards that apply to your situation to highlight your customized emergency containment tasks:
+      </p>
+
+      <div class="selector-grid" role="group" aria-label="Scam Vector Selector">
+        <!-- Vector 1: Wire / Money -->
+        <div class="vector-card active" data-vector="money" role="button" tabindex="0" aria-pressed="true" onclick="toggleVector(this)" onkeydown="handleKey(event, this)">
+          <div class="vector-header">
+            <span class="vector-icon" aria-hidden="true">💳</span>
+            <span class="vector-check-indicator" aria-hidden="true">✓</span>
+          </div>
+          <h3 class="vector-card-title">Money Transferred</h3>
+          <p class="vector-card-desc">Bank wire, Zelle, Venmo, UPI, ACH, or debit/credit card charges sent to the scammer.</p>
+        </div>
+
+        <!-- Vector 2: Remote Access -->
+        <div class="vector-card active" data-vector="remote" role="button" tabindex="0" aria-pressed="true" onclick="toggleVector(this)" onkeydown="handleKey(event, this)">
+          <div class="vector-header">
+            <span class="vector-icon" aria-hidden="true">💻</span>
+            <span class="vector-check-indicator" aria-hidden="true">✓</span>
+          </div>
+          <h3 class="vector-card-title">Remote Access Granted</h3>
+          <p class="vector-card-desc">Installed AnyDesk, TeamViewer, QuickAssist, UltraViewer, or Zoho on your computer/phone.</p>
+        </div>
+
+        <!-- Vector 3: Identity / SSN -->
+        <div class="vector-card" data-vector="identity" role="button" tabindex="0" aria-pressed="false" onclick="toggleVector(this)" onkeydown="handleKey(event, this)">
+          <div class="vector-header">
+            <span class="vector-icon" aria-hidden="true">🪪</span>
+            <span class="vector-check-indicator" aria-hidden="true">✓</span>
+          </div>
+          <h3 class="vector-card-title">Identity &amp; SSN Leaked</h3>
+          <p class="vector-card-desc">Provided Social Security Number, passport, driver's license, Aadhaar, or date of birth.</p>
+        </div>
+
+        <!-- Vector 4: Account / Password -->
+        <div class="vector-card" data-vector="account" role="button" tabindex="0" aria-pressed="false" onclick="toggleVector(this)" onkeydown="handleKey(event, this)">
+          <div class="vector-header">
+            <span class="vector-icon" aria-hidden="true">🔑</span>
+            <span class="vector-check-indicator" aria-hidden="true">✓</span>
+          </div>
+          <h3 class="vector-card-title">Password or 2FA Given</h3>
+          <p class="vector-card-desc">Read a one-time SMS code (OTP), entered login credentials on a spoofed portal, or lost email access.</p>
+        </div>
+
+        <!-- Vector 5: Gift Card / Crypto -->
+        <div class="vector-card" data-vector="crypto" role="button" tabindex="0" aria-pressed="false" onclick="toggleVector(this)" onkeydown="handleKey(event, this)">
+          <div class="vector-header">
+            <span class="vector-icon" aria-hidden="true">🪙</span>
+            <span class="vector-check-indicator" aria-hidden="true">✓</span>
+          </div>
+          <h3 class="vector-card-title">Crypto or Gift Cards</h3>
+          <p class="vector-card-desc">Deposited into a Bitcoin ATM, transferred USDT/ETH, or purchased Apple/Target/Vanilla gift cards.</p>
+        </div>
+
+        <!-- Vector 6: Phishing Link -->
+        <div class="vector-card" data-vector="phishing" role="button" tabindex="0" aria-pressed="false" onclick="toggleVector(this)" onkeydown="handleKey(event, this)">
+          <div class="vector-header">
+            <span class="vector-icon" aria-hidden="true">📦</span>
+            <span class="vector-check-indicator" aria-hidden="true">✓</span>
+          </div>
+          <h3 class="vector-card-title">Suspicious Link / File</h3>
+          <p class="vector-card-desc">Clicked a text tracking link (USPS/Toll), opened an email attachment, or ran a suspicious installer.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- STEP 2: Sticky Action Progress Bar -->
+    <div class="progress-sticky-bar" id="progressBarContainer">
+      <div class="progress-info">
+        <span class="progress-label">Incident Containment Status</span>
+        <span class="progress-stats" id="progressStats">0 of 9 Actions Completed (0%)</span>
+      </div>
+      <div class="progress-track" aria-hidden="true">
+        <div class="progress-fill" id="progressFill"></div>
+      </div>
+      <div style="display: flex; gap: 0.5rem;">
+        <button type="button" class="btn-reset-checklist" onclick="window.print()">🖨️ Print Plan</button>
+        <button type="button" class="btn-reset-checklist" onclick="resetChecklist()">↺ Reset</button>
+      </div>
+    </div>
+
+    <!-- Chronological 15-Minute Playbook -->
+    <section class="timeline-container" aria-label="Chronological Containment Timeline">
+
+      <!-- PHASE 1: Minute 0 to 5 -->
+      <div class="phase-block" id="phase1">
+        <span class="phase-badge phase-1-badge">⏱️ Minute 0 to 5 &bull; Emergency Kill-Switch</span>
+        <h2 class="phase-title">Immediate Quarantine &amp; Financial Kill-Switch</h2>
+        <p class="phase-desc">Stop real-time adversary access and freeze outgoing payment channels before settlements clear.</p>
+
+        <div class="checklist-group">
+
+          <!-- Task 1: Remote Access Pull -->
+          <div class="checklist-item" data-for="remote">
+            <input type="checkbox" id="task-disconnect" class="check-custom" aria-label="Disconnect internet cable or toggle airplane mode" onchange="updateProgress()">
+            <div class="item-content">
+              <div class="item-header-row">
+                <span class="item-tag">REMOTE ACCESS</span>
+                <label for="task-disconnect" class="item-title">Disconnect Wi-Fi / Unplug Ethernet Cable Immediately</label>
+              </div>
+              <p class="item-body">
+                If the scammer instructed you to install software (AnyDesk, TeamViewer, QuickAssist, UltraViewer), <strong>physically disconnect your computer from the internet right now</strong>. Unplug the network cable or switch on Airplane Mode.
+              </p>
+              <div class="action-box">
+                ⚠️ <strong>Do NOT restart the machine yet:</strong> Some infostealers execute persistence scripts upon reboot. Sever the internet connection first, then uninstall the remote tool from a separate clean phone or device.
+              </div>
+            </div>
+          </div>
+
+          <!-- Task 2: Call Bank Hotline -->
+          <div class="checklist-item" data-for="money">
+            <input type="checkbox" id="task-bank" class="check-custom" aria-label="Call your bank fraud department" onchange="updateProgress()">
+            <div class="item-content">
+              <div class="item-header-row">
+                <span class="item-tag">FINANCIAL DISPUTE</span>
+                <label for="task-bank" class="item-title">Call Your Bank's 24/7 Fraud Department (Use Exact Legal Script)</label>
+              </div>
+              <p class="item-body">
+                Dial the number printed directly on the back of your debit/credit card or the official 24/7 fraud hotline. Request an immediate hold on compromised cards and accounts.
+              </p>
+              <div class="action-box">
+                🗣️ <strong>Mandatory Phone Script:</strong> <em>"I am reporting an unauthorized fraudulent transaction induced under duress and social engineering deception. Please freeze my compromised card/account immediately and initiate a wire recall / FFKC stop on transaction reference #[Number]."</em>
+              </div>
+            </div>
+          </div>
+
+          <!-- Task 3: Terminate Active Sessions -->
+          <div class="checklist-item" data-for="account">
+            <input type="checkbox" id="task-sessions" class="check-custom" aria-label="Sign out of all active web sessions" onchange="updateProgress()">
+            <div class="item-content">
+              <div class="item-header-row">
+                <span class="item-tag">ACCOUNT SECURITY</span>
+                <label for="task-sessions" class="item-title">Sign Out of All Active Browser Sessions on Google &amp; Apple</label>
+              </div>
+              <p class="item-body">
+                From a <strong>different, clean device</strong> (such as your personal smartphone on mobile data):
+              </p>
+              <ul style="margin: 0.5rem 0 0 1.25rem; font-size: 0.9rem; color: #CBD5E1;">
+                <li><strong>Google Account:</strong> Navigate to <code>myaccount.google.com/device-activity</code> and click <em>"Sign out on all devices"</em>.</li>
+                <li><strong>Apple ID:</strong> Go to Settings &gt; Your Name &gt; Devices and remove unfamiliar laptops.</li>
+                <li><strong>Microsoft / Outlook:</strong> Go to <code>account.live.com</code> &gt; Security &gt; <em>"Sign out everywhere"</em>.</li>
+              </ul>
+            </div>
+          </div>
+
+        </div>
+      </div>
+
+      <!-- PHASE 2: Minute 5 to 10 -->
+      <div class="phase-block" id="phase2">
+        <span class="phase-badge phase-2-badge">⏱️ Minute 5 to 10 &bull; Asset Lockdown</span>
+        <h2 class="phase-title">Credit Bureau Lockdown &amp; Credential Hardening</h2>
+        <p class="phase-desc">Prevent criminal syndicates from taking out fast loans or opening synthetic lines of credit in your name.</p>
+
+        <div class="checklist-group">
+
+          <!-- Task 4: Credit Freezes -->
+          <div class="checklist-item" data-for="identity">
+            <input type="checkbox" id="task-credit-freeze" class="check-custom" aria-label="Freeze credit with Experian, Equifax, and TransUnion" onchange="updateProgress()">
+            <div class="item-content">
+              <div class="item-header-row">
+                <span class="item-tag">IDENTITY LOCK</span>
+                <label for="task-credit-freeze" class="item-title">Freeze Your Credit with All 3 Major Credit Bureaus</label>
+              </div>
+              <p class="item-body">
+                A security freeze prevents identity thieves from opening new credit cards, auto loans, or mortgages in your name even if they have your SSN and birthday. Freezing your credit is <strong>100% free by federal law</strong> and does not affect your credit score:
+              </p>
+              <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 0.75rem; margin-top: 0.75rem;">
+                <a href="https://www.experian.com/freeze" target="_blank" rel="noopener noreferrer" class="btn btn-outline" style="font-size: 0.85rem; padding: 0.5rem;">Experian Freeze &rarr;</a>
+                <a href="https://www.equifax.com/personal/credit-report-services/credit-freeze/" target="_blank" rel="noopener noreferrer" class="btn btn-outline" style="font-size: 0.85rem; padding: 0.5rem;">Equifax Freeze &rarr;</a>
+                <a href="https://www.transunion.com/credit-freeze" target="_blank" rel="noopener noreferrer" class="btn btn-outline" style="font-size: 0.85rem; padding: 0.5rem;">TransUnion Freeze &rarr;</a>
+              </div>
+            </div>
+          </div>
+
+          <!-- Task 5: Password Vault Rotation -->
+          <div class="checklist-item" data-for="account">
+            <input type="checkbox" id="task-passwords" class="check-custom" aria-label="Change primary email and banking passwords" onchange="updateProgress()">
+            <div class="item-content">
+              <div class="item-header-row">
+                <span class="item-tag">PASSWORDS &amp; PASSKEYS</span>
+                <label for="task-passwords" class="item-title">Rotate Primary Email &amp; Banking Passwords to Hardware Passkeys</label>
+              </div>
+              <p class="item-body">
+                Scammers target your primary email first because password reset links for all your other accounts are sent there. Update your email master password immediately. Transition from SMS 2FA to <strong>FIDO2 passkeys</strong> or an authenticator app (such as Google Authenticator) to neutralize SIM swapping.
+              </p>
+            </div>
+          </div>
+
+          <!-- Task 6: Gift Card / Crypto Hotlines -->
+          <div class="checklist-item" data-for="crypto">
+            <input type="checkbox" id="task-crypto-report" class="check-custom" aria-label="Contact gift card merchant or crypto exchange" onchange="updateProgress()">
+            <div class="item-content">
+              <div class="item-header-row">
+                <span class="item-tag">PREPAID &amp; CRYPTO</span>
+                <label for="task-crypto-report" class="item-title">Contact Card Issuer (Apple, Target, Vanilla) or Crypto Exchange</label>
+              </div>
+              <p class="item-body">
+                If gift card codes were shared, contact the card issuer immediately (e.g. Apple Support at 1-800-275-2273). If the card balance has not been drained yet, issuers can freeze the remaining funds. If cryptocurrency was deposited via a Bitcoin ATM (Coinme, CoinFlip), report the destination wallet address to the ATM operator and submit a ticket immediately.
+              </p>
+            </div>
+          </div>
+
+        </div>
+      </div>
+
+      <!-- PHASE 3: Minute 10 to 15 -->
+      <div class="phase-block" id="phase3">
+        <span class="phase-badge phase-3-badge">⏱️ Minute 10 to 15 &bull; Law Enforcement</span>
+        <h2 class="phase-title">Evidence Preservation &amp; Official Federal Reports</h2>
+        <p class="phase-desc">Document timestamps and file formal reports required by banks and insurance providers for claims.</p>
+
+        <div class="checklist-group">
+
+          <!-- Task 7: Evidence Preservation -->
+          <div class="checklist-item" data-for="money">
+            <input type="checkbox" id="task-evidence" class="check-custom" aria-label="Take screenshots and preserve phone logs" onchange="updateProgress()">
+            <div class="item-content">
+              <div class="item-header-row">
+                <span class="item-tag">FORENSIC EVIDENCE</span>
+                <label for="task-evidence" class="item-title">Preserve All Evidence: Never Delete Chats, SMS, or Call Logs</label>
+              </div>
+              <p class="item-body">
+                Take uncropped screenshots of:
+              </p>
+              <ul style="margin: 0.5rem 0 0 1.25rem; font-size: 0.9rem; color: #CBD5E1;">
+                <li>The scammer's phone numbers, WhatsApp profile, Skype handle, and email headers.</li>
+                <li>Payment confirmation screens, wire routing numbers, crypto destination hashes, or gift card barcode serials.</li>
+                <li>Any fake PDF notices, summons, or spoofed police documents sent to you.</li>
+              </ul>
+            </div>
+          </div>
+
+          <!-- Task 8: File Official IC3 / FTC Complaint -->
+          <div class="checklist-item" data-for="identity">
+            <input type="checkbox" id="task-file-police" class="check-custom" aria-label="File formal report with FBI IC3 and local police" onchange="updateProgress()">
+            <div class="item-content">
+              <div class="item-header-row">
+                <span class="item-tag">OFFICIAL FILING</span>
+                <label for="task-file-police" class="item-title">File an Official Police Report &amp; Federal Complaint (IC3 / FTC / 1930)</label>
+              </div>
+              <p class="item-body">
+                Banks and insurance providers typically require a formal <strong>Police Report Incident Number</strong> before processing fraud dispute claims. File an official complaint with federal cybercrime authorities:
+              </p>
+              <div style="display: flex; gap: 0.75rem; flex-wrap: wrap; margin-top: 0.75rem;">
+                <a href="https://www.ic3.gov" target="_blank" rel="noopener noreferrer" class="btn btn-outline" style="font-size: 0.85rem; padding: 0.5rem;">FBI IC3 (US) &rarr;</a>
+                <a href="https://reportfraud.ftc.gov" target="_blank" rel="noopener noreferrer" class="btn btn-outline" style="font-size: 0.85rem; padding: 0.5rem;">FTC Report Fraud &rarr;</a>
+                <a href="https://cybercrime.gov.in" target="_blank" rel="noopener noreferrer" class="btn btn-outline" style="font-size: 0.85rem; padding: 0.5rem;">I4C Portal (India) &rarr;</a>
+                <a href="https://www.actionfraud.police.uk" target="_blank" rel="noopener noreferrer" class="btn btn-outline" style="font-size: 0.85rem; padding: 0.5rem;">Action Fraud (UK) &rarr;</a>
+              </div>
+            </div>
+          </div>
+
+          <!-- Task 9: Antivirus & Clean Scan -->
+          <div class="checklist-item" data-for="phishing">
+            <input type="checkbox" id="task-clean-device" class="check-custom" aria-label="Run full offline antivirus and malware scan" onchange="updateProgress()">
+            <div class="item-content">
+              <div class="item-header-row">
+                <span class="item-tag">ENDPOINT REMEDIATION</span>
+                <label for="task-clean-device" class="item-title">Run an Offline Malware Scan &amp; Clear Browser Session Cookies</label>
+              </div>
+              <p class="item-body">
+                If you clicked a deceptive tracking link or downloaded a suspicious executable, launch Windows Defender (or your installed endpoint security) and select <strong>"Microsoft Defender Offline Scan"</strong>. Clear all browser cookies and saved passwords to eliminate session-hijacking tokens.
+              </p>
+            </div>
+          </div>
+
+        </div>
+      </div>
+
+    </section>
+
+    <!-- Interactive Bank Dispute Letter Generator -->
+    <section class="generator-card" id="disputeGenerator" aria-labelledby="dispute-heading">
+      <div style="margin-bottom: 1.5rem;">
+        <span class="hero-pill">📝 Automated Legal Generator</span>
+        <h2 style="font-size: 1.6rem; margin: 0.5rem 0; color: var(--text-main);" id="dispute-heading">Bank Fraud Notification &amp; Dispute Letter Generator</h2>
+        <p style="color: var(--text-muted); font-size: 0.95rem; margin: 0;">
+          Fill in your incident details below to generate a standardized formal dispute notice referencing federal electronic transfer protections (Regulation E &amp; UCC Article 4A) to send via your bank's secure messaging center:
+        </p>
+      </div>
+
+      <div class="form-grid-2">
+        <div class="form-field">
+          <label for="bankNameInput" class="form-label">Bank or Financial Institution Name</label>
+          <input type="text" id="bankNameInput" class="form-input" placeholder="e.g., Chase, Bank of America, Wells Fargo" oninput="generateDisputeLetter()">
+        </div>
+        <div class="form-field">
+          <label for="transferTypeSelect" class="form-label">Method of Transfer</label>
+          <select id="transferTypeSelect" class="form-select" onchange="generateDisputeLetter()">
+            <option value="Wire Transfer">Domestic / International Bank Wire</option>
+            <option value="Zelle Transfer">Zelle Instant Transfer</option>
+            <option value="Debit Card Unauthorized Charge">Debit Card Transaction</option>
+            <option value="Credit Card Charge">Credit Card Fraudulent Charge</option>
+            <option value="ACH Electronic Withdrawal">ACH Electronic Transfer</option>
+          </select>
+        </div>
+        <div class="form-field">
+          <label for="amountInput" class="form-label">Approximate Amount Lost ($)</label>
+          <input type="text" id="amountInput" class="form-input" placeholder="e.g., 2,500.00" oninput="generateDisputeLetter()">
+        </div>
+        <div class="form-field">
+          <label for="dateInput" class="form-label">Date of Incident</label>
+          <input type="text" id="dateInput" class="form-input" placeholder="e.g., October 26, 2026" oninput="generateDisputeLetter()">
+        </div>
+      </div>
+
+      <div class="output-box-wrap">
+        <button type="button" class="btn-copy-script" onclick="copyLetterToClipboard()">📋 Copy Letter</button>
+        <pre class="output-pre" id="disputeLetterOutput">Formal dispute letter will render here automatically as you enter details above...</pre>
+      </div>
+    </section>
+
+    <!-- Contextual Security Defense Stack (Pillar 2 Integration) -->
+    <section class="affiliate-stack-section" style="margin: 4rem 0;">
+      <div style="text-align: center; margin-bottom: 2rem;">
+        <span class="hero-pill">🛡️ Post-Incident Defense Stack</span>
+        <h2 style="font-size: 1.85rem; font-weight: 800; color: var(--text-main); margin: 0.5rem 0;">Recommended Tools to Prevent Recurring Fraud</h2>
+        <p style="color: var(--text-muted); font-size: 0.95rem; max-width: 680px; margin: 0 auto;">
+          Scam victims are routinely re-targeted within 60 days by "recovery room" syndicates claiming they can retrieve lost funds. Deploy verified defense tools to insulate your identity:
+        </p>
+      </div>
+
+      <div class="affiliate-stack-grid">
+        <!-- Card 1: Aura Identity Protection -->
+        <div class="affiliate-card">
+          <div class="affiliate-card-badge">Essential for Leaked SSN</div>
+          <div class="affiliate-icon-box" aria-hidden="true">
+            <span class="affiliate-emoji-icon">🛡️</span>
+          </div>
+          <h4 class="affiliate-name">Aura Identity Theft Protection</h4>
+          <p class="affiliate-tagline">$1,000,000 identity fraud insurance, dark web monitoring for stolen SSN/passports, and automated credit freeze locks.</p>
+          <div class="affiliate-cta-box">
+            <a href="https://aura.com/?ref=scamshield" target="_blank" rel="noopener sponsored" class="btn btn-affiliate">Claim 14-Day Free Trial &rarr;</a>
+          </div>
+        </div>
+
+        <!-- Card 2: NordVPN Threat Protection Pro -->
+        <div class="affiliate-card">
+          <div class="affiliate-card-badge">Verified Partner</div>
+          <div class="affiliate-icon-box" aria-hidden="true">
+            <img src="assets/images/nordvpn-icon.svg" alt="NordVPN Official Logo" width="48" height="48" loading="lazy" decoding="async" class="affiliate-brand-img">
+          </div>
+          <h4 class="affiliate-name">NordVPN Threat Protection Pro</h4>
+          <p class="affiliate-tagline">Real-time DNS filtering that blocks fraudulent impersonation domains, remote phishing kits, and malware C2 communication.</p>
+          <div class="affiliate-cta-box">
+            <a href="https://go.nordvpn.net/aff_c?offer_id=15&amp;aff_id=159036&amp;url_id=902" target="_blank" rel="noopener sponsored" class="btn btn-primary">Activate DNS Shield (68% Off) &rarr;</a>
+          </div>
+        </div>
+
+        <!-- Card 3: NordPass Passkey Vault -->
+        <div class="affiliate-card">
+          <div class="affiliate-card-badge">Verified Partner</div>
+          <div class="affiliate-icon-box" aria-hidden="true">
+            <img src="assets/images/nordpass-icon.svg" alt="NordPass Official Logo" width="48" height="48" loading="lazy" decoding="async" class="affiliate-brand-img">
+          </div>
+          <h4 class="affiliate-name">NordPass Passkey &amp; Card Vault</h4>
+          <p class="affiliate-tagline">Store banking credentials in zero-knowledge encrypted vaults with biometric passkeys that prevent remote credential theft.</p>
+          <div class="affiliate-cta-box">
+            <a href="https://go.nordpass.io/aff_c?offer_id=488&amp;aff_id=159036&amp;url_id=9356" target="_blank" rel="noopener sponsored" class="btn btn-affiliate">Secure Credentials &rarr;</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Global Emergency Directory -->
+    <section class="hotlines-section" style="margin-bottom: 4rem;">
+      <h2 style="font-size: 1.5rem; color: var(--text-main); margin-bottom: 0.5rem;">🌍 Official Cybercrime Hotlines Directory</h2>
+      <p style="color: var(--text-muted); font-size: 0.95rem;">
+        Direct reporting hotlines and verified law enforcement portals by country:
+      </p>
+
+      <div class="hotlines-grid">
+        <div class="hotline-card">
+          <div class="hotline-country">🇺🇸 United States</div>
+          <div class="hotline-body">
+            <strong>FBI IC3:</strong> <a href="https://www.ic3.gov" target="_blank" rel="noopener noreferrer" class="hotline-link">ic3.gov</a><br>
+            <strong>FTC Fraud Hotline:</strong> <a href="tel:18773824357" class="hotline-link">1-877-FTC-HELP</a><br>
+            <strong>IdentityTheft.gov:</strong> Direct recovery plans.
+          </div>
+        </div>
+
+        <div class="hotline-card">
+          <div class="hotline-country">🇮🇳 India</div>
+          <div class="hotline-body">
+            <strong>National Cyber Helpline:</strong> <a href="tel:1930" class="hotline-link">Dial 1930</a><br>
+            <strong>Citizen Portal:</strong> <a href="https://cybercrime.gov.in" target="_blank" rel="noopener noreferrer" class="hotline-link">cybercrime.gov.in</a><br>
+            <strong>I4C Anti-Fraud Desk:</strong> 24/7 financial freeze.
+          </div>
+        </div>
+
+        <div class="hotline-card">
+          <div class="hotline-country">🇬🇧 United Kingdom</div>
+          <div class="hotline-body">
+            <strong>Action Fraud:</strong> <a href="tel:03001232040" class="hotline-link">0300 123 2040</a><br>
+            <strong>Report Online:</strong> <a href="https://www.actionfraud.police.uk" target="_blank" rel="noopener noreferrer" class="hotline-link">actionfraud.police.uk</a><br>
+            <strong>Bank Emergency Stop:</strong> Dial 159 (UK).
+          </div>
+        </div>
+
+        <div class="hotline-card">
+          <div class="hotline-country">🇸🇬 Singapore</div>
+          <div class="hotline-body">
+            <strong>Police Hotline:</strong> <a href="tel:18002550000" class="hotline-link">1800-255-0000</a><br>
+            <strong>Official Gov Portal:</strong> <a href="https://www.scamshield.gov.sg/" target="_blank" rel="noopener noreferrer" class="hotline-link">scamshield.gov.sg</a><br>
+            <strong>Anti-Scam Helpline:</strong> 1800-722-6688.
+          </div>
+        </div>
+
+        <div class="hotline-card">
+          <div class="hotline-country">🇨🇦 Canada</div>
+          <div class="hotline-body">
+            <strong>Anti-Fraud Centre (CAFC):</strong> <a href="tel:18884958501" class="hotline-link">1-888-495-8501</a><br>
+            <strong>Online Incident Desk:</strong> <a href="https://www.antifraudcentre-centreantifraude.ca" target="_blank" rel="noopener noreferrer" class="hotline-link">antifraudcentre.ca</a>
+          </div>
+        </div>
+
+        <div class="hotline-card">
+          <div class="hotline-country">🇦🇺 Australia</div>
+          <div class="hotline-body">
+            <strong>Scamwatch (ACCC):</strong> <a href="https://www.scamwatch.gov.au" target="_blank" rel="noopener noreferrer" class="hotline-link">scamwatch.gov.au</a><br>
+            <strong>ReportCyber:</strong> <a href="https://www.cyber.gov.au" target="_blank" rel="noopener noreferrer" class="hotline-link">cyber.gov.au</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- Global Footer -->
+  <footer class="site-footer">
+    <div class="container footer-inner">
+      <div class="footer-grid">
+        <div class="footer-col brand-col">
+          <a href="index.html" class="brand-logo footer-logo" aria-label="ScamShield Lab Home">
+            <img src="assets/images/logo.jpg" alt="ScamShield Lab Logo" class="brand-icon" width="36" height="36" loading="lazy">
+            <div class="brand-text-col">
+              <span class="brand-main-title">ScamShield<span class="brand-lab-accent">Lab</span></span>
+              <span class="brand-sub-badge">AI FORENSIC ANALYZER</span>
+            </div>
+          </a>
+          <div class="footer-review-pill">
+            <span class="review-pill-icon" aria-hidden="true">🛡️</span>
+            <a href="about.html#editorial-standards" class="review-pill-link">Reviewed by Cybersecurity Professionals</a>
+            <span class="review-pill-divider" aria-hidden="true">&bull;</span>
+            <span class="review-pill-date">Last Updated: October 2026</span>
+          </div>
+          <p class="footer-desc">
+            Independent AI forensic platform providing client-side heuristic evaluation of cyber scams, synthetic audio lures, and identity extortion. Zero personal data logged or retained.
+          </p>
+        </div>
+
+        <div class="footer-col">
+          <h4 class="footer-col-title">Forensic Guides</h4>
+          <ul class="footer-links">
+            <li><a href="incident-response.html">Emergency Incident Plan</a></li>
+            <li><a href="guide-digital-arrest.html">Digital Arrest Scams</a></li>
+            <li><a href="guide-voice-cloning.html">AI Voice Cloning</a></li>
+            <li><a href="guide-phishing.html">AiTM Phishing Defense</a></li>
+            <li><a href="guide-job-scams.html">Remote Job &amp; Task Scams</a></li>
+            <li><a href="guide-delivery-scams.html">Delivery &amp; Toll Smishing</a></li>
+            <li><a href="guide-pig-butchering.html">Agentic AI Pig Butchering</a></li>
+          </ul>
+        </div>
+
+        <div class="footer-col">
+          <h4 class="footer-col-title">Platform &amp; Lab</h4>
+          <ul class="footer-links">
+            <li><a href="index.html#analyzer">Neural Text Analyzer</a></li>
+            <li><a href="how-we-score.html">How We Score</a></li>
+            <li><a href="family-safe-word.html">Family Safe Word Kit</a></li>
+            <li><a href="incident-response.html">Incident Response Wizard</a></li>
+            <li><a href="index.html#threat-radar">Threat Radar 2026</a></li>
+            <li><a href="index.html#quiz">Vulnerability Quiz</a></li>
+            <li><a href="about.html">About &amp; Research Team</a></li>
+          </ul>
+        </div>
+
+        <div class="footer-col">
+          <h4 class="footer-col-title">Legal &amp; Compliance</h4>
+          <ul class="footer-links">
+            <li><a href="privacy.html">Privacy Policy (Zero Storage)</a></li>
+            <li><a href="terms.html">Terms of Service &amp; DMCA</a></li>
+            <li><a href="terms.html#affiliate-disclosure">AdSense &amp; FTC Disclosures</a></li>
+            <li><a href="sitemap.xml">XML Sitemap</a></li>
+          </ul>
+        </div>
+      </div>
+
+      <!-- Legal Non-Affiliation Disclaimer (Prevents Impersonation) -->
+      <div class="footer-disclaimer-box" role="note" aria-label="Legal Disclaimers">
+        <p class="footer-disclaimer-text">
+          <strong>Notice & Non-Affiliation:</strong> ScamShield Lab - AI Forensic Analyzer (scamshieldlab.com) is an independent cybersecurity awareness and educational platform. It is not affiliated with, sponsored by, or connected to the Government of Singapore, GovTech Singapore, the National Crime Prevention Council (NCPC), or the official Singapore mobile application at scamshield.gov.sg. For Singapore Government anti-scam mobile services, visit <a href="https://www.scamshield.gov.sg/" target="_blank" rel="noopener noreferrer" style="color: var(--color-primary); text-decoration: underline;">scamshield.gov.sg</a>.
+        </p>
+      </div>
+
+      <div class="footer-bottom">
+        <p>&copy; 2026 ScamShield Lab Research. Client-side heuristic analysis &bull; Zero tracking logs retained.</p>
+        <p class="footer-ftc-note">FTC Disclosure: Security partner recommendations contain affiliate referral links that help fund our zero-cost public forensic tools.</p>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Toast Container -->
+  <div class="copy-toast" id="copyToast" role="status" aria-live="polite">✓ Letter copied to clipboard!</div>
+
+  <script>
+    // Vector filtering logic
+    function toggleVector(card) {
+      card.classList.toggle('active');
+      const isPressed = card.classList.contains('active');
+      card.setAttribute('aria-pressed', isPressed ? 'true' : 'false');
+      filterChecklistByVectors();
+      updateProgress();
+    }
+
+    function handleKey(e, card) {
+      if (e.key === ' ' || e.key === 'Enter') {
+        e.preventDefault();
+        toggleVector(card);
+      }
+    }
+
+    function toggleAllVectors() {
+      const cards = document.querySelectorAll('.vector-card');
+      const allActive = Array.from(cards).every(c => c.classList.contains('active'));
+      cards.forEach(c => {
+        if (allActive) {
+          c.classList.remove('active');
+          c.setAttribute('aria-pressed', 'false');
+        } else {
+          c.classList.add('active');
+          c.setAttribute('aria-pressed', 'true');
+        }
+      });
+      document.getElementById('selectAllBtn').textContent = allActive ? 'Select All' : 'Deselect All';
+      filterChecklistByVectors();
+      updateProgress();
+    }
+
+    function filterChecklistByVectors() {
+      const activeCards = document.querySelectorAll('.vector-card.active');
+      const activeTypes = Array.from(activeCards).map(c => c.dataset.vector);
+      const items = document.querySelectorAll('.checklist-item');
+
+      items.forEach(item => {
+        const itemFor = item.dataset.for;
+        if (activeTypes.length === 0 || activeTypes.includes(itemFor)) {
+          item.style.display = 'flex';
+        } else {
+          item.style.display = 'none';
+        }
+      });
+    }
+
+    // Progress counter
+    function updateProgress() {
+      const visibleItems = Array.from(document.querySelectorAll('.checklist-item')).filter(i => i.style.display !== 'none');
+      const total = visibleItems.length;
+      let completed = 0;
+
+      visibleItems.forEach(item => {
+        const chk = item.querySelector('.check-custom');
+        if (chk && chk.checked) {
+          completed++;
+          item.classList.add('completed');
+        } else {
+          item.classList.remove('completed');
+        }
+      });
+
+      const pct = total > 0 ? Math.round((completed / total) * 100) : 0;
+      const progressStats = document.getElementById('progressStats');
+      const progressFill = document.getElementById('progressFill');
+
+      if (progressStats) progressStats.textContent = completed + ' of ' + total + ' Actions Completed (' + pct + '%)';
+      if (progressFill) progressFill.style.width = pct + '%';
+
+      // Save to sessionStorage (private, zero transmission)
+      try {
+        const state = {};
+        document.querySelectorAll('.check-custom').forEach(c => {
+          state[c.id] = c.checked;
+        });
+        sessionStorage.setItem('scamshield_ir_state', JSON.stringify(state));
+      } catch (err) {}
+    }
+
+    function resetChecklist() {
+      document.querySelectorAll('.check-custom').forEach(c => {
+        c.checked = false;
+      });
+      try {
+        sessionStorage.removeItem('scamshield_ir_state');
+      } catch (err) {}
+      updateProgress();
+    }
+
+    // Dispute Letter Generator
+    function generateDisputeLetter() {
+      const bank = document.getElementById('bankNameInput').value.trim() || '[Bank / Financial Institution Name]';
+      const transferType = document.getElementById('transferTypeSelect').value;
+      const amount = document.getElementById('amountInput').value.trim() || '[0.00]';
+      const date = document.getElementById('dateInput').value.trim() || '[Date of Incident]';
+
+      const letter = `URGENT NOTICE OF DISPUTED FRAUDULENT TRANSACTION & REQUEST FOR IMMEDIATE RECALL / FREEZE
+
+Date: ${date}
+To: Fraud Disputes & Risk Operations Division, ${bank}
+From: [Your Full Name]
+Account Number Ending In: [Last 4 Digits of Account]
+Subject: Formal Notice of Fraudulent & Unauthorized Transfer Under Duress / Social Engineering
+
+Dear Fraud Operations Team,
+
+I am writing to provide formal notice of an unauthorized and fraudulent transaction on my account, executed on ${date} in the amount of $${amount} via ${transferType}.
+
+This transfer was not authorized by me for legitimate commerce; rather, it was induced through deceptive impersonation, social engineering fraud, and criminal duress. Under consumer financial protections (including Regulation E, 12 C.F.R. § 1005.11, the Electronic Fund Transfer Act, and UCC § 4A-202 regarding commercial fund transfers), I am formally demanding:
+
+1. IMMEDIATE RECALL / STOP-PAYMENT: If this was a wire or electronic settlement, immediately initiate an emergency recall request and trigger the Financial Fraud Kill Chain (FFKC) protocol to the receiving institution.
+2. ACCOUNT FREEZE ON BENEFICIARY: Transmit an urgent alert to the beneficiary bank regarding the recipient account number and freeze further dissipation of stolen funds.
+3. PRESERVATION OF SYSTEM AUDIT TRAILS: Retain all digital logs, IP headers, device telemetry, and wire transmission receipts for review by federal law enforcement.
+4. FORMAL FRAUD INVESTIGATION: Open a formal fraud investigation file and issue an official dispute reference case number to me within 48 business hours.
+
+I have filed (or am actively filing) a formal criminal complaint with the Federal Bureau of Investigation (FBI IC3) and local law enforcement. A copy of the formal police incident report will be delivered to your fraud division upon receipt.
+
+Please confirm receipt of this urgent notice and supply my formal dispute case reference number by return communication.
+
+Sincerely,
+
+[Your Full Legal Name]
+[Your Phone Number]
+[Your Email Address]
+[Attached: Incident Timeline & Proof of Fraud]`;
+
+      const outputEl = document.getElementById('disputeLetterOutput');
+      if (outputEl) outputEl.textContent = letter;
+    }
+
+    function copyLetterToClipboard() {
+      const outputEl = document.getElementById('disputeLetterOutput');
+      if (!outputEl) return;
+      navigator.clipboard.writeText(outputEl.textContent).then(() => {
+        const toast = document.getElementById('copyToast');
+        if (toast) {
+          toast.style.display = 'block';
+          setTimeout(() => { toast.style.display = 'none'; }, 2500);
+        }
+      });
+    }
+
+    // Restore state from sessionStorage on load
+    document.addEventListener('DOMContentLoaded', () => {
+      try {
+        const saved = sessionStorage.getItem('scamshield_ir_state');
+        if (saved) {
+          const parsed = JSON.parse(saved);
+          Object.keys(parsed).forEach(id => {
+            const el = document.getElementById(id);
+            if (el) el.checked = parsed[id];
+          });
+        }
+      } catch (err) {}
+
+      generateDisputeLetter();
+      filterChecklistByVectors();
+      updateProgress();
+    });
+  </script>
+
+</body>
+</html>
