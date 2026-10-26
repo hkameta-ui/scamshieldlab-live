@@ -1042,13 +1042,13 @@ class TestCoreWebVitalsCompliance(unittest.TestCase):
         assets_dir = os.path.join(WORKSPACE_ROOT, "assets", "images")
         self.assertTrue(os.path.isdir(assets_dir))
         for img_name in os.listdir(assets_dir):
-            if img_name.lower().endswith((".jpg", ".jpeg", ".png")):
+            if img_name.lower().endswith((".jpg", ".jpeg", ".png", ".webp")):
                 img_path = os.path.join(assets_dir, img_name)
                 size_kb = os.path.getsize(img_path) / 1024.0
-                if img_name == "logo.jpg":
-                    self.assertLessEqual(size_kb, 15, f"logo.jpg ({size_kb:.1f} KB) must be <= 15 KB")
-                elif img_name == "hero.jpg":
-                    self.assertLessEqual(size_kb, 100, f"hero.jpg ({size_kb:.1f} KB) must be <= 100 KB")
+                if img_name in ("logo.jpg", "logo.webp"):
+                    self.assertLessEqual(size_kb, 15, f"{img_name} ({size_kb:.1f} KB) must be <= 15 KB")
+                elif img_name in ("hero.jpg", "hero.webp"):
+                    self.assertLessEqual(size_kb, 100, f"{img_name} ({size_kb:.1f} KB) must be <= 100 KB")
                 else:
                     self.assertLessEqual(size_kb, 120, f"{img_name} ({size_kb:.1f} KB) must be <= 120 KB")
 
@@ -1058,7 +1058,7 @@ class TestCoreWebVitalsCompliance(unittest.TestCase):
             content = f.read()
         self.assertIn('rel="preload"', content)
         self.assertIn('as="image"', content)
-        self.assertIn('hero.jpg', content)
+        self.assertTrue('hero.webp' in content or 'hero.jpg' in content)
         self.assertIn('fetchpriority="high"', content)
 
     def test_site_ticker_height_is_locked_for_zero_cls(self):

@@ -306,20 +306,20 @@ def run_readiness_checks():
     assets_dir = os.path.join(WORKSPACE_ROOT, "assets", "images")
     if os.path.isdir(assets_dir):
         for img_name in os.listdir(assets_dir):
-            if img_name.lower().endswith((".jpg", ".jpeg", ".png")):
+            if img_name.lower().endswith((".jpg", ".jpeg", ".png", ".webp")):
                 img_path = os.path.join(assets_dir, img_name)
                 size_kb = os.path.getsize(img_path) / 1024.0
-                if img_name == "logo.jpg" and size_kb > 15:
-                    cwv_issues.append(f"logo.jpg exceeds 15 KB budget ({size_kb:.1f} KB) - must be optimized for 36x36 display")
-                elif img_name == "hero.jpg" and size_kb > 100:
-                    cwv_issues.append(f"hero.jpg exceeds 100 KB budget ({size_kb:.1f} KB) - risks LCP regression")
+                if img_name in ("logo.jpg", "logo.webp") and size_kb > 15:
+                    cwv_issues.append(f"{img_name} exceeds 15 KB budget ({size_kb:.1f} KB) - must be optimized for 36x36 display")
+                elif img_name in ("hero.jpg", "hero.webp") and size_kb > 100:
+                    cwv_issues.append(f"{img_name} exceeds 100 KB budget ({size_kb:.1f} KB) - risks LCP regression")
                 elif size_kb > 120:
                     cwv_issues.append(f"{img_name} exceeds 120 KB image budget ({size_kb:.1f} KB)")
 
     # 2. LCP Image Preload & fetchpriority on index.html
     index_content = raw_contents.get("index.html", "")
-    if 'rel="preload"' not in index_content or 'hero.jpg' not in index_content:
-        cwv_issues.append("index.html missing <link rel=\"preload\" as=\"image\" href=\"...hero.jpg\">")
+    if 'rel="preload"' not in index_content or ('hero.webp' not in index_content and 'hero.jpg' not in index_content):
+        cwv_issues.append("index.html missing <link rel=\"preload\" as=\"image\" href=\"...hero.webp\">")
     if 'fetchpriority="high"' not in index_content:
         cwv_issues.append("index.html missing fetchpriority=\"high\" on hero image")
 
