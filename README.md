@@ -1,6 +1,20 @@
 # ScamShield.AI - Autonomous AI Cyber Fraud Defense Hub
 
-A production-ready, ultra-modern, high-CPC cybersecurity web platform engineered to generate recurring revenue through **Google AdSense** and **High-Payout Cybersecurity Affiliate Programs**.
+A production-ready, ultra-modern, high-performance cybersecurity web platform engineered around two interlocked pillars: **Maximum Public Educational Reach** and **Sustainable, Ethical Monetization** through Google AdSense and verified cybersecurity affiliate partnerships.
+
+---
+
+## 🎯 The Dual-Pillar Strategic Mission
+
+1. **Pillar 1: Maximum Public Educational Reach & Impact**
+   - **Zero Signup, Zero Barrier**: 100% in-browser, client-side neural heuristic analysis keeping personal data private.
+   - **Comprehensive Awareness**: High search-intent pillar guides covering emerging cyber threats (*AI Voice Cloning, Digital Arrest Video Fraud, Reverse-Proxy AiTM Phishing, Package Delivery Smishing, Pig Butchering*).
+   - **Viral & Family Utility**: Practical offline defense tools like the Family Safe Word Kit, scam vulnerability quizzes, and emergency incident playbooks.
+
+2. **Pillar 2: Ethical Monetization through Ads & Verified Security Partnerships**
+   - **Contextual Defense Stacks**: Pairing detected scam vectors with specific, authorized security tools (NordVPN Threat Protection, Google Workspace with Gemini, NordPass Passkeys, Aura).
+   - **High-CPC Display Ads**: Google AdSense slots positioned in full policy compliance to capture high-value security/fintech advertiser bids ($5 – $45+ CPC).
+   - **Exclusive Reader Incentives**: Providing tangible savings (e.g., 1-click promo code copy for 10% off Google Workspace, 68% off NordVPN).
 
 ---
 
@@ -51,13 +65,13 @@ Cybersecurity and AI fraud prevention rank among the **highest Cost-Per-Click (C
 You can test and view the platform immediately on your machine:
 
 1. Open PowerShell in this directory (`d:\Hemendra\POC`)
-2. Run Python's built-in local server:
+2. Run Python's built-in local server (port 5050 as mandated by Rule 7):
    ```powershell
-   python -m http.server 8080
+   python -m http.server 5050
    ```
 3. Open your browser and navigate to:
    ```
-   http://localhost:8080
+   http://localhost:5050
    ```
 
 ---

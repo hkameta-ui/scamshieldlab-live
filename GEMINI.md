@@ -1,6 +1,20 @@
 # Project Rules & Quality Mandates: ScamShield AI
 
-All code, content, and architecture in this project MUST strictly comply with these four foundational rules at all times.
+All code, content, and architecture in this project MUST strictly comply with the foundational quality mandates and the **Dual-Pillar Mission** at all times.
+
+---
+
+## 🎯 Strategic Core: The Dual-Pillar Mission Mandate
+Every feature, guide, tool, and optimization must actively advance our two interlocked pillars:
+1. **Pillar 1: Maximum Educational Reach & Public Defense**:
+   - Universal, zero-barrier utility: 100% in-browser, client-side, zero signup, zero paywall.
+   - High search-intent discovery: authoring definitive, research-backed guides on surging cyber threats (AI Voice Cloning, Digital Arrest, Quishing, Pig Butchering) with viral, multi-generational utility (Family Safe Word Kit, scam resilience quiz).
+   - Supportive, empathetic victim tone (zero victim-blaming).
+2. **Pillar 2: Sustainable Monetization through Ethical Ads & Security Partnerships**:
+   - Pair detected scam vectors with high-converting, verified security defense kits (NordVPN Threat Protection, Google Workspace with Gemini, NordPass Passkeys, Aura).
+   - Deliver real reader value (exclusive discounts, 1-click promo code copy buttons).
+   - Maintain 100% Google AdSense & SafeSearch compliance to command premium Tier-1 advertiser bids.
+   - Strict FTC compliance with clear `rel="noopener sponsored"` attributes.
 
 ---
 
