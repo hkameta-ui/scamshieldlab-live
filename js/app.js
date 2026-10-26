@@ -1543,3 +1543,28 @@ window.addEventListener("pageshow", (event) => {
     window.location.reload();
   }
 });
+
+// Lightweight Passive Back to Top Controller (Zero CLS, GPU-Accelerated)
+document.addEventListener("DOMContentLoaded", () => {
+  const backToTopBtn = document.getElementById("backToTopBtn");
+  if (backToTopBtn) {
+    let isTicking = false;
+    window.addEventListener("scroll", () => {
+      if (!isTicking) {
+        window.requestAnimationFrame(() => {
+          if (window.scrollY > 380) {
+            backToTopBtn.classList.add("visible");
+          } else {
+            backToTopBtn.classList.remove("visible");
+          }
+          isTicking = false;
+        });
+        isTicking = true;
+      }
+    }, { passive: true });
+
+    backToTopBtn.addEventListener("click", () => {
+      window.scrollTo({ top: 0, behavior: "smooth" });
+    });
+  }
+});
