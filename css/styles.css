@@ -293,6 +293,8 @@ a:hover {
   font-size: 1.25rem;
   color: var(--text-main);
   text-decoration: none;
+  position: relative;
+  z-index: 2;
 }
 
 .brand-icon {
@@ -343,8 +345,8 @@ a:hover {
 .nav-links a {
   color: #94A3B8;
   font-weight: 500;
-  font-size: 0.88rem;
-  padding: 0.45rem 0.75rem;
+  font-size: 0.86rem;
+  padding: 0.4rem 0.65rem;
   border-radius: var(--radius-sm);
   text-decoration: none;
   white-space: nowrap;
@@ -365,6 +367,8 @@ a:hover {
   align-items: center;
   gap: 0.75rem;
   flex-shrink: 0;
+  position: relative;
+  z-index: 2;
 }
 
 .nav-cta-btn {
@@ -2845,6 +2849,29 @@ a:hover {
 /* ==========================================================================
    Responsive Breakpoints
    ========================================================================== */
+@media (max-width: 1340px) and (min-width: 1081px) {
+  .nav-inner {
+    gap: 0.75rem;
+  }
+  .nav-links {
+    gap: 0.15rem;
+  }
+  .nav-links a {
+    padding: 0.35rem 0.5rem;
+    font-size: 0.82rem;
+  }
+  .nav-cta-btn {
+    padding: 0.45rem 0.95rem;
+    font-size: 0.82rem;
+  }
+}
+
+@media (max-width: 1220px) and (min-width: 1081px) {
+  .brand-sub-badge {
+    display: none;
+  }
+}
+
 @media (max-width: 1080px) {
   .main-nav {
     display: none;
