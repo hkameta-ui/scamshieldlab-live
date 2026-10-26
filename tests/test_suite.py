@@ -1137,6 +1137,43 @@ class TestCoreWebVitalsCompliance(unittest.TestCase):
         self.assertIn("height: 38px", content)
 
 
+class TestMobileNavigationDrawer(unittest.TestCase):
+    """Rule 4 & Mobile UX Mandate: Validates mobile navigation drawer markup, CSS responsiveness, and JS controllers."""
+
+    def test_mobile_toggle_button_present_in_all_pages(self):
+        """All 14 published pages must declare the #mobileNavToggle button with accessible label."""
+        html_files = [f for f in os.listdir(WORKSPACE_ROOT) if f.endswith(".html") and not f.startswith("5420")]
+        self.assertEqual(len(html_files), 14, "Must audit all 14 published HTML pages")
+        for h in html_files:
+            file_path = os.path.join(WORKSPACE_ROOT, h)
+            with open(file_path, "r", encoding="utf-8") as f:
+                content = f.read()
+            self.assertIn('id="mobileNavToggle"', content, f"Page {h} missing mobileNavToggle button")
+            self.assertIn('aria-label="Toggle Navigation Menu"', content, f"Page {h} missing aria-label on mobileNavToggle")
+
+    def test_mobile_nav_drawer_css_rules(self):
+        """Ensures css/styles.css specifies proper responsive drawer display rules for <= 1080px."""
+        css_path = os.path.join(WORKSPACE_ROOT, "css", "styles.css")
+        with open(css_path, "r", encoding="utf-8") as f:
+            css = f.read()
+        self.assertIn("@media (max-width: 1080px)", css)
+        self.assertIn(".main-nav.open", css)
+        self.assertIn(".mobile-toggle-btn", css)
+        self.assertIn("min-width: 44px", css)
+        self.assertIn("min-height: 44px", css)
+
+    def test_mobile_nav_system_controller_in_config(self):
+        """Ensures config.js declares initMobileNavSystem with complete touch, escape, and click handlers."""
+        config_path = os.path.join(WORKSPACE_ROOT, "config.js")
+        with open(config_path, "r", encoding="utf-8") as f:
+            js = f.read()
+        self.assertIn("function initMobileNavSystem()", js)
+        self.assertIn("mobileNavToggle", js)
+        self.assertIn("primaryNavLinks", js)
+        self.assertIn("aria-expanded", js)
+        self.assertIn("DOMContentLoaded", js)
+
+
 if __name__ == "__main__":
     unittest.main()
 

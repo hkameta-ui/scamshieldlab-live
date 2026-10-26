@@ -1446,8 +1446,13 @@ function initAffiliateCards() {
    7. Mobile Navigation & Accessibility (WCAG 2.1 AA)
    ========================================================================== */
 function initMobileNav() {
+  if (typeof initMobileNavSystem === "function") {
+    initMobileNavSystem();
+    return;
+  }
   const toggleBtn = document.getElementById("mobileNavToggle");
   const navLinks = document.getElementById("primaryNavLinks");
+  const mainNav = document.querySelector(".main-nav");
 
   if (toggleBtn && navLinks) {
     toggleBtn.setAttribute("aria-expanded", "false");
@@ -1455,13 +1460,17 @@ function initMobileNav() {
 
     toggleBtn.addEventListener("click", () => {
       const isOpen = navLinks.classList.toggle("open");
+      if (mainNav) mainNav.classList.toggle("open", isOpen);
       toggleBtn.setAttribute("aria-expanded", String(isOpen));
+      toggleBtn.innerHTML = isOpen ? "&#10005;" : "&#9776;";
     });
 
     navLinks.querySelectorAll("a").forEach(link => {
       link.addEventListener("click", () => {
         navLinks.classList.remove("open");
+        if (mainNav) mainNav.classList.remove("open");
         toggleBtn.setAttribute("aria-expanded", "false");
+        toggleBtn.innerHTML = "&#9776;";
       });
     });
   }

@@ -86,3 +86,76 @@ window.SITE_CONFIG = {
     }
   }
 };
+
+/**
+ * Universal Mobile Navigation & Accessibility Controller (WCAG 2.1 AA)
+ * Operates across all pages with zero dependencies, touch-friendly targets,
+ * outside-click dismissal, Escape key listener, and ARIA state management.
+ */
+function initMobileNavSystem() {
+  const toggleBtn = document.getElementById("mobileNavToggle");
+  const navLinks = document.getElementById("primaryNavLinks");
+  const mainNav = document.querySelector(".main-nav");
+
+  if (!toggleBtn || !navLinks) return;
+  if (toggleBtn.dataset.navInitialized === "true") return;
+  toggleBtn.dataset.navInitialized = "true";
+
+  toggleBtn.setAttribute("aria-expanded", "false");
+  toggleBtn.setAttribute("aria-controls", "primaryNavLinks");
+  toggleBtn.setAttribute("aria-label", "Open Navigation Menu");
+
+  function setNavOpen(open) {
+    if (open) {
+      navLinks.classList.add("open");
+      if (mainNav) mainNav.classList.add("open");
+      toggleBtn.setAttribute("aria-expanded", "true");
+      toggleBtn.setAttribute("aria-label", "Close Navigation Menu");
+      toggleBtn.innerHTML = "&#10005;"; // ✕ close icon
+    } else {
+      navLinks.classList.remove("open");
+      if (mainNav) mainNav.classList.remove("open");
+      toggleBtn.setAttribute("aria-expanded", "false");
+      toggleBtn.setAttribute("aria-label", "Open Navigation Menu");
+      toggleBtn.innerHTML = "&#9776;"; // ☰ hamburger icon
+    }
+  }
+
+  toggleBtn.addEventListener("click", function(e) {
+    e.stopPropagation();
+    const isOpen = navLinks.classList.contains("open") || (mainNav && mainNav.classList.contains("open"));
+    setNavOpen(!isOpen);
+  });
+
+  navLinks.querySelectorAll("a").forEach(function(link) {
+    link.addEventListener("click", function() {
+      setNavOpen(false);
+    });
+  });
+
+  document.addEventListener("click", function(e) {
+    if (!toggleBtn.contains(e.target) && !navLinks.contains(e.target)) {
+      setNavOpen(false);
+    }
+  });
+
+  document.addEventListener("keydown", function(e) {
+    if (e.key === "Escape" && (navLinks.classList.contains("open") || (mainNav && mainNav.classList.contains("open")))) {
+      setNavOpen(false);
+      toggleBtn.focus();
+    }
+  });
+
+  window.addEventListener("resize", function() {
+    if (window.innerWidth > 1080) {
+      setNavOpen(false);
+    }
+  });
+}
+
+// Auto-initialize when DOM is ready
+if (document.readyState === "loading") {
+  document.addEventListener("DOMContentLoaded", initMobileNavSystem);
+} else {
+  initMobileNavSystem();
+}

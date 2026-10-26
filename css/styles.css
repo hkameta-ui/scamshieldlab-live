@@ -2925,39 +2925,102 @@ main[id] {
   }
 }
 
+@keyframes navSlideDown {
+  from {
+    opacity: 0;
+    transform: translateY(-8px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
 @media (max-width: 1080px) {
   .main-nav {
     display: none;
-  }
-  .nav-links {
-    display: none;
     position: absolute;
-    top: 70px;
+    top: 100%;
     left: 0;
     right: 0;
+    width: 100%;
     background: rgba(7, 11, 20, 0.98);
     backdrop-filter: blur(24px);
     -webkit-backdrop-filter: blur(24px);
-    flex-direction: column;
-    padding: 1.5rem 1.75rem;
-    border-bottom: 1px solid rgba(0, 242, 254, 0.2);
-    gap: 0.5rem;
-    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.7);
-    z-index: 999;
+    border-bottom: 1px solid rgba(0, 242, 254, 0.25);
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.85);
+    z-index: 9999;
+    padding: 1.25rem 1.5rem;
+    max-height: calc(100vh - 70px);
+    overflow-y: auto;
+    -webkit-overflow-scrolling: touch;
   }
-  .nav-links.open {
+  .main-nav.open,
+  .main-nav:has(.nav-links.open) {
+    display: block;
+    animation: navSlideDown 0.22s cubic-bezier(0.16, 1, 0.3, 1);
+  }
+  .nav-links {
     display: flex;
+    flex-direction: column;
+    gap: 0.55rem;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    width: 100%;
+  }
+  .nav-links li {
+    display: block;
+    width: 100%;
   }
   .nav-links a {
+    display: flex;
+    align-items: center;
     width: 100%;
-    padding: 0.75rem 1rem;
-    font-size: 1rem;
+    padding: 0.85rem 1.15rem;
+    font-size: 1.02rem;
+    font-weight: 600;
+    color: #CBD5E1;
+    background: rgba(255, 255, 255, 0.03);
+    border: 1px solid rgba(255, 255, 255, 0.06);
     border-radius: var(--radius-sm);
+    transition: all 0.2s ease;
+    text-decoration: none;
+  }
+  .nav-links a:hover,
+  .nav-links a:focus-visible,
+  .nav-links a.active {
+    background: rgba(0, 242, 254, 0.12);
+    border-color: rgba(0, 242, 254, 0.35);
+    color: #00F2FE;
+    transform: translateX(4px);
   }
   .mobile-toggle-btn {
     display: inline-flex;
     align-items: center;
     justify-content: center;
+    min-width: 44px;
+    min-height: 44px;
+    padding: 0;
+    font-size: 1.4rem;
+    line-height: 1;
+    color: var(--color-primary);
+    background: rgba(0, 242, 254, 0.08);
+    border: 1px solid rgba(0, 242, 254, 0.3);
+    border-radius: var(--radius-sm);
+    cursor: pointer;
+    user-select: none;
+    -webkit-tap-highlight-color: transparent;
+    transition: var(--transition-smooth);
+  }
+  .mobile-toggle-btn:hover {
+    background: rgba(0, 242, 254, 0.18);
+    border-color: var(--color-primary);
+    box-shadow: 0 0 12px rgba(0, 242, 254, 0.3);
+  }
+  .mobile-toggle-btn:focus-visible {
+    outline: 2px solid var(--color-primary);
+    outline-offset: 2px;
   }
   .hero-grid {
     grid-template-columns: 1fr;
