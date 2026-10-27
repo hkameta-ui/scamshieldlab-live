@@ -209,9 +209,9 @@ def run_readiness_checks():
         print(f"  PASSED: Synchronized cache version active across all files: '?v={sync_version}'")
 
     # ---------------------------------------------------------
-    # CHECK 5: GOOGLE ADSENSE CODE SNIPPET & ADS.TXT INTEGRITY
+    # CHECK 5: GOOGLE ADSENSE CODE SNIPPET, META TAG & ADS.TXT INTEGRITY
     # ---------------------------------------------------------
-    print("\n[5/9] Verifying Google AdSense Snippets & ads.txt...")
+    print("\n[5/9] Verifying Google AdSense Snippets, Meta Tags, robots.txt & ads.txt...")
     ads_txt_path = os.path.join(WORKSPACE_ROOT, "ads.txt")
     if not os.path.isfile(ads_txt_path):
         failures.append("Missing ads.txt file")
@@ -225,16 +225,53 @@ def run_readiness_checks():
         else:
             print("  PASSED: ads.txt valid with authorized publisher pub-7565560894775775.")
 
+    # robots.txt validation
+    robots_path = os.path.join(WORKSPACE_ROOT, "robots.txt")
+    if not os.path.isfile(robots_path):
+        failures.append("Missing robots.txt file")
+        print("  FAILED: robots.txt missing.")
+    else:
+        with open(robots_path, "r", encoding="utf-8") as f:
+            robots_content = f.read()
+        if "Mediapartners-Google" not in robots_content or "Google-Adwords-Bot" not in robots_content:
+            failures.append("robots.txt missing explicit AdSense bot crawler directives")
+            print("  FAILED: robots.txt missing AdSense crawler directives.")
+        else:
+            print("  PASSED: robots.txt declares explicit AdSense & AdWords bot crawl permissions.")
+
+    # _headers validation
+    headers_path = os.path.join(WORKSPACE_ROOT, "_headers")
+    if not os.path.isfile(headers_path):
+        failures.append("Missing _headers file")
+        print("  FAILED: _headers missing.")
+    else:
+        with open(headers_path, "r", encoding="utf-8") as f:
+            headers_content = f.read()
+        if "/ads.txt" not in headers_content or "text/plain" not in headers_content:
+            failures.append("_headers missing explicit Content-Type for /ads.txt")
+            print("  FAILED: _headers missing /ads.txt MIME configuration.")
+        else:
+            print("  PASSED: _headers declares explicit Content-Type & CORS for /ads.txt.")
+
     missing_adsense_tag = []
+    missing_meta_tag = []
     for filename, content in raw_contents.items():
         if "pagead2.googlesyndication.com" not in content or "ca-pub-7565560894775775" not in content:
             missing_adsense_tag.append(filename)
+        if '<meta name="google-adsense-account" content="ca-pub-7565560894775775">' not in content:
+            missing_meta_tag.append(filename)
 
     if missing_adsense_tag:
         failures.append(f"Pages missing Google AdSense head script: {missing_adsense_tag}")
         print(f"  FAILED: AdSense tag missing in {missing_adsense_tag}.")
     else:
-        print("  PASSED: Google AdSense verification script present in all 11 pages.")
+        print(f"  PASSED: Google AdSense verification script present in all {len(raw_contents)} pages.")
+
+    if missing_meta_tag:
+        failures.append(f"Pages missing Google AdSense account meta tag: {missing_meta_tag}")
+        print(f"  FAILED: AdSense account meta tag missing in {missing_meta_tag}.")
+    else:
+        print(f"  PASSED: Google AdSense account meta tag present in all {len(raw_contents)} pages.")
 
     # ---------------------------------------------------------
     # CHECK 6: LEGAL NON-AFFILIATION DISCLAIMER (PREVENTS IMPERSONATION)

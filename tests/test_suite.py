@@ -1174,6 +1174,60 @@ class TestMobileNavigationDrawer(unittest.TestCase):
         self.assertIn("DOMContentLoaded", js)
 
 
+class TestAdSenseAndCrawlerIntegrity(unittest.TestCase):
+    """Pillar 2 & AdSense Readiness Mandate: Validates ads.txt, crawler directives, Cloudflare headers, and meta tags."""
+
+    def test_ads_txt_contains_authorized_publisher_and_format(self):
+        """ads.txt must exist at root, be formatted properly, and contain authorized publisher ID."""
+        ads_path = os.path.join(WORKSPACE_ROOT, "ads.txt")
+        self.assertTrue(os.path.isfile(ads_path), "ads.txt must exist at workspace root")
+        with open(ads_path, "r", encoding="utf-8") as f:
+            content = f.read()
+        self.assertIn("google.com, pub-7565560894775775, DIRECT, f08c47fec0942fa0", content)
+
+    def test_robots_txt_explicit_adsense_bot_directives(self):
+        """robots.txt must explicitly grant access to Mediapartners-Google, Google-Adwords-Bot, and AdsBot-Google."""
+        robots_path = os.path.join(WORKSPACE_ROOT, "robots.txt")
+        self.assertTrue(os.path.isfile(robots_path), "robots.txt must exist at workspace root")
+        with open(robots_path, "r", encoding="utf-8") as f:
+            content = f.read()
+        self.assertIn("User-agent: Mediapartners-Google", content)
+        self.assertIn("User-agent: Google-Adwords-Bot", content)
+        self.assertIn("User-agent: AdsBot-Google", content)
+        self.assertIn("User-agent: Googlebot", content)
+        self.assertIn("Sitemap: https://scamshieldlab.com/sitemap.xml", content)
+
+    def test_headers_declares_crawler_and_ads_txt_types(self):
+        """_headers must define explicit Content-Type and Cache-Control for /ads.txt, /robots.txt, and /sitemap.xml."""
+        headers_path = os.path.join(WORKSPACE_ROOT, "_headers")
+        self.assertTrue(os.path.isfile(headers_path), "_headers must exist at workspace root")
+        with open(headers_path, "r", encoding="utf-8") as f:
+            content = f.read()
+        self.assertIn("/ads.txt", content)
+        self.assertIn("Content-Type: text/plain; charset=utf-8", content)
+        self.assertIn("/robots.txt", content)
+        self.assertIn("/sitemap.xml", content)
+
+    def test_all_pages_have_adsense_account_meta_tag(self):
+        """All 14 published HTML pages must declare <meta name="google-adsense-account" content="ca-pub-7565560894775775">."""
+        html_files = [f for f in os.listdir(WORKSPACE_ROOT) if f.endswith(".html") and not f.startswith("5420")]
+        self.assertEqual(len(html_files), 14, "Must audit all 14 published HTML pages")
+        for h in html_files:
+            file_path = os.path.join(WORKSPACE_ROOT, h)
+            with open(file_path, "r", encoding="utf-8") as f:
+                content = f.read()
+            self.assertIn(
+                '<meta name="google-adsense-account" content="ca-pub-7565560894775775">',
+                content,
+                f"Page {h} missing google-adsense-account meta tag"
+            )
+            self.assertIn(
+                'pagead2.googlesyndication.com',
+                content,
+                f"Page {h} missing AdSense verification script tag"
+            )
+
+
 if __name__ == "__main__":
     unittest.main()
 

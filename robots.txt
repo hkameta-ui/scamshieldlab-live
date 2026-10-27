@@ -1,4 +1,17 @@
 User-agent: *
 Allow: /
 
+# Google AdSense & AdWords Bot Access Mandate
+User-agent: Mediapartners-Google
+Allow: /
+
+User-agent: Google-Adwords-Bot
+Allow: /
+
+User-agent: AdsBot-Google
+Allow: /
+
+User-agent: Googlebot
+Allow: /
+
 Sitemap: https://scamshieldlab.com/sitemap.xml
