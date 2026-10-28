@@ -16,7 +16,46 @@
   <!-- Security Standards Compliance (Rule 2) -->
   <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' https://pagead2.googlesyndication.com https://*.google.com https://*.doubleclick.net https://static.cloudflareinsights.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; img-src 'self' data: https:; connect-src 'self' https://pagead2.googlesyndication.com https://*.google.com https://*.doubleclick.net https://cloudflareinsights.com; frame-src https://*.google.com https://*.doubleclick.net;">
   <meta http-equiv="X-Content-Type-Options" content="nosniff">
-  <meta name="referrer" content="strict-origin-when-cross-origin">
+  <!-- Schema.org Structured Data (Entity Disambiguation) -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@graph": [
+      {
+        "@type": "AboutPage",
+        "@id": "https://scamshieldlab.com/about#webpage",
+        "url": "https://scamshieldlab.com/about",
+        "name": "About ScamShield Lab - Threat Defense Research & Forensic Standards",
+        "isPartOf": {
+          "@type": "WebSite",
+          "@id": "https://scamshieldlab.com/#website",
+          "name": "ScamShield Lab",
+          "url": "https://scamshieldlab.com/"
+        },
+        "description": "Learn about ScamShield Lab's mission, independent research architecture, zero-storage client-side privacy, and distinct identity."
+      },
+      {
+        "@type": "Organization",
+        "@id": "https://scamshieldlab.com/#organization",
+        "name": "ScamShield Lab",
+        "url": "https://scamshieldlab.com/",
+        "disambiguatingDescription": "ScamShield Lab (scamshieldlab.com) is an independent, global web-based AI scam forensic scanner and educational research lab. It is distinct and unaffiliated with regional telecom mobile applications in Singapore (scamshield.gov.sg) or private commercial entities in India.",
+        "founder": [
+          {
+            "@type": "Person",
+            "name": "Hemendra K.",
+            "jobTitle": "Cybersecurity Researcher & IAM Specialist"
+          },
+          {
+            "@type": "Person",
+            "name": "Dr. Priyanka Ameta",
+            "jobTitle": "Computer Science Academician & AI Security Researcher"
+          }
+        ]
+      }
+    ]
+  }
+  </script>
 
   <!-- Cache Invalidation: Ensure visitors always receive the latest deployment -->
   <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
@@ -145,7 +184,7 @@
 
     <h1 class="page-title">Defending Humanity in the Age of Synthetic Deception</h1>
     <p class="page-lead">
-      ScamShield AI was founded with a singular, non-negotiable objective: to empower individuals, families, and enterprise teams with autonomous threat intelligence to spot, counter, and neutralize AI-generated cybercrime before financial harm occurs.
+      ScamShield Lab was founded with a singular, non-negotiable objective: to empower individuals, families, and enterprise teams with autonomous threat intelligence to spot, counter, and neutralize AI-generated cybercrime before financial harm occurs.
     </p>
 
     <section class="about-section">
@@ -154,14 +193,14 @@
         The democratization of Generative AI, Large Language Models, and real-time audio diffusion vocoders has lowered the barrier of entry for cybercrime syndicates. What once required nation-state infrastructure—synthesizing real-time video feeds, cloning vocal timbres from 3-second audio clips, and orchestrating thousands of simultaneous personalized spear-phishing campaigns—can now be executed by criminal cartels from anywhere in the world.
       </p>
       <p>
-        At ScamShield AI, we believe defensive technology must evolve faster than criminal innovation. We combine zero-trust verification frameworks, real-time linguistic and cryptographic heuristic scanners, and open threat intelligence reporting to provide the public with accessible, uncompromised safety tools.
+        At ScamShield Lab, we believe defensive technology must evolve faster than criminal innovation. We combine zero-trust verification frameworks, real-time linguistic and cryptographic heuristic scanners, and open threat intelligence reporting to provide the public with accessible, uncompromised safety tools.
       </p>
     </section>
 
     <section class="about-section" id="editorial-standards">
       <h2>Research & Editorial Standards</h2>
       <p>
-        Every guide, threat alert, and prevention workflow published on ScamShield AI undergoes rigorous peer review by active cybersecurity professionals. We adhere strictly to:
+        Every guide, threat alert, and prevention workflow published on ScamShield Lab undergoes rigorous peer review by active cybersecurity professionals. We adhere strictly to:
       </p>
       <ul style="padding-left: 1.5rem; color: #CBD5E1; line-height: 1.8;">
         <li><strong>Evidence-Based Reporting:</strong> Threat vectors are verified through public disclosures from federal agencies (FBI IC3, FTC, CISA) and academic research labs.</li>
@@ -254,7 +293,7 @@
     <section class="about-section" id="research-methodology">
       <h2>Research Methodology & Intelligence Architecture</h2>
       <p>
-        ScamShield AI operates as an independent cyber fraud research lab and defensive technology platform. Our threat analysis pipeline is built upon three foundational pillars:
+        ScamShield Lab operates as an independent cyber fraud research lab and defensive technology platform. Our threat analysis pipeline is built upon three foundational pillars:
       </p>
       <div class="team-grid">
         <div class="team-card">
@@ -275,13 +314,51 @@
       </div>
     </section>
 
-    <section class="about-section" style="background: rgba(14, 165, 233, 0.05); padding: 1.5rem; border-radius: var(--radius-md); border: 1px solid rgba(14, 165, 233, 0.2);">
-      <h2>Independent Organization & Trademark Notice</h2>
+    <!-- Brand Clarity & Entity Disambiguation Architecture -->
+    <section class="about-section" id="brand-clarity" style="background: rgba(14, 165, 233, 0.05); padding: 2rem; border-radius: var(--radius-md); border: 1px solid rgba(14, 165, 233, 0.25);">
+      <div style="display: flex; align-items: center; gap: 0.75rem; margin-bottom: 1rem;">
+        <span style="font-size: 1.5rem;" aria-hidden="true">🌐</span>
+        <h2 style="margin: 0;">Brand Clarity & Entity Disambiguation (Independent Organization & Trademark Notice)</h2>
+      </div>
       <p>
-        <strong>ScamShield AI (scamshieldlab.com)</strong> is an independent cybersecurity awareness initiative and private research lab providing global educational tools, zero-trust verification playbooks, and client-side threat detection algorithms.
+        Because global cyber fraud defense is a rapidly expanding field, several unrelated organizations and regional projects utilize variations of the name "ScamShield" across different jurisdictions. To eliminate any ambiguity for visitors, enterprise compliance auditors, and automated evaluators, the matrix below details our distinct platform identity:
       </p>
-      <p style="margin-bottom: 0;">
-        We are an independent platform and are <strong>not affiliated with, associated with, sponsored by, or endorsed by</strong> the Government of Singapore, GovTech Singapore, the National Crime Prevention Council (NCPC), or the official Singapore mobile application initiative operating at <em>scamshield.gov.sg</em>. For Singapore government anti-scam mobile app services and official local reporting, please visit <a href="https://www.scamshield.gov.sg/" target="_blank" rel="noopener noreferrer" style="color: var(--color-primary); text-decoration: underline;">scamshield.gov.sg</a>.
+
+      <div class="matrix-table-wrap" style="margin: 1.5rem 0;">
+        <table class="privacy-matrix-table">
+          <thead>
+            <tr>
+              <th>Platform / Initiative</th>
+              <th>Operational Domain</th>
+              <th>Platform Type & Scope</th>
+              <th>Affiliation Status</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><strong style="color: var(--color-primary);">ScamShield Lab</strong></td>
+              <td><code>scamshieldlab.com</code></td>
+              <td><strong>In-Browser AI Forensic Analyzer:</strong> Zero-install, client-side NLP heuristics, deepfake voice defense kits, and global public awareness research.</td>
+              <td><span style="color: #34D399; font-weight: 700;">★ This Platform</span></td>
+            </tr>
+            <tr>
+              <td><strong>ScamShield SG</strong></td>
+              <td><code>scamshield.gov.sg</code></td>
+              <td><strong>Mobile App (iOS/Android):</strong> National anti-scam mobile filtering blocking fraudulent SMS and calls via Singapore GovTech &amp; NCPC.</td>
+              <td><span style="color: #94A3B8;">Unaffiliated &bull; Separate Govt Project</span></td>
+            </tr>
+            <tr>
+              <td><strong>Regional Indian / Commercial Services</strong></td>
+              <td>Regional telecom &amp; app stores</td>
+              <td><strong>Private Commercial Utilities:</strong> Carrier-level spam call blocking and commercial enterprise fraud telemetry services.</td>
+              <td><span style="color: #94A3B8;">Unaffiliated &bull; Separate Entities</span></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <p style="margin-bottom: 0; font-size: 0.95rem; color: #CBD5E1; line-height: 1.7;">
+        <strong>Formal Non-Affiliation Declaration:</strong> ScamShield Lab (<code>scamshieldlab.com</code>) is an autonomous, private cybersecurity research initiative. We are <strong>not affiliated with, associated with, sponsored by, or endorsed by</strong> the Government of Singapore, GovTech Singapore, the National Crime Prevention Council (NCPC), the Singapore mobile application at <a href="https://www.scamshield.gov.sg/" target="_blank" rel="noopener noreferrer" style="color: var(--color-primary); text-decoration: underline;">scamshield.gov.sg</a>, or any private commercial entities operating in India or other regions.
       </p>
     </section>
 
