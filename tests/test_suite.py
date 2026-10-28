@@ -1248,6 +1248,28 @@ class TestAdSenseAndCrawlerIntegrity(unittest.TestCase):
         self.assertIn('id="security-audit"', about_content)
         self.assertIn('id="contact-disclosure"', about_content)
 
+    def test_mit_license_and_open_source_transparency(self):
+        """Verify presence of MIT License and open-source transparency links across site."""
+        license_path = os.path.join(WORKSPACE_ROOT, "LICENSE")
+        self.assertTrue(os.path.isfile(license_path), "LICENSE file must exist in repository root")
+        with open(license_path, "r", encoding="utf-8") as f:
+            lic_content = f.read()
+        self.assertIn("MIT License", lic_content)
+        self.assertIn("ScamShield Lab", lic_content)
+
+        # Verify open-source GitHub links in how-we-score.html and about.html
+        how_score_path = os.path.join(WORKSPACE_ROOT, "how-we-score.html")
+        with open(how_score_path, "r", encoding="utf-8") as f:
+            score_content = f.read()
+        self.assertIn("https://github.com/hkameta-ui/scamshieldlab-live", score_content)
+        self.assertIn("Deterministic Extraction", score_content)
+        self.assertIn("Explainable Attribution", score_content)
+
+        about_path = os.path.join(WORKSPACE_ROOT, "about.html")
+        with open(about_path, "r", encoding="utf-8") as f:
+            about_content = f.read()
+        self.assertIn("https://github.com/hkameta-ui/scamshieldlab-live", about_content)
+
 
 if __name__ == "__main__":
     unittest.main()

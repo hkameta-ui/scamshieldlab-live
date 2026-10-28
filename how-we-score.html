@@ -390,8 +390,30 @@
             <div class="audit-step-badge">TEST 3 &bull; AUDITABLE CODEBASE</div>
             <div class="audit-step-name">Open-Source Code Inspection</div>
             <p class="audit-step-desc">
-              Inspect <a href="js/app.js" target="_blank" rel="noopener" class="audit-link">js/app.js</a> directly in your browser. All heuristics, regex rules, and scoring algorithms are open, unminified, and execute purely in volatile client RAM.
+              Inspect our heuristics live via <a href="js/app.js" target="_blank" rel="noopener noreferrer" class="audit-link">js/app.js</a> or audit the full public codebase on <a href="https://github.com/hkameta-ui/scamshieldlab-live" target="_blank" rel="noopener noreferrer" class="audit-link" style="font-weight: 700; text-decoration: underline;">GitHub (MIT License)</a>. All logic is open, unminified, and executes purely in volatile client RAM.
             </p>
+          </div>
+        </div>
+
+        <h2><span>🔬</span> Scientific Definition: What "Forensic Analysis" Means (Deterministic Decomposition vs. Marketing Hype)</h2>
+        <p>
+          In commercial software marketing, words like <em>"forensic-grade"</em> and <em>"AI defense"</em> are frequently thrown around as unverifiable marketing buzzwords. At ScamShield Lab, we strictly define <strong>Forensic Analysis</strong> through three reproducible computer science and threat intelligence standards:
+        </p>
+        <div class="team-grid" style="margin: 1.5rem 0;">
+          <div class="team-card">
+            <div class="team-name">1. Deterministic Extraction</div>
+            <div class="team-role">Traceable Indicator Parsing</div>
+            <p class="team-bio">Every scan extracts empirical forensic artifacts: base58/bech32 cryptocurrency wallet addresses, suspicious top-level domains (.top, .xyz, .click), and homoglyph/Punycode character substitutions.</p>
+          </div>
+          <div class="team-card">
+            <div class="team-name">2. Explainable Attribution</div>
+            <div class="team-role">Zero Black-Box Scoring</div>
+            <p class="team-bio">Every risk point added to the 0–100 score is explicitly bound to a named heuristic rule. Users see the exact triggers responsible for their score rather than an arbitrary opaque percentage.</p>
+          </div>
+          <div class="team-card">
+            <div class="team-name">3. Non-Custodial Execution</div>
+            <div class="team-role">Zero-Storage Client RAM</div>
+            <p class="team-bio">Digital evidence is evaluated in temporary browser session memory and garbage-collected upon window closure. No user communication is ever ingested, logged, or serialized to disk.</p>
           </div>
         </div>
 
@@ -560,10 +582,13 @@
           <h4 class="footer-col-title">Legal & Trust</h4>
           <ul class="footer-nav-list">
             <li><a href="about.html">About ScamShield Lab</a></li>
+            <li><a href="about.html#vendor-profile">Vendor & Security Profile</a></li>
             <li><a href="how-we-score.html#privacy-matrix">Privacy-by-Design Matrix</a></li>
             <li><a href="privacy.html">Privacy Policy</a></li>
             <li><a href="terms.html">Terms of Service</a></li>
             <li><a href="terms.html#affiliate-disclosure">Affiliate Disclosure</a></li>
+            <li><a href=".well-known/security.txt">Security.txt (RFC 9116)</a></li>
+            <li><a href="https://github.com/hkameta-ui/scamshieldlab-live" target="_blank" rel="noopener noreferrer">Open Source Codebase</a></li>
           </ul>
         </div>
       </div>
