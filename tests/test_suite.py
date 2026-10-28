@@ -7,6 +7,7 @@ import os
 import re
 import unittest
 import subprocess
+from tests.design_readiness_check import PUBLISHED_HTML_FILES
 
 WORKSPACE_ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
@@ -1142,7 +1143,7 @@ class TestMobileNavigationDrawer(unittest.TestCase):
 
     def test_mobile_toggle_button_present_in_all_pages(self):
         """All 14 published pages must declare the #mobileNavToggle button with accessible label."""
-        html_files = [f for f in os.listdir(WORKSPACE_ROOT) if f.endswith(".html") and not f.startswith("5420")]
+        html_files = PUBLISHED_HTML_FILES
         self.assertEqual(len(html_files), 14, "Must audit all 14 published HTML pages")
         for h in html_files:
             file_path = os.path.join(WORKSPACE_ROOT, h)
@@ -1210,7 +1211,7 @@ class TestAdSenseAndCrawlerIntegrity(unittest.TestCase):
 
     def test_all_pages_have_adsense_account_meta_tag(self):
         """All 14 published HTML pages must declare <meta name="google-adsense-account" content="ca-pub-7565560894775775">."""
-        html_files = [f for f in os.listdir(WORKSPACE_ROOT) if f.endswith(".html") and not f.startswith("5420")]
+        html_files = PUBLISHED_HTML_FILES
         self.assertEqual(len(html_files), 14, "Must audit all 14 published HTML pages")
         for h in html_files:
             file_path = os.path.join(WORKSPACE_ROOT, h)
@@ -1294,6 +1295,14 @@ class TestAdSenseAndCrawlerIntegrity(unittest.TestCase):
         self.assertIn("Release v2026.10.4", about_content)
         self.assertIn("Release v2026.10.3", about_content)
         self.assertIn("Release v2026.10.1", about_content)
+
+    def test_trustpilot_verification_file_present(self):
+        """Verify presence and exact token content of Trustpilot domain verification file."""
+        tp_file = os.path.join(WORKSPACE_ROOT, "bb2aa5f6-194f-4d93-93fc-0d07c3205e3d.html")
+        self.assertTrue(os.path.isfile(tp_file), "Trustpilot verification file must exist in workspace root")
+        with open(tp_file, "r", encoding="utf-8") as f:
+            content = f.read().strip()
+        self.assertEqual(content, "bb2aa5f6-194f-4d93-93fc-0d07c3205e3d")
 
 
 if __name__ == "__main__":
