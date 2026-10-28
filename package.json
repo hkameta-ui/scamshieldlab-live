@@ -2,7 +2,7 @@
   "name": "scamshieldlab-live",
   "version": "1.0.0",
   "private": true,
-  "description": "ScamShield AI - Autonomous Threat Intelligence Hub",
+  "description": "ScamShield Lab - Autonomous Threat Intelligence Hub",
   "scripts": {
     "test": "python -m unittest tests/test_suite.py",
     "check:readiness": "python tests/design_readiness_check.py",
