@@ -1284,8 +1284,20 @@ class TestAdSenseAndCrawlerIntegrity(unittest.TestCase):
         self.assertIn("Advisory Notice", score_content)
         self.assertIn("not a definitive legal or infallible verdict", score_content)
 
+    def test_operational_maturity_changelog_present(self):
+        """Verify presence of Operational Cadence & Threat Intelligence Changelog in about.html."""
+        about_path = os.path.join(WORKSPACE_ROOT, "about.html")
+        with open(about_path, "r", encoding="utf-8") as f:
+            about_content = f.read()
+        self.assertIn('id="threat-changelog"', about_content)
+        self.assertIn("Operational Cadence & Threat Intelligence Changelog", about_content)
+        self.assertIn("Release v2026.10.4", about_content)
+        self.assertIn("Release v2026.10.3", about_content)
+        self.assertIn("Release v2026.10.1", about_content)
+
 
 if __name__ == "__main__":
+
     unittest.main()
 
 
