@@ -1227,6 +1227,27 @@ class TestAdSenseAndCrawlerIntegrity(unittest.TestCase):
                 f"Page {h} missing AdSense verification script tag"
             )
 
+    def test_rfc9116_security_txt_and_vendor_profile(self):
+        """Validate RFC 9116 security.txt existence, fields, and vendor profile in about.html."""
+        sec_path = os.path.join(WORKSPACE_ROOT, ".well-known", "security.txt")
+        sec_root_path = os.path.join(WORKSPACE_ROOT, "security.txt")
+        self.assertTrue(os.path.isfile(sec_path), ".well-known/security.txt must exist")
+        self.assertTrue(os.path.isfile(sec_root_path), "security.txt root fallback must exist")
+        
+        with open(sec_path, "r", encoding="utf-8") as f:
+            content = f.read()
+        self.assertIn("Contact: mailto:security@scamshieldlab.com", content)
+        self.assertIn("Expires:", content)
+        self.assertIn("Canonical: https://scamshieldlab.com/.well-known/security.txt", content)
+
+        # Check about.html has vendor-profile and security-audit sections
+        about_path = os.path.join(WORKSPACE_ROOT, "about.html")
+        with open(about_path, "r", encoding="utf-8") as f:
+            about_content = f.read()
+        self.assertIn('id="vendor-profile"', about_content)
+        self.assertIn('id="security-audit"', about_content)
+        self.assertIn('id="contact-disclosure"', about_content)
+
 
 if __name__ == "__main__":
     unittest.main()

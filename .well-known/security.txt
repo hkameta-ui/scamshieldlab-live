@@ -1,0 +1,11 @@
+# ScamShield Lab Security Vulnerability Disclosure Policy
+# Compliant with RFC 9116
+# Canonical Location: https://scamshieldlab.com/.well-known/security.txt
+
+Contact: mailto:security@scamshieldlab.com
+Expires: 2027-10-31T23:59:59.000Z
+Preferred-Languages: en
+Canonical: https://scamshieldlab.com/.well-known/security.txt
+Policy: https://scamshieldlab.com/about.html#security-audit
+Acknowledgments: https://scamshieldlab.com/about.html#research-leadership
+Encryption: https://scamshieldlab.com/about.html#contact-disclosure

@@ -2,6 +2,8 @@
 *.txt
 !ads.txt
 !robots.txt
+!security.txt
+!.well-known/security.txt
 .DS_Store
 Thumbs.db
 __pycache__/
