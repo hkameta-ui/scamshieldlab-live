@@ -1270,8 +1270,34 @@ class TestAdSenseAndCrawlerIntegrity(unittest.TestCase):
             about_content = f.read()
         self.assertIn("https://github.com/hkameta-ui/scamshieldlab-live", about_content)
 
+    def test_advisory_signal_notice_present(self):
+        """Verify presence of Advisory Intelligence Signal notice in index.html and how-we-score.html."""
+        index_path = os.path.join(WORKSPACE_ROOT, "index.html")
+        with open(index_path, "r", encoding="utf-8") as f:
+            index_content = f.read()
+        self.assertIn("Advisory Intelligence Signal", index_content)
+        self.assertIn("Not a Final Verdict", index_content)
+
+        how_score_path = os.path.join(WORKSPACE_ROOT, "how-we-score.html")
+        with open(how_score_path, "r", encoding="utf-8") as f:
+            score_content = f.read()
+        self.assertIn("Advisory Notice", score_content)
+        self.assertIn("not a definitive legal or infallible verdict", score_content)
+
+    def test_operational_maturity_changelog_present(self):
+        """Verify presence of Operational Cadence & Threat Intelligence Changelog in about.html."""
+        about_path = os.path.join(WORKSPACE_ROOT, "about.html")
+        with open(about_path, "r", encoding="utf-8") as f:
+            about_content = f.read()
+        self.assertIn('id="threat-changelog"', about_content)
+        self.assertIn("Operational Cadence & Threat Intelligence Changelog", about_content)
+        self.assertIn("Release v2026.10.4", about_content)
+        self.assertIn("Release v2026.10.3", about_content)
+        self.assertIn("Release v2026.10.1", about_content)
+
 
 if __name__ == "__main__":
+
     unittest.main()
 
 
