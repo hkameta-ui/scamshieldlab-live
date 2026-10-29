@@ -1,0 +1,380 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Editorial Standards, Fact-Checking &amp; E-E-A-T Policy | ScamShield Lab</title>
+  
+  <meta name="description" content="ScamShield Lab editorial standards, E-E-A-T methodology, adversary threat verification protocols, commercial independence, and transparent corrections policy.">
+  <meta name="keywords" content="editorial policy, E-E-A-T cybersecurity standards, threat research methodology, fact-checking process, ScamShield Lab ethics, corrections policy">
+  <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1">
+  <link rel="canonical" href="https://scamshieldlab.com/editorial-policy.html">
+
+  <!-- Open Graph -->
+  <meta property="og:type" content="article">
+  <meta property="og:site_name" content="ScamShield Lab - AI Forensic Analyzer">
+  <meta property="og:title" content="Editorial Standards, Fact-Checking & E-E-A-T Policy | ScamShield Lab">
+  <meta property="og:description" content="Discover how ScamShield Lab investigates emerging AI cybercrime, validates telemetry, ensures zero commercial bias, and maintains journalistic integrity.">
+  <meta property="og:url" content="https://scamshieldlab.com/editorial-policy.html">
+  <meta property="og:image" content="https://scamshieldlab.com/assets/images/hero.webp">
+
+  <!-- Twitter Cards -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Editorial Standards & E-E-A-T Policy | ScamShield Lab">
+  <meta name="twitter:description" content="Our verifiable standards for threat intelligence reporting, mathematical scoring explainability, and victim-first defense.">
+  <meta name="twitter:image" content="https://scamshieldlab.com/assets/images/hero.webp">
+
+  <!-- Security Standards Compliance (Rule 2) -->
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' https://pagead2.googlesyndication.com https://*.google.com https://*.doubleclick.net https://static.cloudflareinsights.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; img-src 'self' data: https:; connect-src 'self' https://pagead2.googlesyndication.com https://*.google.com https://*.doubleclick.net https://cloudflareinsights.com; frame-src https://*.google.com https://*.doubleclick.net;">
+  <meta http-equiv="X-Content-Type-Options" content="nosniff">
+  <meta name="referrer" content="strict-origin-when-cross-origin">
+
+  <!-- Performance Preconnect & Zero-Shift Font Loading (Rule 1) -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;600&family=Outfit:wght@600;700;800&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap">
+
+  <!-- Google AdSense Verification & Auto-Ads Script -->
+  <meta name="google-adsense-account" content="ca-pub-7565560894775775">
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-7565560894775775" crossorigin="anonymous"></script>
+
+  <link rel="stylesheet" href="css/styles.css?v=20261029-adsense">
+  <link rel="icon" type="image/jpeg" href="assets/images/logo.jpg">
+  <script src="config.js?v=20261029-adsense" defer></script>
+
+  <style>
+    .editorial-container {
+      max-width: 900px;
+      margin: 0 auto;
+      padding: 3.5rem 1.5rem 5rem;
+    }
+    .editorial-header {
+      margin-bottom: 3rem;
+      border-bottom: 1px solid var(--border-glass);
+      padding-bottom: 2rem;
+    }
+    .editorial-title {
+      font-family: var(--font-heading);
+      font-size: 2.5rem;
+      font-weight: 800;
+      color: var(--text-main);
+      margin: 0.75rem 0;
+      letter-spacing: -0.02em;
+    }
+    .editorial-lead {
+      color: var(--text-muted);
+      font-size: 1.15rem;
+      line-height: 1.8;
+      margin-bottom: 1.5rem;
+    }
+    .pillar-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1.5rem;
+      margin: 2.5rem 0;
+    }
+    @media (max-width: 768px) {
+      .pillar-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+    .pillar-card {
+      background: rgba(15, 23, 42, 0.75);
+      border: 1px solid var(--border-glass);
+      border-radius: var(--radius-md);
+      padding: 1.75rem;
+      box-shadow: 0 8px 24px rgba(0, 0, 0, 0.25);
+    }
+    .pillar-card h3 {
+      font-family: var(--font-heading);
+      font-size: 1.25rem;
+      color: var(--color-primary);
+      margin-top: 0;
+      margin-bottom: 0.75rem;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+    .pillar-card p {
+      color: #94A3B8;
+      font-size: 0.95rem;
+      line-height: 1.7;
+      margin: 0;
+    }
+    .content-block {
+      margin-bottom: 3rem;
+    }
+    .content-block h2 {
+      font-family: var(--font-heading);
+      font-size: 1.75rem;
+      font-weight: 700;
+      color: var(--text-main);
+      margin: 2rem 0 1rem;
+      display: flex;
+      align-items: center;
+      gap: 0.65rem;
+    }
+    .content-block p {
+      font-size: 1.02rem;
+      color: #CBD5E1;
+      line-height: 1.8;
+      margin-bottom: 1.25rem;
+    }
+    .callout-box {
+      background: rgba(56, 189, 248, 0.08);
+      border-left: 4px solid var(--color-primary);
+      border-radius: 0 var(--radius-md) var(--radius-md) 0;
+      padding: 1.25rem 1.5rem;
+      margin: 1.5rem 0;
+      color: #E2E8F0;
+      font-size: 0.95rem;
+      line-height: 1.7;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Universal Accessibility Skip Link (Rule 4) -->
+  <a href="#main-content" class="skip-link">Skip to main content</a>
+
+  <!-- Top Real-Time Threat Intelligence Feed -->
+  <aside class="site-ticker" aria-label="Live Threat Intelligence Telemetry">
+    <div class="ticker-inner">
+      <span class="ticker-badge">EDITORIAL INTEL</span>
+      <div class="ticker-content" id="liveTickerFeed">
+        <span class="ticker-item"><strong style="color: var(--color-primary);">E-E-A-T COMMITMENT:</strong> All published guides adhere strictly to CISA, FBI IC3, and NIST cybersecurity benchmarks. Zero pay-to-play editorial placements.</span>
+      </div>
+    </div>
+  </aside>
+
+  <!-- Global Site Header -->
+  <header class="site-header">
+    <div class="container nav-inner">
+      <a href="index.html" class="brand-logo" aria-label="ScamShield Lab Home">
+        <img src="assets/images/logo.jpg" alt="ScamShield Lab Logo" class="brand-icon" width="36" height="36" decoding="async">
+        <div class="brand-text-col">
+          <span class="brand-main-title">ScamShield<span class="brand-lab-accent">Lab</span></span>
+          <span class="brand-sub-badge">AI FORENSIC ANALYZER</span>
+        </div>
+      </a>
+
+      <nav aria-label="Primary Navigation" class="main-nav">
+        <ul class="nav-links" id="primaryNavLinks">
+          <li><a href="index.html#analyzer">Scanner</a></li>
+          <li><a href="quiz.html">Spot the Fake</a></li>
+          <li><a href="family-safe-word.html">Safe Word Kit</a></li>
+          <li><a href="incident-response.html" style="color: #EF4444; font-weight: 700;">🚨 Got Scammed?</a></li>
+          <li><a href="index.html#threat-radar">Threat Radar</a></li>
+          <li><a href="index.html#guides">Guides</a></li>
+          <li><a href="about.html">About</a></li>
+          <li><a href="contact.html">Contact</a></li>
+        </ul>
+      </nav>
+
+      <div class="nav-actions">
+        <a href="index.html#analyzer" class="nav-cta-btn">
+          <span class="pulse-beacon" aria-hidden="true"></span>
+          <span>Instant Scan</span>
+        </a>
+        <button type="button" class="mobile-toggle-btn" id="mobileNavToggle" aria-label="Toggle Navigation Menu">&#9776;</button>
+      </div>
+    </div>
+  </header>
+
+  <main class="editorial-container" id="main-content">
+    
+    <div style="font-size: 0.85rem; color: var(--text-faint); margin-bottom: 1.25rem;">
+      <a href="index.html">Home</a> &gt; <span>Editorial Standards &amp; E-E-A-T</span>
+    </div>
+
+    <header class="editorial-header">
+      <span class="hero-pill">⚖️ Editorial Integrity &amp; Research Standards</span>
+      <h1 class="editorial-title">Editorial Standards, E-E-A-T Methodology &amp; Corrections Policy</h1>
+      <p class="editorial-lead">
+        ScamShield Lab is an independent cybersecurity research initiative dedicated to democratizing threat intelligence and consumer defense against synthetic fraud. Because cybercrime directly impacts personal safety and financial well-being (YMYL), our editorial guidelines adhere to the highest industry standards of Experience, Expertise, Authoritativeness, and Trustworthiness.
+      </p>
+    </header>
+
+    <section class="content-block">
+      <h2><span>🏛️</span> The Four Pillars of ScamShield Lab E-E-A-T</h2>
+      <p>
+        Every investigation, forensic guide, and interactive heuristic scanner published on ScamShield Lab is governed by our foundational four-pillar framework:
+      </p>
+
+      <div class="pillar-grid">
+        <div class="pillar-card">
+          <h3><span>🔍</span> 1. Direct Experience</h3>
+          <p>
+            Our research desk actively analyzes real adversary attack infrastructure—including AiTM reverse-proxy phishing kits (Evilginx, Modlishka), bulletproof hosting clusters, synthetic audio vocoder scripts, and decentralized wallet draining smart contracts. We never publish theoretical assumptions without hands-on forensic telemetry.
+          </p>
+        </div>
+
+        <div class="pillar-card">
+          <h3><span>🎓</span> 2. Verifiable Expertise</h3>
+          <p>
+            All content is authored and reviewed by credentialed identity architects, computer science academicians, and certified security researchers. Research leadership includes <strong>Dr. Priyanka Ameta</strong> (Computer Science Academician and AI researcher) and <strong>Hemendra K.</strong> (Identity and Access Management / Zero-Trust specialist).
+          </p>
+        </div>
+
+        <div class="pillar-card">
+          <h3><span>📜</span> 3. Authoritative Sourcing</h3>
+          <p>
+            Statistical claims, criminal vector mechanics, and victim loss metrics must be independently verified against primary public enforcement disclosures: FBI IC3 Annual Reports, FTC Consumer Protection Bulletins, CISA Known Exploited Vulnerabilities, and NIST Special Publications (SP 800-63B).
+          </p>
+        </div>
+
+        <div class="pillar-card">
+          <h3><span>🛡️</span> 4. Zero-Trust Transparency</h3>
+          <p>
+            Privacy is mathematically guaranteed through local in-browser client-side JavaScript execution. We never log or store user text inputs on cloud servers. Our source code and heuristic rules are open for public audit on GitHub.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <section class="content-block">
+      <h2><span>🔬</span> The Multi-Step Editorial &amp; Peer Review Process</h2>
+      <p>
+        Before any guide, scam alert, or checklist is published on ScamShield Lab, it must successfully navigate a 4-stage verification lifecycle:
+      </p>
+
+      <ol style="color: #CBD5E1; line-height: 1.9; padding-left: 1.5rem; font-size: 1.02rem;">
+        <li>
+          <strong>Threat Intelligence Triage &amp; Vector Identification:</strong> The research desk monitors emerging lures across dark web forums, telecom registries, SMS spam repositories, and academic vulnerability disclosures.
+        </li>
+        <li>
+          <strong>Technical Forensic Analysis:</strong> Researchers isolate the underlying psychological mechanism (coercive urgency, authority simulation, artificial scarcity) and technological exploit (lookalike Punycode domains, disposable VoIP ranges, synthetic neural acoustics).
+        </li>
+        <li>
+          <strong>Empathetic Tone &amp; Anti-Victim-Blaming Audit:</strong> Guides are audited to ensure victims of deception are never shamed or judged. Action plans focus purely on adversary mechanics and constructive remediation steps.
+        </li>
+        <li>
+          <strong>Peer Review &amp; Citation Verification:</strong> A secondary certified practitioner verifies all footnotes, regulatory statutory references (e.g., Regulation E, UCC Article 4A), and ensures recommended countermeasures are technically viable.
+        </li>
+      </ol>
+    </section>
+
+    <section class="content-block">
+      <h2><span>💰</span> Commercial Independence &amp; Affiliate Disclosure</h2>
+      <p>
+        To ensure our AI Forensic Text Analyzer, Emergency Incident Playbook, and Educational Guides remain 100% free with zero paywalls, ScamShield Lab sustains operations through Google AdSense advertising and verified cybersecurity affiliate partnerships.
+      </p>
+
+      <div class="callout-box">
+        <strong>Our Commercial Independence Guarantee:</strong>
+        <ul style="margin: 0.5rem 0 0 1.25rem; padding: 0;">
+          <li>Commercial sponsors or affiliate programs have <strong>zero editorial control</strong> over our threat rankings, heuristic scores, or fraud warnings.</li>
+          <li>We never accept paid reviews or sponsored placements for unverified software. Every recommended countermeasure (such as NordVPN Threat Protection, Google Workspace, NordPass, or hardware security keys) is selected based on independent security certifications (AV-Comparatives, SE Labs, FIDO2 certification).</li>
+          <li>All affiliate links are clearly and unambiguously tagged with <code>rel="noopener sponsored"</code> in compliance with Federal Trade Commission (FTC) guidelines.</li>
+        </ul>
+      </div>
+    </section>
+
+    <section class="content-block">
+      <h2><span>🔄</span> Corrections, Updates &amp; Errata Policy</h2>
+      <p>
+        In the rapidly changing threat landscape, accuracy is paramount. We actively welcome feedback, peer review challenges, and corrections from the cybersecurity community.
+      </p>
+      <p>
+        If you identify a factual error, an outdated government hotline, or a broken source link in any of our published materials:
+      </p>
+      <ul style="color: #CBD5E1; line-height: 1.8; padding-left: 1.5rem;">
+        <li>Please email our editorial desk directly at <a href="mailto:editorial@scamshieldlab.com" style="color: var(--color-primary); font-family: var(--font-mono);">editorial@scamshieldlab.com</a> with the URL and supporting citation.</li>
+        <li><strong>Resolution SLA:</strong> Our research team reviews correction submissions within <strong>24 business hours</strong>.</li>
+        <li><strong>Transparency:</strong> If a material correction is made, a timestamped "Correction Notice" or "Updated" notation is appended to the article header explaining what was modified.</li>
+      </ul>
+    </section>
+
+    <!-- Research Leadership Box -->
+    <div style="background: rgba(15, 23, 42, 0.7); border: 1px solid var(--border-glow); border-radius: var(--radius-lg); padding: 2rem; margin-top: 3rem;">
+      <h3 style="color: var(--text-main); font-size: 1.25rem; margin-top: 0; margin-bottom: 0.75rem;">Research Leadership Contact</h3>
+      <p style="color: #94A3B8; font-size: 0.95rem; line-height: 1.7; margin-bottom: 1.25rem;">
+        ScamShield Lab is spearheaded by Dr. Priyanka Ameta and Hemendra K., supported by an international advisory desk of volunteer security analysts and reverse engineers. For academic inquiries or collaborative research invitations, please contact our desk:
+      </p>
+      <div style="display: flex; gap: 1.5rem; flex-wrap: wrap;">
+        <a href="contact.html" class="btn btn-primary" style="padding: 0.75rem 1.5rem; font-size: 0.9rem;">Contact Editorial Board &rarr;</a>
+        <a href="about.html" class="btn btn-secondary" style="padding: 0.75rem 1.5rem; font-size: 0.9rem;">View Research Leadership &rarr;</a>
+      </div>
+    </div>
+
+  </main>
+
+  <!-- Site Footer -->
+  <footer class="site-footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-brand-col">
+          <a href="index.html" class="brand-logo" aria-label="ScamShield Lab Home">
+            <img src="assets/images/logo.jpg" alt="ScamShield Lab Logo" class="brand-icon" width="36" height="36" loading="lazy">
+            <div class="brand-text-col">
+              <span class="brand-main-title">ScamShield<span class="brand-lab-accent">Lab</span></span>
+              <span class="brand-sub-badge">AI FORENSIC ANALYZER</span>
+            </div>
+          </a>
+          <div class="footer-review-pill">
+            <span class="review-pill-icon" aria-hidden="true">🛡️</span>
+            <a href="about.html#editorial-standards" class="review-pill-link">Reviewed by Cybersecurity Professionals</a>
+            <span class="review-pill-divider" aria-hidden="true">&bull;</span>
+            <span class="review-pill-date">Last Updated: October 2026</span>
+          </div>
+          <p class="footer-brand-desc">
+            Independent threat intelligence initiative and AI forensic analyzer dedicated to democratizing cyber fraud detection, deepfake defense, and zero-trust privacy.
+          </p>
+        </div>
+
+        <div class="footer-col">
+          <h4 class="footer-col-title">Detection Tools</h4>
+          <ul class="footer-nav-list">
+            <li><a href="index.html#analyzer">AI Scam Text Analyzer</a></li>
+            <li><a href="how-we-score.html">How We Score (0–100 Engine)</a></li>
+            <li><a href="family-safe-word.html">Family Safe Word Kit</a></li>
+            <li><a href="index.html#threat-radar">Threat Radar 2026</a></li>
+            <li><a href="quiz.html">Vulnerability Quiz</a></li>
+            <li><a href="incident-response.html" style="color: #EF4444; font-weight: 600;">🚨 Emergency Action Plan</a></li>
+          </ul>
+        </div>
+
+        <div class="footer-col">
+          <h4 class="footer-col-title">Threat Research Guides</h4>
+          <ul class="footer-nav-list">
+            <li><a href="guide-phishing.html">Phishing &amp; 2FA Bypasses</a></li>
+            <li><a href="guide-job-scams.html">Job &amp; Task Deposit Scams</a></li>
+            <li><a href="guide-delivery-scams.html">Delivery &amp; Toll Smishing</a></li>
+            <li><a href="guide-voice-cloning.html">Voice Cloning Deepfake Defense</a></li>
+            <li><a href="guide-pig-butchering.html">Agentic Pig Butchering</a></li>
+            <li><a href="guide-digital-arrest.html">Digital Arrest &amp; Video Scams</a></li>
+          </ul>
+        </div>
+
+        <div class="footer-col">
+          <h4 class="footer-col-title">Legal &amp; Trust</h4>
+          <ul class="footer-nav-list">
+            <li><a href="about.html">About ScamShield Lab</a></li>
+            <li><a href="editorial-policy.html">Editorial Standards &amp; E-E-A-T</a></li>
+            <li><a href="contact.html">Contact Us</a></li>
+            <li><a href="about.html#vendor-profile">Vendor &amp; Security Profile</a></li>
+            <li><a href="how-we-score.html#privacy-matrix">Privacy-by-Design Matrix</a></li>
+            <li><a href="privacy.html">Privacy Policy</a></li>
+            <li><a href="terms.html">Terms of Service</a></li>
+            <li><a href="terms.html#affiliate-disclosure">Affiliate Disclosure</a></li>
+            <li><a href=".well-known/security.txt">Security.txt (RFC 9116)</a></li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="footer-bottom-bar">
+        <div>&copy; 2026 ScamShield Lab - AI Forensic Analyzer. All rights reserved. Built for global public cyber defense.</div>
+        <div>
+          <span>Zero-Trust Protocol Active</span> &bull; 
+          <a href="privacy.html" style="color: var(--text-faint);">Privacy</a> &bull; 
+          <a href="terms.html" style="color: var(--text-faint);">Terms &amp; Disclosures</a>
+        </div>
+      </div>
+      <div class="footer-disclaimer">
+        <strong>Notice & Non-Affiliation:</strong> ScamShield Lab - AI Forensic Analyzer (scamshieldlab.com) is an independent cybersecurity awareness and educational platform. It is not affiliated with, sponsored by, or connected to the Government of Singapore, GovTech Singapore, the National Crime Prevention Council (NCPC), or the official Singapore mobile application at scamshield.gov.sg.
+      </div>
+    </div>
+  </footer>
+
+</body>
+</html>

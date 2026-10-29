@@ -1144,7 +1144,7 @@ class TestMobileNavigationDrawer(unittest.TestCase):
     def test_mobile_toggle_button_present_in_all_pages(self):
         """All 14 published pages must declare the #mobileNavToggle button with accessible label."""
         html_files = PUBLISHED_HTML_FILES
-        self.assertEqual(len(html_files), 14, "Must audit all 14 published HTML pages")
+        self.assertEqual(len(html_files), 22, "Must audit all 22 published HTML pages")
         for h in html_files:
             file_path = os.path.join(WORKSPACE_ROOT, h)
             with open(file_path, "r", encoding="utf-8") as f:
@@ -1212,7 +1212,7 @@ class TestAdSenseAndCrawlerIntegrity(unittest.TestCase):
     def test_all_pages_have_adsense_account_meta_tag(self):
         """All 14 published HTML pages must declare <meta name="google-adsense-account" content="ca-pub-7565560894775775">."""
         html_files = PUBLISHED_HTML_FILES
-        self.assertEqual(len(html_files), 14, "Must audit all 14 published HTML pages")
+        self.assertEqual(len(html_files), 22, "Must audit all 22 published HTML pages")
         for h in html_files:
             file_path = os.path.join(WORKSPACE_ROOT, h)
             with open(file_path, "r", encoding="utf-8") as f:

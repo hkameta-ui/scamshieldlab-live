@@ -30,7 +30,15 @@ PUBLISHED_HTML_FILES = [
     "guide-voice-cloning.html",
     "guide-pig-butchering.html",
     "guide-digital-arrest.html",
+    "guide-deepfake-video.html",
+    "guide-sim-swapping.html",
+    "guide-remote-access-scams.html",
+    "guide-crypto-drainer-scams.html",
+    "guide-bank-impersonation.html",
+    "guide-student-loan-scams.html",
     "about.html",
+    "editorial-policy.html",
+    "contact.html",
     "privacy.html",
     "terms.html"
 ]
@@ -286,7 +294,7 @@ def run_readiness_checks():
         failures.append(f"Pages missing explicit non-affiliation disclaimer with official Singapore app: {missing_disclaimer}")
         print(f"  FAILED: Missing legal disclaimer in {missing_disclaimer}.")
     else:
-        print("  PASSED: All 11 pages display explicit non-affiliation disclaimer.")
+        print(f"  PASSED: All {len(raw_contents)} pages display explicit non-affiliation disclaimer.")
 
     # ---------------------------------------------------------
     # CHECK 7: SEO METADATA & CANONICAL INTEGRITY

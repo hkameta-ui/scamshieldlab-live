@@ -1,0 +1,376 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>The 2026 Guide to SIM Swap Attacks &amp; 2FA Bypasses | ScamShield Lab</title>
+  
+  <meta name="description" content="Technical guide to SIM swapping attacks, carrier social engineering, eSIM porting exploits, SMS 2FA interception, and hardware passkey defense.">
+  <meta name="keywords" content="SIM swap attack, SIM hijacking, eSIM port out scam, carrier social engineering, SMS OTP intercept, FIDO2 passkey defense, account takeover">
+  <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1">
+  <link rel="canonical" href="https://scamshieldlab.com/guide-sim-swapping.html">
+
+  <!-- Open Graph -->
+  <meta property="og:type" content="article">
+  <meta property="og:site_name" content="ScamShield Lab - AI Forensic Analyzer">
+  <meta property="og:title" content="The 2026 Guide to SIM Swap Attacks & 2FA Bypasses | ScamShield Lab">
+  <meta property="og:description" content="How telecom carrier social engineering redirects SMS two-factor codes, drains crypto wallets, and how to lock down mobile accounts.">
+  <meta property="og:url" content="https://scamshieldlab.com/guide-sim-swapping.html">
+  <meta property="og:image" content="https://scamshieldlab.com/assets/images/hero.webp">
+
+  <!-- Twitter Cards -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="SIM Swap Attacks & 2FA Bypasses Guide | ScamShield Lab">
+  <meta name="twitter:description" content="Carrier port-out exploits, forensic indicators, and FIDO2 authentication mitigations.">
+  <meta name="twitter:image" content="https://scamshieldlab.com/assets/images/hero.webp">
+
+  <!-- Schema.org TechArticle Data -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "TechArticle",
+    "headline": "The 2026 Guide to SIM Swap Attacks, Carrier Social Engineering & 2FA Bypasses",
+    "description": "Comprehensive investigation into cellular port-out fraud, telecom identity impersonation, and hardware cryptographic countermeasures.",
+    "author": {
+      "@type": "Person",
+      "name": "Hemendra K.",
+      "jobTitle": "Cybersecurity Researcher & IAM Specialist"
+    },
+    "publisher": {
+      "@type": "Organization",
+      "name": "ScamShield Lab - AI Forensic Analyzer",
+      "url": "https://scamshieldlab.com/"
+    },
+    "mainEntityOfPage": "https://scamshieldlab.com/guide-sim-swapping.html",
+    "datePublished": "2026-10-29",
+    "dateModified": "2026-10-29"
+  }
+  </script>
+
+  <!-- Security Standards Compliance (Rule 2) -->
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' https://pagead2.googlesyndication.com https://*.google.com https://*.doubleclick.net https://static.cloudflareinsights.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; img-src 'self' data: https:; connect-src 'self' https://pagead2.googlesyndication.com https://*.google.com https://*.doubleclick.net https://cloudflareinsights.com; frame-src https://*.google.com https://*.doubleclick.net;">
+  <meta http-equiv="X-Content-Type-Options" content="nosniff">
+  <meta name="referrer" content="strict-origin-when-cross-origin">
+
+  <!-- Performance Preconnect & Zero-Shift Font Loading (Rule 1) -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;600&family=Outfit:wght@600;700;800&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap">
+
+  <!-- Google AdSense Verification & Auto-Ads Script -->
+  <meta name="google-adsense-account" content="ca-pub-7565560894775775">
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-7565560894775775" crossorigin="anonymous"></script>
+
+  <link rel="stylesheet" href="css/styles.css?v=20261029-adsense">
+  <link rel="icon" type="image/jpeg" href="assets/images/logo.jpg">
+  <script src="config.js?v=20261029-adsense" defer></script>
+
+  <style>
+    .article-container {
+      max-width: 900px;
+      margin: 0 auto;
+      padding: 3rem 1.5rem 5rem;
+    }
+    .article-header {
+      margin-bottom: 2.5rem;
+      border-bottom: 1px solid var(--border-glass);
+      padding-bottom: 2rem;
+    }
+    .article-featured-img {
+      width: 100%;
+      height: auto;
+      aspect-ratio: 16 / 9;
+      object-fit: cover;
+      border-radius: var(--radius-lg);
+      border: 1px solid var(--border-glow);
+      margin-bottom: 2.5rem;
+      background: rgba(15, 23, 42, 0.6);
+    }
+    .article-content h2 {
+      font-family: var(--font-heading);
+      font-size: 1.85rem;
+      margin: 2.75rem 0 1rem;
+      color: var(--text-main);
+    }
+    .article-content h3 {
+      font-family: var(--font-heading);
+      font-size: 1.35rem;
+      margin: 1.75rem 0 0.75rem;
+      color: var(--color-primary);
+    }
+    .article-content p {
+      font-size: 1.05rem;
+      color: #CBD5E1;
+      margin-bottom: 1.35rem;
+      line-height: 1.8;
+    }
+    .forensic-box {
+      background: rgba(15, 23, 42, 0.85);
+      border: 1px solid var(--border-glass);
+      border-left: 4px solid var(--color-primary);
+      border-radius: 0 var(--radius-md) var(--radius-md) 0;
+      padding: 1.5rem;
+      margin: 1.75rem 0;
+    }
+    .forensic-box h4 {
+      color: #FFFFFF;
+      font-size: 1.1rem;
+      margin-top: 0;
+      margin-bottom: 0.5rem;
+    }
+    .citation-list {
+      border-top: 1px solid var(--border-glass);
+      padding-top: 2rem;
+      margin-top: 4rem;
+      font-size: 0.88rem;
+      color: var(--text-muted);
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Universal Accessibility Skip Link (Rule 4) -->
+  <a href="#main-content" class="skip-link">Skip to main content</a>
+
+  <!-- Top Real-Time Threat Intelligence Feed -->
+  <aside class="site-ticker" aria-label="Live Threat Intelligence Telemetry">
+    <div class="ticker-inner">
+      <span class="ticker-badge">SIM SWAP ALERT</span>
+      <div class="ticker-content" id="liveTickerFeed">
+        <span class="ticker-item"><strong style="color: #EF4444;">CARRIER ADVISORY:</strong> Sudden loss of cellular signal and 'SOS Only' display indicates potential active SIM swap hijacking. Call carrier fraud desk immediately from another phone.</span>
+      </div>
+    </div>
+  </aside>
+
+  <!-- Global Site Header -->
+  <header class="site-header">
+    <div class="container nav-inner">
+      <a href="index.html" class="brand-logo" aria-label="ScamShield Lab Home">
+        <img src="assets/images/logo.jpg" alt="ScamShield Lab Logo" class="brand-icon" width="36" height="36" decoding="async">
+        <div class="brand-text-col">
+          <span class="brand-main-title">ScamShield<span class="brand-lab-accent">Lab</span></span>
+          <span class="brand-sub-badge">AI FORENSIC ANALYZER</span>
+        </div>
+      </a>
+
+      <nav aria-label="Primary Navigation" class="main-nav">
+        <ul class="nav-links" id="primaryNavLinks">
+          <li><a href="index.html#analyzer">Scanner</a></li>
+          <li><a href="quiz.html">Spot the Fake</a></li>
+          <li><a href="family-safe-word.html">Safe Word Kit</a></li>
+          <li><a href="incident-response.html" style="color: #EF4444; font-weight: 700;">🚨 Got Scammed?</a></li>
+          <li><a href="index.html#threat-radar">Threat Radar</a></li>
+          <li><a href="index.html#guides">Guides</a></li>
+          <li><a href="about.html">About</a></li>
+          <li><a href="contact.html">Contact</a></li>
+        </ul>
+      </nav>
+
+      <div class="nav-actions">
+        <a href="index.html#analyzer" class="nav-cta-btn">
+          <span class="pulse-beacon" aria-hidden="true"></span>
+          <span>Instant Scan</span>
+        </a>
+        <button type="button" class="mobile-toggle-btn" id="mobileNavToggle" aria-label="Toggle Navigation Menu">&#9776;</button>
+      </div>
+    </div>
+  </header>
+
+  <main class="article-container" id="main-content">
+    
+    <div style="font-size: 0.85rem; color: var(--text-faint); margin-bottom: 1.25rem;">
+      <a href="index.html">Home</a> &gt; <a href="index.html#guides">Threat Research</a> &gt; <span>SIM Swap Hijacking &amp; 2FA Defense</span>
+    </div>
+
+    <article>
+      <header class="article-header">
+        <span class="hero-pill">📱 Telecom Exploits &amp; Authentication Hijacking</span>
+        <h1 style="font-family: var(--font-heading); font-size: 2.75rem; font-weight: 800; line-height: 1.2; margin-top: 0.75rem;">
+          The 2026 Guide to SIM Swap Attacks, Carrier Social Engineering &amp; 2FA Bypasses
+        </h1>
+        <div class="article-meta">
+          <span>By <strong>Hemendra K.</strong>, IAM Specialist &amp; Zero-Trust Architect</span>
+          <span>&bull;</span>
+          <span>Peer-Reviewed by <strong>Dr. Priyanka Ameta</strong>, AI Research &amp; Academics</span>
+          <span>&bull;</span>
+          <span>Updated: October 2026</span>
+          <span>&bull;</span>
+          <span>10 min read</span>
+        </div>
+      </header>
+
+      <picture>
+        <source srcset="assets/images/hero.webp" type="image/webp">
+        <img src="assets/images/hero.jpg" alt="SIM Card Cyber Attack and Cellular Telemetry Hijacking Forensic Investigation" class="article-featured-img" width="900" height="506" decoding="async">
+      </picture>
+
+      <div class="article-content">
+        <p>
+          In the contemporary cybersecurity ecosystem, your telephone number functions as the de facto root master key of your digital identity. Banks, email providers, cryptocurrency exchanges, and social media platforms routinely offer SMS-based One-Time Passwords (OTPs) as a default secondary authentication factor. Yet, unlike hardware tokens or biometric passkeys, cellular routing is vulnerable to an insidious physical-layer attack: <strong>the SIM Swap (Subscriber Identity Module hijacking)</strong>.
+        </p>
+        <p>
+          According to FBI Internet Crime Complaint Center (IC3) statistics, SIM swapping losses exceeded <strong>$68 million annually</strong>, with individual victims frequently suffering catastrophic six-figure financial losses within minutes of an adversary successfully seizing their telephone number.
+        </p>
+
+        <h2><span>⚡</span> The Anatomy of a SIM Swap Attack</h2>
+        <p>
+          A SIM swap does not require physical access to your phone or advanced cryptographic decryption. Instead, it exploits organizational and social engineering weaknesses within mobile network operator (MNO) customer support centers:
+        </p>
+
+        <div class="forensic-box">
+          <h4>Phase 1: OSINT &amp; Identity Dossier Assembly</h4>
+          <p>
+            Adversaries purchase breached credential dumps from dark web marketplaces containing your full legal name, Social Security Number (SSN), date of birth, home address, and current cellular carrier.
+          </p>
+        </div>
+
+        <div class="forensic-box">
+          <h4>Phase 2: Carrier Customer Support Social Engineering</h4>
+          <p>
+            The attacker contacts your cellular provider (Verizon, AT&amp;T, T-Mobile, Vodafone, etc.) posing as you. Claiming that their phone was "dropped in water" or "stolen while traveling," they request that your phone number be immediately transferred to a new physical SIM card or eSIM profile in their possession.
+          </p>
+        </div>
+
+        <div class="forensic-box">
+          <h4>Phase 3: Automated Account Takeover (ATO) Cascade</h4>
+          <p>
+            Once the carrier reprograms the cellular routing table, all incoming calls and SMS text messages arrive on the criminal's device. The adversary initiates password reset flows across your primary email (Gmail, Outlook), banking portals, and cryptocurrency exchanges, intercepting the SMS verification codes effortlessly.
+          </p>
+        </div>
+
+        <h2><span>🚨</span> Telltale Indicators of an Active SIM Swap</h2>
+        <p>
+          Because SIM swapping re-routes your carrier connection at the tower level, the attack produces unmistakable physical device symptoms:
+        </p>
+
+        <ul style="color: #CBD5E1; line-height: 1.8; padding-left: 1.5rem;">
+          <li>
+            <strong>Sudden Loss of Cellular Service:</strong> Your phone unexpectedly displays <em>"No Service"</em>, <em>"Searching..."</em>, or <em>"SOS Only"</em> while in an area with normally robust reception, and restarting the device does not restore connection.
+          </li>
+          <li>
+            <strong>Carrier Notification Emails:</strong> You receive an email notification from your mobile provider stating: <em>"Your SIM card has been updated"</em> or <em>"Your eSIM profile was successfully activated on a new device"</em>.
+          </li>
+          <li>
+            <strong>Security Alert Notifications:</strong> Influx of push notifications or secondary emails alerting you to password reset requests on financial accounts or Apple ID / Google Accounts.
+          </li>
+          <li>
+            <strong>Inability to Receive Two-Factor SMS Codes:</strong> You stop receiving incoming SMS text messages while connected to home Wi-Fi.
+          </li>
+        </ul>
+
+        <h2><span>🛡️</span> Hardening Your Telecom Identity Against SIM Hijacking</h2>
+        <p>
+          Defending against SIM swap attacks requires taking proactive defensive measures both at the telecom carrier level and across your personal authentication stack:
+        </p>
+
+        <h3>1. Enable Carrier "Port-Out Protection" &amp; PIN Locks</h3>
+        <p>
+          Contact your mobile provider and explicitly request the activation of a <strong>Port Freeze / SIM Protection Lock</strong>. This prevents your number from being transferred or assigned to a new SIM card unless you provide a mandatory, separate 6-digit Verbal Security PIN in person at a retail store with a physical government ID.
+        </p>
+
+        <h3>2. Eliminate SMS Two-Factor Authentication Entirely</h3>
+        <p>
+          SMS was engineered in the 1980s as an unencrypted cellular signaling protocol (SS7) without cryptographic integrity. Migrate all financial, email, and social accounts away from SMS verification to:
+        </p>
+        <ul style="color: #CBD5E1; line-height: 1.8; padding-left: 1.5rem;">
+          <li><strong>Authenticator Apps (TOTP):</strong> Google Authenticator, Aegis, or hardware-bound TOTP in encrypted password managers.</li>
+          <li><strong>FIDO2 / WebAuthn Hardware Passkeys:</strong> Physical security keys (Google Titan, YubiKey) that are mathematically bound to domain origins and immune to telecom redirection.</li>
+        </ul>
+
+        <h3>3. Remove Your Phone Number from Account Recovery</h3>
+        <p>
+          Major email providers allow you to remove phone numbers from your account recovery settings. If an attacker cannot use your phone number to reset your master password, seizing your SIM card yields zero access to your primary email vault.
+        </p>
+
+        <div class="citation-list">
+          <h4 style="color: var(--text-main); margin-bottom: 0.75rem;">Government Intelligence &amp; Telecom Regulations:</h4>
+          <ol style="padding-left: 1.25rem; line-height: 1.7;">
+            <li><strong>Federal Communications Commission (FCC):</strong> <em>Order FCC 23-95: Protecting Consumers from SIM Swap and Port-Out Fraud</em>.</li>
+            <li><strong>Federal Trade Commission (FTC):</strong> <em>Consumer Advice: How to Protect Yourself from a SIM Swap Scam</em>.</li>
+            <li><strong>NIST Special Publication 800-63B:</strong> <em>Digital Identity Guidelines: Authentication and Lifecycle Management (Section 5.1.3: Out-of-Band Verifiers &amp; SMS Risk Deprecation)</em>.</li>
+          </ol>
+        </div>
+      </div>
+    </article>
+  </main>
+
+  <!-- Site Footer -->
+  <footer class="site-footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-brand-col">
+          <a href="index.html" class="brand-logo" aria-label="ScamShield Lab Home">
+            <img src="assets/images/logo.jpg" alt="ScamShield Lab Logo" class="brand-icon" width="36" height="36" loading="lazy">
+            <div class="brand-text-col">
+              <span class="brand-main-title">ScamShield<span class="brand-lab-accent">Lab</span></span>
+              <span class="brand-sub-badge">AI FORENSIC ANALYZER</span>
+            </div>
+          </a>
+          <div class="footer-review-pill">
+            <span class="review-pill-icon" aria-hidden="true">🛡️</span>
+            <a href="about.html#editorial-standards" class="review-pill-link">Reviewed by Cybersecurity Professionals</a>
+            <span class="review-pill-divider" aria-hidden="true">&bull;</span>
+            <span class="review-pill-date">Last Updated: October 2026</span>
+          </div>
+          <p class="footer-brand-desc">
+            Independent threat intelligence initiative and AI forensic analyzer dedicated to democratizing cyber fraud detection, deepfake defense, and zero-trust privacy.
+          </p>
+        </div>
+
+        <div class="footer-col">
+          <h4 class="footer-col-title">Detection Tools</h4>
+          <ul class="footer-nav-list">
+            <li><a href="index.html#analyzer">AI Scam Text Analyzer</a></li>
+            <li><a href="how-we-score.html">How We Score (0–100 Engine)</a></li>
+            <li><a href="family-safe-word.html">Family Safe Word Kit</a></li>
+            <li><a href="index.html#threat-radar">Threat Radar 2026</a></li>
+            <li><a href="quiz.html">Vulnerability Quiz</a></li>
+            <li><a href="incident-response.html" style="color: #EF4444; font-weight: 600;">🚨 Emergency Action Plan</a></li>
+          </ul>
+        </div>
+
+        <div class="footer-col">
+          <h4 class="footer-col-title">Threat Research Guides</h4>
+          <ul class="footer-nav-list">
+            <li><a href="guide-sim-swapping.html">SIM Swap Attacks &amp; 2FA</a></li>
+            <li><a href="guide-deepfake-video.html">Real-Time Deepfake Video Calls</a></li>
+            <li><a href="guide-voice-cloning.html">Voice Cloning Deepfake Defense</a></li>
+            <li><a href="guide-phishing.html">Phishing &amp; 2FA Bypasses</a></li>
+            <li><a href="guide-job-scams.html">Job &amp; Task Deposit Scams</a></li>
+            <li><a href="guide-delivery-scams.html">Delivery &amp; Toll Smishing</a></li>
+            <li><a href="guide-pig-butchering.html">Agentic Pig Butchering</a></li>
+          </ul>
+        </div>
+
+        <div class="footer-col">
+          <h4 class="footer-col-title">Legal &amp; Trust</h4>
+          <ul class="footer-nav-list">
+            <li><a href="about.html">About ScamShield Lab</a></li>
+            <li><a href="editorial-policy.html">Editorial Standards &amp; E-E-A-T</a></li>
+            <li><a href="contact.html">Contact Us</a></li>
+            <li><a href="about.html#vendor-profile">Vendor &amp; Security Profile</a></li>
+            <li><a href="how-we-score.html#privacy-matrix">Privacy-by-Design Matrix</a></li>
+            <li><a href="privacy.html">Privacy Policy</a></li>
+            <li><a href="terms.html">Terms of Service</a></li>
+            <li><a href="terms.html#affiliate-disclosure">Affiliate Disclosure</a></li>
+            <li><a href=".well-known/security.txt">Security.txt (RFC 9116)</a></li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="footer-bottom-bar">
+        <div>&copy; 2026 ScamShield Lab - AI Forensic Analyzer. All rights reserved. Built for global public cyber defense.</div>
+        <div>
+          <span>Zero-Trust Protocol Active</span> &bull; 
+          <a href="privacy.html" style="color: var(--text-faint);">Privacy</a> &bull; 
+          <a href="terms.html" style="color: var(--text-faint);">Terms &amp; Disclosures</a>
+        </div>
+      </div>
+      <div class="footer-disclaimer">
+        <strong>Notice & Non-Affiliation:</strong> ScamShield Lab - AI Forensic Analyzer (scamshieldlab.com) is an independent cybersecurity awareness and educational platform. It is not affiliated with, sponsored by, or connected to the Government of Singapore, GovTech Singapore, the National Crime Prevention Council (NCPC), or the official Singapore mobile application at scamshield.gov.sg.
+      </div>
+    </div>
+  </footer>
+
+</body>
+</html>
