@@ -1105,7 +1105,26 @@ class TestFundamentalDesignAndAdSenseReadiness(unittest.TestCase):
 
 
 class TestCoreWebVitalsCompliance(unittest.TestCase):
-    """Rule 1 Mandate: Validates image payloads, hero preloads, and zero-shift CLS locks."""
+    """Rule 1 Mandate: Validates image payloads, hero preloads, non-blocking fonts, and zero-shift CLS locks."""
+
+    FEATURED_IMAGE_MAP = {
+        'index.html': 'assets/images/hero.webp',
+        'how-we-score.html': 'assets/images/how-we-score.webp',
+        'incident-response.html': 'assets/images/incident-response.webp',
+        'quiz.html': 'assets/images/scam-simulator.webp',
+        'guide-phishing.html': 'assets/images/phishing-guide.webp',
+        'guide-job-scams.html': 'assets/images/job-scams-guide.webp',
+        'guide-delivery-scams.html': 'assets/images/delivery-scams-guide.webp',
+        'guide-voice-cloning.html': 'assets/images/deepfake.webp',
+        'guide-pig-butchering.html': 'assets/images/hero.webp',
+        'guide-digital-arrest.html': 'assets/images/digital-arrest-guide.webp',
+        'guide-deepfake-video.html': 'assets/images/hero.webp',
+        'guide-sim-swapping.html': 'assets/images/hero.webp',
+        'guide-remote-access-scams.html': 'assets/images/hero.webp',
+        'guide-crypto-drainer-scams.html': 'assets/images/hero.webp',
+        'guide-bank-impersonation.html': 'assets/images/hero.webp',
+        'guide-student-loan-scams.html': 'assets/images/hero.webp'
+    }
 
     def test_image_weight_budgets_for_lcp(self):
         assets_dir = os.path.join(WORKSPACE_ROOT, "assets", "images")
@@ -1116,6 +1135,8 @@ class TestCoreWebVitalsCompliance(unittest.TestCase):
                 size_kb = os.path.getsize(img_path) / 1024.0
                 if img_name in ("logo.jpg", "logo.webp"):
                     self.assertLessEqual(size_kb, 15, f"{img_name} ({size_kb:.1f} KB) must be <= 15 KB")
+                elif img_name.endswith(".webp"):
+                    self.assertLessEqual(size_kb, 70, f"{img_name} ({size_kb:.1f} KB) exceeds 70 KB LCP budget")
                 elif img_name in ("hero.jpg", "hero.webp"):
                     self.assertLessEqual(size_kb, 100, f"{img_name} ({size_kb:.1f} KB) must be <= 100 KB")
                 else:
@@ -1129,6 +1150,78 @@ class TestCoreWebVitalsCompliance(unittest.TestCase):
         self.assertIn('as="image"', content)
         self.assertTrue('hero.webp' in content or 'hero.jpg' in content)
         self.assertIn('fetchpriority="high"', content)
+
+    def test_all_featured_pages_preload_lcp_image(self):
+        """Rule 1 Mandate: Every page with an above-the-fold hero or featured image MUST preload its WebP asset with fetchpriority='high'."""
+        for filename, expected_img in self.FEATURED_IMAGE_MAP.items():
+            path = os.path.join(WORKSPACE_ROOT, filename)
+            self.assertTrue(os.path.exists(path), f"Missing page: {filename}")
+            with open(path, "r", encoding="utf-8") as f:
+                content = f.read()
+            clean_img = expected_img.split('?')[0]
+            preload_pattern = r'<link[^>]+rel=["\']preload["\'][^>]+href=["\'][^"\']*' + re.escape(clean_img) + r'[^"\']*["\'][^>]*>'
+            preload_match = re.search(preload_pattern, content)
+            self.assertIsNotNone(
+                preload_match,
+                f"LCP Preload Violation: {filename} must declare <link rel='preload' as='image' href='{clean_img}' ... fetchpriority='high'>"
+            )
+            tag = preload_match.group(0)
+            self.assertIn('as="image"', tag, f"{filename} preload must specify as='image'")
+            self.assertIn('type="image/webp"', tag, f"{filename} preload must specify type='image/webp'")
+            self.assertIn('fetchpriority="high"', tag, f"{filename} preload must specify fetchpriority='high'")
+
+    def test_featured_images_have_fetchpriority_high_and_no_lazy(self):
+        """Rule 1 Mandate: Primary above-the-fold images must specify fetchpriority='high' and never loading='lazy'."""
+        for filename in self.FEATURED_IMAGE_MAP.keys():
+            path = os.path.join(WORKSPACE_ROOT, filename)
+            with open(path, "r", encoding="utf-8") as f:
+                content = f.read()
+            img_pattern = r'<img[^>]+class=["\'](?:hero-img|article-featured-img|quiz-featured-img|ir-featured-img)["\'][^>]*>'
+            img_match = re.search(img_pattern, content)
+            self.assertIsNotNone(img_match, f"Primary image tag not found in {filename}")
+            tag = img_match.group(0)
+            self.assertIn('fetchpriority="high"', tag, f"{filename} primary img must declare fetchpriority='high'")
+            self.assertNotIn('loading="lazy"', tag, f"LCP regression risk: {filename} above-the-fold image must NOT have loading='lazy'")
+            self.assertIn('decoding="async"', tag, f"{filename} primary img must declare decoding='async'")
+            self.assertTrue('width=' in tag and 'height=' in tag, f"{filename} primary img missing explicit width/height dimensions")
+
+    def test_featured_images_have_webp_picture_source(self):
+        """Rule 1 Mandate: Featured images must have a WebP <source> inside <picture> for next-gen compression."""
+        for filename, expected_img in self.FEATURED_IMAGE_MAP.items():
+            path = os.path.join(WORKSPACE_ROOT, filename)
+            with open(path, "r", encoding="utf-8") as f:
+                content = f.read()
+            clean_img = expected_img.split('?')[0]
+            self.assertIn('<picture>', content, f"{filename} must wrap primary image inside a <picture> element")
+            self.assertIn(clean_img, content, f"{filename} <picture> element missing source for {clean_img}")
+
+    def test_all_pages_declare_non_blocking_font_loading(self):
+        """Rule 1 Mandate: All 22 published pages must load Google Fonts asynchronously to eliminate render-blocking CSS delays."""
+        for filename in PUBLISHED_HTML_FILES:
+            path = os.path.join(WORKSPACE_ROOT, filename)
+            with open(path, "r", encoding="utf-8") as f:
+                content = f.read()
+            self.assertIn('rel="preconnect" href="https://fonts.googleapis.com"', content, f"{filename} missing Google Fonts preconnect")
+            self.assertIn('rel="preconnect" href="https://fonts.gstatic.com" crossorigin', content, f"{filename} missing gstatic crossorigin preconnect")
+            self.assertIn('display=swap', content, f"{filename} font URL missing display=swap parameter")
+            self.assertIn('rel="preload" as="style" href="https://fonts.googleapis.com', content, f"{filename} font stylesheet must be preloaded as style")
+            self.assertIn('media="print" onload="this.media=\'all\'"', content, f"{filename} font stylesheet must load asynchronously with media='print' onload")
+            self.assertIn('<noscript>', content, f"{filename} missing noscript fallback for Google Fonts")
+
+    def test_head_scripts_are_non_render_blocking(self):
+        """Rule 1 Mandate: No synchronous scripts in <head> that block DOM parsing or initial paint."""
+        for filename in PUBLISHED_HTML_FILES:
+            path = os.path.join(WORKSPACE_ROOT, filename)
+            with open(path, "r", encoding="utf-8") as f:
+                content = f.read()
+            head_content = content.split("</head>")[0]
+            scripts = re.findall(r"""<script[^>]*src=["\'][^"\']+["\'][^>]*>""", head_content)
+            for script_tag in scripts:
+                is_non_blocking = 'defer' in script_tag or 'async' in script_tag
+                self.assertTrue(
+                    is_non_blocking,
+                    f"LCP Blocker: Synchronous <script> detected in <head> of {filename}: {script_tag}"
+                )
 
     def test_site_ticker_height_is_locked_for_zero_cls(self):
         css_path = os.path.join(WORKSPACE_ROOT, "css", "styles.css")

@@ -345,10 +345,29 @@ def run_readiness_checks():
         print("  PASSED: 100% of pages pass accessibility skip links and image dimension constraints.")
 
     # ---------------------------------------------------------
-    # CHECK 9: CORE WEB VITALS MANDATE (IMAGE BUDGETS, LCP PRELOAD & CLS LOCK)
+    # CHECK 9: CORE WEB VITALS MANDATE (IMAGE BUDGETS, LCP PRELOAD, NON-BLOCKING FONTS & CLS LOCK)
     # ---------------------------------------------------------
-    print("\n[9/9] Auditing Core Web Vitals (Image Budgets, LCP Preload & Zero-Shift CLS)...")
+    print("\n[9/9] Auditing Core Web Vitals (Image Budgets, LCP Preloads, Async Fonts & CLS Lock)...")
     cwv_issues = []
+
+    FEATURED_IMAGE_MAP = {
+        'index.html': 'assets/images/hero.webp',
+        'how-we-score.html': 'assets/images/how-we-score.webp',
+        'incident-response.html': 'assets/images/incident-response.webp',
+        'quiz.html': 'assets/images/scam-simulator.webp',
+        'guide-phishing.html': 'assets/images/phishing-guide.webp',
+        'guide-job-scams.html': 'assets/images/job-scams-guide.webp',
+        'guide-delivery-scams.html': 'assets/images/delivery-scams-guide.webp',
+        'guide-voice-cloning.html': 'assets/images/deepfake.webp',
+        'guide-pig-butchering.html': 'assets/images/hero.webp',
+        'guide-digital-arrest.html': 'assets/images/digital-arrest-guide.webp',
+        'guide-deepfake-video.html': 'assets/images/hero.webp',
+        'guide-sim-swapping.html': 'assets/images/hero.webp',
+        'guide-remote-access-scams.html': 'assets/images/hero.webp',
+        'guide-crypto-drainer-scams.html': 'assets/images/hero.webp',
+        'guide-bank-impersonation.html': 'assets/images/hero.webp',
+        'guide-student-loan-scams.html': 'assets/images/hero.webp'
+    }
 
     # 1. Image Size Budgets
     assets_dir = os.path.join(WORKSPACE_ROOT, "assets", "images")
@@ -359,19 +378,58 @@ def run_readiness_checks():
                 size_kb = os.path.getsize(img_path) / 1024.0
                 if img_name in ("logo.jpg", "logo.webp") and size_kb > 15:
                     cwv_issues.append(f"{img_name} exceeds 15 KB budget ({size_kb:.1f} KB) - must be optimized for 36x36 display")
+                elif img_name.endswith(".webp") and size_kb > 70:
+                    cwv_issues.append(f"{img_name} exceeds 70 KB LCP WebP budget ({size_kb:.1f} KB)")
                 elif img_name in ("hero.jpg", "hero.webp") and size_kb > 100:
                     cwv_issues.append(f"{img_name} exceeds 100 KB budget ({size_kb:.1f} KB) - risks LCP regression")
                 elif size_kb > 120:
                     cwv_issues.append(f"{img_name} exceeds 120 KB image budget ({size_kb:.1f} KB)")
 
-    # 2. LCP Image Preload & fetchpriority on index.html
-    index_content = raw_contents.get("index.html", "")
-    if 'rel="preload"' not in index_content or ('hero.webp' not in index_content and 'hero.jpg' not in index_content):
-        cwv_issues.append("index.html missing <link rel=\"preload\" as=\"image\" href=\"...hero.webp\">")
-    if 'fetchpriority="high"' not in index_content:
-        cwv_issues.append("index.html missing fetchpriority=\"high\" on hero image")
+    # 2. LCP Image Preload & fetchpriority across all 16 featured pages
+    for filename, expected_img in FEATURED_IMAGE_MAP.items():
+        content = raw_contents.get(filename, "")
+        clean_img = expected_img.split('?')[0]
+        preload_pattern = r"""<link[^>]+rel=["']preload["'][^>]+href=["'][^"']*""" + re.escape(clean_img) + r"""[^"']*["'][^>]*>"""
+        preload_match = re.search(preload_pattern, content)
+        if not preload_match:
+            cwv_issues.append(f"{filename}: Missing LCP <link rel='preload' as='image' href='{clean_img}'>")
+        else:
+            tag = preload_match.group(0)
+            if 'fetchpriority="high"' not in tag:
+                cwv_issues.append(f"{filename}: Preload for {clean_img} missing fetchpriority='high'")
 
-    # 3. CLS Zero-Shift Ticker Lock in styles.css
+        # Audit primary img tag
+        img_pattern = r"""<img[^>]+class=["'](?:hero-img|article-featured-img|quiz-featured-img|ir-featured-img)["'][^>]*>"""
+        img_match = re.search(img_pattern, content)
+        if not img_match:
+            cwv_issues.append(f"{filename}: Missing primary hero/featured <img> tag")
+        else:
+            itag = img_match.group(0)
+            if 'fetchpriority="high"' not in itag:
+                cwv_issues.append(f"{filename}: Primary <img> missing fetchpriority='high'")
+            if 'loading="lazy"' in itag:
+                cwv_issues.append(f"{filename}: Primary above-the-fold <img> has loading='lazy' (LCP regression risk)")
+
+    # 3. Asynchronous Non-Blocking Google Fonts Loading across all 22 pages
+    for filename, content in raw_contents.items():
+        if 'rel="preload" as="style" href="https://fonts.googleapis.com' not in content:
+            cwv_issues.append(f"{filename}: Google Fonts stylesheet must be preloaded as style (rel='preload' as='style')")
+        if 'media="print" onload="this.media=\'all\'"' not in content:
+            cwv_issues.append(f"{filename}: Google Fonts stylesheet must load asynchronously with media='print' onload")
+        if '<noscript>' not in content or 'https://fonts.googleapis.com' not in content:
+            cwv_issues.append(f"{filename}: Missing <noscript> fallback for Google Fonts")
+        if 'display=swap' not in content:
+            cwv_issues.append(f"{filename}: Google Font URL must include display=swap")
+
+    # 4. Non-Blocking Head Scripts
+    for filename, content in raw_contents.items():
+        head = content.split("</head>")[0]
+        scripts = re.findall(r"""<script[^>]*src=["'][^"']+["'][^>]*>""", head)
+        for s in scripts:
+            if 'defer' not in s and 'async' not in s:
+                cwv_issues.append(f"{filename}: Blocking synchronous <script> detected in <head>: {s}")
+
+    # 5. CLS Zero-Shift Ticker Lock in styles.css
     css_path = os.path.join(WORKSPACE_ROOT, "css", "styles.css")
     if os.path.isfile(css_path):
         with open(css_path, "r", encoding="utf-8") as f:
@@ -383,10 +441,10 @@ def run_readiness_checks():
         failures.append("Core Web Vitals validation errors:\n  " + "\n  ".join(cwv_issues))
         print(f"  FAILED: {len(cwv_issues)} Core Web Vitals issues detected.")
     else:
-        print("  PASSED: All image budgets, LCP preloads, and CLS height-locks verified 100%.")
+        print("  PASSED: All image budgets, LCP preloads, async fonts, and CLS height-locks verified 100%.")
 
     # ---------------------------------------------------------
-    # FINAL VERDICT
+        # FINAL VERDICT
     # ---------------------------------------------------------
     print("\n" + "=" * 72)
     if failures:
