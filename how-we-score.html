@@ -57,7 +57,14 @@
   <!-- Performance Preconnect & Zero-Shift Font Loading (Rule 1) -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;600&family=Outfit:wght@600;700;800&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap">
+  <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;600&family=Outfit:wght@600;700;800&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;600&family=Outfit:wght@600;700;800&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" media="print" onload="this.media='all'">
+  <noscript>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;600&family=Outfit:wght@600;700;800&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap">
+  </noscript>
+
+  <!-- High-Priority LCP Image Preload (Rule 1 Mandate) -->
+  <link rel="preload" as="image" href="assets/images/how-we-score.webp" type="image/webp" fetchpriority="high">
 
   <!-- Google AdSense Verification & Auto-Ads Script -->
     <meta name="google-adsense-account" content="ca-pub-7565560894775775">
@@ -192,7 +199,7 @@
 
       <picture>
         <source srcset="assets/images/how-we-score.webp" type="image/webp">
-        <img src="assets/images/how-we-score.jpg" alt="ScamShield Lab Neural Defense Engine Architecture and Privacy-by-Design Vault" class="article-featured-img" width="920" height="518" decoding="async">
+        <img src="assets/images/how-we-score.jpg" alt="ScamShield Lab Neural Defense Engine Architecture and Privacy-by-Design Vault" class="article-featured-img" width="920" height="518" fetchpriority="high" decoding="async">
       </picture>
 
       <div class="article-content">
