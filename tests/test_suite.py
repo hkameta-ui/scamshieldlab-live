@@ -306,6 +306,11 @@ class TestHtmlPagesStructure(unittest.TestCase):
             self.assertIn("min-height: 560px", css, "threat-grid must declare reserved min-height")
             self.assertIn("min-height: 420px", css, "quiz-wrapper-card must declare reserved min-height")
             self.assertIn("contain: layout", css, "dynamic components must enforce layout containment")
+            self.assertIn("min-height: 70px", css, "site-header must declare min-height: 70px to eliminate header pop CLS")
+            self.assertIn("max-height: 38px", css, "site-ticker must declare max-height: 38px ceiling lock")
+            self.assertIn("align-items: start", css, "hero-grid must declare align-items: start to eliminate vertical drift CLS")
+            self.assertIn("min-height: 220px", css, "hero-live-demo-card must declare reserved min-height: 220px")
+            self.assertIn("min-height: 32px", css, "hero-badges-row must declare reserved min-height: 32px")
 
     def test_asset_synchronization_and_cache_busting(self):
         """Rule 1 Mandate: All HTML files must link stylesheets and scripts with synchronized cache-busting tokens."""
