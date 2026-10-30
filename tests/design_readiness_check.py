@@ -429,13 +429,19 @@ def run_readiness_checks():
             if 'defer' not in s and 'async' not in s:
                 cwv_issues.append(f"{filename}: Blocking synchronous <script> detected in <head>: {s}")
 
-    # 5. CLS Zero-Shift Ticker Lock in styles.css
+    # 5. CLS Zero-Shift Locks in styles.css (Rule 1 Mandate)
     css_path = os.path.join(WORKSPACE_ROOT, "css", "styles.css")
     if os.path.isfile(css_path):
         with open(css_path, "r", encoding="utf-8") as f:
             css_content = f.read()
         if ".site-ticker" not in css_content or "height: 38px" not in css_content:
             cwv_issues.append("css/styles.css .site-ticker must declare explicit height (height: 38px) to prevent CLS")
+        if "min-height: 70px" not in css_content:
+            cwv_issues.append("css/styles.css .site-header must declare min-height: 70px to eliminate header pop CLS")
+        if "align-items: start" not in css_content:
+            cwv_issues.append("css/styles.css .hero-grid must declare align-items: start to eliminate vertical drift CLS")
+        if "min-height: 220px" not in css_content:
+            cwv_issues.append("css/styles.css .hero-live-demo-card must declare reserved min-height: 220px to prevent CLS")
 
     if cwv_issues:
         failures.append("Core Web Vitals validation errors:\n  " + "\n  ".join(cwv_issues))
