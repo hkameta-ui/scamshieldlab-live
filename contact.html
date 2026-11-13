@@ -8,14 +8,14 @@
   <meta name="description" content="Contact the ScamShield Lab research team, submit emerging scam lures, report security vulnerabilities, or request editorial corrections.">
   <meta name="keywords" content="contact ScamShield Lab, report phishing lure, cyber threat intelligence submission, security vulnerability disclosure, editorial inquiry">
   <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1">
-  <link rel="canonical" href="https://scamshieldlab.com/contact.html">
+  <link rel="canonical" href="https://scamshieldlab.com/contact">
 
   <!-- Open Graph -->
   <meta property="og:type" content="website">
   <meta property="og:site_name" content="ScamShield Lab - AI Forensic Analyzer">
   <meta property="og:title" content="Contact Us & Threat Intelligence Intake | ScamShield Lab">
   <meta property="og:description" content="Reach our cybersecurity research desk, submit suspicious lures for heuristic analysis, or request editorial consultations.">
-  <meta property="og:url" content="https://scamshieldlab.com/contact.html">
+  <meta property="og:url" content="https://scamshieldlab.com/contact">
   <meta property="og:image" content="https://scamshieldlab.com/assets/images/hero.webp">
 
   <!-- Twitter Cards -->
@@ -42,9 +42,9 @@
   <meta name="google-adsense-account" content="ca-pub-7565560894775775">
   <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-7565560894775775" crossorigin="anonymous"></script>
 
-  <link rel="stylesheet" href="css/styles.css?v=20261030-zero-cls">
+  <link rel="stylesheet" href="css/styles.css?v=20261113-adsense">
   <link rel="icon" type="image/jpeg" href="assets/images/logo.jpg">
-  <script src="config.js?v=20261030-zero-cls" defer></script>
+  <script src="config.js?v=20261113-adsense" defer></script>
 
   <style>
     .contact-container {
@@ -213,9 +213,12 @@
 
   <!-- Top Real-Time Threat Intelligence Feed -->
   <aside class="site-ticker" aria-label="Live Threat Intelligence Telemetry">
-    <div class="ticker-inner">
-      <span class="ticker-badge">LIVE INTEL</span>
-      <div class="ticker-content" id="liveTickerFeed">
+    <div class="container ticker-wrap">
+      <div class="ticker-badge intel-badge">
+        <span class="beacon-dot" aria-hidden="true"></span>
+        <span>LIVE INTEL</span>
+      </div>
+      <div class="ticker-viewport" id="liveThreatTicker" role="status" aria-live="polite">
         <span class="ticker-item"><strong style="color: var(--color-primary);">COMMUNICATION DESK:</strong> Research inquiries, threat lure disclosures, and editorial feedback typically answered within 24–48h.</span>
       </div>
     </div>
@@ -224,7 +227,7 @@
   <!-- Global Site Header -->
   <header class="site-header">
     <div class="container nav-inner">
-      <a href="index.html" class="brand-logo" aria-label="ScamShield Lab Home">
+      <a href="/" class="brand-logo" aria-label="ScamShield Lab Home">
         <img src="assets/images/logo.jpg" alt="ScamShield Lab Logo" class="brand-icon" width="36" height="36" decoding="async">
         <div class="brand-text-col">
           <span class="brand-main-title">ScamShield<span class="brand-lab-accent">Lab</span></span>
@@ -234,19 +237,19 @@
 
       <nav aria-label="Primary Navigation" class="main-nav">
         <ul class="nav-links" id="primaryNavLinks">
-          <li><a href="index.html#analyzer">Scanner</a></li>
-          <li><a href="quiz.html">Spot the Fake</a></li>
-          <li><a href="family-safe-word.html">Safe Word Kit</a></li>
-          <li><a href="incident-response.html" style="color: #EF4444; font-weight: 700;">🚨 Got Scammed?</a></li>
-          <li><a href="index.html#threat-radar">Threat Radar</a></li>
-          <li><a href="index.html#guides">Guides</a></li>
-          <li><a href="about.html">About</a></li>
-          <li><a href="contact.html" style="color: var(--color-primary); font-weight: 700;">Contact</a></li>
+          <li><a href="/#analyzer">Scanner</a></li>
+          <li><a href="/quiz">Spot the Fake</a></li>
+          <li><a href="/family-safe-word">Safe Word Kit</a></li>
+          <li><a href="/incident-response" style="color: #EF4444; font-weight: 700;">🚨 Got Scammed?</a></li>
+          <li><a href="/#threat-radar">Threat Radar</a></li>
+          <li><a href="/#guides">Guides</a></li>
+          <li><a href="/about">About</a></li>
+          <li><a href="/contact" style="color: var(--color-primary); font-weight: 700;">Contact</a></li>
         </ul>
       </nav>
 
       <div class="nav-actions">
-        <a href="index.html#analyzer" class="nav-cta-btn">
+        <a href="/#analyzer" class="nav-cta-btn">
           <span class="pulse-beacon" aria-hidden="true"></span>
           <span>Instant Scan</span>
         </a>
@@ -258,7 +261,7 @@
   <main class="contact-container" id="main-content">
     
     <div style="font-size: 0.85rem; color: var(--text-faint); margin-bottom: 1.25rem;">
-      <a href="index.html">Home</a> &gt; <span>Contact Us &amp; Threat Intake</span>
+      <a href="/">Home</a> &gt; <span>Contact Us &amp; Threat Intake</span>
     </div>
 
     <div class="contact-header">
@@ -273,7 +276,7 @@
     <div class="emergency-banner" role="alert">
       <h3><span>🚨</span> Actively Being Scammed or Lost Funds?</h3>
       <p>
-        If you have wired money, shared bank credentials, or are currently speaking with an extortionist on a call, please immediately disconnect and consult our step-by-step <a href="incident-response.html" style="color: #F87171; font-weight: 700; text-decoration: underline;">Emergency Incident Response Wizard</a>. Report domestic bank wire theft within 72 hours directly to the <a href="https://www.ic3.gov" target="_blank" rel="noopener noreferrer" style="color: #F87171; text-decoration: underline;">FBI IC3</a> or your national cybercrime agency for recovery kill-chain initiation.
+        If you have wired money, shared bank credentials, or are currently speaking with an extortionist on a call, please immediately disconnect and consult our step-by-step <a href="/incident-response" style="color: #F87171; font-weight: 700; text-decoration: underline;">Emergency Incident Response Wizard</a>. Report domestic bank wire theft within 72 hours directly to the <a href="https://www.ic3.gov" target="_blank" rel="noopener noreferrer" style="color: #F87171; text-decoration: underline;">FBI IC3</a> or your national cybercrime agency for recovery kill-chain initiation.
       </p>
     </div>
 
@@ -285,7 +288,7 @@
         <span class="card-badge">Editorial &amp; Research</span>
         <h2 class="card-title">Editorial &amp; Fact-Checking</h2>
         <p class="card-desc">
-          For technical inquiries regarding our mathematical scoring heuristics, citations, requests to reproduce research data, or factual corrections pursuant to our <a href="editorial-policy.html" style="color: #38BDF8; text-decoration: underline;">Editorial Policy</a>.
+          For technical inquiries regarding our mathematical scoring heuristics, citations, requests to reproduce research data, or factual corrections pursuant to our <a href="/editorial-policy" style="color: #38BDF8; text-decoration: underline;">Editorial Policy</a>.
         </p>
         <a href="mailto:editorial@scamshieldlab.com" class="card-email-link">
           <span>✉️</span> editorial@scamshieldlab.com
@@ -379,6 +382,52 @@
       </div>
     </div>
 
+    <!-- Global Cybercrime Reporting Directory & Safe Sample Submission Guide -->
+    <section aria-label="Official Cybercrime Reporting Directory" style="margin-bottom: 2.5rem; background: rgba(15, 23, 42, 0.72); border: 1px solid var(--border-glass); border-radius: var(--radius-lg); padding: 2rem;">
+      <h2 style="font-family: var(--font-heading); font-size: 1.55rem; color: var(--text-main); margin-top: 0; margin-bottom: 0.75rem;">
+        🌍 Official Jurisdictional Cybercrime Reporting Directory
+      </h2>
+      <p style="color: #CBD5E1; line-height: 1.75; margin-bottom: 1.25rem;">
+        ScamShield Lab is an independent educational research initiative and cannot freeze bank accounts, trace cryptocurrency wallets on your behalf, or initiate law enforcement subpoenas. If you have experienced financial loss, file an official report immediately with your national cybercrime authority using the verified links below:
+      </p>
+      <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 1rem; margin-bottom: 1.75rem;">
+        <div style="padding: 1rem; background: rgba(7, 11, 20, 0.6); border: 1px solid rgba(255, 255, 255, 0.08); border-radius: var(--radius-md);">
+          <strong style="color: var(--color-primary); display: block; margin-bottom: 0.35rem;">United States</strong>
+          <p style="font-size: 0.88rem; color: #CBD5E1; line-height: 1.6; margin: 0;">
+            Report wire and crypto fraud to the <a href="https://www.ic3.gov" target="_blank" rel="noopener noreferrer" style="color: #38BDF8; text-decoration: underline;">FBI Internet Crime Complaint Center (IC3)</a> and consumer fraud to <a href="https://reportfraud.ftc.gov" target="_blank" rel="noopener noreferrer" style="color: #38BDF8; text-decoration: underline;">FTC ReportFraud</a>.
+          </p>
+        </div>
+        <div style="padding: 1rem; background: rgba(7, 11, 20, 0.6); border: 1px solid rgba(255, 255, 255, 0.08); border-radius: var(--radius-md);">
+          <strong style="color: var(--color-primary); display: block; margin-bottom: 0.35rem;">United Kingdom &amp; Europe</strong>
+          <p style="font-size: 0.88rem; color: #CBD5E1; line-height: 1.6; margin: 0;">
+            UK residents should report to <a href="https://www.actionfraud.police.uk" target="_blank" rel="noopener noreferrer" style="color: #38BDF8; text-decoration: underline;">Action Fraud UK</a> or forward suspicious SMS messages to <strong>7726</strong>. EU residents may contact their national CSIRT or Europol's cybercrime desk.
+          </p>
+        </div>
+        <div style="padding: 1rem; background: rgba(7, 11, 20, 0.6); border: 1px solid rgba(255, 255, 255, 0.08); border-radius: var(--radius-md);">
+          <strong style="color: var(--color-primary); display: block; margin-bottom: 0.35rem;">India</strong>
+          <p style="font-size: 0.88rem; color: #CBD5E1; line-height: 1.6; margin: 0;">
+            Call the national cybercrime helpline <strong>1930</strong> immediately to freeze fraudulent UPI/IMPS transfers, and submit evidence via <a href="https://cybercrime.gov.in" target="_blank" rel="noopener noreferrer" style="color: #38BDF8; text-decoration: underline;">cybercrime.gov.in</a>.
+          </p>
+        </div>
+        <div style="padding: 1rem; background: rgba(7, 11, 20, 0.6); border: 1px solid rgba(255, 255, 255, 0.08); border-radius: var(--radius-md);">
+          <strong style="color: var(--color-primary); display: block; margin-bottom: 0.35rem;">Australia &amp; Canada</strong>
+          <p style="font-size: 0.88rem; color: #CBD5E1; line-height: 1.6; margin: 0;">
+            Report in Australia via <a href="https://www.scamwatch.gov.au" target="_blank" rel="noopener noreferrer" style="color: #38BDF8; text-decoration: underline;">ACCC Scamwatch</a>, and in Canada via the <a href="https://www.antifraudcentre-centreantifraude.ca" target="_blank" rel="noopener noreferrer" style="color: #38BDF8; text-decoration: underline;">Canadian Anti-Fraud Centre</a>.
+          </p>
+        </div>
+      </div>
+
+      <h3 style="font-size: 1.1rem; color: var(--text-main); margin-bottom: 0.5rem;">How to Redact &amp; Submit Scam Samples Safely</h3>
+      <p style="color: #CBD5E1; font-size: 0.92rem; line-height: 1.7; margin-bottom: 0.6rem;">
+        When emailing novel phishing templates or smishing lures to <code>security@scamshieldlab.com</code> for threat-intel analysis, please follow our data-minimization protocol:
+      </p>
+      <ul style="color: #CBD5E1; font-size: 0.92rem; line-height: 1.7; padding-left: 1.35rem; margin: 0;">
+        <li><strong>Remove Personal Identifiers:</strong> Redact your full name, home address, bank account numbers, and personal phone number before forwarding screenshots or text transcripts.</li>
+        <li><strong>Preserve Adversary Artifacts:</strong> Include the full sender email domain (or raw SMTP headers if available), the exact phishing URL (defanged as <code>hxxps://</code>), and the date/time received.</li>
+        <li><strong>Never Forward Live Malware Attachments:</strong> Do not attach <code>.exe</code>, <code>.zip</code>, <code>.apk</code>, or macro-enabled Office documents; send plain-text indicators or screenshots instead.</li>
+      </ul>
+    </section>
+
     <!-- Security & Transparency Standards Section -->
     <div style="background: rgba(15, 23, 42, 0.6); border: 1px solid var(--border-glass); border-radius: var(--radius-md); padding: 1.75rem; font-size: 0.9rem; color: var(--text-muted); line-height: 1.7;">
       <h3 style="color: var(--text-main); font-size: 1.1rem; margin-top: 0; margin-bottom: 0.5rem;">🔒 Cryptographic Disclosure &amp; Vulnerability Reporting</h3>
@@ -397,7 +446,7 @@
     <div class="container">
       <div class="footer-grid">
         <div class="footer-brand-col">
-          <a href="index.html" class="brand-logo" aria-label="ScamShield Lab Home">
+          <a href="/" class="brand-logo" aria-label="ScamShield Lab Home">
             <img src="assets/images/logo.jpg" alt="ScamShield Lab Logo" class="brand-icon" width="36" height="36" loading="lazy">
             <div class="brand-text-col">
               <span class="brand-main-title">ScamShield<span class="brand-lab-accent">Lab</span></span>
@@ -406,9 +455,9 @@
           </a>
           <div class="footer-review-pill">
             <span class="review-pill-icon" aria-hidden="true">🛡️</span>
-            <a href="about.html#editorial-standards" class="review-pill-link">Reviewed by Cybersecurity Professionals</a>
+            <a href="/about#editorial-standards" class="review-pill-link">Reviewed by Cybersecurity Professionals</a>
             <span class="review-pill-divider" aria-hidden="true">&bull;</span>
-            <span class="review-pill-date">Last Updated: October 2026</span>
+            <span class="review-pill-date">Last Updated: November 2026</span>
           </div>
           <p class="footer-brand-desc">
             Independent threat intelligence initiative and AI forensic analyzer dedicated to democratizing cyber fraud detection, deepfake defense, and zero-trust privacy.
@@ -418,38 +467,38 @@
         <div class="footer-col">
           <h4 class="footer-col-title">Detection Tools</h4>
           <ul class="footer-nav-list">
-            <li><a href="index.html#analyzer">AI Scam Text Analyzer</a></li>
-            <li><a href="how-we-score.html">How We Score (0–100 Engine)</a></li>
-            <li><a href="family-safe-word.html">Family Safe Word Kit</a></li>
-            <li><a href="index.html#threat-radar">Threat Radar 2026</a></li>
-            <li><a href="quiz.html">Vulnerability Quiz</a></li>
-            <li><a href="incident-response.html" style="color: #EF4444; font-weight: 600;">🚨 Emergency Action Plan</a></li>
+            <li><a href="/#analyzer">AI Scam Text Analyzer</a></li>
+            <li><a href="/how-we-score">How We Score (0–100 Engine)</a></li>
+            <li><a href="/family-safe-word">Family Safe Word Kit</a></li>
+            <li><a href="/#threat-radar">Threat Radar 2026</a></li>
+            <li><a href="/quiz">Vulnerability Quiz</a></li>
+            <li><a href="/incident-response" style="color: #EF4444; font-weight: 600;">🚨 Emergency Action Plan</a></li>
           </ul>
         </div>
 
         <div class="footer-col">
           <h4 class="footer-col-title">Threat Research Guides</h4>
           <ul class="footer-nav-list">
-            <li><a href="guide-phishing.html">Phishing &amp; 2FA Bypasses</a></li>
-            <li><a href="guide-job-scams.html">Job &amp; Task Deposit Scams</a></li>
-            <li><a href="guide-delivery-scams.html">Delivery &amp; Toll Smishing</a></li>
-            <li><a href="guide-voice-cloning.html">Voice Cloning Deepfake Defense</a></li>
-            <li><a href="guide-pig-butchering.html">Agentic Pig Butchering</a></li>
-            <li><a href="guide-digital-arrest.html">Digital Arrest &amp; Video Scams</a></li>
+            <li><a href="/guide-phishing">Phishing &amp; 2FA Bypasses</a></li>
+            <li><a href="/guide-job-scams">Job &amp; Task Deposit Scams</a></li>
+            <li><a href="/guide-delivery-scams">Delivery &amp; Toll Smishing</a></li>
+            <li><a href="/guide-voice-cloning">Voice Cloning Deepfake Defense</a></li>
+            <li><a href="/guide-pig-butchering">Agentic Pig Butchering</a></li>
+            <li><a href="/guide-digital-arrest">Digital Arrest &amp; Video Scams</a></li>
           </ul>
         </div>
 
         <div class="footer-col">
           <h4 class="footer-col-title">Legal &amp; Trust</h4>
           <ul class="footer-nav-list">
-            <li><a href="about.html">About ScamShield Lab</a></li>
-            <li><a href="editorial-policy.html">Editorial Standards &amp; E-E-A-T</a></li>
-            <li><a href="contact.html">Contact Us</a></li>
-            <li><a href="about.html#vendor-profile">Vendor &amp; Security Profile</a></li>
-            <li><a href="how-we-score.html#privacy-matrix">Privacy-by-Design Matrix</a></li>
-            <li><a href="privacy.html">Privacy Policy</a></li>
-            <li><a href="terms.html">Terms of Service</a></li>
-            <li><a href="terms.html#affiliate-disclosure">Affiliate Disclosure</a></li>
+            <li><a href="/about">About ScamShield Lab</a></li>
+            <li><a href="/editorial-policy">Editorial Standards &amp; E-E-A-T</a></li>
+            <li><a href="/contact">Contact Us</a></li>
+            <li><a href="/about#vendor-profile">Vendor &amp; Security Profile</a></li>
+            <li><a href="/how-we-score#privacy-matrix">Privacy-by-Design Matrix</a></li>
+            <li><a href="/privacy">Privacy Policy</a></li>
+            <li><a href="/terms">Terms of Service</a></li>
+            <li><a href="/terms#affiliate-disclosure">Affiliate Disclosure</a></li>
             <li><a href=".well-known/security.txt">Security.txt (RFC 9116)</a></li>
           </ul>
         </div>
@@ -459,8 +508,8 @@
         <div>&copy; 2026 ScamShield Lab - AI Forensic Analyzer. All rights reserved. Built for global public cyber defense.</div>
         <div>
           <span>Zero-Trust Protocol Active</span> &bull; 
-          <a href="privacy.html" style="color: var(--text-faint);">Privacy</a> &bull; 
-          <a href="terms.html" style="color: var(--text-faint);">Terms &amp; Disclosures</a>
+          <a href="/privacy" style="color: var(--text-faint);">Privacy</a> &bull; 
+          <a href="/terms" style="color: var(--text-faint);">Terms &amp; Disclosures</a>
         </div>
       </div>
       <div class="footer-disclaimer">

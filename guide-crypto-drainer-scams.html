@@ -8,14 +8,14 @@
   <meta name="description" content="Technical forensic guide to Web3 crypto drainers, malicious ERC-20 permit signatures, infinite token approval exploits, and wallet decontamination.">
   <meta name="keywords" content="crypto wallet drainer, Web3 phishing scam, ERC-20 permit exploit, malicious smart contract approval, revoke token allowance, seed phrase theft">
   <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1">
-  <link rel="canonical" href="https://scamshieldlab.com/guide-crypto-drainer-scams.html">
+  <link rel="canonical" href="https://scamshieldlab.com/guide-crypto-drainer-scams">
 
   <!-- Open Graph -->
   <meta property="og:type" content="article">
   <meta property="og:site_name" content="ScamShield Lab - AI Forensic Analyzer">
   <meta property="og:title" content="The 2026 Guide to Web3 Crypto Wallet Drainers | ScamShield Lab">
   <meta property="og:description" content="Forensic mechanics of crypto wallet drainers, permit signatures, approval traps, and step-by-step token allowance revocation.">
-  <meta property="og:url" content="https://scamshieldlab.com/guide-crypto-drainer-scams.html">
+  <meta property="og:url" content="https://scamshieldlab.com/guide-crypto-drainer-scams">
   <meta property="og:image" content="https://scamshieldlab.com/assets/images/hero.webp">
 
   <!-- Twitter Cards -->
@@ -41,7 +41,7 @@
       "name": "ScamShield Lab - AI Forensic Analyzer",
       "url": "https://scamshieldlab.com/"
     },
-    "mainEntityOfPage": "https://scamshieldlab.com/guide-crypto-drainer-scams.html",
+    "mainEntityOfPage": "https://scamshieldlab.com/guide-crypto-drainer-scams",
     "datePublished": "2026-10-29",
     "dateModified": "2026-10-29"
   }
@@ -62,15 +62,15 @@
   </noscript>
 
   <!-- High-Priority LCP Image Preload (Rule 1 Mandate) -->
-  <link rel="preload" as="image" href="assets/images/hero.webp" type="image/webp" fetchpriority="high">
+  <link rel="preload" as="image" href="assets/images/crypto-drainer-guide.webp" type="image/webp" fetchpriority="high">
 
   <!-- Google AdSense Verification & Auto-Ads Script -->
   <meta name="google-adsense-account" content="ca-pub-7565560894775775">
   <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-7565560894775775" crossorigin="anonymous"></script>
 
-  <link rel="stylesheet" href="css/styles.css?v=20261030-zero-cls">
+  <link rel="stylesheet" href="css/styles.css?v=20261113-adsense">
   <link rel="icon" type="image/jpeg" href="assets/images/logo.jpg">
-  <script src="config.js?v=20261030-zero-cls" defer></script>
+  <script src="config.js?v=20261113-adsense" defer></script>
 
   <style>
     .article-container {
@@ -152,9 +152,12 @@
 
   <!-- Top Real-Time Threat Intelligence Feed -->
   <aside class="site-ticker" aria-label="Live Threat Intelligence Telemetry">
-    <div class="ticker-inner">
-      <span class="ticker-badge">WEB3 INTEL</span>
-      <div class="ticker-content" id="liveTickerFeed">
+    <div class="container ticker-wrap">
+      <div class="ticker-badge intel-badge">
+        <span class="beacon-dot" aria-hidden="true"></span>
+        <span>WEB3 INTEL</span>
+      </div>
+      <div class="ticker-viewport" id="liveThreatTicker" role="status" aria-live="polite">
         <span class="ticker-item"><strong style="color: #EF4444;">SMART CONTRACT WARNING:</strong> Never sign 'eth_sign' or blind 'Permit' signature prompts on unverified airdrop claims. Inspect allowances via Revoke.cash.</span>
       </div>
     </div>
@@ -163,7 +166,7 @@
   <!-- Global Site Header -->
   <header class="site-header">
     <div class="container nav-inner">
-      <a href="index.html" class="brand-logo" aria-label="ScamShield Lab Home">
+      <a href="/" class="brand-logo" aria-label="ScamShield Lab Home">
         <img src="assets/images/logo.jpg" alt="ScamShield Lab Logo" class="brand-icon" width="36" height="36" decoding="async">
         <div class="brand-text-col">
           <span class="brand-main-title">ScamShield<span class="brand-lab-accent">Lab</span></span>
@@ -173,19 +176,19 @@
 
       <nav aria-label="Primary Navigation" class="main-nav">
         <ul class="nav-links" id="primaryNavLinks">
-          <li><a href="index.html#analyzer">Scanner</a></li>
-          <li><a href="quiz.html">Spot the Fake</a></li>
-          <li><a href="family-safe-word.html">Safe Word Kit</a></li>
-          <li><a href="incident-response.html" style="color: #EF4444; font-weight: 700;">🚨 Got Scammed?</a></li>
-          <li><a href="index.html#threat-radar">Threat Radar</a></li>
-          <li><a href="index.html#guides">Guides</a></li>
-          <li><a href="about.html">About</a></li>
-          <li><a href="contact.html">Contact</a></li>
+          <li><a href="/#analyzer">Scanner</a></li>
+          <li><a href="/quiz">Spot the Fake</a></li>
+          <li><a href="/family-safe-word">Safe Word Kit</a></li>
+          <li><a href="/incident-response" style="color: #EF4444; font-weight: 700;">🚨 Got Scammed?</a></li>
+          <li><a href="/#threat-radar">Threat Radar</a></li>
+          <li><a href="/#guides">Guides</a></li>
+          <li><a href="/about">About</a></li>
+          <li><a href="/contact">Contact</a></li>
         </ul>
       </nav>
 
       <div class="nav-actions">
-        <a href="index.html#analyzer" class="nav-cta-btn">
+        <a href="/#analyzer" class="nav-cta-btn">
           <span class="pulse-beacon" aria-hidden="true"></span>
           <span>Instant Scan</span>
         </a>
@@ -197,7 +200,7 @@
   <main class="article-container" id="main-content">
     
     <div style="font-size: 0.85rem; color: var(--text-faint); margin-bottom: 1.25rem;">
-      <a href="index.html">Home</a> &gt; <a href="index.html#guides">Threat Research</a> &gt; <span>Web3 Crypto Drainers</span>
+      <a href="/">Home</a> &gt; <a href="/#guides">Threat Research</a> &gt; <span>Web3 Crypto Drainers</span>
     </div>
 
     <article>
@@ -218,8 +221,8 @@
       </header>
 
       <picture>
-        <source srcset="assets/images/hero.webp" type="image/webp">
-        <img src="assets/images/hero.jpg" alt="Blockchain Smart Contract Security Analysis and Crypto Drainer Code Forensic Inspection" class="article-featured-img" width="900" height="506" fetchpriority="high" decoding="async">
+        <source srcset="assets/images/crypto-drainer-guide.webp" type="image/webp">
+        <img src="assets/images/crypto-drainer-guide.jpg" alt="Blockchain Smart Contract Security Analysis and Crypto Drainer Code Forensic Inspection" class="article-featured-img" width="900" height="506" fetchpriority="high" decoding="async">
       </picture>
 
       <div class="article-content">
@@ -294,6 +297,55 @@
           Install security extensions (such as Wallet Guard, Pocket Universe, or Rabby Wallet) that perform dry-run transaction simulation before you sign, explicitly displaying which assets will leave your account.
         </p>
 
+        <h2><span>⚖️</span> Signature &amp; Approval Risk Matrix (What Your Wallet Shows)</h2>
+        <div style="overflow-x: auto; margin-bottom: 1.75rem;">
+          <table style="width: 100%; border-collapse: collapse; font-size: 0.92rem; color: #CBD5E1; background: rgba(15, 23, 42, 0.7); border: 1px solid var(--border-glass); border-radius: var(--radius-md);">
+            <thead>
+              <tr style="background: rgba(0, 242, 254, 0.08); text-align: left;">
+                <th style="padding: 0.85rem 1rem; border-bottom: 1px solid var(--border-glass); color: var(--text-main);">Wallet Prompt Method</th>
+                <th style="padding: 0.85rem 1rem; border-bottom: 1px solid var(--border-glass); color: #38BDF8;">Technical Capability</th>
+                <th style="padding: 0.85rem 1rem; border-bottom: 1px solid var(--border-glass); color: #F87171;">Drainer Abuse Vector</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td style="padding: 0.8rem 1rem; border-bottom: 1px solid rgba(255,255,255,0.06);"><code>Permit</code> / <code>Permit2</code></td>
+                <td style="padding: 0.8rem 1rem; border-bottom: 1px solid rgba(255,255,255,0.06);">Off-chain EIP-712 gasless token approval</td>
+                <td style="padding: 0.8rem 1rem; border-bottom: 1px solid rgba(255,255,255,0.06);">Grants unlimited ERC-20 transfer rights without a gas prompt</td>
+              </tr>
+              <tr>
+                <td style="padding: 0.8rem 1rem; border-bottom: 1px solid rgba(255,255,255,0.06);"><code>setApprovalForAll</code></td>
+                <td style="padding: 0.8rem 1rem; border-bottom: 1px solid rgba(255,255,255,0.06);">Authorizes operator over an entire NFT collection</td>
+                <td style="padding: 0.8rem 1rem; border-bottom: 1px solid rgba(255,255,255,0.06);">Siphons every NFT in that collection in a single block</td>
+              </tr>
+              <tr>
+                <td style="padding: 0.8rem 1rem; border-bottom: 1px solid rgba(255,255,255,0.06);"><code>IncreaseAllowance</code></td>
+                <td style="padding: 0.8rem 1rem; border-bottom: 1px solid rgba(255,255,255,0.06);">Expands existing spender token limit</td>
+                <td style="padding: 0.8rem 1rem; border-bottom: 1px solid rgba(255,255,255,0.06);">Bypasses older wallet heuristics that only flag <code>approve()</code></td>
+              </tr>
+              <tr>
+                <td style="padding: 0.8rem 1rem;"><code>eth_sign</code> (Raw Hex)</td>
+                <td style="padding: 0.8rem 1rem;">Signs arbitrary opaque 32-byte hashes</td>
+                <td style="padding: 0.8rem 1rem;">Can sign any raw transaction offline for immediate broadcast</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+        <h2><span>❓</span> Frequently Asked Questions</h2>
+        <div class="forensic-box">
+          <h4>If I only signed a "gasless" message and paid $0 in ETH, can my wallet still be drained?</h4>
+          <p>
+            Yes. With EIP-2612 <code>Permit</code> and Uniswap <code>Permit2</code>, you sign an off-chain cryptographic authorization. The attacker then submits that signature on-chain and pays the gas themselves to execute <code>transferFrom()</code>, emptying your USDC, USDT, or wrapped tokens within seconds.
+          </p>
+        </div>
+        <div class="forensic-box">
+          <h4>Can a hardware wallet like Ledger or Trezor stop a smart-contract drainer?</h4>
+          <p>
+            A hardware wallet protects your private seed phrase from malware extraction, but it <strong>cannot</strong> stop you from manually approving a malicious <code>Permit</code> or <code>setApprovalForAll</code> transaction if you blind-sign it on the device screen. Always combine hardware isolation with transaction simulation and strict asset segregation.
+          </p>
+        </div>
+
         <div class="citation-list">
           <h4 style="color: var(--text-main); margin-bottom: 0.75rem;">Blockchain Security Research &amp; Advisory Sources:</h4>
           <ol style="padding-left: 1.25rem; line-height: 1.7;">
@@ -311,7 +363,7 @@
     <div class="container">
       <div class="footer-grid">
         <div class="footer-brand-col">
-          <a href="index.html" class="brand-logo" aria-label="ScamShield Lab Home">
+          <a href="/" class="brand-logo" aria-label="ScamShield Lab Home">
             <img src="assets/images/logo.jpg" alt="ScamShield Lab Logo" class="brand-icon" width="36" height="36" loading="lazy">
             <div class="brand-text-col">
               <span class="brand-main-title">ScamShield<span class="brand-lab-accent">Lab</span></span>
@@ -320,9 +372,9 @@
           </a>
           <div class="footer-review-pill">
             <span class="review-pill-icon" aria-hidden="true">🛡️</span>
-            <a href="about.html#editorial-standards" class="review-pill-link">Reviewed by Cybersecurity Professionals</a>
+            <a href="/about#editorial-standards" class="review-pill-link">Reviewed by Cybersecurity Professionals</a>
             <span class="review-pill-divider" aria-hidden="true">&bull;</span>
-            <span class="review-pill-date">Last Updated: October 2026</span>
+            <span class="review-pill-date">Last Updated: November 2026</span>
           </div>
           <p class="footer-brand-desc">
             Independent threat intelligence initiative and AI forensic analyzer dedicated to democratizing cyber fraud detection, deepfake defense, and zero-trust privacy.
@@ -332,39 +384,39 @@
         <div class="footer-col">
           <h4 class="footer-col-title">Detection Tools</h4>
           <ul class="footer-nav-list">
-            <li><a href="index.html#analyzer">AI Scam Text Analyzer</a></li>
-            <li><a href="how-we-score.html">How We Score (0–100 Engine)</a></li>
-            <li><a href="family-safe-word.html">Family Safe Word Kit</a></li>
-            <li><a href="index.html#threat-radar">Threat Radar 2026</a></li>
-            <li><a href="quiz.html">Vulnerability Quiz</a></li>
-            <li><a href="incident-response.html" style="color: #EF4444; font-weight: 600;">🚨 Emergency Action Plan</a></li>
+            <li><a href="/#analyzer">AI Scam Text Analyzer</a></li>
+            <li><a href="/how-we-score">How We Score (0–100 Engine)</a></li>
+            <li><a href="/family-safe-word">Family Safe Word Kit</a></li>
+            <li><a href="/#threat-radar">Threat Radar 2026</a></li>
+            <li><a href="/quiz">Vulnerability Quiz</a></li>
+            <li><a href="/incident-response" style="color: #EF4444; font-weight: 600;">🚨 Emergency Action Plan</a></li>
           </ul>
         </div>
 
         <div class="footer-col">
           <h4 class="footer-col-title">Threat Research Guides</h4>
           <ul class="footer-nav-list">
-            <li><a href="guide-crypto-drainer-scams.html">Web3 Wallet Drainers</a></li>
-            <li><a href="guide-remote-access-scams.html">Remote Access &amp; AnyDesk Scams</a></li>
-            <li><a href="guide-sim-swapping.html">SIM Swap Attacks &amp; 2FA</a></li>
-            <li><a href="guide-deepfake-video.html">Real-Time Deepfake Video Calls</a></li>
-            <li><a href="guide-voice-cloning.html">Voice Cloning Deepfake Defense</a></li>
-            <li><a href="guide-phishing.html">Phishing &amp; 2FA Bypasses</a></li>
-            <li><a href="guide-pig-butchering.html">Agentic Pig Butchering</a></li>
+            <li><a href="/guide-crypto-drainer-scams">Web3 Wallet Drainers</a></li>
+            <li><a href="/guide-remote-access-scams">Remote Access &amp; AnyDesk Scams</a></li>
+            <li><a href="/guide-sim-swapping">SIM Swap Attacks &amp; 2FA</a></li>
+            <li><a href="/guide-deepfake-video">Real-Time Deepfake Video Calls</a></li>
+            <li><a href="/guide-voice-cloning">Voice Cloning Deepfake Defense</a></li>
+            <li><a href="/guide-phishing">Phishing &amp; 2FA Bypasses</a></li>
+            <li><a href="/guide-pig-butchering">Agentic Pig Butchering</a></li>
           </ul>
         </div>
 
         <div class="footer-col">
           <h4 class="footer-col-title">Legal &amp; Trust</h4>
           <ul class="footer-nav-list">
-            <li><a href="about.html">About ScamShield Lab</a></li>
-            <li><a href="editorial-policy.html">Editorial Standards &amp; E-E-A-T</a></li>
-            <li><a href="contact.html">Contact Us</a></li>
-            <li><a href="about.html#vendor-profile">Vendor &amp; Security Profile</a></li>
-            <li><a href="how-we-score.html#privacy-matrix">Privacy-by-Design Matrix</a></li>
-            <li><a href="privacy.html">Privacy Policy</a></li>
-            <li><a href="terms.html">Terms of Service</a></li>
-            <li><a href="terms.html#affiliate-disclosure">Affiliate Disclosure</a></li>
+            <li><a href="/about">About ScamShield Lab</a></li>
+            <li><a href="/editorial-policy">Editorial Standards &amp; E-E-A-T</a></li>
+            <li><a href="/contact">Contact Us</a></li>
+            <li><a href="/about#vendor-profile">Vendor &amp; Security Profile</a></li>
+            <li><a href="/how-we-score#privacy-matrix">Privacy-by-Design Matrix</a></li>
+            <li><a href="/privacy">Privacy Policy</a></li>
+            <li><a href="/terms">Terms of Service</a></li>
+            <li><a href="/terms#affiliate-disclosure">Affiliate Disclosure</a></li>
             <li><a href=".well-known/security.txt">Security.txt (RFC 9116)</a></li>
           </ul>
         </div>
@@ -374,8 +426,8 @@
         <div>&copy; 2026 ScamShield Lab - AI Forensic Analyzer. All rights reserved. Built for global public cyber defense.</div>
         <div>
           <span>Zero-Trust Protocol Active</span> &bull; 
-          <a href="privacy.html" style="color: var(--text-faint);">Privacy</a> &bull; 
-          <a href="terms.html" style="color: var(--text-faint);">Terms &amp; Disclosures</a>
+          <a href="/privacy" style="color: var(--text-faint);">Privacy</a> &bull; 
+          <a href="/terms" style="color: var(--text-faint);">Terms &amp; Disclosures</a>
         </div>
       </div>
       <div class="footer-disclaimer">

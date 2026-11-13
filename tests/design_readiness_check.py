@@ -144,11 +144,24 @@ def run_readiness_checks():
                     broken_links.append(f"  {filename} -> href='{href}' (ID #{target_id} does not exist on page)")
             else:
                 parts = href.split("#")
-                target_file = parts[0]
+                raw_target = parts[0]
                 target_id = parts[1] if len(parts) > 1 else None
 
+                # Resolve extensionless Cloudflare Pages URLs (/ -> index.html, /slug -> slug.html)
+                if raw_target == "/" or raw_target == "":
+                    target_file = "index.html" if raw_target == "/" else ""
+                elif raw_target.startswith("/"):
+                    candidate = raw_target.lstrip("/")
+                    if candidate in parsed_files:
+                        target_file = candidate
+                    elif f"{candidate}.html" in parsed_files:
+                        target_file = f"{candidate}.html"
+                    else:
+                        target_file = candidate
+                else:
+                    target_file = raw_target
+
                 if target_file and target_file not in parsed_files:
-                    # Allow links like index.html or root
                     if target_file not in ["index.html", ""] and not os.path.exists(os.path.join(WORKSPACE_ROOT, target_file)):
                         broken_links.append(f"  {filename} -> href='{href}' (Target file '{target_file}' not found)")
                 elif target_id:
@@ -178,16 +191,24 @@ def run_readiness_checks():
             sitemap_urls = [loc.text.strip() for loc in root.findall(".//ns:loc", ns)]
             
             missing_from_sitemap = []
+            redirect_urls = [u for u in sitemap_urls if u.endswith(".html")]
             for hf in PUBLISHED_HTML_FILES:
-                matched = any(hf in u or (hf == "index.html" and u.endswith("scamshieldlab.com/")) for u in sitemap_urls)
+                slug = hf[:-5] if hf.endswith(".html") else hf
+                if hf == "index.html":
+                    matched = any(u.endswith("scamshieldlab.com/") for u in sitemap_urls)
+                else:
+                    matched = any(u.rstrip("/") == f"https://scamshieldlab.com/{slug}" for u in sitemap_urls)
                 if not matched:
                     missing_from_sitemap.append(hf)
             
-            if missing_from_sitemap:
-                failures.append(f"Pages missing from sitemap.xml: {missing_from_sitemap}")
-                print(f"  FAILED: {len(missing_from_sitemap)} published pages missing from sitemap.xml.")
+            if missing_from_sitemap or redirect_urls:
+                if missing_from_sitemap:
+                    failures.append(f"Pages missing from sitemap.xml: {missing_from_sitemap}")
+                if redirect_urls:
+                    failures.append(f"Sitemap contains .html URLs that 307-redirect on Cloudflare Pages: {redirect_urls}")
+                print(f"  FAILED: Sitemap issues detected (missing={len(missing_from_sitemap)}, redirecting={len(redirect_urls)}).")
             else:
-                print(f"  PASSED: All {len(PUBLISHED_HTML_FILES)} published pages declared in sitemap.xml.")
+                print(f"  PASSED: All {len(PUBLISHED_HTML_FILES)} published pages declared with direct extensionless URLs in sitemap.xml.")
         except Exception as e:
             failures.append(f"Failed to parse sitemap.xml: {e}")
             print(f"  FAILED: XML parsing error in sitemap.xml: {e}")
@@ -313,8 +334,11 @@ def run_readiness_checks():
         if not extractor.meta_desc or len(extractor.meta_desc) < 40:
             seo_issues.append(f"{filename}: Missing or too short meta description ({len(extractor.meta_desc)} chars)")
 
-        if 'rel="canonical"' not in raw_contents[filename]:
+        canon_match = re.search(r'<link[^>]+rel="canonical"[^>]+href="([^"]+)"', raw_contents[filename])
+        if not canon_match:
             seo_issues.append(f"{filename}: Missing <link rel=\"canonical\">")
+        elif canon_match.group(1).endswith(".html"):
+            seo_issues.append(f"{filename}: Canonical URL '{canon_match.group(1)}' must be extensionless (no .html)")
 
     if seo_issues:
         failures.append("SEO metadata validation errors:\n  " + "\n  ".join(seo_issues))
@@ -359,14 +383,14 @@ def run_readiness_checks():
         'guide-job-scams.html': 'assets/images/job-scams-guide.webp',
         'guide-delivery-scams.html': 'assets/images/delivery-scams-guide.webp',
         'guide-voice-cloning.html': 'assets/images/deepfake.webp',
-        'guide-pig-butchering.html': 'assets/images/hero.webp',
+        'guide-pig-butchering.html': 'assets/images/pig-butchering-guide.webp',
         'guide-digital-arrest.html': 'assets/images/digital-arrest-guide.webp',
-        'guide-deepfake-video.html': 'assets/images/hero.webp',
-        'guide-sim-swapping.html': 'assets/images/hero.webp',
-        'guide-remote-access-scams.html': 'assets/images/hero.webp',
-        'guide-crypto-drainer-scams.html': 'assets/images/hero.webp',
-        'guide-bank-impersonation.html': 'assets/images/hero.webp',
-        'guide-student-loan-scams.html': 'assets/images/hero.webp'
+        'guide-deepfake-video.html': 'assets/images/deepfake-video-guide.webp',
+        'guide-sim-swapping.html': 'assets/images/sim-swapping-guide.webp',
+        'guide-remote-access-scams.html': 'assets/images/remote-access-guide.webp',
+        'guide-crypto-drainer-scams.html': 'assets/images/crypto-drainer-guide.webp',
+        'guide-bank-impersonation.html': 'assets/images/bank-impersonation-guide.webp',
+        'guide-student-loan-scams.html': 'assets/images/student-loan-guide.webp'
     }
 
     # 1. Image Size Budgets

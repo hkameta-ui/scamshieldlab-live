@@ -110,11 +110,11 @@
   <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-7565560894775775" crossorigin="anonymous"></script>
 
   <!-- Stylesheets -->
-  <link rel="stylesheet" href="css/styles.css?v=20261030-zero-cls">
+  <link rel="stylesheet" href="css/styles.css?v=20261113-adsense">
   <link rel="icon" type="image/jpeg" href="assets/images/logo.jpg">
 
   <!-- Configuration & AdSense Loader -->
-  <script src="config.js?v=20261030-zero-cls" defer></script>
+  <script src="config.js?v=20261113-adsense" defer></script>
 </head>
 <body>
 
@@ -138,7 +138,7 @@
   <!-- Navigation Bar -->
   <header class="site-header">
     <div class="container nav-inner">
-      <a href="index.html" class="brand-logo" aria-label="ScamShield Lab Home">
+      <a href="/" class="brand-logo" aria-label="ScamShield Lab Home">
         <img src="assets/images/logo.jpg" alt="ScamShield Lab Logo" class="brand-icon" width="36" height="36" decoding="async">
         <div class="brand-text-col">
           <span class="brand-main-title">ScamShield<span class="brand-lab-accent">Lab</span></span>
@@ -149,13 +149,13 @@
       <nav aria-label="Primary Navigation" class="main-nav">
         <ul class="nav-links" id="primaryNavLinks">
           <li><a href="#analyzer">Scanner</a></li>
-          <li><a href="quiz.html">Spot the Fake</a></li>
-          <li><a href="family-safe-word.html">Safe Word Kit</a></li>
-          <li><a href="incident-response.html" style="color: #EF4444; font-weight: 700;">🚨 Got Scammed?</a></li>
+          <li><a href="/quiz">Spot the Fake</a></li>
+          <li><a href="/family-safe-word">Safe Word Kit</a></li>
+          <li><a href="/incident-response" style="color: #EF4444; font-weight: 700;">🚨 Got Scammed?</a></li>
           <li><a href="#threat-radar">Threat Radar</a></li>
           <li><a href="#guides">Guides</a></li>
-          <li><a href="about.html">About</a></li>
-          <li><a href="contact.html">Contact</a></li>
+          <li><a href="/about">About</a></li>
+          <li><a href="/contact">Contact</a></li>
         </ul>
       </nav>
 
@@ -375,7 +375,7 @@
           <div class="analyzer-input-area">
             <div class="analyzer-label-row">
               <label for="scamTextInput" class="analyzer-label">Message / Email / URL Content:</label>
-              <span style="font-size: 0.8rem; color: var(--text-muted);">Client-Side Privacy: Processed locally in browser session memory &bull; <a href="about.html#security-audit" style="color: var(--color-primary); text-decoration: underline;">Audit Zero-Storage</a></span>
+              <span style="font-size: 0.8rem; color: var(--text-muted);">Client-Side Privacy: Processed locally in browser session memory &bull; <a href="/about#security-audit" style="color: var(--color-primary); text-decoration: underline;">Audit Zero-Storage</a></span>
             </div>
             <textarea id="scamTextInput" class="scam-textarea" placeholder="Paste suspicious message text, unexpected email content, or communication here..." rows="6"></textarea>
           </div>
@@ -502,7 +502,7 @@
           <div class="analyzer-methodology-note">
             <span class="methodology-note-icon" aria-hidden="true">🔬</span>
             <div class="methodology-note-text">
-              <strong>Open Forensic Methodology:</strong> ScamShield Lab provides client-side heuristic risk scoring based on 100+ documented behavioral threat indicators (cognitive urgency, spoofed domain routing, irreversible payment extraction). Risk scores represent educational probability assessments, not legal or forensic guarantees. <a href="how-we-score.html" class="methodology-note-link">Review our 4-Layer Open Scoring Architecture &rarr;</a>
+              <strong>Open Forensic Methodology:</strong> ScamShield Lab provides client-side heuristic risk scoring based on 100+ documented behavioral threat indicators (cognitive urgency, spoofed domain routing, irreversible payment extraction). Risk scores represent educational probability assessments, not legal or forensic guarantees. <a href="/how-we-score" class="methodology-note-link">Review our 4-Layer Open Scoring Architecture &rarr;</a>
             </div>
           </div>
 
@@ -543,27 +543,6 @@
       </div>
     </section>
 
-    <!-- SECTION 2: Zero-Trust Personal Defense Stack (Verified Cybersecurity Partners) -->
-    <section class="section-wrapper" id="defense-stack" style="background: rgba(14, 23, 38, 0.4);">
-      <div class="container">
-        <div class="section-header">
-          <span class="section-tag">Curated Protection Stack</span>
-          <h2 class="section-title">Zero-Trust Personal Defense Stack</h2>
-          <p class="section-description">
-            The software utilities recommended by security engineers to protect identities, devices, and communications against generative cyber threats.
-          </p>
-        </div>
-
-        <div class="affiliate-stack-grid" id="affiliateCardsRow">
-          <!-- Populated from SITE_CONFIG.affiliates by app.js -->
-        </div>
-
-        <div class="affiliate-disclosure-note">
-          <p><strong>Affiliate Transparency:</strong> When you purchase protection software through our verified partner links, ScamShield Lab may receive a referral commission at no additional cost to you. We only recommend independently certified cybersecurity tools.</p>
-        </div>
-      </div>
-    </section>
-
     <!-- SECTION 3: 2026 AI Threat Radar Database -->
     <section class="section-wrapper" id="threat-radar">
       <div class="container">
@@ -592,7 +571,359 @@
         </div>
 
         <div class="threat-grid" id="threatCardsGrid">
-          <!-- Populated by app.js from THREAT_DATABASE -->
+          <article class="threat-card" data-category="voice">
+            <div class="threat-card-header">
+              <span class="threat-badge" style="background: rgba(239, 68, 68, 0.15); color: #EF4444; border: 1px solid #EF4444;">
+                CRITICAL
+              </span>
+              <span class="threat-category-tag">Voice Cloning (Vishing)</span>
+            </div>
+            <h3 class="threat-card-title">AI Voice Cloning &#x27;Family Emergency&#x27; Scam</h3>
+            <p class="threat-summary">Attackers scrape as little as 3 seconds of audio from social media (TikTok, Instagram Reels) to synthesize an exact voice clone. They call parents or grandparents claiming an emergency, car accident, or arrest requiring immediate wire or crypto bail.</p>
+            <div class="threat-impact-row">
+              <div><strong>Estimated Impact:</strong> $1.1B+ in annual AI voice &amp; deepfake losses</div>
+              <div class="threat-impact-source">🏛️ Verified Sourcing: <span>Deloitte Center for Financial Services &amp; FBI IC3</span></div>
+            </div>
+            <div class="threat-section-title">Key Indicators (Red Flags):</div>
+            <ul class="threat-indicators-list">
+              <li>Caller demands immediate secrecy (&#x27;Don&#x27;t tell mom&#x27;, &#x27;Police said not to hang up&#x27;)</li>
+              <li>Payment requested via irreversible channels (Bitcoin ATM, Zelle, Wire, Gift Cards)</li>
+              <li>Background noise seems unnaturally clean or slightly robotic</li>
+              <li>Refusal to answer personal trivia not available on public social profiles</li>
+            </ul>
+            <div class="threat-defense-box">
+              <div class="defense-title">🛡️ Recommended Defense:</div>
+              <p>Establish a secret, offline &#x27;Family Safe Word&#x27;. Always hang up immediately and dial the family member directly on their verified cell phone.</p>
+            </div>
+            <div class="case-study-callout">
+              <strong>Real-World Incident:</strong> Elderly couples targeted by synthetic voice clones of their grandchildren, losing an average of $8,500 per incident before verification.
+            </div>
+            <div class="threat-sources-box">
+              <span class="threat-sources-title">Verified Intelligence Citations:</span>
+              <div class="threat-sources-list">
+                <a href="https://www2.deloitte.com/us/en/insights/industry/financial-services.html" target="_blank" rel="noopener noreferrer" class="threat-source-link" title="Open verified documentation: Center for Financial Services ($1.1B+ Deepfake Losses)"><span class="source-tag-name">🏛️ Deloitte:</span> <span class="source-tag-label">Center for Financial Services ($1.1B+ Deepfake Losses)</span> &rarr;</a>
+                <a href="https://arxiv.org/abs/2301.02111" target="_blank" rel="noopener noreferrer" class="threat-source-link" title="Open verified documentation: VALL-E 3s Neural Synthesis Benchmark"><span class="source-tag-name">🏛️ Microsoft Research:</span> <span class="source-tag-label">VALL-E 3s Neural Synthesis Benchmark</span> &rarr;</a>
+                <a href="https://www.ic3.gov" target="_blank" rel="noopener noreferrer" class="threat-source-link" title="Open verified documentation: Annual Cyber Threat Report"><span class="source-tag-name">🏛️ FBI IC3:</span> <span class="source-tag-label">Annual Cyber Threat Report</span> &rarr;</a>
+                <a href="https://www.ftc.gov" target="_blank" rel="noopener noreferrer" class="threat-source-link" title="Open verified documentation: Consumer Sentinel Voice Clone Advisory"><span class="source-tag-name">🏛️ FTC:</span> <span class="source-tag-label">Consumer Sentinel Voice Clone Advisory</span> &rarr;</a>
+              </div>
+            </div>
+          </article>
+          <article class="threat-card" data-category="agentic">
+            <div class="threat-card-header">
+              <span class="threat-badge" style="background: rgba(239, 68, 68, 0.15); color: #EF4444; border: 1px solid #EF4444;">
+                CRITICAL
+              </span>
+              <span class="threat-category-tag">Agentic AI Operations</span>
+            </div>
+            <h3 class="threat-card-title">Agentic AI Business Email Compromise (BEC)</h3>
+            <p class="threat-summary">Autonomous AI agents perform continuous automated reconnaissance on LinkedIn and corporate websites. When an executive travels, the agent generates hyper-personalized, contextually flawless emails to finance staff requesting urgent invoice settlements.</p>
+            <div class="threat-impact-row">
+              <div><strong>Estimated Impact:</strong> $2.9B corporate risk worldwide</div>
+              <div class="threat-impact-source">🏛️ Verified Sourcing: <span>FBI IC3 BEC Telemetry &amp; FinCEN</span></div>
+            </div>
+            <div class="threat-section-title">Key Indicators (Red Flags):</div>
+            <ul class="threat-indicators-list">
+              <li>Flawless grammar and nuanced corporate tone mimicking internal communication</li>
+              <li>Executive is known to be in flight or at an off-site conference</li>
+              <li>Urgent request to change vendor bank account details on an active invoice</li>
+              <li>Slightly spoofed domain (e.g., using lookalike Unicode letters or subtle typos)</li>
+            </ul>
+            <div class="threat-defense-box">
+              <div class="defense-title">🛡️ Recommended Defense:</div>
+              <p>Mandate strict out-of-band verification via voice or in-person dual authorization for any vendor account change over $1,000.</p>
+            </div>
+            <div class="case-study-callout">
+              <strong>Real-World Incident:</strong> Multi-national engineering firm Arup lost $25M when a finance employee was tricked by a multi-person deepfake video conference.
+            </div>
+            <div class="threat-sources-box">
+              <span class="threat-sources-title">Verified Intelligence Citations:</span>
+              <div class="threat-sources-list">
+                <a href="https://www.ic3.gov" target="_blank" rel="noopener noreferrer" class="threat-source-link" title="Open verified documentation: Business Email Compromise Advisory"><span class="source-tag-name">🏛️ FBI IC3:</span> <span class="source-tag-label">Business Email Compromise Advisory</span> &rarr;</a>
+                <a href="https://www.fincen.gov" target="_blank" rel="noopener noreferrer" class="threat-source-link" title="Open verified documentation: Financial Threat Advisory"><span class="source-tag-name">🏛️ FinCEN:</span> <span class="source-tag-label">Financial Threat Advisory</span> &rarr;</a>
+              </div>
+            </div>
+          </article>
+          <article class="threat-card" data-category="crypto">
+            <div class="threat-card-header">
+              <span class="threat-badge" style="background: rgba(239, 68, 68, 0.15); color: #F59E0B; border: 1px solid #F59E0B;">
+                HIGH
+              </span>
+              <span class="threat-category-tag">Crypto &amp; Romance</span>
+            </div>
+            <h3 class="threat-card-title">LLM-Automated &#x27;Pig Butchering&#x27; (Sha Zhu Pan)</h3>
+            <p class="threat-summary">Syndicates use fine-tuned Large Language Models to converse with hundreds of thousands of victims across WhatsApp, Tinder, and LinkedIn simultaneously. The AI builds trust over weeks before introducing a rigged crypto trading platform.</p>
+            <div class="threat-impact-row">
+              <div><strong>Estimated Impact:</strong> Billions stolen through fraudulent liquidity pools</div>
+              <div class="threat-impact-source">🏛️ Verified Sourcing: <span>US Secret Service &amp; FBI IC3</span></div>
+            </div>
+            <div class="threat-section-title">Key Indicators (Red Flags):</div>
+            <ul class="threat-indicators-list">
+              <li>Initial contact begins as an alleged &#x27;wrong number&#x27; text that turns friendly</li>
+              <li>Profile photo is an attractive, wealthy entrepreneur or model</li>
+              <li>Gradual pivot to &#x27;guaranteed daily yield&#x27; or &#x27;inside trading signals&#x27;</li>
+              <li>Victims can withdraw small amounts initially, but large balances are locked with demands for &#x27;tax payments&#x27;</li>
+            </ul>
+            <div class="threat-defense-box">
+              <div class="defense-title">🛡️ Recommended Defense:</div>
+              <p>Never invest on platforms suggested by online acquaintances. Check domain registration age on WHOIS — scam trading sites are usually under 90 days old.</p>
+            </div>
+            <div class="case-study-callout">
+              <strong>Real-World Incident:</strong> Victims persuaded to stake life savings into fake Web3 decentralized finance apps displaying fabricated profit dashboards.
+            </div>
+            <div class="threat-sources-box">
+              <span class="threat-sources-title">Verified Intelligence Citations:</span>
+              <div class="threat-sources-list">
+                <a href="https://www.secretservice.gov" target="_blank" rel="noopener noreferrer" class="threat-source-link" title="Open verified documentation: Crypto Confidence Fraud Warning"><span class="source-tag-name">🏛️ US Secret Service:</span> <span class="source-tag-label">Crypto Confidence Fraud Warning</span> &rarr;</a>
+                <a href="https://www.ic3.gov" target="_blank" rel="noopener noreferrer" class="threat-source-link" title="Open verified documentation: Sha Zhu Pan Syndicate Brief"><span class="source-tag-name">🏛️ FBI IC3:</span> <span class="source-tag-label">Sha Zhu Pan Syndicate Brief</span> &rarr;</a>
+              </div>
+            </div>
+          </article>
+          <article class="threat-card" data-category="phishing">
+            <div class="threat-card-header">
+              <span class="threat-badge" style="background: rgba(239, 68, 68, 0.15); color: #F59E0B; border: 1px solid #F59E0B;">
+                HIGH
+              </span>
+              <span class="threat-category-tag">Evasive Phishing</span>
+            </div>
+            <h3 class="threat-card-title">AI-Generated QR Phishing (&#x27;Quishing&#x27;)</h3>
+            <p class="threat-summary">Because modern email security filters inspect hyperlinks and text attachments, attackers embed obfuscated QR codes generated with AI aesthetic designs. The victim scans the QR code on their mobile device, moving them off corporate security controls.</p>
+            <div class="threat-impact-row">
+              <div><strong>Estimated Impact:</strong> Bypasses 84% of traditional corporate email gateways</div>
+              <div class="threat-impact-source">🏛️ Verified Sourcing: <span>CISA &amp; FTC Advisories</span></div>
+            </div>
+            <div class="threat-section-title">Key Indicators (Red Flags):</div>
+            <ul class="threat-indicators-list">
+              <li>Email alerts regarding mandatory 2FA reset, HR survey, or urgent parcel delivery</li>
+              <li>No clickable links; instead, an embedded image with a high-contrast QR code</li>
+              <li>Directs to a spoofed Microsoft 365, Google Workspace, or Okta login portal</li>
+              <li>Immediate session hijacking using token-stealing adversary-in-the-middle (AiTM) kits</li>
+            </ul>
+            <div class="threat-defense-box">
+              <div class="defense-title">🛡️ Recommended Defense:</div>
+              <p>Never scan QR codes from unexpected emails or paper flyers. Use mobile QR scanners that preview destination domains and SSL certificates.</p>
+            </div>
+            <div class="case-study-callout">
+              <strong>Real-World Incident:</strong> Spike in fake parking meter QR stickers and corporate MFA re-enrollment email scams targeting corporate executives.
+            </div>
+            <div class="threat-sources-box">
+              <span class="threat-sources-title">Verified Intelligence Citations:</span>
+              <div class="threat-sources-list">
+                <a href="https://www.ftc.gov" target="_blank" rel="noopener noreferrer" class="threat-source-link" title="Open verified documentation: QR Code Scams Public Advisory"><span class="source-tag-name">🏛️ FTC:</span> <span class="source-tag-label">QR Code Scams Public Advisory</span> &rarr;</a>
+                <a href="https://www.cisa.gov" target="_blank" rel="noopener noreferrer" class="threat-source-link" title="Open verified documentation: Barcode &amp; QR Security Guide"><span class="source-tag-name">🏛️ CISA:</span> <span class="source-tag-label">Barcode &amp; QR Security Guide</span> &rarr;</a>
+              </div>
+            </div>
+          </article>
+          <article class="threat-card" data-category="malware">
+            <div class="threat-card-header">
+              <span class="threat-badge" style="background: rgba(239, 68, 68, 0.15); color: #F59E0B; border: 1px solid #F59E0B;">
+                HIGH
+              </span>
+              <span class="threat-category-tag">Fake AI Utilities</span>
+            </div>
+            <h3 class="threat-card-title">Malicious Fake AI Software &amp; Browser Extensions</h3>
+            <p class="threat-summary">Threat actors purchase sponsored Google Search and Facebook Ads for fake tools like &#x27;ChatGPT-5 Desktop Beta&#x27;, &#x27;Midjourney v7 Free&#x27;, or &#x27;Sora Video Generator&#x27;. Downloading the installer deploys info-stealers that harvest session tokens.</p>
+            <div class="threat-impact-row">
+              <div><strong>Estimated Impact:</strong> Info-stealers (RedLine, LummaC2) harvesting browser cookies and crypto wallets</div>
+              <div class="threat-impact-source">🏛️ Verified Sourcing: <span>CISA KEV Catalog &amp; Threat Reports</span></div>
+            </div>
+            <div class="threat-section-title">Key Indicators (Red Flags):</div>
+            <ul class="threat-indicators-list">
+              <li>Sponsored Google Ads ranking above organic official domains</li>
+              <li>Executable or zip files hosted on Discord CDN, Mega, or GitHub releases</li>
+              <li>Executable asks for Administrator rights or bypass of Windows Defender SmartScreen</li>
+              <li>Browser suddenly logs you out of Google, Discord, Telegram, or crypto exchanges</li>
+            </ul>
+            <div class="threat-defense-box">
+              <div class="defense-title">🛡️ Recommended Defense:</div>
+              <p>Only download AI utilities from official domains (openai.com, anthropic.com). Verify SHA256 checksums and keep real-time behavioral antivirus active.</p>
+            </div>
+            <div class="case-study-callout">
+              <strong>Real-World Incident:</strong> Over 500,000 users infected through deceptive Facebook ads promoting a desktop version of generative AI video tools.
+            </div>
+            <div class="threat-sources-box">
+              <span class="threat-sources-title">Verified Intelligence Citations:</span>
+              <div class="threat-sources-list">
+                <a href="https://www.cisa.gov" target="_blank" rel="noopener noreferrer" class="threat-source-link" title="Open verified documentation: Known Exploited Vulnerabilities Catalog"><span class="source-tag-name">🏛️ CISA:</span> <span class="source-tag-label">Known Exploited Vulnerabilities Catalog</span> &rarr;</a>
+                <a href="https://cloud.google.com/security" target="_blank" rel="noopener noreferrer" class="threat-source-link" title="Open verified documentation: Infostealer Threat Intelligence"><span class="source-tag-name">🏛️ Mandiant:</span> <span class="source-tag-label">Infostealer Threat Intelligence</span> &rarr;</a>
+              </div>
+            </div>
+          </article>
+          <article class="threat-card" data-category="deepfake">
+            <div class="threat-card-header">
+              <span class="threat-badge" style="background: rgba(239, 68, 68, 0.15); color: #EF4444; border: 1px solid #EF4444;">
+                CRITICAL
+              </span>
+              <span class="threat-category-tag">Identity Fraud</span>
+            </div>
+            <h3 class="threat-card-title">Synthetic KYC Bypass &amp; Credit Fraud</h3>
+            <p class="threat-summary">Fraud rings create synthetic digital identities combining real leaked SSNs with AI-rendered faces that pass automated webcam liveness checks to open fraudulent bank accounts and take out fast loans.</p>
+            <div class="threat-impact-row">
+              <div><strong>Estimated Impact:</strong> Identity theft and unauthorized credit lines</div>
+              <div class="threat-impact-source">🏛️ Verified Sourcing: <span>NIST &amp; INTERPOL Briefings</span></div>
+            </div>
+            <div class="threat-section-title">Key Indicators (Red Flags):</div>
+            <ul class="threat-indicators-list">
+              <li>Unexplained inquiries appearing on your Equifax, Experian, or TransUnion credit report</li>
+              <li>Letters from fintech banks or buy-now-pay-later (BNPL) services for accounts you never created</li>
+              <li>Sudden phone service disruption due to unauthorized eSIM / SIM swapping</li>
+            </ul>
+            <div class="threat-defense-box">
+              <div class="defense-title">🛡️ Recommended Defense:</div>
+              <p>Freeze your credit files permanently with all three major credit bureaus. Use dedicated identity theft monitoring with dark web credential alerts.</p>
+            </div>
+            <div class="case-study-callout">
+              <strong>Real-World Incident:</strong> Fintech lenders hit with millions in default loans originated through real-time generative video injection feeds.
+            </div>
+            <div class="threat-sources-box">
+              <span class="threat-sources-title">Verified Intelligence Citations:</span>
+              <div class="threat-sources-list">
+                <a href="https://pages.nist.gov/800-63-3/" target="_blank" rel="noopener noreferrer" class="threat-source-link" title="Open verified documentation: Digital Identity Guidelines SP 800-63"><span class="source-tag-name">🏛️ NIST:</span> <span class="source-tag-label">Digital Identity Guidelines SP 800-63</span> &rarr;</a>
+                <a href="https://www.interpol.int" target="_blank" rel="noopener noreferrer" class="threat-source-link" title="Open verified documentation: Financial Fraud &amp; Deepfake Brief"><span class="source-tag-name">🏛️ INTERPOL:</span> <span class="source-tag-label">Financial Fraud &amp; Deepfake Brief</span> &rarr;</a>
+              </div>
+            </div>
+          </article>
+          <article class="threat-card" data-category="phishing">
+            <div class="threat-card-header">
+              <span class="threat-badge" style="background: rgba(239, 68, 68, 0.15); color: #EF4444; border: 1px solid #EF4444;">
+                CRITICAL
+              </span>
+              <span class="threat-category-tag">Toll &amp; SMS Smishing</span>
+            </div>
+            <h3 class="threat-card-title">State Road Toll Smishing (SunPass / E-ZPass / FasTrak / TxTag)</h3>
+            <p class="threat-summary">Mass SMS phishing campaigns simulate state road toll collection services (SunPass in Florida, E-ZPass across 19 states, FasTrak in California, TxTag in Texas). The urgent text demands an immediate small payment ($3 to $12) for an &#x27;unpaid toll&#x27; to avoid $50+ late fees, directing victims to credential-harvesting lookalike payment portals.</p>
+            <div class="threat-impact-row">
+              <div><strong>Estimated Impact:</strong> Over $100M+ in stolen payment cards and nationwide FBI IC3 alerts</div>
+              <div class="threat-impact-source">🏛️ Verified Sourcing: <span>FBI IC3 Nationwide Smishing PSA</span></div>
+            </div>
+            <div class="threat-section-title">Key Indicators (Red Flags):</div>
+            <ul class="threat-indicators-list">
+              <li>SMS arrives from a random personal cell number (10-digit) or foreign country code (+44, +63), not an official agency shortcode</li>
+              <li>Demands urgent payment for an unpaid toll with late fee threats (&#x27;Pay within 24 hours to avoid penalty&#x27;)</li>
+              <li>Link points to a deceptive, newly registered domain (e.g., sunpass-toll-services.top, ezpass-toll-pay.xyz, invoice-fastrak.com)</li>
+              <li>Official state toll agencies (SunPass, E-ZPass, FasTrak) never send unsolicited SMS demanding payment with clickable links</li>
+            </ul>
+            <div class="threat-defense-box">
+              <div class="defense-title">🛡️ Recommended Defense:</div>
+              <p>Never click links in toll SMS messages. Navigate directly to the official state portal (sunpass.com, e-zpassny.com) or check your transponder account directly.</p>
+            </div>
+            <div class="case-study-callout">
+              <strong>Real-World Incident:</strong> The FBI IC3 issued an urgent public warning after thousands of drivers across 15+ states received identical smishing texts within 48 hours.
+            </div>
+            <div class="threat-sources-box">
+              <span class="threat-sources-title">Verified Intelligence Citations:</span>
+              <div class="threat-sources-list">
+                <a href="https://www.ic3.gov" target="_blank" rel="noopener noreferrer" class="threat-source-link" title="Open verified documentation: Nationwide Toll Smishing Public Advisory"><span class="source-tag-name">🏛️ FBI IC3:</span> <span class="source-tag-label">Nationwide Toll Smishing Public Advisory</span> &rarr;</a>
+              </div>
+            </div>
+          </article>
+          <article class="threat-card" data-category="voice">
+            <div class="threat-card-header">
+              <span class="threat-badge" style="background: rgba(239, 68, 68, 0.15); color: #EF4444; border: 1px solid #EF4444;">
+                CRITICAL
+              </span>
+              <span class="threat-category-tag">Bank &amp; Wire Fraud</span>
+            </div>
+            <h3 class="threat-card-title">Bank Fraud Department &amp; Zelle / Wire Transfer Trap</h3>
+            <p class="threat-summary">Victims receive an SMS alert about a suspicious transaction, followed immediately by a spoofed call from their bank&#x27;s fraud department. The caller sounds professional, knows the victim&#x27;s name, and instructs them to transfer money &#x27;to a secure account&#x27; or reverse a Zelle charge, which actually transfers the funds directly to the criminal.</p>
+            <div class="threat-impact-row">
+              <div><strong>Estimated Impact:</strong> Over $2.7B in unauthorized bank transfers annually</div>
+              <div class="threat-impact-source">🏛️ Verified Sourcing: <span>FTC Consumer Sentinel Data</span></div>
+            </div>
+            <div class="threat-section-title">Key Indicators (Red Flags):</div>
+            <ul class="threat-indicators-list">
+              <li>Caller asks you to read back a one-time passcode (OTP) or authentication code sent to your phone</li>
+              <li>Instructs you to send funds to yourself or a &#x27;safe holding account&#x27; via Zelle, wire transfer, or crypto</li>
+              <li>Creates extreme urgency claiming your account is currently being drained by a rogue employee</li>
+              <li>Caller ID spoofing shows the exact 1-800 number from the back of your debit card</li>
+            </ul>
+            <div class="threat-defense-box">
+              <div class="defense-title">🛡️ Recommended Defense:</div>
+              <p>Hang up immediately. Banks will NEVER ask you to read back an OTP or transfer money to protect your account. Call the phone number printed directly on the back of your physical card.</p>
+            </div>
+            <div class="case-study-callout">
+              <strong>Real-World Incident:</strong> Elderly and business banking customers tricked into authorizing tens of thousands in wire and Zelle transfers under the guise of an active fraud investigation.
+            </div>
+            <div class="threat-sources-box">
+              <span class="threat-sources-title">Verified Intelligence Citations:</span>
+              <div class="threat-sources-list">
+                <a href="https://www.ftc.gov" target="_blank" rel="noopener noreferrer" class="threat-source-link" title="Open verified documentation: Bank Imposter Scam Alert"><span class="source-tag-name">🏛️ FTC:</span> <span class="source-tag-label">Bank Imposter Scam Alert</span> &rarr;</a>
+                <a href="https://www.ic3.gov" target="_blank" rel="noopener noreferrer" class="threat-source-link" title="Open verified documentation: Financial Accounts Impersonation Warning"><span class="source-tag-name">🏛️ FBI IC3:</span> <span class="source-tag-label">Financial Accounts Impersonation Warning</span> &rarr;</a>
+              </div>
+            </div>
+          </article>
+          <article class="threat-card" data-category="voice">
+            <div class="threat-card-header">
+              <span class="threat-badge" style="background: rgba(239, 68, 68, 0.15); color: #EF4444; border: 1px solid #EF4444;">
+                CRITICAL
+              </span>
+              <span class="threat-category-tag">Government Extortion</span>
+            </div>
+            <h3 class="threat-card-title">Government &amp; Law Enforcement Extortion (IRS / FBI / Arrest Warrant)</h3>
+            <p class="threat-summary">Impostors posing as IRS agents, federal marshals, or local police officers contact victims alleging overdue tax penalties, unpaid legal summons, or imminent arrest warrants. They use aggressive intimidation to demand immediate payment via gift cards, wire transfers, or Bitcoin ATMs.</p>
+            <div class="threat-impact-row">
+              <div><strong>Estimated Impact:</strong> $500M+ extorted through panic and fear tactics</div>
+              <div class="threat-impact-source">🏛️ Verified Sourcing: <span>IRS &amp; TIGTA Fraud Reports</span></div>
+            </div>
+            <div class="threat-section-title">Key Indicators (Red Flags):</div>
+            <ul class="threat-indicators-list">
+              <li>Caller threatens immediate arrest by local police or county sheriff within the hour</li>
+              <li>Demands payment via prepaid gift cards (Apple, Target, Vanilla Visa) or cryptocurrency ATMs</li>
+              <li>Refuses to allow you to hang up, confer with family, or consult a CPA/attorney</li>
+              <li>Government agencies (IRS, FBI, Law Enforcement) never notify citizens of warrants or penalties via phone or demand gift card payments</li>
+            </ul>
+            <div class="threat-defense-box">
+              <div class="defense-title">🛡️ Recommended Defense:</div>
+              <p>Hang up immediately. Government agencies send official written notices via postal mail and never accept cryptocurrency or gift cards for penalties.</p>
+            </div>
+            <div class="case-study-callout">
+              <strong>Real-World Incident:</strong> Victims persuaded to purchase thousands in retail gift cards and read the redemption codes over the phone while kept on active call for hours.
+            </div>
+            <div class="threat-sources-box">
+              <span class="threat-sources-title">Verified Intelligence Citations:</span>
+              <div class="threat-sources-list">
+                <a href="https://www.irs.gov/newsroom/tax-scams-consumer-alerts" target="_blank" rel="noopener noreferrer" class="threat-source-link" title="Open verified documentation: Tax Scams &amp; Consumer Alerts"><span class="source-tag-name">🏛️ IRS:</span> <span class="source-tag-label">Tax Scams &amp; Consumer Alerts</span> &rarr;</a>
+                <a href="https://www.treasury.gov/tigta" target="_blank" rel="noopener noreferrer" class="threat-source-link" title="Open verified documentation: Treasury Inspector General Extortion Alert"><span class="source-tag-name">🏛️ TIGTA:</span> <span class="source-tag-label">Treasury Inspector General Extortion Alert</span> &rarr;</a>
+              </div>
+            </div>
+          </article>
+          <article class="threat-card" data-category="voice">
+            <div class="threat-card-header">
+              <span class="threat-badge" style="background: rgba(239, 68, 68, 0.15); color: #EF4444; border: 1px solid #EF4444;">
+                CRITICAL
+              </span>
+              <span class="threat-category-tag">Law Enforcement Extortion</span>
+            </div>
+            <h3 class="threat-card-title">Fake Police Video Call &amp; &#x27;Digital Arrest&#x27; Extortion</h3>
+            <p class="threat-summary">Transnational fraud syndicates stage mock police station backgrounds on Skype, WhatsApp, or Signal with uniforms, fake agency seals (CBI, ED, Cyber Crime, Interpol, FBI), and fabricated arrest warrants. Victims are placed under fake &#x27;digital arrest&#x27;, subjected to multi-hour video isolation, and coerced into wiring life savings to &#x27;verification escrow&#x27; accounts.</p>
+            <div class="threat-impact-row">
+              <div><strong>Estimated Impact:</strong> $140M+ extorted through fake police studio setups and Supreme Court warrants</div>
+              <div class="threat-impact-source">🏛️ Verified Sourcing: <span>Indian Cyber Crime Coordination Centre (I4C), RBI &amp; Supreme Court of India</span></div>
+            </div>
+            <div class="threat-section-title">Key Indicators (Red Flags):</div>
+            <ul class="threat-indicators-list">
+              <li>Caller claims to be from FedEx, Customs, Telecom, or Police alleging illegal narcotics or money laundering linked to your identity</li>
+              <li>Demands switching to video call (Skype, WhatsApp, Signal) showing an individual in uniform with official agency insignias</li>
+              <li>Places you under &#x27;digital arrest&#x27; or &#x27;virtual surveillance&#x27; and forbids you from hanging up, leaving the camera, or alerting family</li>
+              <li>Demands transferring money to a &#x27;court-monitored escrow account&#x27; or &#x27;RBI verification vault&#x27; for forensic clearance</li>
+              <li>Under legal procedure, no law enforcement agency or court anywhere in the world conducts arrests or surveillance over video calls</li>
+            </ul>
+            <div class="threat-defense-box">
+              <div class="defense-title">🛡️ Recommended Defense:</div>
+              <p>Hang up immediately. &#x27;Digital arrest&#x27; does not exist in law. Police never arrest citizens over Skype or WhatsApp, and never require money transfers for asset verification. Report immediately to cybercrime hotlines (1930 / ic3.gov).</p>
+            </div>
+            <div class="case-study-callout">
+              <strong>Real-World Incident:</strong> High-net-worth retirees, doctors, and professionals coerced into transferring entire pension funds and fixed deposits to syndicate accounts during 72-hour continuous video isolation.
+            </div>
+            <div class="threat-sources-box">
+              <span class="threat-sources-title">Verified Intelligence Citations:</span>
+              <div class="threat-sources-list">
+                <a href="https://cybercrime.gov.in" target="_blank" rel="noopener noreferrer" class="threat-source-link" title="Open verified documentation: Citizen Financial Cyber Fraud Advisory on Digital Arrest"><span class="source-tag-name">🏛️ I4C (MHA):</span> <span class="source-tag-label">Citizen Financial Cyber Fraud Advisory on Digital Arrest</span> &rarr;</a>
+                <a href="https://www.rbi.org.in" target="_blank" rel="noopener noreferrer" class="threat-source-link" title="Open verified documentation: Public Warning on Fictitious Law Enforcement Calls"><span class="source-tag-name">🏛️ Reserve Bank of India:</span> <span class="source-tag-label">Public Warning on Fictitious Law Enforcement Calls</span> &rarr;</a>
+                <a href="https://main.sci.gov.in" target="_blank" rel="noopener noreferrer" class="threat-source-link" title="Open verified documentation: Registry Advisory on Fabricated Court Orders"><span class="source-tag-name">🏛️ Supreme Court of India:</span> <span class="source-tag-label">Registry Advisory on Fabricated Court Orders</span> &rarr;</a>
+                <a href="https://www.ic3.gov" target="_blank" rel="noopener noreferrer" class="threat-source-link" title="Open verified documentation: Government Impersonation Fraud Alert"><span class="source-tag-name">🏛️ FBI IC3:</span> <span class="source-tag-label">Government Impersonation Fraud Alert</span> &rarr;</a>
+              </div>
+            </div>
+          </article>
         </div>
       </div>
     </section>
@@ -619,7 +950,7 @@
             Inspect authentic-looking smartphone SMS, email receipts, and audio notes. Receive an instant forensic score, weakness breakdown, and personalized defense roadmap. 100% free, private in-browser, zero data stored.
           </p>
           <div style="display: flex; justify-content: center; gap: 1rem; flex-wrap: wrap;">
-            <a href="quiz.html" class="btn btn-primary" style="padding: 0.95rem 2rem; font-size: 1.05rem; font-weight: 700; text-decoration: none; display: inline-flex; align-items: center; gap: 0.5rem;">
+            <a href="/quiz" class="btn btn-primary" style="padding: 0.95rem 2rem; font-size: 1.05rem; font-weight: 700; text-decoration: none; display: inline-flex; align-items: center; gap: 0.5rem;">
               <span>⚡</span> Start Forensic Challenge (8 Scenarios) &rarr;
             </a>
           </div>
@@ -647,7 +978,7 @@
               Filter exact steps for your specific scam (wire recall scripts, remote access removal, SSN leaks, and auto-generated bank dispute letters).
             </p>
           </div>
-          <a href="incident-response.html" class="btn btn-primary" style="background: #EF4444; border-color: #EF4444; color: #FFFFFF; font-weight: 700; white-space: nowrap;">
+          <a href="/incident-response" class="btn btn-primary" style="background: #EF4444; border-color: #EF4444; color: #FFFFFF; font-weight: 700; white-space: nowrap;">
             🚨 Launch 15-Minute Triage Wizard &rarr;
           </a>
         </div>
@@ -720,7 +1051,7 @@
                 Gather your family and agree on an unguessable phrase (e.g., "Blue Titanium Falcon"). If any family member ever calls asking for money, they must state this exact word.
               </p>
               <span class="playbook-step-link" style="color: var(--color-success); margin-bottom: 0.5rem; display: block;">Effectiveness: Gold-Standard Out-of-Band Verification Against Voice Clones</span>
-              <a href="family-safe-word.html" style="color: var(--color-primary); font-weight: 700; text-decoration: underline; font-size: 0.88rem;">
+              <a href="/family-safe-word" style="color: var(--color-primary); font-weight: 700; text-decoration: underline; font-size: 0.88rem;">
                 🛡️ Open Family Safe Word Generator & Printable Card &rarr;
               </a>
             </div>
@@ -752,11 +1083,11 @@
             </div>
             <div class="guide-card-content">
               <span class="guide-tag">Credential Defense</span>
-              <h3 class="guide-title"><a href="guide-phishing.html">The 2026 Guide to Phishing Scams & Credential Harvesters</a></h3>
+              <h3 class="guide-title"><a href="/guide-phishing">The 2026 Guide to Phishing Scams & Credential Harvesters</a></h3>
               <p class="guide-excerpt">
                 Real-world forensic teardowns of Chase, Wells Fargo, and Apple ID phishing alerts. How reverse-proxy AiTM kits bypass 2FA and the 5-point emergency response protocol.
               </p>
-              <a href="guide-phishing.html" class="guide-footer-link">Read Full Pillar Guide &rarr;</a>
+              <a href="/guide-phishing" class="guide-footer-link">Read Full Pillar Guide &rarr;</a>
             </div>
           </article>
 
@@ -771,11 +1102,11 @@
             </div>
             <div class="guide-card-content">
               <span class="guide-tag">Employment Cybercrime</span>
-              <h3 class="guide-title"><a href="guide-job-scams.html">The 2026 Guide to Fake Job & Task-Based Scams</a></h3>
+              <h3 class="guide-title"><a href="/guide-job-scams">The 2026 Guide to Fake Job & Task-Based Scams</a></h3>
               <p class="guide-excerpt">
                 Real red-flag SMS examples, the anatomy of the 3-phase prepaid task deposit trap, and an official verification checklist for remote job seekers.
               </p>
-              <a href="guide-job-scams.html" class="guide-footer-link">Read Full Pillar Guide &rarr;</a>
+              <a href="/guide-job-scams" class="guide-footer-link">Read Full Pillar Guide &rarr;</a>
             </div>
           </article>
 
@@ -790,11 +1121,11 @@
             </div>
             <div class="guide-card-content">
               <span class="guide-tag">Smishing Telemetry</span>
-              <h3 class="guide-title"><a href="guide-delivery-scams.html">The 2026 Guide to Package Delivery & Road Toll Smishing</a></h3>
+              <h3 class="guide-title"><a href="/guide-delivery-scams">The 2026 Guide to Package Delivery & Road Toll Smishing</a></h3>
               <p class="guide-excerpt">
                 USPS parcel redelivery fees and FBI-warned SunPass/E-ZPass toll notices. Why cyber syndicates use $0.35 to $4.85 micro-fees to harvest credit card data.
               </p>
-              <a href="guide-delivery-scams.html" class="guide-footer-link">Read Full Pillar Guide &rarr;</a>
+              <a href="/guide-delivery-scams" class="guide-footer-link">Read Full Pillar Guide &rarr;</a>
             </div>
           </article>
 
@@ -809,11 +1140,11 @@
             </div>
             <div class="guide-card-content">
               <span class="guide-tag">Deepfake Intelligence</span>
-              <h3 class="guide-title"><a href="guide-voice-cloning.html">The 2026 Guide to AI Voice Cloning & Deepfake Vishing Scams</a></h3>
+              <h3 class="guide-title"><a href="/guide-voice-cloning">The 2026 Guide to AI Voice Cloning & Deepfake Vishing Scams</a></h3>
               <p class="guide-excerpt">
                 How cyber syndicates clone voices with 3 seconds of TikTok audio, bypass enterprise phone authorization, and how to verify callers using out-of-band protocols.
               </p>
-              <a href="guide-voice-cloning.html" class="guide-footer-link">Read Full Pillar Guide &rarr;</a>
+              <a href="/guide-voice-cloning" class="guide-footer-link">Read Full Pillar Guide &rarr;</a>
             </div>
           </article>
 
@@ -821,18 +1152,18 @@
           <article class="guide-card">
             <div class="guide-thumb-wrap">
               <picture>
-                <source srcset="assets/images/hero.webp" type="image/webp">
-                <img src="assets/images/hero.jpg" alt="Autonomous AI Operations and Pig Butchering Networks" class="guide-thumb" width="400" height="200" loading="lazy" decoding="async">
+                <source srcset="assets/images/pig-butchering-guide.webp" type="image/webp">
+                <img src="assets/images/pig-butchering-guide.jpg" alt="Autonomous AI Operations and Pig Butchering Networks" class="guide-thumb" width="400" height="200" loading="lazy" decoding="async">
               </picture>
               <span class="guide-read-time">10 Min Read</span>
             </div>
             <div class="guide-card-content">
               <span class="guide-tag">Financial Cybercrime</span>
-              <h3 class="guide-title"><a href="guide-pig-butchering.html">Agentic AI & Pig Butchering: How LLMs Scale Multi-Million Crypto Scams</a></h3>
+              <h3 class="guide-title"><a href="/guide-pig-butchering">Agentic AI & Pig Butchering: How LLMs Scale Multi-Million Crypto Scams</a></h3>
               <p class="guide-excerpt">
                 Anatomy of the automated romance and investment fraud engine: how autonomous agents maintain 1,000+ simultaneous victims and how to spot fake decentralized liquidity pools.
               </p>
-              <a href="guide-pig-butchering.html" class="guide-footer-link">Read Full Pillar Guide &rarr;</a>
+              <a href="/guide-pig-butchering" class="guide-footer-link">Read Full Pillar Guide &rarr;</a>
             </div>
           </article>
 
@@ -847,11 +1178,11 @@
             </div>
             <div class="guide-card-content">
               <span class="guide-tag">Government Impersonation</span>
-              <h3 class="guide-title"><a href="guide-digital-arrest.html">The 2026 Guide to 'Digital Arrest' &amp; Law Enforcement Video Scams</a></h3>
+              <h3 class="guide-title"><a href="/guide-digital-arrest">The 2026 Guide to 'Digital Arrest' &amp; Law Enforcement Video Scams</a></h3>
               <p class="guide-excerpt">
                 Why 'digital arrest' does not exist in law. The 4-phase psychological extortion loop, fake police studio setups, and emergency disconnect protocols.
               </p>
-              <a href="guide-digital-arrest.html" class="guide-footer-link">Read Full Pillar Guide &rarr;</a>
+              <a href="/guide-digital-arrest" class="guide-footer-link">Read Full Pillar Guide &rarr;</a>
             </div>
           </article>
 
@@ -859,18 +1190,18 @@
           <article class="guide-card">
             <div class="guide-thumb-wrap">
               <picture>
-                <source srcset="assets/images/hero.webp" type="image/webp">
-                <img src="assets/images/hero.jpg" alt="Real-time deepfake video call analysis" class="guide-thumb" width="400" height="200" loading="lazy" decoding="async">
+                <source srcset="assets/images/deepfake-video-guide.webp" type="image/webp">
+                <img src="assets/images/deepfake-video-guide.jpg" alt="Real-time deepfake video call analysis" class="guide-thumb" width="400" height="200" loading="lazy" decoding="async">
               </picture>
               <span class="guide-read-time">9 Min Read</span>
             </div>
             <div class="guide-card-content">
               <span class="guide-tag">Synthetic Video Forensics</span>
-              <h3 class="guide-title"><a href="guide-deepfake-video.html">The 2026 Forensic Guide to Real-Time Deepfake Video Calls</a></h3>
+              <h3 class="guide-title"><a href="/guide-deepfake-video">The 2026 Forensic Guide to Real-Time Deepfake Video Calls</a></h3>
               <p class="guide-excerpt">
                 How criminal syndicates weaponize live face-swapping on Zoom and Teams, lateral profile distortion artifacts, and enterprise CEO fraud defense.
               </p>
-              <a href="guide-deepfake-video.html" class="guide-footer-link">Read Full Pillar Guide &rarr;</a>
+              <a href="/guide-deepfake-video" class="guide-footer-link">Read Full Pillar Guide &rarr;</a>
             </div>
           </article>
 
@@ -878,18 +1209,18 @@
           <article class="guide-card">
             <div class="guide-thumb-wrap">
               <picture>
-                <source srcset="assets/images/hero.webp" type="image/webp">
-                <img src="assets/images/hero.jpg" alt="SIM card cybersecurity analysis" class="guide-thumb" width="400" height="200" loading="lazy" decoding="async">
+                <source srcset="assets/images/sim-swapping-guide.webp" type="image/webp">
+                <img src="assets/images/sim-swapping-guide.jpg" alt="SIM card cybersecurity analysis" class="guide-thumb" width="400" height="200" loading="lazy" decoding="async">
               </picture>
               <span class="guide-read-time">10 Min Read</span>
             </div>
             <div class="guide-card-content">
               <span class="guide-tag">Telecom Security</span>
-              <h3 class="guide-title"><a href="guide-sim-swapping.html">The 2026 Guide to SIM Swap Attacks &amp; 2FA Bypasses</a></h3>
+              <h3 class="guide-title"><a href="/guide-sim-swapping">The 2026 Guide to SIM Swap Attacks &amp; 2FA Bypasses</a></h3>
               <p class="guide-excerpt">
                 Carrier port-out social engineering, eSIM vulnerabilities, SMS OTP interception mechanics, and migrating to domain-bound FIDO2 passkeys.
               </p>
-              <a href="guide-sim-swapping.html" class="guide-footer-link">Read Full Pillar Guide &rarr;</a>
+              <a href="/guide-sim-swapping" class="guide-footer-link">Read Full Pillar Guide &rarr;</a>
             </div>
           </article>
 
@@ -897,18 +1228,18 @@
           <article class="guide-card">
             <div class="guide-thumb-wrap">
               <picture>
-                <source srcset="assets/images/hero.webp" type="image/webp">
-                <img src="assets/images/hero.jpg" alt="Remote desktop software security analysis" class="guide-thumb" width="400" height="200" loading="lazy" decoding="async">
+                <source srcset="assets/images/remote-access-guide.webp" type="image/webp">
+                <img src="assets/images/remote-access-guide.jpg" alt="Remote desktop software security analysis" class="guide-thumb" width="400" height="200" loading="lazy" decoding="async">
               </picture>
               <span class="guide-read-time">11 Min Read</span>
             </div>
             <div class="guide-card-content">
               <span class="guide-tag">RMM Exploitation</span>
-              <h3 class="guide-title"><a href="guide-remote-access-scams.html">The 2026 Guide to Remote Access Scams: AnyDesk &amp; Screen Takeovers</a></h3>
+              <h3 class="guide-title"><a href="/guide-remote-access-scams">The 2026 Guide to Remote Access Scams: AnyDesk &amp; Screen Takeovers</a></h3>
               <p class="guide-excerpt">
                 Tech support boiler rooms, Windows Event Viewer tricks, black-screen curtain mode banking fraud, and emergency network disconnect procedures.
               </p>
-              <a href="guide-remote-access-scams.html" class="guide-footer-link">Read Full Pillar Guide &rarr;</a>
+              <a href="/guide-remote-access-scams" class="guide-footer-link">Read Full Pillar Guide &rarr;</a>
             </div>
           </article>
 
@@ -916,18 +1247,18 @@
           <article class="guide-card">
             <div class="guide-thumb-wrap">
               <picture>
-                <source srcset="assets/images/hero.webp" type="image/webp">
-                <img src="assets/images/hero.jpg" alt="Blockchain smart contract security review" class="guide-thumb" width="400" height="200" loading="lazy" decoding="async">
+                <source srcset="assets/images/crypto-drainer-guide.webp" type="image/webp">
+                <img src="assets/images/crypto-drainer-guide.jpg" alt="Blockchain smart contract security review" class="guide-thumb" width="400" height="200" loading="lazy" decoding="async">
               </picture>
               <span class="guide-read-time">10 Min Read</span>
             </div>
             <div class="guide-card-content">
               <span class="guide-tag">Web3 Security</span>
-              <h3 class="guide-title"><a href="guide-crypto-drainer-scams.html">The 2026 Guide to Web3 Crypto Drainers &amp; Malicious Approvals</a></h3>
+              <h3 class="guide-title"><a href="/guide-crypto-drainer-scams">The 2026 Guide to Web3 Crypto Drainers &amp; Malicious Approvals</a></h3>
               <p class="guide-excerpt">
                 Infinite ERC-20 token approval traps, gasless off-chain Permit signatures, fake airdrop phishing, and step-by-step allowance revocation.
               </p>
-              <a href="guide-crypto-drainer-scams.html" class="guide-footer-link">Read Full Pillar Guide &rarr;</a>
+              <a href="/guide-crypto-drainer-scams" class="guide-footer-link">Read Full Pillar Guide &rarr;</a>
             </div>
           </article>
 
@@ -935,18 +1266,18 @@
           <article class="guide-card">
             <div class="guide-thumb-wrap">
               <picture>
-                <source srcset="assets/images/hero.webp" type="image/webp">
-                <img src="assets/images/hero.jpg" alt="Bank fraud security analysis" class="guide-thumb" width="400" height="200" loading="lazy" decoding="async">
+                <source srcset="assets/images/bank-impersonation-guide.webp" type="image/webp">
+                <img src="assets/images/bank-impersonation-guide.jpg" alt="Bank fraud security analysis" class="guide-thumb" width="400" height="200" loading="lazy" decoding="async">
               </picture>
               <span class="guide-read-time">10 Min Read</span>
             </div>
             <div class="guide-card-content">
               <span class="guide-tag">Banking Defense</span>
-              <h3 class="guide-title"><a href="guide-bank-impersonation.html">The 2026 Guide to Bank Fraud Impersonation &amp; Wire Scams</a></h3>
+              <h3 class="guide-title"><a href="/guide-bank-impersonation">The 2026 Guide to Bank Fraud Impersonation &amp; Wire Scams</a></h3>
               <p class="guide-excerpt">
                 Caller ID spoofing, the "safe account" holding vault deception, Zelle payment redirection, and the 72-hour FBI IC3 wire recall protocol.
               </p>
-              <a href="guide-bank-impersonation.html" class="guide-footer-link">Read Full Pillar Guide &rarr;</a>
+              <a href="/guide-bank-impersonation" class="guide-footer-link">Read Full Pillar Guide &rarr;</a>
             </div>
           </article>
 
@@ -954,18 +1285,18 @@
           <article class="guide-card">
             <div class="guide-thumb-wrap">
               <picture>
-                <source srcset="assets/images/hero.webp" type="image/webp">
-                <img src="assets/images/hero.jpg" alt="Student loan debt relief document review" class="guide-thumb" width="400" height="200" loading="lazy" decoding="async">
+                <source srcset="assets/images/student-loan-guide.webp" type="image/webp">
+                <img src="assets/images/student-loan-guide.jpg" alt="Student loan debt relief document review" class="guide-thumb" width="400" height="200" loading="lazy" decoding="async">
               </picture>
               <span class="guide-read-time">9 Min Read</span>
             </div>
             <div class="guide-card-content">
               <span class="guide-tag">Debt Relief Telemarketing</span>
-              <h3 class="guide-title"><a href="guide-student-loan-scams.html">The 2026 Guide to Student Loan Forgiveness &amp; Debt Relief Scams</a></h3>
+              <h3 class="guide-title"><a href="/guide-student-loan-scams">The 2026 Guide to Student Loan Forgiveness &amp; Debt Relief Scams</a></h3>
               <p class="guide-excerpt">
                 Bogus debt cancellation robocalls, illegal upfront enrollment fees, FSA ID password theft, and free official federal loan servicer channels.
               </p>
-              <a href="guide-student-loan-scams.html" class="guide-footer-link">Read Full Pillar Guide &rarr;</a>
+              <a href="/guide-student-loan-scams" class="guide-footer-link">Read Full Pillar Guide &rarr;</a>
             </div>
           </article>
         </div>
@@ -1029,6 +1360,28 @@
         </div>
       </div>
     </section>
+
+
+    <!-- SECTION 2: Zero-Trust Personal Defense Stack (Verified Cybersecurity Partners) -->
+    <section class="section-wrapper" id="defense-stack" style="background: rgba(14, 23, 38, 0.4);">
+      <div class="container">
+        <div class="section-header">
+          <span class="section-tag">Curated Protection Stack</span>
+          <h2 class="section-title">Zero-Trust Personal Defense Stack</h2>
+          <p class="section-description">
+            The software utilities recommended by security engineers to protect identities, devices, and communications against generative cyber threats.
+          </p>
+        </div>
+
+        <div class="affiliate-stack-grid" id="affiliateCardsRow">
+          <!-- Populated from SITE_CONFIG.affiliates by app.js -->
+        </div>
+
+        <div class="affiliate-disclosure-note">
+          <p><strong>Affiliate Transparency:</strong> When you purchase protection software through our verified partner links, ScamShield Lab may receive a referral commission at no additional cost to you. We only recommend independently certified cybersecurity tools.</p>
+        </div>
+      </div>
+    </section>
   </main>
 
   <!-- Site Footer -->
@@ -1036,7 +1389,7 @@
     <div class="container">
       <div class="footer-grid">
         <div class="footer-brand-col">
-          <a href="index.html" class="brand-logo" aria-label="ScamShield Lab Home">
+          <a href="/" class="brand-logo" aria-label="ScamShield Lab Home">
             <img src="assets/images/logo.jpg" alt="ScamShield Lab Logo" class="brand-icon" width="36" height="36" loading="lazy">
             <div class="brand-text-col">
               <span class="brand-main-title">ScamShield<span class="brand-lab-accent">Lab</span></span>
@@ -1045,9 +1398,9 @@
           </a>
           <div class="footer-review-pill">
             <span class="review-pill-icon" aria-hidden="true">🛡️</span>
-            <a href="about.html#editorial-standards" class="review-pill-link">Reviewed by Cybersecurity Professionals</a>
+            <a href="/about#editorial-standards" class="review-pill-link">Reviewed by Cybersecurity Professionals</a>
             <span class="review-pill-divider" aria-hidden="true">&bull;</span>
-            <span class="review-pill-date">Last Updated: October 2026</span>
+            <span class="review-pill-date">Last Updated: November 2026</span>
           </div>
           <p class="footer-brand-desc">
             Independent threat intelligence initiative and AI forensic analyzer dedicated to democratizing cyber fraud detection, deepfake defense, and zero-trust privacy.
@@ -1058,45 +1411,45 @@
           <h4 class="footer-col-title">Detection Tools</h4>
           <ul class="footer-nav-list">
             <li><a href="#analyzer">AI Scam Text Analyzer</a></li>
-            <li><a href="how-we-score.html">How We Score (0–100 Engine)</a></li>
-            <li><a href="family-safe-word.html">Family Safe Word Kit</a></li>
+            <li><a href="/how-we-score">How We Score (0–100 Engine)</a></li>
+            <li><a href="/family-safe-word">Family Safe Word Kit</a></li>
             <li><a href="#threat-radar">Threat Radar 2026</a></li>
             <li><a href="#quiz">Vulnerability Quiz</a></li>
             <li><a href="#playbook">Incident Playbook</a></li>
-            <li><a href="incident-response.html" style="color: #EF4444; font-weight: 600;">🚨 Emergency Action Plan</a></li>
+            <li><a href="/incident-response" style="color: #EF4444; font-weight: 600;">🚨 Emergency Action Plan</a></li>
           </ul>
         </div>
 
         <div class="footer-col">
           <h4 class="footer-col-title">Threat Research Guides</h4>
           <ul class="footer-nav-list">
-            <li><a href="guide-phishing.html">Phishing &amp; 2FA Bypasses</a></li>
-            <li><a href="guide-job-scams.html">Job &amp; Task Deposit Scams</a></li>
-            <li><a href="guide-delivery-scams.html">Delivery &amp; Toll Smishing</a></li>
-            <li><a href="guide-voice-cloning.html">Voice Cloning Deepfake Defense</a></li>
-            <li><a href="guide-pig-butchering.html">Agentic Pig Butchering</a></li>
-            <li><a href="guide-digital-arrest.html">Digital Arrest &amp; Video Scams</a></li>
-            <li><a href="guide-deepfake-video.html">Real-Time Deepfake Video Calls</a></li>
-            <li><a href="guide-sim-swapping.html">SIM Swap Attacks &amp; 2FA</a></li>
-            <li><a href="guide-remote-access-scams.html">Remote Access &amp; AnyDesk Scams</a></li>
-            <li><a href="guide-crypto-drainer-scams.html">Web3 Wallet Drainers</a></li>
-            <li><a href="guide-bank-impersonation.html">Bank Fraud Impersonation</a></li>
-            <li><a href="guide-student-loan-scams.html">Student Loan Debt Relief Scams</a></li>
+            <li><a href="/guide-phishing">Phishing &amp; 2FA Bypasses</a></li>
+            <li><a href="/guide-job-scams">Job &amp; Task Deposit Scams</a></li>
+            <li><a href="/guide-delivery-scams">Delivery &amp; Toll Smishing</a></li>
+            <li><a href="/guide-voice-cloning">Voice Cloning Deepfake Defense</a></li>
+            <li><a href="/guide-pig-butchering">Agentic Pig Butchering</a></li>
+            <li><a href="/guide-digital-arrest">Digital Arrest &amp; Video Scams</a></li>
+            <li><a href="/guide-deepfake-video">Real-Time Deepfake Video Calls</a></li>
+            <li><a href="/guide-sim-swapping">SIM Swap Attacks &amp; 2FA</a></li>
+            <li><a href="/guide-remote-access-scams">Remote Access &amp; AnyDesk Scams</a></li>
+            <li><a href="/guide-crypto-drainer-scams">Web3 Wallet Drainers</a></li>
+            <li><a href="/guide-bank-impersonation">Bank Fraud Impersonation</a></li>
+            <li><a href="/guide-student-loan-scams">Student Loan Debt Relief Scams</a></li>
           </ul>
         </div>
 
         <div class="footer-col">
           <h4 class="footer-col-title">Legal & Trust</h4>
           <ul class="footer-nav-list">
-            <li><a href="about.html">About ScamShield Lab</a></li>
-            <li><a href="editorial-policy.html">Editorial Standards & E-E-A-T</a></li>
-            <li><a href="contact.html">Contact Us</a></li>
-            <li><a href="about.html#vendor-profile">Vendor & Security Profile</a></li>
-            <li><a href="about.html#threat-changelog">Threat Intelligence Changelog</a></li>
-            <li><a href="how-we-score.html#privacy-matrix">Privacy-by-Design Matrix</a></li>
-            <li><a href="privacy.html">Privacy Policy</a></li>
-            <li><a href="terms.html">Terms of Service</a></li>
-            <li><a href="terms.html#affiliate-disclosure">Affiliate Disclosure</a></li>
+            <li><a href="/about">About ScamShield Lab</a></li>
+            <li><a href="/editorial-policy">Editorial Standards & E-E-A-T</a></li>
+            <li><a href="/contact">Contact Us</a></li>
+            <li><a href="/about#vendor-profile">Vendor & Security Profile</a></li>
+            <li><a href="/about#threat-changelog">Threat Intelligence Changelog</a></li>
+            <li><a href="/how-we-score#privacy-matrix">Privacy-by-Design Matrix</a></li>
+            <li><a href="/privacy">Privacy Policy</a></li>
+            <li><a href="/terms">Terms of Service</a></li>
+            <li><a href="/terms#affiliate-disclosure">Affiliate Disclosure</a></li>
             <li><a href=".well-known/security.txt">Security.txt (RFC 9116)</a></li>
             <li><a href="https://github.com/hkameta-ui/scamshieldlab-live" target="_blank" rel="noopener noreferrer">Open Source Codebase</a></li>
           </ul>
@@ -1107,8 +1460,8 @@
         <div>&copy; 2026 ScamShield Lab - AI Forensic Analyzer. All rights reserved. Built for global public cyber defense.</div>
         <div>
           <span>Zero-Trust Protocol Active</span> &bull; 
-          <a href="privacy.html" style="color: var(--text-faint);">Privacy</a> &bull; 
-          <a href="terms.html" style="color: var(--text-faint);">Terms & Disclosures</a>
+          <a href="/privacy" style="color: var(--text-faint);">Privacy</a> &bull; 
+          <a href="/terms" style="color: var(--text-faint);">Terms & Disclosures</a>
         </div>
       </div>
       <div class="footer-disclaimer">
@@ -1121,7 +1474,7 @@
   <button type="button" class="back-to-top-btn" id="backToTopBtn" aria-label="Scroll back to top of page" title="Back to top">&uarr;</button>
 
   <!-- Scripts -->
-  <script src="js/threat-data.js?v=20261030-zero-cls"></script>
-  <script src="js/app.js?v=20261030-zero-cls"></script>
+  <script src="js/threat-data.js?v=20261113-adsense"></script>
+  <script src="js/app.js?v=20261113-adsense"></script>
 </body>
 </html>
