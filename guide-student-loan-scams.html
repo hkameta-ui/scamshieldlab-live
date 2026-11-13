@@ -158,9 +158,12 @@
 
   <!-- Top Real-Time Threat Intelligence Feed -->
   <aside class="site-ticker" aria-label="Live Threat Intelligence Telemetry">
-    <div class="ticker-inner">
-      <span class="ticker-badge">STUDENT DEBT ALERT</span>
-      <div class="ticker-content" id="liveTickerFeed">
+    <div class="container ticker-wrap">
+      <div class="ticker-badge intel-badge">
+        <span class="beacon-dot" aria-hidden="true"></span>
+        <span>STUDENT DEBT ALERT</span>
+      </div>
+      <div class="ticker-viewport" id="liveThreatTicker" role="status" aria-live="polite">
         <span class="ticker-item"><strong style="color: var(--color-primary);">FEDERAL NOTICE:</strong> The U.S. Department of Education will NEVER charge an application fee for student loan forgiveness or income-driven repayment plans.</span>
       </div>
     </div>

@@ -141,9 +141,12 @@
 
   <!-- Top Real-Time Threat Intelligence Feed -->
   <aside class="site-ticker" aria-label="Live Threat Intelligence Telemetry">
-    <div class="ticker-inner">
-      <span class="ticker-badge">DEEPFAKE ALERT</span>
-      <div class="ticker-content" id="liveTickerFeed">
+    <div class="container ticker-wrap">
+      <div class="ticker-badge intel-badge">
+        <span class="beacon-dot" aria-hidden="true"></span>
+        <span>DEEPFAKE ALERT</span>
+      </div>
+      <div class="ticker-viewport" id="liveThreatTicker" role="status" aria-live="polite">
         <span class="ticker-item"><strong style="color: #EF4444;">FORENSIC ADVISORY:</strong> Real-time neural video reenactment tools now bypass standard 720p conference webcam compression. Always require 90-degree lateral head turns to reveal edge warping.</span>
       </div>
     </div>

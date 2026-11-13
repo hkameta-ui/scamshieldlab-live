@@ -152,9 +152,12 @@
 
   <!-- Top Real-Time Threat Intelligence Feed -->
   <aside class="site-ticker" aria-label="Live Threat Intelligence Telemetry">
-    <div class="ticker-inner">
-      <span class="ticker-badge">WEB3 INTEL</span>
-      <div class="ticker-content" id="liveTickerFeed">
+    <div class="container ticker-wrap">
+      <div class="ticker-badge intel-badge">
+        <span class="beacon-dot" aria-hidden="true"></span>
+        <span>WEB3 INTEL</span>
+      </div>
+      <div class="ticker-viewport" id="liveThreatTicker" role="status" aria-live="polite">
         <span class="ticker-item"><strong style="color: #EF4444;">SMART CONTRACT WARNING:</strong> Never sign 'eth_sign' or blind 'Permit' signature prompts on unverified airdrop claims. Inspect allowances via Revoke.cash.</span>
       </div>
     </div>

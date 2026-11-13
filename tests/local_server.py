@@ -33,3 +33,4 @@ if __name__ == "__main__":
     with socketserver.TCPServer(("127.0.0.1", PORT), CleanUrlHandler) as httpd:
         print(f"ScamShield Lab local server running at http://localhost:{PORT}/")
         httpd.serve_forever()
+
