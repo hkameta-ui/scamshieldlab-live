@@ -8,14 +8,14 @@
   <meta name="description" content="Technical guide to SIM swapping attacks, carrier social engineering, eSIM porting exploits, SMS 2FA interception, and hardware passkey defense.">
   <meta name="keywords" content="SIM swap attack, SIM hijacking, eSIM port out scam, carrier social engineering, SMS OTP intercept, FIDO2 passkey defense, account takeover">
   <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1">
-  <link rel="canonical" href="https://scamshieldlab.com/guide-sim-swapping.html">
+  <link rel="canonical" href="https://scamshieldlab.com/guide-sim-swapping">
 
   <!-- Open Graph -->
   <meta property="og:type" content="article">
   <meta property="og:site_name" content="ScamShield Lab - AI Forensic Analyzer">
   <meta property="og:title" content="The 2026 Guide to SIM Swap Attacks & 2FA Bypasses | ScamShield Lab">
   <meta property="og:description" content="How telecom carrier social engineering redirects SMS two-factor codes, drains crypto wallets, and how to lock down mobile accounts.">
-  <meta property="og:url" content="https://scamshieldlab.com/guide-sim-swapping.html">
+  <meta property="og:url" content="https://scamshieldlab.com/guide-sim-swapping">
   <meta property="og:image" content="https://scamshieldlab.com/assets/images/hero.webp">
 
   <!-- Twitter Cards -->
@@ -41,7 +41,7 @@
       "name": "ScamShield Lab - AI Forensic Analyzer",
       "url": "https://scamshieldlab.com/"
     },
-    "mainEntityOfPage": "https://scamshieldlab.com/guide-sim-swapping.html",
+    "mainEntityOfPage": "https://scamshieldlab.com/guide-sim-swapping",
     "datePublished": "2026-10-29",
     "dateModified": "2026-10-29"
   }
@@ -288,6 +288,50 @@
         <p>
           Major email providers allow you to remove phone numbers from your account recovery settings. If an attacker cannot use your phone number to reset your master password, seizing your SIM card yields zero access to your primary email vault.
         </p>
+
+        <h2><span>⚖️</span> Authentication Resilience Comparison (NIST SP 800-63B)</h2>
+        <div style="overflow-x: auto; margin-bottom: 1.75rem;">
+          <table style="width: 100%; border-collapse: collapse; font-size: 0.92rem; color: #CBD5E1; background: rgba(15, 23, 42, 0.7); border: 1px solid var(--border-glass); border-radius: var(--radius-md);">
+            <thead>
+              <tr style="background: rgba(0, 242, 254, 0.08); text-align: left;">
+                <th style="padding: 0.85rem 1rem; border-bottom: 1px solid var(--border-glass); color: var(--text-main);">2FA Method</th>
+                <th style="padding: 0.85rem 1rem; border-bottom: 1px solid var(--border-glass); color: #38BDF8;">Resists SIM Swap?</th>
+                <th style="padding: 0.85rem 1rem; border-bottom: 1px solid var(--border-glass); color: #34D399;">Resists AiTM Phishing?</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td style="padding: 0.8rem 1rem; border-bottom: 1px solid rgba(255,255,255,0.06);"><strong>SMS / Voice OTP</strong></td>
+                <td style="padding: 0.8rem 1rem; border-bottom: 1px solid rgba(255,255,255,0.06); color: #F87171;">No (Vulnerable to port-out &amp; SS7)</td>
+                <td style="padding: 0.8rem 1rem; border-bottom: 1px solid rgba(255,255,255,0.06); color: #F87171;">No</td>
+              </tr>
+              <tr>
+                <td style="padding: 0.8rem 1rem; border-bottom: 1px solid rgba(255,255,255,0.06);"><strong>TOTP Authenticator App</strong></td>
+                <td style="padding: 0.8rem 1rem; border-bottom: 1px solid rgba(255,255,255,0.06); color: #34D399;">Yes (Device-local secret)</td>
+                <td style="padding: 0.8rem 1rem; border-bottom: 1px solid rgba(255,255,255,0.06); color: #FBBF24;">Partial (Code can be proxied)</td>
+              </tr>
+              <tr>
+                <td style="padding: 0.8rem 1rem;"><strong>FIDO2 Hardware Passkey</strong></td>
+                <td style="padding: 0.8rem 1rem; color: #34D399;">Yes (Zero telecom dependency)</td>
+                <td style="padding: 0.8rem 1rem; color: #34D399;">Yes (Cryptographically domain-bound)</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+        <h2><span>❓</span> Frequently Asked Questions</h2>
+        <div class="forensic-box">
+          <h4>What is the difference between a SIM swap and an eSIM hijack?</h4>
+          <p>
+            In a traditional SIM swap, the attacker activates a physical plastic SIM card linked to your phone number. In an eSIM hijack, the attacker convinces your carrier (or accesses your carrier's self-service web portal) to generate a new eSIM QR code, transferring your cellular line onto their device remotely in under two minutes without ever visiting a store.
+          </p>
+        </div>
+        <div class="forensic-box">
+          <h4>My phone suddenly says "SOS Only" or "No Service" — what should I do in the first 5 minutes?</h4>
+          <p>
+            Use Wi-Fi or a trusted family member's phone to call your carrier's fraud department immediately, freeze your primary bank and brokerage logins, and change your primary email password. Consult our <a href="incident-response.html" style="color: var(--color-primary);">Emergency Incident Response Checklist</a> to lock down financial accounts before an attacker resets your credentials.
+          </p>
+        </div>
 
         <div class="citation-list">
           <h4 style="color: var(--text-main); margin-bottom: 0.75rem;">Government Intelligence &amp; Telecom Regulations:</h4>

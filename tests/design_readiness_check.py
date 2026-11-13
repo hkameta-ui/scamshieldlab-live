@@ -178,16 +178,24 @@ def run_readiness_checks():
             sitemap_urls = [loc.text.strip() for loc in root.findall(".//ns:loc", ns)]
             
             missing_from_sitemap = []
+            redirect_urls = [u for u in sitemap_urls if u.endswith(".html")]
             for hf in PUBLISHED_HTML_FILES:
-                matched = any(hf in u or (hf == "index.html" and u.endswith("scamshieldlab.com/")) for u in sitemap_urls)
+                slug = hf[:-5] if hf.endswith(".html") else hf
+                if hf == "index.html":
+                    matched = any(u.endswith("scamshieldlab.com/") for u in sitemap_urls)
+                else:
+                    matched = any(u.rstrip("/") == f"https://scamshieldlab.com/{slug}" for u in sitemap_urls)
                 if not matched:
                     missing_from_sitemap.append(hf)
             
-            if missing_from_sitemap:
-                failures.append(f"Pages missing from sitemap.xml: {missing_from_sitemap}")
-                print(f"  FAILED: {len(missing_from_sitemap)} published pages missing from sitemap.xml.")
+            if missing_from_sitemap or redirect_urls:
+                if missing_from_sitemap:
+                    failures.append(f"Pages missing from sitemap.xml: {missing_from_sitemap}")
+                if redirect_urls:
+                    failures.append(f"Sitemap contains .html URLs that 307-redirect on Cloudflare Pages: {redirect_urls}")
+                print(f"  FAILED: Sitemap issues detected (missing={len(missing_from_sitemap)}, redirecting={len(redirect_urls)}).")
             else:
-                print(f"  PASSED: All {len(PUBLISHED_HTML_FILES)} published pages declared in sitemap.xml.")
+                print(f"  PASSED: All {len(PUBLISHED_HTML_FILES)} published pages declared with direct extensionless URLs in sitemap.xml.")
         except Exception as e:
             failures.append(f"Failed to parse sitemap.xml: {e}")
             print(f"  FAILED: XML parsing error in sitemap.xml: {e}")
@@ -313,8 +321,11 @@ def run_readiness_checks():
         if not extractor.meta_desc or len(extractor.meta_desc) < 40:
             seo_issues.append(f"{filename}: Missing or too short meta description ({len(extractor.meta_desc)} chars)")
 
-        if 'rel="canonical"' not in raw_contents[filename]:
+        canon_match = re.search(r'<link[^>]+rel="canonical"[^>]+href="([^"]+)"', raw_contents[filename])
+        if not canon_match:
             seo_issues.append(f"{filename}: Missing <link rel=\"canonical\">")
+        elif canon_match.group(1).endswith(".html"):
+            seo_issues.append(f"{filename}: Canonical URL '{canon_match.group(1)}' must be extensionless (no .html)")
 
     if seo_issues:
         failures.append("SEO metadata validation errors:\n  " + "\n  ".join(seo_issues))

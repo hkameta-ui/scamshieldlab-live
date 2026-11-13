@@ -8,14 +8,14 @@
   <meta name="description" content="Forensic guide to student loan forgiveness scams, fake debt relief call centers, FSA ID credential harvesting, and free federal repayment options.">
   <meta name="keywords" content="student loan forgiveness scam, fake debt relief, FSA ID theft, student loan call robocall, SAVE plan scam, loan servicer impersonation">
   <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1">
-  <link rel="canonical" href="https://scamshieldlab.com/guide-student-loan-scams.html">
+  <link rel="canonical" href="https://scamshieldlab.com/guide-student-loan-scams">
 
   <!-- Open Graph -->
   <meta property="og:type" content="article">
   <meta property="og:site_name" content="ScamShield Lab - AI Forensic Analyzer">
   <meta property="og:title" content="The 2026 Guide to Student Loan Forgiveness Scams | ScamShield Lab">
   <meta property="og:description" content="How deceptive call centers charge illegal upfront fees for free federal relief programs, harvest FSA credentials, and how to verify your real loan servicer.">
-  <meta property="og:url" content="https://scamshieldlab.com/guide-student-loan-scams.html">
+  <meta property="og:url" content="https://scamshieldlab.com/guide-student-loan-scams">
   <meta property="og:image" content="https://scamshieldlab.com/assets/images/hero.webp">
 
   <!-- Twitter Cards -->
@@ -41,7 +41,7 @@
       "name": "ScamShield Lab - AI Forensic Analyzer",
       "url": "https://scamshieldlab.com/"
     },
-    "mainEntityOfPage": "https://scamshieldlab.com/guide-student-loan-scams.html",
+    "mainEntityOfPage": "https://scamshieldlab.com/guide-student-loan-scams",
     "datePublished": "2026-10-29",
     "dateModified": "2026-10-29"
   }
@@ -299,6 +299,66 @@
           <li><strong>Dispute Fraudulent Charges with Your Bank:</strong> If you paid fees using a credit or debit card, immediately request a chargeback citing fraudulent telemarketing services under FTC TSR rules.</li>
           <li><strong>Report to Federal Authorities:</strong> File official complaints with the <a href="https://reportfraud.ftc.gov" target="_blank" rel="noopener noreferrer" style="color: var(--color-primary);">FTC Report Fraud Portal</a> and the Department of Education Office of Inspector General (OIG).</li>
         </ul>
+
+        <h2><span>🔎</span> Verbatim Scam Script Forensic Breakdown</h2>
+        <div class="forensic-box">
+          <h4>Observed SMS &amp; Voicemail Lure (Annotated)</h4>
+          <p style="font-family: var(--font-mono); font-size: 0.9rem; color: #E2E8F0; background: rgba(7, 11, 20, 0.7); padding: 1rem; border-radius: var(--radius-sm); border-left: 3px solid #EF4444;">
+            "[FINAL NOTICE] Your federal student loan forgiveness eligibility expires at 5:00 PM Friday. Reference ID #ED-89412. Call the Federal Student Processing Center at 1-888-555-0194 or verify your FSA PIN at https://studentaid-relief-portal.com to lock in your 75% balance discharge before the window closes."
+          </p>
+          <p style="margin-top: 0.75rem;">
+            <strong>Forensic Indicators:</strong> (1) <em>Artificial Deadline ("expires at 5:00 PM Friday")</em>—legitimate Department of Education IDR and PSLF programs never have arbitrary 24-hour expiration cliffs; (2) <em>Lookalike Commercial Domain</em> (<code>.com</code> instead of <code>.gov</code>); (3) <em>PIN / FSA ID Harvesting</em>—designed to hijack your account, change your recovery email, and lock you out while billing recurring "processing" fees.
+          </p>
+        </div>
+
+        <h2><span>⚖️</span> Legitimate Federal Loan Servicer vs. Debt Relief Scam</h2>
+        <div style="overflow-x: auto; margin-bottom: 1.75rem;">
+          <table style="width: 100%; border-collapse: collapse; font-size: 0.92rem; color: #CBD5E1; background: rgba(15, 23, 42, 0.7); border: 1px solid var(--border-glass); border-radius: var(--radius-md);">
+            <thead>
+              <tr style="background: rgba(0, 242, 254, 0.08); text-align: left;">
+                <th style="padding: 0.85rem 1rem; border-bottom: 1px solid var(--border-glass); color: var(--text-main);">Verification Factor</th>
+                <th style="padding: 0.85rem 1rem; border-bottom: 1px solid var(--border-glass); color: #34D399;">Official Federal Servicer</th>
+                <th style="padding: 0.85rem 1rem; border-bottom: 1px solid var(--border-glass); color: #F87171;">Fraudulent Debt Relief Boiler Room</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td style="padding: 0.8rem 1rem; border-bottom: 1px solid rgba(255,255,255,0.06);"><strong>Upfront or Monthly Fees</strong></td>
+                <td style="padding: 0.8rem 1rem; border-bottom: 1px solid rgba(255,255,255,0.06);">$0 (Consolidation &amp; IDR applications are 100% free)</td>
+                <td style="padding: 0.8rem 1rem; border-bottom: 1px solid rgba(255,255,255,0.06);">$499–$1,200 setup fee + $39–$99/month "maintenance"</td>
+              </tr>
+              <tr>
+                <td style="padding: 0.8rem 1rem; border-bottom: 1px solid rgba(255,255,255,0.06);"><strong>FSA ID Password Request</strong></td>
+                <td style="padding: 0.8rem 1rem; border-bottom: 1px solid rgba(255,255,255,0.06);">Never requested over phone, email, or SMS</td>
+                <td style="padding: 0.8rem 1rem; border-bottom: 1px solid rgba(255,255,255,0.06);">Demanded immediately to "expedite" paperwork</td>
+              </tr>
+              <tr>
+                <td style="padding: 0.8rem 1rem; border-bottom: 1px solid rgba(255,255,255,0.06);"><strong>Official Web Domain</strong></td>
+                <td style="padding: 0.8rem 1rem; border-bottom: 1px solid rgba(255,255,255,0.06);">Strictly <code>StudentAid.gov</code> or <code>.gov</code></td>
+                <td style="padding: 0.8rem 1rem; border-bottom: 1px solid rgba(255,255,255,0.06);"><code>.com</code>, <code>.org</code>, or hyphenated lookalike URLs</td>
+              </tr>
+              <tr>
+                <td style="padding: 0.8rem 1rem;"><strong>Loan Payment Routing</strong></td>
+                <td style="padding: 0.8rem 1rem;">Paid directly to your assigned federal servicer</td>
+                <td style="padding: 0.8rem 1rem;">Instructs you to stop paying your servicer and pay them</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+        <h2><span>❓</span> Frequently Asked Questions</h2>
+        <div class="forensic-box">
+          <h4>Can a private company get my federal student loans forgiven faster?</h4>
+          <p>
+            No. Third-party "document preparation" companies have zero special access, priority queues, or authority with the U.S. Department of Education. Every federal forgiveness, consolidation, and Income-Driven Repayment (IDR) program can be completed directly on <code>StudentAid.gov</code> for free in under 15 minutes.
+          </p>
+        </div>
+        <div class="forensic-box">
+          <h4>What if I already signed a Power of Attorney (POA) form with a debt relief company?</h4>
+          <p>
+            Send a written revocation of Power of Attorney to both the third-party company and your official federal loan servicer immediately, change your <code>StudentAid.gov</code> password, and instruct your bank to revoke any ACH debit authorization granted to the third party.
+          </p>
+        </div>
 
         <div class="citation-list">
           <h4 style="color: var(--text-main); margin-bottom: 0.75rem;">Official Federal Resources &amp; Enforcement Actions:</h4>
