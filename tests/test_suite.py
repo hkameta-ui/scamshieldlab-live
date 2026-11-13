@@ -760,15 +760,15 @@ class TestGoogleWorkspaceAffiliatePartnerIntegration(unittest.TestCase):
         self.assertIn("data-copy-code", app_code)
         self.assertIn("UCYHWLERFJVJUW4", app_code)
 
-    def test_defense_stack_is_positioned_between_analyzer_and_threat_radar(self):
+    def test_defense_stack_is_positioned_below_educational_guides(self):
         index_path = os.path.join(WORKSPACE_ROOT, "index.html")
         with open(index_path, "r", encoding="utf-8") as f:
             html = f.read()
-            idx_analyzer = html.find('id="analyzer"')
+            idx_guides = html.find('id="guides"')
+            idx_faq = html.find('id="faq"')
             idx_defense = html.find('id="defense-stack"')
-            idx_radar = html.find('id="threat-radar"')
-            self.assertTrue(idx_analyzer < idx_defense, "Analyzer must appear before Defense Stack")
-            self.assertTrue(idx_defense < idx_radar, "Defense Stack must appear before Threat Radar")
+            self.assertTrue(idx_guides < idx_faq, "Guides must appear before FAQ")
+            self.assertTrue(idx_faq < idx_defense, "Defense Stack must appear below core educational content")
 
 
 class TestAboveTheFoldTrustAndLiveDemo(unittest.TestCase):
@@ -815,7 +815,7 @@ class TestAboveTheFoldTrustAndLiveDemo(unittest.TestCase):
     def test_honest_scoring_and_methodology_transparency(self):
         """Rule 3: Content Standards - Enforce explainable methodology notices and reject unverified accuracy claims."""
         self.assertIn("analyzer-methodology-note", self.index_html)
-        self.assertIn("how-we-score.html", self.index_html)
+        self.assertIn("/how-we-score", self.index_html)
         
         how_we_score_path = os.path.join(WORKSPACE_ROOT, "how-we-score.html")
         with open(how_we_score_path, "r", encoding="utf-8") as f:
@@ -1044,7 +1044,7 @@ class TestSecurityClaimsAndResearchCitations(unittest.TestCase):
         self.assertIn("Deloitte", self.threat_js)
 
     def test_footer_review_pill_present_on_all_pages(self):
-        """Ensures the 'Reviewed by Cybersecurity Professionals' & 'Last Updated: October 2026' pill is present across all HTML pages."""
+        """Ensures the 'Reviewed by Cybersecurity Professionals' & 'Last Updated: November 2026' pill is present across all HTML pages."""
         html_files = [
             "index.html", "how-we-score.html", "family-safe-word.html", "incident-response.html",
             "guide-voice-cloning.html", "guide-pig-butchering.html", "guide-digital-arrest.html",
@@ -1060,7 +1060,7 @@ class TestSecurityClaimsAndResearchCitations(unittest.TestCase):
                 content = f.read()
             self.assertIn("footer-review-pill", content, f"Missing footer-review-pill in {h}")
             self.assertIn("Reviewed by Cybersecurity Professionals", content, f"Missing review label in {h}")
-            self.assertIn("Last Updated: October 2026", content, f"Missing last updated date in {h}")
+            self.assertIn("Last Updated: November 2026", content, f"Missing last updated date in {h}")
 
     def test_cache_invalidation_headers_configured(self):
         """Rule 1 & Caching: Ensures Cloudflare _headers file enforces zero-stale HTML cache."""
@@ -1121,14 +1121,14 @@ class TestCoreWebVitalsCompliance(unittest.TestCase):
         'guide-job-scams.html': 'assets/images/job-scams-guide.webp',
         'guide-delivery-scams.html': 'assets/images/delivery-scams-guide.webp',
         'guide-voice-cloning.html': 'assets/images/deepfake.webp',
-        'guide-pig-butchering.html': 'assets/images/hero.webp',
+        'guide-pig-butchering.html': 'assets/images/pig-butchering-guide.webp',
         'guide-digital-arrest.html': 'assets/images/digital-arrest-guide.webp',
-        'guide-deepfake-video.html': 'assets/images/hero.webp',
-        'guide-sim-swapping.html': 'assets/images/hero.webp',
-        'guide-remote-access-scams.html': 'assets/images/hero.webp',
-        'guide-crypto-drainer-scams.html': 'assets/images/hero.webp',
-        'guide-bank-impersonation.html': 'assets/images/hero.webp',
-        'guide-student-loan-scams.html': 'assets/images/hero.webp'
+        'guide-deepfake-video.html': 'assets/images/deepfake-video-guide.webp',
+        'guide-sim-swapping.html': 'assets/images/sim-swapping-guide.webp',
+        'guide-remote-access-scams.html': 'assets/images/remote-access-guide.webp',
+        'guide-crypto-drainer-scams.html': 'assets/images/crypto-drainer-guide.webp',
+        'guide-bank-impersonation.html': 'assets/images/bank-impersonation-guide.webp',
+        'guide-student-loan-scams.html': 'assets/images/student-loan-guide.webp'
     }
 
     def test_image_weight_budgets_for_lcp(self):

@@ -12,14 +12,9 @@ window.SITE_CONFIG = {
 
   // --- GOOGLE ADSENSE MONETIZATION SETTINGS ---
   adsense: {
-    enabled: true, // Set to true when your AdSense account is approved
+    enabled: true, // Auto Ads active via publisher verification script
     publisherId: "ca-pub-7565560894775775", // Google AdSense Publisher ID
-    slots: {
-      headerBanner: "1234567890",      // Responsive Top Leaderboard
-      inContentRect: "2345678901",      // In-Article 300x250 or Responsive
-      sidebarSticky: "3456789012",      // High-CTR Sticky Sidebar Banner
-      footerBanner: "4567890123"        // Bottom Anchor / Footer Banner
-    }
+    autoAds: true
   },
 
   // --- CYBERSECURITY AFFILIATE MONETIZATION (HIGH PAYOUT COMMISSIONS) ---
@@ -71,18 +66,18 @@ window.SITE_CONFIG = {
       icon: "🛡️",
       tagline: "$1,000,000 Identity Theft Insurance & Dark Web Monitoring",
       payoutEst: "$50 - $80 per signup",
-      url: "https://aura.com/?ref=scamshield", // Replace with your affiliate tracking link
+      url: "https://www.aura.com/",
       badge: "Top Pick 2026",
-      cta: "Claim 14-Day Free Trial"
+      cta: "Explore Aura Protection"
     },
     endpointSecurity: {
       name: "Malwarebytes Premium & Anti-Exploit",
       icon: "💻",
       tagline: "Real-time AI behavioral detection against ransomware & zero-days",
       payoutEst: "$25 - $45 per purchase",
-      url: "https://malwarebytes.com/?ref=scamshield", // Replace with your affiliate tracking link
+      url: "https://www.malwarebytes.com/",
       badge: "Real-Time Shield",
-      cta: "Download Free Scanner"
+      cta: "Explore Free Scanner"
     }
   }
 };

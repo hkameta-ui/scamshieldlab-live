@@ -144,11 +144,24 @@ def run_readiness_checks():
                     broken_links.append(f"  {filename} -> href='{href}' (ID #{target_id} does not exist on page)")
             else:
                 parts = href.split("#")
-                target_file = parts[0]
+                raw_target = parts[0]
                 target_id = parts[1] if len(parts) > 1 else None
 
+                # Resolve extensionless Cloudflare Pages URLs (/ -> index.html, /slug -> slug.html)
+                if raw_target == "/" or raw_target == "":
+                    target_file = "index.html" if raw_target == "/" else ""
+                elif raw_target.startswith("/"):
+                    candidate = raw_target.lstrip("/")
+                    if candidate in parsed_files:
+                        target_file = candidate
+                    elif f"{candidate}.html" in parsed_files:
+                        target_file = f"{candidate}.html"
+                    else:
+                        target_file = candidate
+                else:
+                    target_file = raw_target
+
                 if target_file and target_file not in parsed_files:
-                    # Allow links like index.html or root
                     if target_file not in ["index.html", ""] and not os.path.exists(os.path.join(WORKSPACE_ROOT, target_file)):
                         broken_links.append(f"  {filename} -> href='{href}' (Target file '{target_file}' not found)")
                 elif target_id:
@@ -370,14 +383,14 @@ def run_readiness_checks():
         'guide-job-scams.html': 'assets/images/job-scams-guide.webp',
         'guide-delivery-scams.html': 'assets/images/delivery-scams-guide.webp',
         'guide-voice-cloning.html': 'assets/images/deepfake.webp',
-        'guide-pig-butchering.html': 'assets/images/hero.webp',
+        'guide-pig-butchering.html': 'assets/images/pig-butchering-guide.webp',
         'guide-digital-arrest.html': 'assets/images/digital-arrest-guide.webp',
-        'guide-deepfake-video.html': 'assets/images/hero.webp',
-        'guide-sim-swapping.html': 'assets/images/hero.webp',
-        'guide-remote-access-scams.html': 'assets/images/hero.webp',
-        'guide-crypto-drainer-scams.html': 'assets/images/hero.webp',
-        'guide-bank-impersonation.html': 'assets/images/hero.webp',
-        'guide-student-loan-scams.html': 'assets/images/hero.webp'
+        'guide-deepfake-video.html': 'assets/images/deepfake-video-guide.webp',
+        'guide-sim-swapping.html': 'assets/images/sim-swapping-guide.webp',
+        'guide-remote-access-scams.html': 'assets/images/remote-access-guide.webp',
+        'guide-crypto-drainer-scams.html': 'assets/images/crypto-drainer-guide.webp',
+        'guide-bank-impersonation.html': 'assets/images/bank-impersonation-guide.webp',
+        'guide-student-loan-scams.html': 'assets/images/student-loan-guide.webp'
     }
 
     # 1. Image Size Budgets
