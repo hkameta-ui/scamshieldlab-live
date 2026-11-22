@@ -870,7 +870,7 @@ function initAnalyzer() {
       let recIcon = "assets/images/nordvpn-icon.svg";
       let recDesc = "Malicious SMS and road toll scams use spoofed domains to harvest payment card details. NordVPN's Threat Protection Pro automatically intercepts and blocks malicious URLs at the DNS level before they can load in your browser.";
       let recBtnClass = "defense-rec-btn";
-      let recBtnText = "Activate DNS & Phishing Shield (68% Off)";
+      let recBtnText = "Review DNS & Phishing Protection Architecture";
       let recUrl = (window.SITE_CONFIG && window.SITE_CONFIG.affiliates && window.SITE_CONFIG.affiliates.vpnPrivacy) ? window.SITE_CONFIG.affiliates.vpnPrivacy.url : "https://go.nordvpn.net/aff_c?offer_id=15&aff_id=159036&url_id=902";
       let promoPillHtml = "";
 
@@ -886,7 +886,7 @@ function initAnalyzer() {
         recIcon = "assets/images/google-workspace-icon.svg";
         recDesc = "Business Email Compromise (BEC) and fake invoice scams spoof executive domains. Google Workspace with Gemini deploys deep-learning AI to neutralize 99.9% of spoofed emails and impersonation attempts before reaching inboxes.";
         recBtnClass = "defense-rec-btn google-btn";
-        recBtnText = "Claim 10% Off & Free Trial";
+        recBtnText = "Explore Enterprise Email BEC Protection";
         recUrl = (window.SITE_CONFIG && window.SITE_CONFIG.affiliates && window.SITE_CONFIG.affiliates.googleWorkspace) ? window.SITE_CONFIG.affiliates.googleWorkspace.url : "https://sharegoogleworkspace.advocate.impact.com/mzYP7Zg";
         promoPillHtml = `
           <div class="promo-code-pill" data-copy-code="UCYHWLERFJVJUW4" title="Click to copy 10% discount promo code" role="button" tabindex="0">

@@ -1128,7 +1128,13 @@ class TestCoreWebVitalsCompliance(unittest.TestCase):
         'guide-remote-access-scams.html': 'assets/images/remote-access-guide.webp',
         'guide-crypto-drainer-scams.html': 'assets/images/crypto-drainer-guide.webp',
         'guide-bank-impersonation.html': 'assets/images/bank-impersonation-guide.webp',
-        'guide-student-loan-scams.html': 'assets/images/student-loan-guide.webp'
+        'guide-student-loan-scams.html': 'assets/images/student-loan-guide.webp',
+        'guide-quishing.html': 'assets/images/quishing-guide.webp',
+        'guide-check-overpayment.html': 'assets/images/check-overpayment-guide.webp',
+        'guide-tech-support-popups.html': 'assets/images/tech-support-guide.webp',
+        'guide-romance-investment-recovery.html': 'assets/images/crypto-recovery-guide.webp',
+        'guide-medicare-healthcare-scams.html': 'assets/images/medicare-scams-guide.webp',
+        'guide-irs-tax-impersonation.html': 'assets/images/irs-tax-guide.webp'
     }
 
     def test_image_weight_budgets_for_lcp(self):
@@ -1242,7 +1248,7 @@ class TestMobileNavigationDrawer(unittest.TestCase):
     def test_mobile_toggle_button_present_in_all_pages(self):
         """All 14 published pages must declare the #mobileNavToggle button with accessible label."""
         html_files = PUBLISHED_HTML_FILES
-        self.assertEqual(len(html_files), 22, "Must audit all 22 published HTML pages")
+        self.assertEqual(len(html_files), 28, "Must audit all 28 published HTML pages")
         for h in html_files:
             file_path = os.path.join(WORKSPACE_ROOT, h)
             with open(file_path, "r", encoding="utf-8") as f:
@@ -1310,7 +1316,7 @@ class TestAdSenseAndCrawlerIntegrity(unittest.TestCase):
     def test_all_pages_have_adsense_account_meta_tag(self):
         """All 14 published HTML pages must declare <meta name="google-adsense-account" content="ca-pub-7565560894775775">."""
         html_files = PUBLISHED_HTML_FILES
-        self.assertEqual(len(html_files), 22, "Must audit all 22 published HTML pages")
+        self.assertEqual(len(html_files), 28, "Must audit all 28 published HTML pages")
         for h in html_files:
             file_path = os.path.join(WORKSPACE_ROOT, h)
             with open(file_path, "r", encoding="utf-8") as f:

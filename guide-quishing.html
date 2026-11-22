@@ -1,0 +1,416 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>QR Code 'Quishing' Forensics: Parking &amp; Parcel Traps | ScamShield Lab</title>
+  
+  <meta name="description" content="Learn how QR code 'quishing' attacks on parking meters, utility bills, and corporate PDFs bypass email filters and move victims onto mobile AiTM pages.">
+  <meta name="keywords" content="quishing scam, QR code phishing, parking meter QR code scam, fake package return QR code, Microsoft 365 QR phishing">
+  <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1">
+  <link rel="canonical" href="https://scamshieldlab.com/guide-quishing">
+
+  <!-- Open Graph -->
+  <meta property="og:type" content="article">
+  <meta property="og:site_name" content="ScamShield Lab - AI Forensic Analyzer">
+  <meta property="og:title" content="QR Code 'Quishing' Forensics: Parking &amp; Parcel Traps | ScamShield Lab">
+  <meta property="og:description" content="Learn how QR code 'quishing' attacks on parking meters, utility bills, and corporate PDFs bypass email filters and move victims onto mobile AiTM pages.">
+  <meta property="og:url" content="https://scamshieldlab.com/guide-quishing">
+  <meta property="og:image" content="https://scamshieldlab.com/assets/images/quishing-guide.jpg">
+
+  <!-- Twitter Cards -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="QR Code 'Quishing' Forensics: Parking &amp; Parcel Traps | ScamShield Lab">
+  <meta name="twitter:description" content="Learn how QR code 'quishing' attacks on parking meters, utility bills, and corporate PDFs bypass email filters and move victims onto mobile AiTM pages.">
+  <meta name="twitter:image" content="https://scamshieldlab.com/assets/images/quishing-guide.jpg">
+
+  <!-- Schema.org TechArticle Data -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "TechArticle",
+    "headline": "QR Code 'Quishing' Forensics: How Parking Meter & Parcel Stickers Bypass Email Filters",
+    "description": "Learn how QR code 'quishing' attacks on parking meters, utility bills, and corporate PDFs bypass email filters and move victims onto mobile AiTM pages.",
+    "author": {
+      "@type": "Person",
+      "name": "Hemendra K.",
+      "jobTitle": "Cybersecurity Researcher & IAM Specialist"
+    },
+    "publisher": {
+      "@type": "Organization",
+      "name": "ScamShield Lab - AI Forensic Analyzer",
+      "url": "https://scamshieldlab.com/"
+    },
+    "mainEntityOfPage": "https://scamshieldlab.com/guide-quishing",
+    "datePublished": "2026-11-22",
+    "dateModified": "2026-11-22"
+  }
+  </script>
+
+  <!-- Security Standards Compliance (Rule 2) -->
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' https://pagead2.googlesyndication.com https://*.google.com https://*.doubleclick.net https://static.cloudflareinsights.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; img-src 'self' data: https:; connect-src 'self' https://pagead2.googlesyndication.com https://*.google.com https://*.doubleclick.net https://cloudflareinsights.com; frame-src https://*.google.com https://*.doubleclick.net;">
+  <meta http-equiv="X-Content-Type-Options" content="nosniff">
+  <meta name="referrer" content="strict-origin-when-cross-origin">
+
+  <!-- Cache Invalidation -->
+  <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
+  <meta http-equiv="Pragma" content="no-cache">
+  <meta http-equiv="Expires" content="0">
+
+  <!-- Performance Preconnect & Zero-Shift Font Loading (Rule 1) -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;600&family=Outfit:wght@600;700;800&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;600&family=Outfit:wght@600;700;800&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" media="print" onload="this.media='all'">
+  <noscript>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;600&family=Outfit:wght@600;700;800&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap">
+  </noscript>
+
+  <!-- High-Priority LCP Image Preload (Rule 1 Mandate) -->
+  <link rel="preload" as="image" href="assets/images/quishing-guide.webp" type="image/webp" fetchpriority="high">
+
+  <!-- Google AdSense Verification & Auto-Ads Script -->
+  <meta name="google-adsense-account" content="ca-pub-7565560894775775">
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-7565560894775775" crossorigin="anonymous"></script>
+
+  <link rel="stylesheet" href="css/styles.css?v=20261122-adsense-v2">
+  <link rel="icon" type="image/jpeg" href="assets/images/logo.jpg">
+  <script src="config.js?v=20261122-adsense-v2" defer></script>
+
+  <style>
+    .article-container { max-width: 900px; margin: 0 auto; padding: 3rem 1.5rem 5rem; }
+    .article-header { margin-bottom: 2.5rem; border-bottom: 1px solid var(--border-glass); padding-bottom: 2rem; }
+    .article-featured-img { width: 100%; height: auto; aspect-ratio: 860 / 440; object-fit: cover; border-radius: var(--radius-lg); border: 1px solid var(--border-glow); margin-bottom: 2.5rem; background: rgba(15, 23, 42, 0.6); }
+    .article-content h2 { font-family: var(--font-heading); font-size: 1.85rem; margin: 2.75rem 0 1rem; color: var(--text-main); }
+    .article-content h3 { font-family: var(--font-heading); font-size: 1.35rem; margin: 1.75rem 0 0.75rem; color: var(--color-primary); }
+    .article-content p { font-size: 1.05rem; color: #CBD5E1; margin-bottom: 1.35rem; line-height: 1.8; }
+    .forensic-box { background: rgba(15, 23, 42, 0.85); border: 1px solid var(--border-glass); border-left: 4px solid var(--color-primary); border-radius: 0 var(--radius-md) var(--radius-md) 0; padding: 1.5rem; margin: 1.75rem 0; }
+    .forensic-box h4 { color: #FFFFFF; font-size: 1.1rem; margin-top: 0; margin-bottom: 0.5rem; }
+    .red-flag-card { background: rgba(239, 68, 68, 0.08); border: 1px solid rgba(239, 68, 68, 0.35); border-radius: var(--radius-md); padding: 1.25rem 1.5rem; margin-bottom: 1rem; }
+    .red-flag-card h4 { color: #F87171; margin: 0 0 0.5rem; font-size: 1.05rem; }
+    .red-flag-card p { margin: 0; font-size: 0.95rem; color: #CBD5E1; }
+    .citation-list { border-top: 1px solid var(--border-glass); padding-top: 2rem; margin-top: 3rem; font-size: 0.88rem; color: var(--text-muted); }
+  </style>
+</head>
+<body>
+
+  <!-- Universal Accessibility Skip Link (Rule 4) -->
+  <a href="#main-content" class="skip-link">Skip to main content</a>
+
+  <!-- Top Real-Time Threat Intelligence Feed -->
+  <aside class="site-ticker" aria-label="Live Threat Intelligence Telemetry">
+    <div class="container ticker-wrap">
+      <div class="ticker-badge intel-badge">
+        <span class="beacon-dot" aria-hidden="true"></span>
+        <span>QUISHING ALERT</span>
+      </div>
+      <div class="ticker-viewport" id="liveThreatTicker" role="status" aria-live="polite">
+        <span class="ticker-item"><strong style="color: #EF4444;">FIELD ADVISORY:</strong> Never scan adhesive QR code stickers overlaid on municipal parking meters, EV chargers, or unsolicited parcel delivery slips.</span>
+      </div>
+    </div>
+  </aside>
+
+  <!-- Global Site Header -->
+  <header class="site-header">
+    <div class="container nav-inner">
+      <a href="/" class="brand-logo" aria-label="ScamShield Lab Home">
+        <img src="assets/images/logo.jpg" alt="ScamShield Lab Logo" class="brand-icon" width="36" height="36" decoding="async">
+        <div class="brand-text-col">
+          <span class="brand-main-title">ScamShield<span class="brand-lab-accent">Lab</span></span>
+          <span class="brand-sub-badge">AI FORENSIC ANALYZER</span>
+        </div>
+      </a>
+
+      <nav aria-label="Primary Navigation" class="main-nav">
+        <ul class="nav-links" id="primaryNavLinks">
+          <li><a href="/#analyzer">Scanner</a></li>
+          <li><a href="/quiz">Spot the Fake</a></li>
+          <li><a href="/family-safe-word">Safe Word Kit</a></li>
+          <li><a href="/incident-response" style="color: #EF4444; font-weight: 700;">🚨 Got Scammed?</a></li>
+          <li><a href="/#threat-radar">Threat Radar</a></li>
+          <li><a href="/#guides">Guides</a></li>
+          <li><a href="/about">About</a></li>
+          <li><a href="/contact">Contact</a></li>
+        </ul>
+      </nav>
+
+      <div class="nav-actions">
+        <a href="/#analyzer" class="nav-cta-btn">
+          <span class="pulse-beacon" aria-hidden="true"></span>
+          <span>Instant Scan</span>
+        </a>
+        <button type="button" class="mobile-toggle-btn" id="mobileNavToggle" aria-label="Toggle Navigation Menu">&#9776;</button>
+      </div>
+    </div>
+  </header>
+
+  <main class="article-container" id="main-content">
+    <div style="font-size: 0.85rem; color: var(--text-faint); margin-bottom: 1.25rem;">
+      <a href="/">Home</a> &gt; <a href="/#guides">Threat Research</a> &gt; <span>QR Code Quishing Forensics</span>
+    </div>
+
+    <article>
+      <header class="article-header">
+        <span class="hero-pill">📱 Mobile &amp; Optical Phishing Telemetry</span>
+        <h1 style="font-family: var(--font-heading); font-size: 2.75rem; font-weight: 800; line-height: 1.2; margin-top: 0.75rem;">
+          QR Code 'Quishing' Forensics: How Parking Meter &amp; Parcel Stickers Bypass Email Filters
+        </h1>
+        <div class="article-meta">
+          <span>By <strong>Hemendra K.</strong>, IAM Specialist &amp; Zero-Trust Architect</span>
+          <span>&bull;</span>
+          <span>Peer-Reviewed by <strong>Dr. Priyanka Ameta</strong>, AI Research &amp; Academics</span>
+          <span>&bull;</span>
+          <span>Updated: November 2026</span>
+          <span>&bull;</span>
+          <span>11 min read</span>
+        </div>
+      </header>
+
+      <picture>
+        <source srcset="assets/images/quishing-guide.webp" type="image/webp">
+        <img src="assets/images/quishing-guide.jpg" alt="Smartphone camera scanning a QR code protected by a cyan cybersecurity shield blocking a malicious redirect" class="article-featured-img" width="860" height="440" fetchpriority="high" decoding="async">
+      </picture>
+
+      <div class="article-content">
+        <p>Over the past 18 months, enterprise Secure Email Gateways (SEGs) have grown increasingly effective at sandboxing raw hyperlinks inside incoming emails. In response, threat actors have pivoted to an optical evasion technique known as 'Quishing' (QR Code Phishing). By encoding malicious reverse-proxy URLs inside two-dimensional Quick Response (QR) matrix barcodes—embedded as inline PNG images, PDF attachments, or physical vinyl stickers applied directly over municipal parking meters—adversaries bypass text-based URL inspection entirely.</p>
+        <p>Crucially, quishing exploits a cross-device security gap. When an employee scans a QR code displayed on a hardened corporate laptop using their personal smartphone camera, the connection pivots off the corporate firewall onto an unmanaged cellular network. Once on the mobile screen, the browser address bar is condensed, hiding Punycode homoglyphs and multi-stage URL shorteners while the attacker harvests credentials or payment card data.</p>
+
+        <h2><span>🔬</span> The Dual Attack Surface: Digital PDFs &amp; Physical Infrastructure Tampering</h2>
+        <p>In enterprise environments, quishing lures typically arrive as fake Microsoft 365 Multi-Factor Authentication (MFA) re-enrollment notices, DocuSign remittance PDFs, or HR payroll policy updates. Because the QR barcode is rendered either as a base64 image or constructed dynamically using HTML table cells without an actual image file, automated email link scanners see zero clickable <code style="color: var(--color-primary);">href</code> attributes.</p>
+        <p>In public spaces, physical quishing syndicates print weather-resistant adhesive stickers and affix them directly over legitimate QR payment plaques on municipal parking meters, electric vehicle (EV) charging kiosks, and public bike-share docks. Motorists in a hurry scan the sticker, land on a convincing clone of ParkMobile, PayByPhone, or a municipal portal, and enter their credit card number along with their CVV and billing ZIP code—Often followed by an Apple Pay or Google Wallet provisioning OTP trap.</p>
+
+        <div class="forensic-box">
+          <h4>Forensic Teardown: Physical Parking Meter &amp; Unsolicited Parcel QR Lures</h4>
+          <p style="font-size: 0.95rem; margin-bottom: 0.75rem;"><strong>Vector A — The Municipal Parking Meter Overlay:</strong> The sticker directs the driver to <code style="color: #F87171;">pay-cityparking-portal[.]top/meter-441</code>. Unlike the official city app, the page does not know your parking zone automatically and demands manual credit card entry without supporting native encrypted wallet tokens.</p>
+          <p style="font-size: 0.95rem; margin-bottom: 0;"><strong>Vector B — The 'Mystery Brushing Parcel' Return Slip:</strong> A victim receives an unordered cheap item in the mail accompanied by an apologetic card: <em>"Scan this QR code to claim your $25 gift reward or arrange a free return pickup."</em> Scanning the code launches a credential harvester that steals Amazon or banking session cookies.</p>
+        </div>
+
+        <h2><span>🚩</span> High-Confidence Forensic Red Flags</h2>
+        <p>During incident investigations, ScamShield Lab researchers consistently identify the following behavioral and technical indicators across confirmed attacks:</p>
+        <div class="red-flag-card"><h4>🚨 Physical Raised Sticker Edges on Public Kiosks</h4><p>Run your fingernail across the edge of any QR code on a parking meter or EV charger. If an adhesive label has been pasted over the original painted aluminum sign, do not scan it.</p></div>
+        <div class="red-flag-card"><h4>🚨 Email Attachments Requiring Smartphone Camera Scans for 2FA</h4><p>Legitimate IT departments never email you a PDF asking you to scan a QR code with your phone to 're-synchronize' your password or Microsoft Authenticator token. Real authenticator QR codes are generated only inside an authenticated security settings portal that you initiate yourself.</p></div>
+        <div class="red-flag-card"><h4>🚨 Dynamic URL Shorteners &amp; Geolocation Redirects</h4><p>When your smartphone camera previews a QR code, inspect the domain string before tapping. Attackers frequently route QR payloads through open redirects, IPFS gateways, or disposable '.top', '.icu', and '.xyz' domains.</p></div>
+        <div class="red-flag-card"><h4>🚨 Missing Parking Zone or Charger Station Context</h4><p>Official EV and parking QR codes deep-link into an installed native mobile app or pre-populate the exact street location. Cloned quishing kits present a generic credit card form.</p></div>
+
+        <h2><span>📊</span> Authentic QR Workflows vs. Quishing Exploitation Kits</h2>
+        <p>Use this side-by-side verification matrix to distinguish authentic institutional workflows from adversary impersonation Infrastructure:</p>
+        <div class="table-wrap" style="overflow-x: auto; margin: 1.5rem 0;">
+          <table style="width: 100%; border-collapse: collapse; background: rgba(15, 23, 42, 0.75); border: 1px solid rgba(148, 163, 184, 0.25); border-radius: 8px; font-size: 0.92rem;">
+            <thead>
+              <tr style="background: rgba(30, 41, 59, 0.9); color: #F8FAFC; text-align: left;">
+                <th style="padding: 0.85rem 1rem; border-bottom: 1px solid rgba(148, 163, 184, 0.25);">Verification Vector</th>
+                <th style="padding: 0.85rem 1rem; border-bottom: 1px solid rgba(148, 163, 184, 0.25);">Legitimate Institutional Standard</th>
+                <th style="padding: 0.85rem 1rem; border-bottom: 1px solid rgba(148, 163, 184, 0.25);">Fraudulent Attack Signature</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td style="padding: 0.8rem 1rem; border-bottom: 1px solid rgba(255,255,255,0.06);"><strong>Initiation Context</strong></td>
+                <td style="padding: 0.8rem 1rem; border-bottom: 1px solid rgba(255,255,255,0.06);">Generated inside a dashboard after you log in and click 'Add Authenticator'</td>
+                <td style="padding: 0.8rem 1rem; border-bottom: 1px solid rgba(255,255,255,0.06);">Arrives unprompted via email PDF, text, or a sticker pasted on a street sign</td>
+              </tr>
+              <tr>
+                <td style="padding: 0.8rem 1rem; border-bottom: 1px solid rgba(255,255,255,0.06);"><strong>URL Preview Domain</strong></td>
+                <td style="padding: 0.8rem 1rem; border-bottom: 1px solid rgba(255,255,255,0.06);">Matches the exact root domain of the verified provider (e.g., parkmobile.io)</td>
+                <td style="padding: 0.8rem 1rem; border-bottom: 1px solid rgba(255,255,255,0.06);">Shows a URL shortener, raw IP, or hyphenated lookalike domain</td>
+              </tr>
+              <tr>
+                <td style="padding: 0.8rem 1rem; border-bottom: 1px solid rgba(255,255,255,0.06);"><strong>Payment / Auth Mechanism</strong></td>
+                <td style="padding: 0.8rem 1rem; border-bottom: 1px solid rgba(255,255,255,0.06);">Supports native App Store app or FIDO2 passkey challenge</td>
+                <td style="padding: 0.8rem 1rem; border-bottom: 1px solid rgba(255,255,255,0.06);">Forces raw credit card + CVV + SMS OTP entry in a mobile web view</td>
+              </tr>
+              <tr>
+                <td style="padding: 0.8rem 1rem; border-bottom: 1px solid rgba(255,255,255,0.06);"><strong>HTML Representation in Email</strong></td>
+                <td style="padding: 0.8rem 1rem; border-bottom: 1px solid rgba(255,255,255,0.06);">Standard plain-text notice directing you to navigate manually</td>
+                <td style="padding: 0.8rem 1rem; border-bottom: 1px solid rgba(255,255,255,0.06);">Image-only email or HTML-table-rendered QR matrix with zero text links</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+        <h2><span>🛡️</span> Step-by-Step Containment &amp; Prevention Protocol</h2>
+        <p>If you or a household member encounters this threat vector, execute the following containment sequence immediately:</p>
+        <div class="forensic-box"><h4>Step 1: Disable Automatic QR URL Launching in Your Camera App</h4><p>Configure your iOS or Android camera so that scanning a QR code only displays the target URL text banner rather than automatically opening the browser. Always read the full domain before tapping.</p></div>
+        <div class="forensic-box"><h4>Step 2: Pay Parking &amp; EV Fees Only via Official App Store Apps or Physical Card Slots</h4><p>Never enter credit card details into a web page opened from a street-side QR code. Download the municipality's official app directly from the Apple App Store or Google Play Store, or use the meter's built-in tap-to-pay NFC reader.</p></div>
+        <div class="forensic-box"><h4>Step 3: If You Entered Card or Login Credentials After a QR Scan</h4><p>Immediately lock the affected credit card inside your banking app and request a replacement card number. If you entered corporate credentials, notify your SOC immediately to revoke active OAuth refresh tokens and follow our <a href="/incident-response" style="color: var(--color-primary);">15-Minute Incident Response Triage</a>.</p></div>
+
+        <h2><span>❓</span> Frequently Asked Questions</h2>
+        <div class="forensic-box"><h4>Can scanning a QR code infect my phone without me tapping anything?</h4><p>Simply pointing your camera at a QR code displays a URL preview and does not infect an up-to-date iOS or Android device. The danger occurs after you tap the link and enter credentials, approve a malicious Web3 wallet signature, or download a sideloaded '.apk' file.</p></div>
+        <div class="forensic-box"><h4>Why don't corporate spam filters block QR code phishing emails?</h4><p>Traditional spam filters parse text strings and HTML anchor tags. Because a QR code is just a grid of black-and-white pixels inside an image or PDF—or drawn using microscopic HTML table cells—filters require specialized Computer Vision (OCR/QR decoding) modules to extract and inspect the hidden URL.</p></div>
+
+        <h2><span>🏛️</span> Enterprise &amp; Household Zero-Trust Verification Checklist</h2>
+        <p>
+          Whether defending a household checking account, a retiree retirement portfolio, or a corporate treasury desk, modern social engineering succeeds only when an adversary forces an in-band decision before independent verification occurs. Technical security controls must be paired with strict procedural circuit-breakers that separate the communication channel from the authorization channel.
+        </p>
+        <div class="table-wrap" style="overflow-x: auto; margin: 1.5rem 0;">
+          <table style="width: 100%; border-collapse: collapse; background: rgba(15, 23, 42, 0.75); border: 1px solid rgba(148, 163, 184, 0.25); border-radius: 8px; font-size: 0.92rem;">
+            <thead>
+              <tr style="background: rgba(30, 41, 59, 0.9); color: #F8FAFC; text-align: left;">
+                <th style="padding: 0.85rem 1rem; border-bottom: 1px solid rgba(148, 163, 184, 0.25);">Control Layer</th>
+                <th style="padding: 0.85rem 1rem; border-bottom: 1px solid rgba(148, 163, 184, 0.25);">Vulnerable Legacy Habit</th>
+                <th style="padding: 0.85rem 1rem; border-bottom: 1px solid rgba(148, 163, 184, 0.25);">Hardened Zero-Trust Standard (NIST / CISA Aligned)</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td style="padding: 0.8rem 1rem; border-bottom: 1px solid rgba(255,255,255,0.06);"><strong>Identity &amp; Authentication</strong></td>
+                <td style="padding: 0.8rem 1rem; border-bottom: 1px solid rgba(255,255,255,0.06);">Relying on SMS 6-digit OTPs or caller ID display names</td>
+                <td style="padding: 0.8rem 1rem; border-bottom: 1px solid rgba(255,255,255,0.06);">Origin-bound FIDO2/WebAuthn Passkeys &amp; out-of-band callback to physical card numbers</td>
+              </tr>
+              <tr>
+                <td style="padding: 0.8rem 1rem; border-bottom: 1px solid rgba(255,255,255,0.06);"><strong>Financial Disbursement</strong></td>
+                <td style="padding: 0.8rem 1rem; border-bottom: 1px solid rgba(255,255,255,0.06);">Single-person wire, Zelle, or crypto transfer under time pressure</td>
+                <td style="padding: 0.8rem 1rem; border-bottom: 1px solid rgba(255,255,255,0.06);">Mandatory 24-hour cooling-off rule &amp; dual-person verbal verification via <a href="/family-safe-word" style="color: var(--color-primary);">offline Family Safe Word</a></td>
+              </tr>
+              <tr>
+                <td style="padding: 0.8rem 1rem; border-bottom: 1px solid rgba(255,255,255,0.06);"><strong>Credit &amp; Bureau Posture</strong></td>
+                <td style="padding: 0.8rem 1rem; border-bottom: 1px solid rgba(255,255,255,0.06);">Reactive monitoring after an unauthorized loan appears</td>
+                <td style="padding: 0.8rem 1rem; border-bottom: 1px solid rgba(255,255,255,0.06);">Permanent default credit freezes at Experian, Equifax, TransUnion, and ChexSystems</td>
+              </tr>
+              <tr>
+                <td style="padding: 0.8rem 1rem;"><strong>Incident Containment</strong></td>
+                <td style="padding: 0.8rem 1rem;">Searching social media or search ads for "scam recovery help"</td>
+                <td style="padding: 0.8rem 1rem;">Executing the <a href="/incident-response" style="color: var(--color-primary);">15-Minute Crisis Triage Playbook</a> and filing official FBI IC3 / FTC reports directly</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+        <!-- YMYL Author & Peer-Review E-E-A-T Credential Card -->
+        <aside aria-label="Author and Peer Review Credentials" style="margin: 2.5rem 0 1.5rem; padding: 1.5rem; background: rgba(15, 23, 42, 0.88); border: 1px solid rgba(56, 189, 248, 0.3); border-radius: 12px;">
+          <div style="font-family: var(--font-mono); font-size: 0.78rem; text-transform: uppercase; letter-spacing: 0.06em; color: var(--color-primary); font-weight: 700; margin-bottom: 0.65rem;">
+            🛡️ Verified YMYL Cybersecurity Research &amp; Editorial Attribution
+          </div>
+          <p style="font-size: 0.95rem; color: #E2E8F0; margin: 0 0 0.75rem; line-height: 1.65;">
+            <strong>Primary Author — Hemendra K.</strong> (Cybersecurity Researcher, Identity &amp; Access Management [IAM] Specialist, and Zero-Trust Architecture Engineer). Hemendra leads heuristic threat modeling at ScamShield Lab, analyzing real-world phishing kits, VoIP spoofing infrastructure, and FIDO2 authentication defense.
+          </p>
+          <p style="font-size: 0.95rem; color: #CBD5E1; margin: 0 0 0.85rem; line-height: 1.65;">
+            <strong>Academic &amp; Technical Peer Review — Dr. Priyanka Ameta</strong> (Ph.D., AI Research &amp; Academic Advisory). Every forensic guide undergoes independent verification against primary advisories from the <strong>FBI Internet Crime Complaint Center (IC3)</strong>, the <strong>Federal Trade Commission (FTC)</strong>, <strong>CISA</strong>, and <strong>NIST Special Publication 800-63B</strong>.
+          </p>
+          <div style="display: flex; flex-wrap: wrap; gap: 1rem; font-size: 0.86rem;">
+            <a href="/about" style="color: var(--color-primary); font-weight: 600; text-decoration: underline;">Meet the Research Team &rarr;</a>
+            <a href="/editorial-policy" style="color: var(--color-primary); font-weight: 600; text-decoration: underline;">Review E-E-A-T Editorial Standards &rarr;</a>
+            <a href="/how-we-score" style="color: var(--color-primary); font-weight: 600; text-decoration: underline;">Inspect 4-Layer Heuristic Engine &rarr;</a>
+          </div>
+        </aside>
+
+        <div class="citation-list">
+          <h4 style="color: var(--text-main); margin-bottom: 0.75rem;">Primary Regulatory &amp; Forensic Citations:</h4>
+          <ol style="padding-left: 1.25rem; line-height: 1.7;">
+            <li><strong>Federal Trade Commission (FTC):</strong> <em>Consumer Alert: Scammers Hide Harmful Links in QR Codes to Steal Your Information</em>.</li>
+            <li><strong>FBI Internet Crime Complaint Center (IC3):</strong> <em>Public Service Announcement: Cybercriminals Tampering with QR Codes to Steal Victim Funds</em>.</li>
+            <li><strong>CISA &amp; NIST SP 800-63B:</strong> <em>Phishing-Resistant Authentication and Out-of-Band Device Binding Standards</em>.</li>
+          </ol>
+        </div>
+      </div>
+
+      <!-- Related Threat Investigations (Internal Cross-Linking) -->
+      <section aria-label="Related Threat Investigations" style="margin-top: 2.75rem; padding-top: 2rem; border-top: 1px solid rgba(148, 163, 184, 0.2);">
+        <h2 style="font-size: 1.35rem; margin: 0 0 1rem; color: #F8FAFC;">Related Threat Investigations</h2>
+        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(230px, 1fr)); gap: 1rem;">
+          <div style="background: rgba(15, 23, 42, 0.75); border: 1px solid rgba(148, 163, 184, 0.22); border-radius: 10px; padding: 1.15rem; display: flex; flex-direction: column; justify-content: space-between;">
+            <div>
+              <h3 style="font-size: 1.02rem; margin: 0 0 0.5rem; line-height: 1.4;"><a href="/guide-phishing" style="color: #F8FAFC; text-decoration: none;">How Reverse-Proxy AiTM Phishing Bypasses 2FA — And How to Stop It</a></h3>
+              <p style="font-size: 0.88rem; color: #94A3B8; margin: 0 0 0.85rem; line-height: 1.55;">Learn how reverse-proxy Evilginx kits steal 2FA session cookies from fake bank alerts, and how hardware FIDO2 passkeys block credential harvesters.</p>
+            </div>
+            <a href="/guide-phishing" style="font-size: 0.85rem; font-weight: 700; color: var(--color-primary); text-decoration: none;">Read Investigation &rarr;</a>
+          </div>
+          <div style="background: rgba(15, 23, 42, 0.75); border: 1px solid rgba(148, 163, 184, 0.22); border-radius: 10px; padding: 1.15rem; display: flex; flex-direction: column; justify-content: space-between;">
+            <div>
+              <h3 style="font-size: 1.02rem; margin: 0 0 0.5rem; line-height: 1.4;"><a href="/guide-delivery-scams" style="color: #F8FAFC; text-decoration: none;">USPS Parcel &amp; E-ZPass Toll Smishing: Why Scammers Use $0.35 Micro-Fees</a></h3>
+              <p style="font-size: 0.88rem; color: #94A3B8; margin: 0 0 0.85rem; line-height: 1.55;">Why do USPS and E-ZPass smishing texts ask for $0.35 to $4.85? Inside automated card-harvesting kits, Apple Pay OTP traps, and official carrier domains.</p>
+            </div>
+            <a href="/guide-delivery-scams" style="font-size: 0.85rem; font-weight: 700; color: var(--color-primary); text-decoration: none;">Read Investigation &rarr;</a>
+          </div>
+          <div style="background: rgba(15, 23, 42, 0.75); border: 1px solid rgba(148, 163, 184, 0.22); border-radius: 10px; padding: 1.15rem; display: flex; flex-direction: column; justify-content: space-between;">
+            <div>
+              <h3 style="font-size: 1.02rem; margin: 0 0 0.5rem; line-height: 1.4;"><a href="/guide-sim-swapping" style="color: #F8FAFC; text-decoration: none;">Carrier SIM Swap &amp; eSIM Port-Out Attacks: Why SMS 2FA Is No Longer Safe</a></h3>
+              <p style="font-size: 0.88rem; color: #94A3B8; margin: 0 0 0.85rem; line-height: 1.55;">Understand how attackers hijack phone numbers via carrier port-out social engineering and eSIM swaps, and why migrating off SMS 2FA is critical.</p>
+            </div>
+            <a href="/guide-sim-swapping" style="font-size: 0.85rem; font-weight: 700; color: var(--color-primary); text-decoration: none;">Read Investigation &rarr;</a>
+          </div>
+        </div>
+      </section>
+    </article>
+  </main>
+
+  <!-- Site Footer -->
+  <footer class="site-footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-brand-col">
+          <a href="/" class="brand-logo" aria-label="ScamShield Lab Home">
+            <img src="assets/images/logo.jpg" alt="ScamShield Lab Logo" class="brand-icon" width="36" height="36" loading="lazy">
+            <div class="brand-text-col">
+              <span class="brand-main-title">ScamShield<span class="brand-lab-accent">Lab</span></span>
+              <span class="brand-sub-badge">AI FORENSIC ANALYZER</span>
+            </div>
+          </a>
+          <div class="footer-review-pill">
+            <span class="review-pill-icon" aria-hidden="true">🛡️</span>
+            <a href="/about#editorial-standards" class="review-pill-link">Reviewed by Cybersecurity Professionals</a>
+            <span class="review-pill-divider" aria-hidden="true">&bull;</span>
+            <span class="review-pill-date">Last Updated: November 2026</span>
+          </div>
+          <p class="footer-brand-desc">
+            Independent threat intelligence initiative and AI forensic analyzer dedicated to democratizing cyber fraud detection, deepfake defense, and zero-trust privacy.
+          </p>
+        </div>
+
+        <div class="footer-col">
+          <h4 class="footer-col-title">Detection Tools</h4>
+          <ul class="footer-nav-list">
+            <li><a href="/#analyzer">AI Scam Text Analyzer</a></li>
+            <li><a href="/how-we-score">How We Score (0–100 Engine)</a></li>
+            <li><a href="/family-safe-word">Family Safe Word Kit</a></li>
+            <li><a href="/#threat-radar">Threat Radar 2026</a></li>
+            <li><a href="/quiz">Vulnerability Quiz</a></li>
+            <li><a href="/incident-response" style="color: #EF4444; font-weight: 600;">🚨 Emergency Action Plan</a></li>
+          </ul>
+        </div>
+
+        <div class="footer-col">
+          <h4 class="footer-col-title">Threat Research Guides</h4>
+          <ul class="footer-nav-list">
+            <li><a href="/guide-bank-impersonation">Bank Fraud Impersonation</a></li>
+            <li><a href="/guide-crypto-drainer-scams">Web3 Wallet Drainers</a></li>
+            <li><a href="/guide-remote-access-scams">Remote Access &amp; AnyDesk Scams</a></li>
+            <li><a href="/guide-sim-swapping">SIM Swap Attacks &amp; 2FA</a></li>
+            <li><a href="/guide-deepfake-video">Real-Time Deepfake Video Calls</a></li>
+            <li><a href="/guide-voice-cloning">Voice Cloning Deepfake Defense</a></li>
+            <li><a href="/guide-phishing">Phishing &amp; 2FA Bypasses</a></li>
+          </ul>
+        </div>
+
+        <div class="footer-col">
+          <h4 class="footer-col-title">Legal &amp; Trust</h4>
+          <ul class="footer-nav-list">
+            <li><a href="/about">About ScamShield Lab</a></li>
+            <li><a href="/editorial-policy">Editorial Standards &amp; E-E-A-T</a></li>
+            <li><a href="/contact">Contact Us</a></li>
+            <li><a href="/about#vendor-profile">Vendor &amp; Security Profile</a></li>
+            <li><a href="/how-we-score#privacy-matrix">Privacy-by-Design Matrix</a></li>
+            <li><a href="/privacy">Privacy Policy</a></li>
+            <li><a href="/terms">Terms of Service</a></li>
+            <li><a href="/terms#affiliate-disclosure">Affiliate Disclosure</a></li>
+            <li><a href=".well-known/security.txt">Security.txt (RFC 9116)</a></li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="footer-bottom-bar">
+        <div>&copy; 2026 ScamShield Lab - AI Forensic Analyzer. All rights reserved. Built for global public cyber defense.</div>
+        <div>
+          <span>Zero-Trust Protocol Active</span> &bull; 
+          <a href="/privacy" style="color: var(--text-faint);">Privacy</a> &bull; 
+          <a href="/terms" style="color: var(--text-faint);">Terms &amp; Disclosures</a>
+        </div>
+      </div>
+      <div class="footer-disclaimer">
+        <strong>Notice & Non-Affiliation:</strong> ScamShield Lab - AI Forensic Analyzer (scamshieldlab.com) is an independent cybersecurity awareness and educational platform. It is not affiliated with, sponsored by, or connected to the Government of Singapore, GovTech Singapore, the National Crime Prevention Council (NCPC), or the official Singapore mobile application at scamshield.gov.sg.
+      </div>
+    </div>
+  </footer>
+
+</body>
+</html>

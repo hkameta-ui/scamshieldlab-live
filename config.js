@@ -32,7 +32,7 @@ window.SITE_CONFIG = {
       payoutEst: "$9 - $27 per user signup",
       url: "https://sharegoogleworkspace.advocate.impact.com/mzYP7Zg",
       badge: "Verified Partner",
-      cta: "Claim 10% Off & Free Trial"
+      cta: "Explore Enterprise BEC Defense"
     },
     vpnPrivacy: {
       name: "NordVPN Threat Protection Pro",
@@ -41,7 +41,7 @@ window.SITE_CONFIG = {
       payoutEst: "40% - 100% Commission",
       url: "https://go.nordvpn.net/aff_c?offer_id=15&aff_id=159036&url_id=902", // Verified Nord Partner Link (Affiliate ID: 159036)
       badge: "Verified Partner",
-      cta: "Get Secure VPN (68% Off)"
+      cta: "Review DNS Threat Protection"
     },
     passwordManager: {
       name: "NordPass Premium & Passkey Vault",
