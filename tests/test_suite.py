@@ -1501,7 +1501,7 @@ class TestAdSenseEditorialDepthAndYMYLMandate(unittest.TestCase):
         for fname in html_files:
             with open(os.path.join(WORKSPACE_ROOT, fname), "r", encoding="utf-8") as f:
                 content = f.read()
-            m = re.search(r'<meta\s+name=["\']description["\']\s+content=["\']([^"\']+)["\']', content, re.I)
+            m = re.search(r'<meta\s+name="description"\s+content="([^"]+)"', content, re.I)
             self.assertIsNotNone(m, f"{fname} missing <meta name='description'>")
             desc = m.group(1)
             self.assertTrue(
