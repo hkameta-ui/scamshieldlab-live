@@ -1493,6 +1493,7 @@ class TestAdSenseEditorialDepthAndYMYLMandate(unittest.TestCase):
             self.assertGreaterEqual(words, 1000, f"{fname} has only {words} <main> words (minimum 1,000 required by Rule 8)")
 
     def test_all_28_pages_have_meta_descriptions_within_120_to_158_chars(self):
+        import html as _html
         html_files = sorted(
             f for f in os.listdir(WORKSPACE_ROOT)
             if f.endswith(".html") and f not in self.SKIP_FILES
@@ -1501,6 +1502,13 @@ class TestAdSenseEditorialDepthAndYMYLMandate(unittest.TestCase):
         for fname in html_files:
             with open(os.path.join(WORKSPACE_ROOT, fname), "r", encoding="utf-8") as f:
                 content = f.read()
+            tm = re.search(r"<title>(.*?)</title>", content, re.I | re.S)
+            self.assertIsNotNone(tm, f"{fname} missing <title>")
+            title_str = _html.unescape(tm.group(1).strip())
+            self.assertTrue(
+                30 <= len(title_str) <= 64,
+                f"{fname} <title> length {len(title_str)} is outside 30-64 char Bing/Google SEO bounds: '{title_str}'"
+            )
             m = re.search(r'<meta\s+name="description"\s+content="([^"]+)"', content, re.I)
             self.assertIsNotNone(m, f"{fname} missing <meta name='description'>")
             desc = m.group(1)
