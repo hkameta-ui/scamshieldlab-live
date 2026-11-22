@@ -948,7 +948,7 @@ function initAnalyzer() {
           </a>
         </div>
         <div class="defense-rec-footer">
-          <span>Exclusive ScamShield Lab Reader Pricing Applied (Up to 68% Off Nord / 10% Off Google Workspace)</span>
+          <span>Verified Cybersecurity Architecture &amp; Enterprise Defense Controls</span>
           <span>FTC Disclosure: Authorized Security Partner Referral</span>
         </div>
       `;
