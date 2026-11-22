@@ -1512,6 +1512,7 @@ class TestAdSenseEditorialDepthAndYMYLMandate(unittest.TestCase):
             m = re.search(r'<meta\s+name="description"\s+content="([^"]+)"', content, re.I)
             self.assertIsNotNone(m, f"{fname} missing <meta name='description'>")
             desc = m.group(1)
+            self.assertIn('name="robots"', content, f"{fname} missing explicit <meta name='robots'> tag")
             self.assertTrue(
                 120 <= len(desc) <= 158,
                 f"{fname} meta description length {len(desc)} is outside 120-158 char bounds: '{desc}'"
@@ -1530,7 +1531,7 @@ class TestAdSenseEditorialDepthAndYMYLMandate(unittest.TestCase):
             f for f in os.listdir(WORKSPACE_ROOT)
             if f.endswith(".html") and f not in self.SKIP_FILES
         ] + ["config.js", os.path.join("js", "app.js")]
-        banned_phrases = ["?ref=scamshield", "Activate DNS Shield (68% Off)", "Get Secure VPN (68% Off)", "Claim 14-Day Free Trial", "Claim 10% Off & Free Trial"]
+        banned_phrases = ["?ref=scamshield", "68% Off", "Claim 14-Day Free Trial", "Claim 10% Off & Free Trial"]
         for rel_path in check_files:
             with open(os.path.join(WORKSPACE_ROOT, rel_path), "r", encoding="utf-8") as f:
                 txt = f.read()
