@@ -3,9 +3,9 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>The 2026 Guide to Phishing Scams & Credential Harvesters | ScamShield Lab - AI Forensic Analyzer</title>
+  <title>Reverse-Proxy AiTM Phishing &amp; Credential Harvesters | ScamShield Lab</title>
   
-  <meta name="description" content="In-depth forensic guide to identifying modern phishing scams with real red-flag examples. Learn how adversaries bypass 2FA, create lookalike bank portals, and how to verify communications.">
+  <meta name="description" content="Learn how reverse-proxy Evilginx kits steal 2FA session cookies from fake bank alerts, and how hardware FIDO2 passkeys block credential harvesters.">
   <meta name="keywords" content="phishing scams real examples, bank suspension text scam, Chase fraud alert scam, Apple ID phishing email, credential harvester red flags, ScamShield Lab forensic analyzer">
   <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1">
   <link rel="canonical" href="https://scamshieldlab.com/guide-phishing">
@@ -13,14 +13,14 @@
   <!-- Open Graph -->
   <meta property="og:type" content="article">
   <meta property="og:site_name" content="ScamShield Lab - AI Forensic Analyzer">
-  <meta property="og:title" content="The 2026 Guide to Phishing Scams & Credential Harvesters | ScamShield Lab">
+  <meta property="og:title" content="Reverse-Proxy AiTM Phishing &amp; Credential Harvesters | ScamShield Lab">
   <meta property="og:description" content="Real red-flag examples of modern banking phishing scams and technical steps to avoid credential theft.">
   <meta property="og:url" content="https://scamshieldlab.com/guide-phishing">
   <meta property="og:image" content="https://scamshieldlab.com/assets/images/phishing-guide.jpg">
 
   <!-- Twitter Cards -->
   <meta name="twitter:card" content="summary_large_image">
-  <meta name="twitter:title" content="The 2026 Guide to Phishing Scams | ScamShield Lab">
+  <meta name="twitter:title" content="Reverse-Proxy AiTM Phishing &amp; Credential Harvesters | ScamShield Lab">
   <meta name="twitter:description" content="Real red-flag examples of modern banking phishing scams and credential harvesters.">
   <meta name="twitter:image" content="https://scamshieldlab.com/assets/images/phishing-guide.jpg">
 
@@ -29,7 +29,7 @@
   {
     "@context": "https://schema.org",
     "@type": "TechArticle",
-    "headline": "The 2026 Guide to Phishing Scams & Credential Harvesters: Real Examples & Red Flags",
+    "headline": "How Reverse-Proxy AiTM Phishing Bypasses 2FA — And How to Stop It",
     "description": "Comprehensive forensic investigation into modern phishing scams, reverse-proxy 2FA bypass, and step-by-step incident response.",
     "author": {
       "@type": "Organization",
@@ -424,6 +424,34 @@
           <li><a href="/guide-job-scams"><strong>Job & Recruitment Scams:</strong> The mechanics of WhatsApp recruitment lures and prepaid task deposits.</a></li>
         </ul>
       </div>
+
+      <!-- Related Threat Investigations (Internal Cross-Linking) -->
+      <section aria-label="Related Threat Investigations" style="margin-top: 2.75rem; padding-top: 2rem; border-top: 1px solid rgba(148, 163, 184, 0.2);">
+        <h2 style="font-size: 1.35rem; margin: 0 0 1rem; color: #F8FAFC;">Related Threat Investigations</h2>
+        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(230px, 1fr)); gap: 1rem;">
+          <div style="background: rgba(15, 23, 42, 0.75); border: 1px solid rgba(148, 163, 184, 0.22); border-radius: 10px; padding: 1.15rem; display: flex; flex-direction: column; justify-content: space-between;">
+            <div>
+              <h3 style="font-size: 1.02rem; margin: 0 0 0.5rem; line-height: 1.4;"><a href="/guide-sim-swapping" style="color: #F8FAFC; text-decoration: none;">Carrier SIM Swap &amp; eSIM Port-Out Attacks: Why SMS 2FA Is No Longer Safe</a></h3>
+              <p style="font-size: 0.88rem; color: #94A3B8; margin: 0 0 0.85rem; line-height: 1.55;">Understand how attackers hijack phone numbers via carrier port-out social engineering and eSIM swaps, and why migrating off SMS 2FA is critical.</p>
+            </div>
+            <a href="/guide-sim-swapping" style="font-size: 0.85rem; font-weight: 700; color: var(--color-primary); text-decoration: none;">Read Investigation &rarr;</a>
+          </div>
+          <div style="background: rgba(15, 23, 42, 0.75); border: 1px solid rgba(148, 163, 184, 0.22); border-radius: 10px; padding: 1.15rem; display: flex; flex-direction: column; justify-content: space-between;">
+            <div>
+              <h3 style="font-size: 1.02rem; margin: 0 0 0.5rem; line-height: 1.4;"><a href="/guide-bank-impersonation" style="color: #F8FAFC; text-decoration: none;">Spoofed Bank Fraud Calls &amp; 'Safe Account' Wire Traps: A Forensic Teardown</a></h3>
+              <p style="font-size: 0.88rem; color: #94A3B8; margin: 0 0 0.85rem; line-height: 1.55;">Read an annotated transcript of a spoofed bank fraud department call, why banks never use 'safe holding accounts,' and the 72-hour wire recall sequence.</p>
+            </div>
+            <a href="/guide-bank-impersonation" style="font-size: 0.85rem; font-weight: 700; color: var(--color-primary); text-decoration: none;">Read Investigation &rarr;</a>
+          </div>
+          <div style="background: rgba(15, 23, 42, 0.75); border: 1px solid rgba(148, 163, 184, 0.22); border-radius: 10px; padding: 1.15rem; display: flex; flex-direction: column; justify-content: space-between;">
+            <div>
+              <h3 style="font-size: 1.02rem; margin: 0 0 0.5rem; line-height: 1.4;"><a href="/guide-delivery-scams" style="color: #F8FAFC; text-decoration: none;">USPS Parcel &amp; E-ZPass Toll Smishing: Why Scammers Use $0.35 Micro-Fees</a></h3>
+              <p style="font-size: 0.88rem; color: #94A3B8; margin: 0 0 0.85rem; line-height: 1.55;">Why do USPS and E-ZPass smishing texts ask for $0.35 to $4.85? Inside automated card-harvesting kits, Apple Pay OTP traps, and official carrier domains.</p>
+            </div>
+            <a href="/guide-delivery-scams" style="font-size: 0.85rem; font-weight: 700; color: var(--color-primary); text-decoration: none;">Read Investigation &rarr;</a>
+          </div>
+        </div>
+      </section>
     </article>
   </main>
 
