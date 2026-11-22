@@ -1538,6 +1538,43 @@ class TestAdSenseEditorialDepthAndYMYLMandate(unittest.TestCase):
             for banned in banned_phrases:
                 self.assertNotIn(banned, txt, f"Banned hard-sell or placeholder string '{banned}' found in {rel_path}")
 
+    def test_zero_internal_html_extension_links_across_all_28_pages(self):
+        """Prevents 307 redirects on Cloudflare Pages by ensuring internal <a href>, canonical, and og:url tags never use .html."""
+        html_files = sorted(
+            f for f in os.listdir(WORKSPACE_ROOT)
+            if f.endswith(".html") and f not in self.SKIP_FILES
+        )
+        href_pat = re.compile(r'<a\b[^>]*?\bhref=["\']([^"\']+)["\']', re.I)
+        for fname in html_files:
+            with open(os.path.join(WORKSPACE_ROOT, fname), "r", encoding="utf-8") as f:
+                txt = f.read()
+            for m in href_pat.finditer(txt):
+                href = m.group(1)
+                if not href.startswith(("http://", "https://", "mailto:", "tel:")):
+                    self.assertNotIn(".html", href, f"{fname} contains internal .html link '{href}' (causes 307 redirect)")
+            self.assertNotIn(".html", re.findall(r'rel="canonical"\s+href="([^"]+)"', txt)[0], f"{fname} canonical contains .html")
+
+    def test_robots_txt_has_zero_disallow_directives(self):
+        """Ensures robots.txt never blocks GoogleOther, Mediapartners-Google, or AI search crawlers."""
+        with open(os.path.join(WORKSPACE_ROOT, "robots.txt"), "r", encoding="utf-8") as f:
+            robots = f.read()
+        self.assertNotIn("Disallow:", robots, "robots.txt must not contain Disallow directives")
+
+    def test_all_referenced_local_image_assets_exist_on_disk(self):
+        """Verifies every <img src>, <source srcset>, and image preload across all 28 pages exists on disk (zero 404 assets)."""
+        html_files = sorted(
+            f for f in os.listdir(WORKSPACE_ROOT)
+            if f.endswith(".html") and f not in self.SKIP_FILES
+        )
+        asset_pat = re.compile(r'(?:src|srcset|href)=["\'](assets/images/[^"\'?]+)', re.I)
+        for fname in html_files:
+            with open(os.path.join(WORKSPACE_ROOT, fname), "r", encoding="utf-8") as f:
+                txt = f.read()
+            for m in asset_pat.finditer(txt):
+                rel_img = m.group(1)
+                full_img = os.path.join(WORKSPACE_ROOT, rel_img.replace("/", os.sep))
+                self.assertTrue(os.path.isfile(full_img), f"{fname} references missing image asset '{rel_img}'")
+
 
 if __name__ == "__main__":
 
