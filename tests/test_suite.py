@@ -1128,7 +1128,13 @@ class TestCoreWebVitalsCompliance(unittest.TestCase):
         'guide-remote-access-scams.html': 'assets/images/remote-access-guide.webp',
         'guide-crypto-drainer-scams.html': 'assets/images/crypto-drainer-guide.webp',
         'guide-bank-impersonation.html': 'assets/images/bank-impersonation-guide.webp',
-        'guide-student-loan-scams.html': 'assets/images/student-loan-guide.webp'
+        'guide-student-loan-scams.html': 'assets/images/student-loan-guide.webp',
+        'guide-quishing.html': 'assets/images/quishing-guide.webp',
+        'guide-check-overpayment.html': 'assets/images/check-overpayment-guide.webp',
+        'guide-tech-support-popups.html': 'assets/images/tech-support-guide.webp',
+        'guide-romance-investment-recovery.html': 'assets/images/crypto-recovery-guide.webp',
+        'guide-medicare-healthcare-scams.html': 'assets/images/medicare-scams-guide.webp',
+        'guide-irs-tax-impersonation.html': 'assets/images/irs-tax-guide.webp'
     }
 
     def test_image_weight_budgets_for_lcp(self):
@@ -1242,7 +1248,7 @@ class TestMobileNavigationDrawer(unittest.TestCase):
     def test_mobile_toggle_button_present_in_all_pages(self):
         """All 14 published pages must declare the #mobileNavToggle button with accessible label."""
         html_files = PUBLISHED_HTML_FILES
-        self.assertEqual(len(html_files), 22, "Must audit all 22 published HTML pages")
+        self.assertEqual(len(html_files), 28, "Must audit all 28 published HTML pages")
         for h in html_files:
             file_path = os.path.join(WORKSPACE_ROOT, h)
             with open(file_path, "r", encoding="utf-8") as f:
@@ -1310,7 +1316,7 @@ class TestAdSenseAndCrawlerIntegrity(unittest.TestCase):
     def test_all_pages_have_adsense_account_meta_tag(self):
         """All 14 published HTML pages must declare <meta name="google-adsense-account" content="ca-pub-7565560894775775">."""
         html_files = PUBLISHED_HTML_FILES
-        self.assertEqual(len(html_files), 22, "Must audit all 22 published HTML pages")
+        self.assertEqual(len(html_files), 28, "Must audit all 28 published HTML pages")
         for h in html_files:
             file_path = os.path.join(WORKSPACE_ROOT, h)
             with open(file_path, "r", encoding="utf-8") as f:
@@ -1401,6 +1407,127 @@ class TestAdSenseAndCrawlerIntegrity(unittest.TestCase):
         with open(tp_file, "r", encoding="utf-8") as f:
             content = f.read().strip()
         self.assertEqual(content, "bb2aa5f6-194f-4d93-93fc-0d07c3205e3d")
+
+
+class TestAdSenseEditorialDepthAndYMYLMandate(unittest.TestCase):
+    """Rule 8 Mandate: Enforces 18+ guides (>=1,200 main words), >=1,000 main words on tools/trust pages,
+    120-158 char meta descriptions, non-templated titles, pre-rendered tool states, YMYL E-E-A-T cards,
+    and objective non-salesy partner CTAs."""
+
+    SKIP_FILES = {
+        "5420e932-613b-4a32-92d1-8dbb46332922.html",
+        "bb2aa5f6-194f-4d93-93fc-0d07c3205e3d.html",
+    }
+
+    @staticmethod
+    def _extract_main_word_count(html_text):
+        from html.parser import HTMLParser
+
+        class _MainParser(HTMLParser):
+            def __init__(self):
+                super().__init__()
+                self.in_main = False
+                self.in_skip = False
+                self.words = []
+
+            def handle_starttag(self, tag, attrs):
+                if tag == "main":
+                    self.in_main = True
+                if tag in ("script", "style"):
+                    self.in_skip = True
+
+            def handle_endtag(self, tag):
+                if tag == "main":
+                    self.in_main = False
+                if tag in ("script", "style"):
+                    self.in_skip = False
+
+            def handle_data(self, data):
+                if self.in_main and not self.in_skip:
+                    self.words.extend(data.split())
+
+        p = _MainParser()
+        p.feed(html_text)
+        return len(p.words)
+
+    def test_rule8_codified_in_agents_and_gemini_md(self):
+        for doc in ["AGENTS.md", "GEMINI.md", os.path.join(".agents", "rules", "adsense-editorial-depth.md")]:
+            path = os.path.join(WORKSPACE_ROOT, doc)
+            self.assertTrue(os.path.isfile(path), f"Missing Rule 8 documentation in {doc}")
+            with open(path, "r", encoding="utf-8") as f:
+                txt = f.read()
+            self.assertIn("Rule 8", txt)
+            self.assertIn("1,200 words", txt)
+
+    def test_minimum_18_guides_with_1200_plus_main_words_and_ymyl_eeat(self):
+        guides = sorted(
+            f for f in os.listdir(WORKSPACE_ROOT)
+            if f.startswith("guide-") and f.endswith(".html")
+        )
+        self.assertGreaterEqual(len(guides), 18, "Must maintain at least 18 investigative guide articles")
+        for g in guides:
+            with open(os.path.join(WORKSPACE_ROOT, g), "r", encoding="utf-8") as f:
+                content = f.read()
+            words = self._extract_main_word_count(content)
+            self.assertGreaterEqual(words, 1200, f"{g} has only {words} <main> words (minimum 1,200 required by Rule 8)")
+            self.assertNotIn("The 2026 Guide to", content, f"{g} must not use templated 'The 2026 Guide to' headline")
+            self.assertNotIn("Updated: October 2026", content, f"{g} contains stale October 2026 byline date")
+            self.assertIn("Verified YMYL Cybersecurity Research", content, f"{g} missing YMYL E-E-A-T Author Box")
+            self.assertIn("Related Threat Investigations", content, f"{g} missing 3-card Related Threat Investigations block")
+
+    def test_interactive_tools_and_trust_pages_exceed_1000_main_words(self):
+        required_pages = [
+            "index.html",
+            "family-safe-word.html",
+            "quiz.html",
+            "incident-response.html",
+            "how-we-score.html",
+            "about.html",
+            "contact.html",
+            "editorial-policy.html",
+        ]
+        for fname in required_pages:
+            with open(os.path.join(WORKSPACE_ROOT, fname), "r", encoding="utf-8") as f:
+                content = f.read()
+            words = self._extract_main_word_count(content)
+            self.assertGreaterEqual(words, 1000, f"{fname} has only {words} <main> words (minimum 1,000 required by Rule 8)")
+
+    def test_all_28_pages_have_meta_descriptions_within_120_to_158_chars(self):
+        html_files = sorted(
+            f for f in os.listdir(WORKSPACE_ROOT)
+            if f.endswith(".html") and f not in self.SKIP_FILES
+        )
+        self.assertEqual(len(html_files), 28)
+        for fname in html_files:
+            with open(os.path.join(WORKSPACE_ROOT, fname), "r", encoding="utf-8") as f:
+                content = f.read()
+            m = re.search(r'<meta\s+name=["\']description["\']\s+content=["\']([^"\']+)["\']', content, re.I)
+            self.assertIsNotNone(m, f"{fname} missing <meta name='description'>")
+            desc = m.group(1)
+            self.assertTrue(
+                120 <= len(desc) <= 158,
+                f"{fname} meta description length {len(desc)} is outside 120-158 char bounds: '{desc}'"
+            )
+
+    def test_homepage_pre_renders_sample_forensic_preview_and_threat_radar(self):
+        with open(os.path.join(WORKSPACE_ROOT, "index.html"), "r", encoding="utf-8") as f:
+            idx = f.read()
+        self.assertIn('id="sampleForensicPreview"', idx, "index.html must pre-render #sampleForensicPreview")
+        self.assertIn("Threat Risk Index: 92/100", idx)
+        self.assertGreaterEqual(idx.count('class="threat-card"'), 10, "index.html must pre-render all 10 Threat Radar cards in static HTML")
+        self.assertGreaterEqual(idx.count('class="guide-card"'), 18, "index.html must display all 18 guide cards")
+
+    def test_zero_hard_sell_discount_ctas_or_placeholder_ref_links(self):
+        check_files = [
+            f for f in os.listdir(WORKSPACE_ROOT)
+            if f.endswith(".html") and f not in self.SKIP_FILES
+        ] + ["config.js", os.path.join("js", "app.js")]
+        banned_phrases = ["?ref=scamshield", "Activate DNS Shield (68% Off)", "Get Secure VPN (68% Off)", "Claim 14-Day Free Trial", "Claim 10% Off & Free Trial"]
+        for rel_path in check_files:
+            with open(os.path.join(WORKSPACE_ROOT, rel_path), "r", encoding="utf-8") as f:
+                txt = f.read()
+            for banned in banned_phrases:
+                self.assertNotIn(banned, txt, f"Banned hard-sell or placeholder string '{banned}' found in {rel_path}")
 
 
 if __name__ == "__main__":

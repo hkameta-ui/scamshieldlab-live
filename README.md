@@ -24,8 +24,7 @@ Cybersecurity and AI fraud prevention rank among the **highest Cost-Per-Click (C
 
 ### 1. Dual Revenue Stream:
 * **Stream A: Google AdSense Display Ads**
-  * 4 strategically placed, policy-compliant ad slots (Header Leaderboard, In-Content High-CTR Rectangle, Mid-Page Banner, and Footer Sticky).
-  * Labeled clearly with "Advertisement" in compliance with Google AdSense terms to prevent invalid clicks.
+  * Google AdSense Auto Ads active via verified publisher ID (`ca-pub-7565560894775775`) and `ads.txt` authorization.
 * **Stream B: High-Ticket Cybersecurity Affiliates & AI Security Partners**
   * Integrated referral cards for:
     * **Aura Identity Theft Protection** (~$50 – $80 bounty per signup)
@@ -47,16 +46,16 @@ Cybersecurity and AI fraud prevention rank among the **highest Cost-Per-Click (C
 2. **2026 AI Threat Radar**:
    * Filterable intelligence database for 6 primary attack surfaces: *AI Voice Cloning*, *Agentic BEC*, *Pig Butchering*, *Quishing (QR Phishing)*, *Fake AI Software*, and *Deepfake KYC*.
    * Includes impact metrics, warning signs, counter-measures, and real-world incidents (e.g., Arup $25M deepfake conference).
-3. **"How Scam-Proof Are You?" Interactive Vulnerability Quiz**:
-   * 5 realistic real-world scenarios testing users against synthetic media.
-   * Instant green/red feedback with technical explanations and a final personalized resilience rating.
-4. **Emergency Incident Response Checklist (Interactive Playbook)**:
-   * 5 actionable steps if an individual was scammed (Fraud recalls, credit freezes with Experian/Equifax/TransUnion, IC3 reporting).
+3. **"Can You Spot the Scam?" Interactive Vulnerability Simulator (`/quiz`)**:
+   * 8 realistic real-world scenarios testing users against AI voice cloning, reverse-proxy AiTM SMS, check overpayments, and executive BEC.
+   * Instant green/red feedback with technical explanations, forensic breakdown, and a final personalized resilience rating.
+4. **Emergency Incident Response Checklist (`/incident-response` & `#playbook`)**:
+   * Interactive 15-Minute Triage Wizard plus 5 actionable emergency steps (fraud recalls, credit freezes with Experian/Equifax/TransUnion, IC3 reporting).
    * Persists completion state in `localStorage`.
-5. **Authoritative SEO Knowledge Center**:
-   * Long-form, high-ranking pillar guides targeting high-volume search queries.
-6. **100% AdSense Approval Compliance**:
-   * Includes dedicated `about.html`, `privacy.html` (with DART cookie & GDPR/CCPA disclosures), and `terms.html` (with FTC affiliate disclosures).
+5. **Authoritative SEO Knowledge Center (12 Pillar Guides + `/family-safe-word`)**:
+   * Long-form, high-ranking pillar guides targeting high-volume search queries, each paired with unique visual assets and verified government/research citations.
+6. **100% AdSense Approval & E-E-A-T Compliance (22 Published Pages)**:
+   * Extensionless Cloudflare Pages routing (`/`, `/about`, `/editorial-policy`, `/how-we-score`, `/contact`, `/privacy`, `/terms`, `/quiz`, `/family-safe-word`, `/incident-response`, and 12 guides) with synchronized `?v=20261113-adsense` cache-busting.
 
 ---
 
@@ -65,14 +64,28 @@ Cybersecurity and AI fraud prevention rank among the **highest Cost-Per-Click (C
 You can test and view the platform immediately on your machine:
 
 1. Open PowerShell in this directory (`d:\Hemendra\POC`)
-2. Run Python's built-in local server (port 5050 as mandated by Rule 7):
+2. Run the extensionless-aware local server (port `5050` as mandated by Rule 7):
    ```powershell
-   python -m http.server 5050
+   python tests/local_server.py
    ```
 3. Open your browser and navigate to:
    ```
-   http://localhost:5050
+   http://localhost:5050/
    ```
+
+---
+
+## 🧪 Automated Tests & Pre-Merge Readiness Gate
+
+Before merging any feature branch to `main`, run the full verification suite:
+
+```powershell
+# Run all 102 unit, security, SEO, and Core Web Vitals tests
+python -m tests.test_suite
+
+# Run the standalone 9-point pre-merge readiness gate
+python tests/design_readiness_check.py
+```
 
 ---
 

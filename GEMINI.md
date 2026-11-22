@@ -117,5 +117,22 @@ Every feature, guide, tool, and optimization must actively advance our two inter
 3. **Local Deployment URLs**:
    - Primary: `http://localhost:5050/`
 
+---
+
+## 📰 Rule 8: AdSense High-Value Editorial Depth & YMYL E-E-A-T Mandate
+1. **Editorial Inventory & Word-Count Minimums**:
+   - The platform must maintain at least **18 comprehensive investigative guides** (`guide-*.html`), each containing a minimum of **1,200 words** inside `<main>`.
+   - Every interactive tool and editorial trust page (`family-safe-word.html`, `quiz.html`, `incident-response.html`, `how-we-score.html`, `about.html`, `contact.html`, `editorial-policy.html`) must contain a minimum of **1,000 words** inside `<main>`.
+2. **Non-Templated Headlines & Meta Description Bounds**:
+   - Article titles (`<title>`, `<h1>`) must use distinct, investigative headlines; repetitive boilerplate prefixes such as `"The 2026 Guide to..."` are strictly prohibited.
+   - Every published page's `<meta name="description">` must be unique and strictly between **120 and 158 characters** (preventing Google/Bing SEO truncation warnings).
+3. **Zero Blank-State Tools on Initial Load**:
+   - Interactive analysis tools must pre-render substantive reference output in static HTML on initial load (`#sampleForensicPreview` and `#threatCardsGrid` in `index.html`) so crawlers and reviewers never encounter an empty tool container.
+4. **YMYL E-E-A-T Attribution & Internal Cross-Linking**:
+   - Every investigative guide (`guide-*.html`) must include the **Verified YMYL Cybersecurity Research & Editorial Attribution** box (`Hemendra K.` and `Dr. Priyanka Ameta` with primary citations to FBI IC3, FTC, CISA, and NIST SP 800-63B) and a **3-card Related Threat Investigations** cross-linking block.
+5. **Objective Editorial Partner CTAs & Zero Placeholder Links**:
+   - Partner security recommendations must use objective, educational evaluation labels (no aggressive discount hype such as `"68% Off"` or `"Claim 14-Day Free Trial"` and zero `?ref=scamshield` placeholder parameters).
+
+
 
 

@@ -36,6 +36,12 @@ PUBLISHED_HTML_FILES = [
     "guide-crypto-drainer-scams.html",
     "guide-bank-impersonation.html",
     "guide-student-loan-scams.html",
+    "guide-quishing.html",
+    "guide-check-overpayment.html",
+    "guide-tech-support-popups.html",
+    "guide-romance-investment-recovery.html",
+    "guide-medicare-healthcare-scams.html",
+    "guide-irs-tax-impersonation.html",
     "about.html",
     "editorial-policy.html",
     "contact.html",
@@ -390,7 +396,13 @@ def run_readiness_checks():
         'guide-remote-access-scams.html': 'assets/images/remote-access-guide.webp',
         'guide-crypto-drainer-scams.html': 'assets/images/crypto-drainer-guide.webp',
         'guide-bank-impersonation.html': 'assets/images/bank-impersonation-guide.webp',
-        'guide-student-loan-scams.html': 'assets/images/student-loan-guide.webp'
+        'guide-student-loan-scams.html': 'assets/images/student-loan-guide.webp',
+        'guide-quishing.html': 'assets/images/quishing-guide.webp',
+        'guide-check-overpayment.html': 'assets/images/check-overpayment-guide.webp',
+        'guide-tech-support-popups.html': 'assets/images/tech-support-guide.webp',
+        'guide-romance-investment-recovery.html': 'assets/images/crypto-recovery-guide.webp',
+        'guide-medicare-healthcare-scams.html': 'assets/images/medicare-scams-guide.webp',
+        'guide-irs-tax-impersonation.html': 'assets/images/irs-tax-guide.webp'
     }
 
     # 1. Image Size Budgets

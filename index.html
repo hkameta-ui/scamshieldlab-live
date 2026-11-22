@@ -6,7 +6,7 @@
   <title>ScamShield Lab - AI Forensic Analyzer | Cyber Fraud & Scam Detection</title>
   
   <!-- SEO & High-Intent Search Metadata -->
-  <meta name="description" content="ScamShield Lab is an independent AI forensic analyzer detecting phishing emails, SMS scams, job lures, and synthetic voice cloning in real-time. In-browser zero-storage analysis.">
+  <meta name="description" content="Analyze suspicious SMS, phishing emails, job offers, and AI voice scams in your browser. Zero-storage heuristic threat detection by ScamShield Lab.">
   <meta name="keywords" content="ScamShield Lab, AI forensic analyzer, scam detector, phishing analysis, voice cloning detection, deepfake fraud defense, zero storage privacy">
   <meta name="author" content="ScamShield Lab Research">
   <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1">
@@ -110,11 +110,11 @@
   <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-7565560894775775" crossorigin="anonymous"></script>
 
   <!-- Stylesheets -->
-  <link rel="stylesheet" href="css/styles.css?v=20261113-adsense">
+  <link rel="stylesheet" href="css/styles.css?v=20261122-adsense-v2">
   <link rel="icon" type="image/jpeg" href="assets/images/logo.jpg">
 
   <!-- Configuration & AdSense Loader -->
-  <script src="config.js?v=20261113-adsense" defer></script>
+  <script src="config.js?v=20261122-adsense-v2" defer></script>
 </head>
 <body>
 
@@ -391,6 +391,39 @@
           <div id="scanningIndicator" class="scanning-indicator" style="display: none;">
             <div class="spinner"></div>
             <span>Evaluating linguistic urgency, cryptographic addresses & deepfake indicators...</span>
+          </div>
+
+          <!-- Pre-Executed Sample Forensic Report (Always Visible to Crawlers & First-Time Visitors Until Live Scan Runs) -->
+          <div id="sampleForensicPreview" class="forensic-sample-preview" role="region" aria-label="Sample Forensic Heuristic Output" style="margin-top: 1.5rem; background: rgba(15, 23, 42, 0.88); border: 1px solid rgba(56, 189, 248, 0.35); border-radius: var(--radius-lg); padding: 1.5rem;">
+            <div style="display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 0.75rem; border-bottom: 1px solid rgba(148, 163, 184, 0.2); padding-bottom: 1rem; margin-bottom: 1.15rem;">
+              <div>
+                <span style="font-family: var(--font-mono); font-size: 0.76rem; text-transform: uppercase; letter-spacing: 0.06em; color: var(--color-primary); font-weight: 700;">🔬 Baseline Forensic Telemetry Example (Pre-Loaded Reference Case)</span>
+                <h3 style="font-size: 1.2rem; color: #F8FAFC; margin: 0.25rem 0 0;">Sample Lure Evaluation: Spoofed Bank Wire &amp; Reverse-Proxy AiTM SMS</h3>
+              </div>
+              <div style="background: rgba(239, 68, 68, 0.16); border: 1px solid #EF4444; color: #F87171; font-family: var(--font-mono); font-weight: 800; font-size: 0.95rem; padding: 0.4rem 0.9rem; border-radius: 999px;">
+                Threat Risk Index: 92/100 &bull; CRITICAL
+              </div>
+            </div>
+            <p style="font-size: 0.94rem; color: #CBD5E1; line-height: 1.65; margin: 0 0 1rem;">
+              <strong>Evaluated Reference Artifact:</strong> <code style="color: #F87171;">"CHASE FRAUD ALERT: Did you authorize a $3,450.00 Zelle wire to Marcus V.? Reply N or verify your session token within 15 minutes at chase-security-verify-desk[.]com to prevent account suspension."</code>
+            </p>
+            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 0.9rem; margin-bottom: 1rem;">
+              <div style="background: rgba(30, 41, 59, 0.75); border-left: 3px solid #EF4444; padding: 0.85rem; border-radius: 6px;">
+                <strong style="color: #F8FAFC; font-size: 0.88rem; display: block; margin-bottom: 0.3rem;">Layer 1: Cognitive Urgency (+28 pts)</strong>
+                <span style="color: #94A3B8; font-size: 0.84rem; line-height: 1.5;">Artificial 15-minute countdown combined with high-dollar ($3,450) loss aversion designed to bypass critical verification.</span>
+              </div>
+              <div style="background: rgba(30, 41, 59, 0.75); border-left: 3px solid #EF4444; padding: 0.85rem; border-radius: 6px;">
+                <strong style="color: #F8FAFC; font-size: 0.88rem; display: block; margin-bottom: 0.3rem;">Layer 2: Lookalike Domain (+34 pts)</strong>
+                <span style="color: #94A3B8; font-size: 0.84rem; line-height: 1.5;">Hyphenated combo-squatting domain (<code style="color: #F87171;">chase-security-verify-desk[.]com</code>) consistent with Evilginx2 reverse-proxy session harvesting.</span>
+              </div>
+              <div style="background: rgba(30, 41, 59, 0.75); border-left: 3px solid #F59E0B; padding: 0.85rem; border-radius: 6px;">
+                <strong style="color: #F8FAFC; font-size: 0.88rem; display: block; margin-bottom: 0.3rem;">Layer 3: Out-of-Band Protocol (+30 pts)</strong>
+                <span style="color: #94A3B8; font-size: 0.84rem; line-height: 1.5;">Real financial institutions never embed third-party verification URLs inside inbound fraud-alert SMS messages.</span>
+              </div>
+            </div>
+            <div style="font-size: 0.85rem; color: #94A3B8;">
+              <em>Paste your own suspicious message above and click <strong>Run Neural Heuristic Scan</strong> to replace this reference case with a live client-side analysis.</em>
+            </div>
           </div>
 
           <!-- Results Panel (Flipped UX: Immediate Actions & Risk Score Prominently Visible on Top) -->
@@ -1083,7 +1116,7 @@
             </div>
             <div class="guide-card-content">
               <span class="guide-tag">Credential Defense</span>
-              <h3 class="guide-title"><a href="/guide-phishing">The 2026 Guide to Phishing Scams & Credential Harvesters</a></h3>
+              <h3 class="guide-title"><a href="/guide-phishing">How Reverse-Proxy AiTM Phishing Bypasses 2FA — And How to Stop It</a></h3>
               <p class="guide-excerpt">
                 Real-world forensic teardowns of Chase, Wells Fargo, and Apple ID phishing alerts. How reverse-proxy AiTM kits bypass 2FA and the 5-point emergency response protocol.
               </p>
@@ -1102,7 +1135,7 @@
             </div>
             <div class="guide-card-content">
               <span class="guide-tag">Employment Cybercrime</span>
-              <h3 class="guide-title"><a href="/guide-job-scams">The 2026 Guide to Fake Job & Task-Based Scams</a></h3>
+              <h3 class="guide-title"><a href="/guide-job-scams">Inside WhatsApp Task & Remote Job Scams: The 3-Phase Deposit Trap</a></h3>
               <p class="guide-excerpt">
                 Real red-flag SMS examples, the anatomy of the 3-phase prepaid task deposit trap, and an official verification checklist for remote job seekers.
               </p>
@@ -1121,7 +1154,7 @@
             </div>
             <div class="guide-card-content">
               <span class="guide-tag">Smishing Telemetry</span>
-              <h3 class="guide-title"><a href="/guide-delivery-scams">The 2026 Guide to Package Delivery & Road Toll Smishing</a></h3>
+              <h3 class="guide-title"><a href="/guide-delivery-scams">USPS Parcel & E-ZPass Toll Smishing: Why Scammers Use $0.35 Micro-Fees</a></h3>
               <p class="guide-excerpt">
                 USPS parcel redelivery fees and FBI-warned SunPass/E-ZPass toll notices. Why cyber syndicates use $0.35 to $4.85 micro-fees to harvest credit card data.
               </p>
@@ -1140,7 +1173,7 @@
             </div>
             <div class="guide-card-content">
               <span class="guide-tag">Deepfake Intelligence</span>
-              <h3 class="guide-title"><a href="/guide-voice-cloning">The 2026 Guide to AI Voice Cloning & Deepfake Vishing Scams</a></h3>
+              <h3 class="guide-title"><a href="/guide-voice-cloning">Zero-Shot AI Voice Cloning: How 3 Seconds of Audio Fuels Vishing Extortion</a></h3>
               <p class="guide-excerpt">
                 How cyber syndicates clone voices with 3 seconds of TikTok audio, bypass enterprise phone authorization, and how to verify callers using out-of-band protocols.
               </p>
@@ -1178,7 +1211,7 @@
             </div>
             <div class="guide-card-content">
               <span class="guide-tag">Government Impersonation</span>
-              <h3 class="guide-title"><a href="/guide-digital-arrest">The 2026 Guide to 'Digital Arrest' &amp; Law Enforcement Video Scams</a></h3>
+              <h3 class="guide-title"><a href="/guide-digital-arrest">Inside 'Digital Arrest' Video Extortion: Why Police Never Hold Skype Trials</a></h3>
               <p class="guide-excerpt">
                 Why 'digital arrest' does not exist in law. The 4-phase psychological extortion loop, fake police studio setups, and emergency disconnect protocols.
               </p>
@@ -1197,7 +1230,7 @@
             </div>
             <div class="guide-card-content">
               <span class="guide-tag">Synthetic Video Forensics</span>
-              <h3 class="guide-title"><a href="/guide-deepfake-video">The 2026 Forensic Guide to Real-Time Deepfake Video Calls</a></h3>
+              <h3 class="guide-title"><a href="/guide-deepfake-video">Spotting Live Deepfake Video Calls on Zoom & Teams: Biometric Forensics</a></h3>
               <p class="guide-excerpt">
                 How criminal syndicates weaponize live face-swapping on Zoom and Teams, lateral profile distortion artifacts, and enterprise CEO fraud defense.
               </p>
@@ -1216,7 +1249,7 @@
             </div>
             <div class="guide-card-content">
               <span class="guide-tag">Telecom Security</span>
-              <h3 class="guide-title"><a href="/guide-sim-swapping">The 2026 Guide to SIM Swap Attacks &amp; 2FA Bypasses</a></h3>
+              <h3 class="guide-title"><a href="/guide-sim-swapping">Carrier SIM Swap &amp; eSIM Port-Out Attacks: Why SMS 2FA Is No Longer Safe</a></h3>
               <p class="guide-excerpt">
                 Carrier port-out social engineering, eSIM vulnerabilities, SMS OTP interception mechanics, and migrating to domain-bound FIDO2 passkeys.
               </p>
@@ -1235,7 +1268,7 @@
             </div>
             <div class="guide-card-content">
               <span class="guide-tag">RMM Exploitation</span>
-              <h3 class="guide-title"><a href="/guide-remote-access-scams">The 2026 Guide to Remote Access Scams: AnyDesk &amp; Screen Takeovers</a></h3>
+              <h3 class="guide-title"><a href="/guide-remote-access-scams">AnyDesk &amp; Quick Assist Takeovers: How Tech Support Scammers Drain Banks</a></h3>
               <p class="guide-excerpt">
                 Tech support boiler rooms, Windows Event Viewer tricks, black-screen curtain mode banking fraud, and emergency network disconnect procedures.
               </p>
@@ -1254,7 +1287,7 @@
             </div>
             <div class="guide-card-content">
               <span class="guide-tag">Web3 Security</span>
-              <h3 class="guide-title"><a href="/guide-crypto-drainer-scams">The 2026 Guide to Web3 Crypto Drainers &amp; Malicious Approvals</a></h3>
+              <h3 class="guide-title"><a href="/guide-crypto-drainer-scams">Web3 Wallet Drainers Explained: EIP-2612 Permit Signatures &amp; Approval Traps</a></h3>
               <p class="guide-excerpt">
                 Infinite ERC-20 token approval traps, gasless off-chain Permit signatures, fake airdrop phishing, and step-by-step allowance revocation.
               </p>
@@ -1273,7 +1306,7 @@
             </div>
             <div class="guide-card-content">
               <span class="guide-tag">Banking Defense</span>
-              <h3 class="guide-title"><a href="/guide-bank-impersonation">The 2026 Guide to Bank Fraud Impersonation &amp; Wire Scams</a></h3>
+              <h3 class="guide-title"><a href="/guide-bank-impersonation">Spoofed Bank Fraud Calls &amp; 'Safe Account' Wire Traps: A Forensic Teardown</a></h3>
               <p class="guide-excerpt">
                 Caller ID spoofing, the "safe account" holding vault deception, Zelle payment redirection, and the 72-hour FBI IC3 wire recall protocol.
               </p>
@@ -1292,11 +1325,124 @@
             </div>
             <div class="guide-card-content">
               <span class="guide-tag">Debt Relief Telemarketing</span>
-              <h3 class="guide-title"><a href="/guide-student-loan-scams">The 2026 Guide to Student Loan Forgiveness &amp; Debt Relief Scams</a></h3>
+              <h3 class="guide-title"><a href="/guide-student-loan-scams">Federal Student Loan Forgiveness Robocalls: Identifying FSA ID Phishing</a></h3>
               <p class="guide-excerpt">
                 Bogus debt cancellation robocalls, illegal upfront enrollment fees, FSA ID password theft, and free official federal loan servicer channels.
               </p>
               <a href="/guide-student-loan-scams" class="guide-footer-link">Read Full Pillar Guide &rarr;</a>
+            </div>
+          </article>
+          <!-- Guide 13: QR Code Quishing Forensics -->
+          <article class="guide-card">
+            <div class="guide-thumb-wrap">
+              <picture>
+                <source srcset="assets/images/quishing-guide.webp" type="image/webp">
+                <img src="assets/images/quishing-guide.jpg" alt="QR code quishing security scan and mobile shield" class="guide-thumb" width="400" height="200" loading="lazy" decoding="async">
+              </picture>
+              <span class="guide-read-time">11 Min Read</span>
+            </div>
+            <div class="guide-card-content">
+              <span class="guide-tag">Optical Phishing</span>
+              <h3 class="guide-title"><a href="/guide-quishing">QR Code 'Quishing' Forensics: How Parking Meter &amp; Parcel Stickers Bypass Email Filters</a></h3>
+              <p class="guide-excerpt">
+                Why attackers embed reverse-proxy URLs inside PDF QR barcodes and municipal parking meter stickers to pivot victims onto unmanaged mobile networks.
+              </p>
+              <a href="/guide-quishing" class="guide-footer-link">Read Full Pillar Guide &rarr;</a>
+            </div>
+          </article>
+
+          <!-- Guide 14: Fake Check & Overpayment Scams -->
+          <article class="guide-card">
+            <div class="guide-thumb-wrap">
+              <picture>
+                <source srcset="assets/images/check-overpayment-guide.webp" type="image/webp">
+                <img src="assets/images/check-overpayment-guide.jpg" alt="Forensic banking scanner inspecting a counterfeit paper check" class="guide-thumb" width="400" height="200" loading="lazy" decoding="async">
+              </picture>
+              <span class="guide-read-time">12 Min Read</span>
+            </div>
+            <div class="guide-card-content">
+              <span class="guide-tag">Banking Settlement Fraud</span>
+              <h3 class="guide-title"><a href="/guide-check-overpayment">Fake Check &amp; Marketplace Overpayment Scams: Why 'Cleared' Bank Funds Still Bounce</a></h3>
+              <p class="guide-excerpt">
+                How syndicates exploit the 10-day Federal Reserve Regulation CC provisional float window on mobile check deposits to extract irreversible Zelle refunds.
+              </p>
+              <a href="/guide-check-overpayment" class="guide-footer-link">Read Full Pillar Guide &rarr;</a>
+            </div>
+          </article>
+
+          <!-- Guide 15: Browser-Lock Tech Support Scams -->
+          <article class="guide-card">
+            <div class="guide-thumb-wrap">
+              <picture>
+                <source srcset="assets/images/tech-support-guide.webp" type="image/webp">
+                <img src="assets/images/tech-support-guide.jpg" alt="Desktop monitor protected by a firewall deflecting fake tech support pop-ups" class="guide-thumb" width="400" height="200" loading="lazy" decoding="async">
+              </picture>
+              <span class="guide-read-time">11 Min Read</span>
+            </div>
+            <div class="guide-card-content">
+              <span class="guide-tag">Browser Lock &amp; Call Centers</span>
+              <h3 class="guide-title"><a href="/guide-tech-support-popups">Browser-Lock 'Windows Defender' Alerts: How Fake Support Pop-Ups Lead to Wire Fraud</a></h3>
+              <p class="guide-excerpt">
+                Anatomy of HTML5 Fullscreen &amp; Pointer Lock siren pages, fake $499 Geek Squad renewal invoices, and the F12 DevTools 'extra zero' bank refund trick.
+              </p>
+              <a href="/guide-tech-support-popups" class="guide-footer-link">Read Full Pillar Guide &rarr;</a>
+            </div>
+          </article>
+
+          <!-- Guide 16: Secondary Crypto Recovery Scams -->
+          <article class="guide-card">
+            <div class="guide-thumb-wrap">
+              <picture>
+                <source srcset="assets/images/crypto-recovery-guide.webp" type="image/webp">
+                <img src="assets/images/crypto-recovery-guide.jpg" alt="Blockchain digital vault shielded against secondary recovery phishing hooks" class="guide-thumb" width="400" height="200" loading="lazy" decoding="async">
+              </picture>
+              <span class="guide-read-time">11 Min Read</span>
+            </div>
+            <div class="guide-card-content">
+              <span class="guide-tag">Revictimization Defense</span>
+              <h3 class="guide-title"><a href="/guide-romance-investment-recovery">Secondary 'Crypto Recovery' Scams: Why Telegram &amp; Law-Firm Recovery Agents Are Fraud Syndicates</a></h3>
+              <p class="guide-excerpt">
+                Why confirmed blockchain transactions are mathematically immutable, how fake recovery agents stage watch-only wallets, and official FBI IC3 freeze protocols.
+              </p>
+              <a href="/guide-romance-investment-recovery" class="guide-footer-link">Read Full Pillar Guide &rarr;</a>
+            </div>
+          </article>
+
+          <!-- Guide 17: Medicare & Healthcare Scams -->
+          <article class="guide-card">
+            <div class="guide-thumb-wrap">
+              <picture>
+                <source srcset="assets/images/medicare-scams-guide.webp" type="image/webp">
+                <img src="assets/images/medicare-scams-guide.jpg" alt="Healthcare ID card and medical cross shield blocking a spoofed phone call" class="guide-thumb" width="400" height="200" loading="lazy" decoding="async">
+              </picture>
+              <span class="guide-read-time">11 Min Read</span>
+            </div>
+            <div class="guide-card-content">
+              <span class="guide-tag">Healthcare Identity Fraud</span>
+              <h3 class="guide-title"><a href="/guide-medicare-healthcare-scams">Medicare Card, Genetic Testing &amp; Medical Billing Scams: Protecting Seniors from Spoofed Calls</a></h3>
+              <p class="guide-excerpt">
+                Why Medicare never issues 'plastic microchip cards,' how telefraud brokers bill $10,000 for cheek-swab DNA kits, and how to audit your quarterly MSN.
+              </p>
+              <a href="/guide-medicare-healthcare-scams" class="guide-footer-link">Read Full Pillar Guide &rarr;</a>
+            </div>
+          </article>
+
+          <!-- Guide 18: IRS & Tax Agency Impersonation -->
+          <article class="guide-card">
+            <div class="guide-thumb-wrap">
+              <picture>
+                <source srcset="assets/images/irs-tax-guide.webp" type="image/webp">
+                <img src="assets/images/irs-tax-guide.jpg" alt="Courthouse pillar and tax folder protected by a cyber shield against fake SMS alerts" class="guide-thumb" width="400" height="200" loading="lazy" decoding="async">
+              </picture>
+              <span class="guide-read-time">11 Min Read</span>
+            </div>
+            <div class="guide-card-content">
+              <span class="guide-tag">Government Impersonation</span>
+              <h3 class="guide-title"><a href="/guide-irs-tax-impersonation">IRS &amp; Tax Agency Impersonation Teardown: Spotting Fake Levy Notices, Refund SMS, and EFIN Theft</a></h3>
+              <p class="guide-excerpt">
+                Statutory USPS mail due-process vs. arrest-threat phone calls, fake $1,400 refund smishing links, Ghost Preparer PTIN fraud, and enrolling in an IRS IP PIN.
+              </p>
+              <a href="/guide-irs-tax-impersonation" class="guide-footer-link">Read Full Pillar Guide &rarr;</a>
             </div>
           </article>
         </div>
@@ -1474,7 +1620,7 @@
   <button type="button" class="back-to-top-btn" id="backToTopBtn" aria-label="Scroll back to top of page" title="Back to top">&uarr;</button>
 
   <!-- Scripts -->
-  <script src="js/threat-data.js?v=20261113-adsense"></script>
-  <script src="js/app.js?v=20261113-adsense"></script>
+  <script src="js/threat-data.js?v=20261122-adsense-v2"></script>
+  <script src="js/app.js?v=20261122-adsense-v2"></script>
 </body>
 </html>
